@@ -336,7 +336,7 @@ As magic flows through your body it causes physical traits of your dragon ancest
 **Strain.** As long as you have at least 3 strain, your scales begin to radiate with the energy of your draconic ancestor. Anyone who hits you with a melee attack takes damage of the type associated with your draconic ancestry equal to half your Charisma modifier (rounded up).
 
 
-<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/4/894/250/549/c3sorcerer2.png"  style="position: absolute; right: 0; bottom: 0; width: 54%; height: 65%;" />
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/4/894/250/549/c3sorcerer2.png"  style="position: absolute; right: 10%; bottom: 0; height: 65%;" />
 
 <div class="footnote">Variant Sorcerer | Homebrew by /u/damnedmage</div>
 
