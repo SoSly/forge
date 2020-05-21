@@ -41,24 +41,23 @@ const csspath  = path.join(process.cwd(), CSSPATH);
 /**
  * Compiles HTML
  */
-function compileHTML(docpath) {
+function compileHTML(importpath) {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
     const timer = new Timer();
-    const filename = path.parse(docpath).name;
+    const filename = path.parse(importpath).name;
     console.debug(`compiling HTML for ${filename}.`);
-    const indoc = fs.readFileSync(docpath);
+    const indoc = fs.readFileSync(importpath);
     const doccontent = `<!DOCTYPE html>
 <html>
     <head>
-        <title>The Nivenomicon</title>
-        <link rel=stylesheet type=text/css href=css/unearthed-arcana.css />
+        <link rel=stylesheet type=text/css href=css/document.css />
     </head>
 <body>
 
 <section class=document>
 
 \${toc}
-<section class=page>
+<section class=page id=p1>
 
 ${indoc.toString()}
 </section>
@@ -74,25 +73,37 @@ ${indoc.toString()}
 /**
  * Compile SCSS
  */
-function compileCSS(sasspath) {
+function compileCSS(importpath) {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
     const timer = new Timer();
-    const filename = path.parse(sasspath).name;
+    const filename = path.parse(importpath).name;
     console.debug(`compiling CSS for ${filename}.`);
-    const input = fs.readFileSync(sasspath);
-    const outcss = sass.renderSync({data: input.toString()});
+    const input = fs.readFileSync(importpath);
+    const outcss = sass.renderSync({
+        data: input.toString(),
+        importer: (node) => {
+            const importpath = path.join(sasspath, node + '.scss');
+            const input = fs.readFileSync(importpath);
+            return {contents: input.toString()};
+        }
+    });
     const output = path.join(csspath, filename + '.css');
     fs.writeFileSync(output, outcss.css);
     console.log(`finished compiling CSS for ${filename} in ${timer.stop().format()}.`);
 }
 
-const docwatcher = chokidar.watch(docspath, {ignored: /^\./, persistent: true});
+const chokidarOptions = {
+    ignored: /^\.|\_/,
+    persistent: true,
+    ignoreInitial: true
+};
+const docwatcher = chokidar.watch(docspath, chokidarOptions);
 docwatcher
     .on('add', (path) => compileHTML(path))
     .on('change', (path) => compileHTML(path))
     .on('error', console.error);
 
-const sasswatcher = chokidar.watch(sasspath, {ignored: /^\.|\_/, persistent: true});
+const sasswatcher = chokidar.watch(sasspath, chokidarOptions);
 sasswatcher
     .on('add', (path) => compileCSS(path))
     .on('change', (path) => compileCSS(path))

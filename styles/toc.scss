@@ -1,0 +1,4 @@
+.page nav.table-of-contents {
+    // max depth of 2
+    ol > li > ol > li > ol { display: none; }
+}

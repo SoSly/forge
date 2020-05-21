@@ -1,3 +1,5 @@
+<title>Arcane Tradition | Onomancy</title>
+
 ## Arcane Tradition
 At 2nd level, a wizard gains the Arcane Tradition feature.  Here is another option for that feature: the tradition of Onomancy.
 

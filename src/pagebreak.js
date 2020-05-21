@@ -1,6 +1,11 @@
 function tokenizePagebreak(md, options) {
     return function(tokens, idx, _options, env, self) {
-        return '</section><section class=page>';
+        let output = '';
+        if (tokens[idx].info[0] === true) {
+            output += '<div class="pageNumber auto"></div>';
+        }
+        output += `</section><section class=page id=p${tokens[idx].info[1]}>`;
+        return output;
     };
 }
 
@@ -15,18 +20,21 @@ function pagebreakEmbed(md, options) {
 
         const line = state.src.substr(bol, eol);
 
-        let pbreg = new RegExp('^\\\\pagebreak|\\\\pagebreakNum$');
+        let pbreg = new RegExp('^\\\\pagebreak(Num)?$');
         if (!pbreg.test(line)) return false;
-
-        let token;
-        token = state.push('pagebreak', '', 0);
-        token.info = [];
-        token.content = line;
-        token.markup = line;
-        token.map = [startLine, startLine + 1];
+        const pb = pbreg.exec(line);
 
         state.skipChars(bol, eol);
         state.line = startLine + 1;
+
+        let pages = state.tokens.filter((t) => t.type === 'pagebreak').length;
+
+        let token;
+        token = state.push('pagebreak', '', 0);
+        token.info = [pb[1] === 'Num', pages + 2];
+        token.content = line;
+        token.markup = line;
+        token.map = [startLine, state.line];
 
         return true;
     };
