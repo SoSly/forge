@@ -23,7 +23,6 @@
 \pagebreak
 
 <style type="text/css">
-.page#p3:after { display: none; }
 .page#p3 #on-the-cover { 
     position: absolute; 
     padding-top: 2cm;
