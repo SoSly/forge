@@ -74,10 +74,10 @@ body {
   position: relative;
   width: 21.59cm; }
   .document > nav.table-of-contents {
-    z-index: 1000;
+    z-index: 2147483647;
     background: saddlebrown;
     min-height: 1cm;
-    min-width: 1cm;
+    min-width: 0.5cm;
     position: fixed;
     margin-top: 1cm;
     margin-left: -6px;
@@ -97,9 +97,9 @@ body {
       width: 0;
       border-top: 0.5cm solid saddlebrown;
       border-bottom: 0.5cm solid saddlebrown;
-      border-right: 1cm solid transparent;
+      border-right: 0.5cm solid transparent;
       top: 0px;
-      right: -1cm; }
+      right: -0.5cm; }
     .document > nav.table-of-contents a, .document > nav.table-of-contents a:visited {
       color: tan; }
     .document > nav.table-of-contents ol {
@@ -109,7 +109,7 @@ body {
       counter-increment: list-item; }
     .document > nav.table-of-contents li:before {
       content: counters(list-item, ".") " ";
-      width: 30px;
+      width: 1cm;
       text-align: right;
       display: inline-block;
       margin-left: -15px;
@@ -128,9 +128,8 @@ body {
     .document > nav.table-of-contents ol > li > ol > li > ol {
       display: none; }
     .document > nav.table-of-contents:hover {
-      z-index: 2147483647;
-      padding: 2mm;
-      box-shadow: 1px 4px 14px #000; }
+      box-shadow: 1px 4px 14px #000;
+      padding: 2mm; }
       .document > nav.table-of-contents:hover > ol {
         display: block; }
       .document > nav.table-of-contents:hover:after {
