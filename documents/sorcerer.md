@@ -579,7 +579,6 @@ ___
 > - 0.8.0 (7th August 2019) - Added Starborn bloodline
 > - 0.7.7 (23rd July 2019) - Changed the wording of Strain-based casting to allow the creation of slots for abilities other than casting spells (for use with Paladin smite interaction).
 > - 0.7.6 (12th July 2019) - Added a minimum to the temporary hit points gained by the strain effect of the 6th level Empowered Healing ability for the Divine Soul origin.
->
-> &nbsp;
 
 <div class="footnote">Variant Sorcerer | Homebrew by /u/damnedmage</div>
+<div class="pageNumber auto"></div>
