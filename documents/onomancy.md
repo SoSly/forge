@@ -143,3 +143,5 @@ When you cast a spell that requires a saving throw, you can speak the true name 
 _14th-level Onomancy feature (original feature)_
 
 You have learned how to bypass a named creature's defenses against certain types of damage.  When you cast a spell that deals damage to a creature whose true name you speak as part of casting the spell, you can cause the spell to deal force or psychic damage to the creature, instead of the spell's normal damage type.
+
+<div class="pageNumber auto"></div>
