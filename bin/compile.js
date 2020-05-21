@@ -53,14 +53,14 @@ function compileHTML(importpath) {
     </head>
 <body>
 
-<section class=document>
+<article class=document>
 
 \${toc}
 <section class=page id=p1>
 
 ${indoc.toString()}
 </section>
-</section>
+</article>
 </body>
 </html>`;
     const outdoc = md.render(doccontent);

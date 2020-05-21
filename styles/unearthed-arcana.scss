@@ -1,0 +1,224 @@
+.document .page {
+    background-image : url('https://www.gmbinder.com/images/VXHkQzp.jpg');
+    background-size  : 100% 100%;
+    filter           : brightness(100%);
+
+    /* Background */
+    .back-cover-logo{
+        background-image : url('https://www.gmbinder.com/images/GrViGdC.png');
+        background-size  : 125px;
+    }
+
+    p.head{
+        font-size        : 100%;
+    }
+
+    /* End Background */
+    /* Notes */
+    blockquote {
+        background-color : #E8F2F8;
+        box-shadow       : 0 0 6px black;
+        border-width: 11px;
+        border-image: url('https://www.gmbinder.com/images/4DowZjU.png') 11;
+        border-image-outset: 10px 0;
+    }
+
+    .descriptive{
+        background-color : white;
+        box-shadow       : 0 0 6px black;
+        border-image     : url('https://www.gmbinder.com/images/16uasjU.png');
+        border-image-slice: 10;
+        border-image-outset: 2px .8;
+    }
+
+    /* End Notes*/
+    /* Tables */
+    table tr:nth-child(odd) td {
+        background-color : #c3d6e2;
+    }
+
+    hr + blockquote{
+        background-color : white;
+        background-image : url('');
+        border-image     : url('https://www.gmbinder.com/images/FFpbsDm.png');
+        border-image-slice : 20;
+        border-image-outset: 7px .12;
+        
+        tr:nth-child(odd) td {
+            background-color : transparent;
+        }
+
+        hr {
+            background-image : url('https://www.gmbinder.com/images/u2hOd7z.png')
+        }
+    }
+
+    .classTable{
+        border-image-source : url('https://www.gmbinder.com/images/K2HdDg9.png');
+        border-image-outset: 15px 17px;
+        margin-top: 15px;
+        
+        table { margin-bottom: 0; }
+    }
+
+
+
+    /* Footer */
+    .footnote {
+        border-bottom    : none;
+        color            : black;
+        font-size        : 12px;
+        width            : 500px;
+    }
+
+    &:nth-child(odd):after{ 
+        content          : '';
+        position         : absolute;
+        bottom           : -1px;
+        left             : 1px;
+        z-index          : -1;
+        height           : 100%;
+        width            : 100%;
+        background-image : url('https://www.gmbinder.com/images/HLSzYx9.png');
+        background-size  : cover;
+    }
+
+    &:nth-child(even):after{ 
+        content          : '';
+        position         : absolute;
+        bottom           : -2px;
+        left             : -2px;
+        z-index          : -1;
+        height           : 100%;
+        width            : 100%;
+        background-image : url('https://www.gmbinder.com/images/HLSzYx9.png');
+        background-size  : cover;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    p.foot{
+        content          : '';
+        color            : #09386d;
+        position         : absolute;
+        bottom           : 10px;
+        font-size        : 15.2px;
+        text-align       : right;
+        margin-top       : .2em;
+        margin-bottom    : 0;
+        font-family      : MrJeeves;
+        font-weight      : 800;
+        text-shadow      : 0px 0px 5px white;
+    }
+
+    &:nth-child(even) p.foot{
+        left             : 78px;
+    }
+
+    &:nth-child(odd) p.foot{
+        right            : 78px;
+    }
+    /* End Footer */
+    /* Page Number */
+    .pageNumber{
+        position         : absolute;
+        bottom           : 29px;
+        width            : 48px;
+        text-align       : center;
+        color            : black;
+        text-shadow      : 0px 0px 13px white;
+        font-size        : 16px;
+        font-weight      : 1000;
+    }
+
+    &:nth-child(even) .pageNumber{
+        left             : 17px;
+        transform        : rotate(13.5deg);
+    }
+
+    &:nth-child(odd) .pageNumber{
+        right            : 17.3px;
+        transform        : rotate(-13.5deg);
+    }
+
+    .pageNumber {
+        position         : absolute;
+        bottom           : 29px;
+        width            : 48px;
+        text-align       : center;
+        color            : black;
+        text-shadow      : 0px 0px 13px white;
+        font-size        : 16px;
+        font-weight      : 1000;
+    }
+
+    &:nth-child(even) .pageNumber {
+        left             : 17px;
+        transform        : rotate(13.5deg);
+    }
+
+    &:nth-child(odd) .pageNumber.auto{
+        right            : 17px;
+        transform        : rotate(-13.5deg);
+    }
+    /* End Page Number */
+    /* Colors */
+    h5{
+        font-size        : 134%;
+    }
+
+    blockquote h5{
+        font-size        : 104%;
+    }
+
+    h4{
+        color            : #293f50;
+        font-size        : 155%;
+    }
+
+    h3{
+        color            : #293f50;
+        border-bottom    : 2px solid black;
+        font-size        : 186%;
+    }
+
+    hr + blockquote h3{
+        font-size        : 120%;
+    }
+
+    .page h2{
+        color            : #293f50;
+        font-size        : 250%;
+    }
+
+    hr + blockquote h2{
+        color            : #09386d;
+        font-size        : 140%;
+    }
+
+    h1{
+        color            : #293f50;
+        font-size        : 400%;
+    }
+
+    p{
+        font-size        : 100%;
+    }
+
+    a{
+        color            : #09386d;
+    }
+
+    code{
+        color            : #09386d;
+    }
+
+    hr + blockquote table{
+        color            : black;
+    }
+
+    hr + blockquote hr + ul{
+        color            : black;
+    }
+    /* End Colors */
+}

@@ -84,7 +84,7 @@ ___
 Honestly, I didn't mean to compile a whole book of content.  We just kept making more, and one day I realised I was finding it hard to sort through everything in my binder, because it was so disorganized.  I tried to organize it, but the tools at hand just weren't good enough, and frankly it was tedious, so here we are.   The contents in this book represent a labor of love; a collection of dozens of brilliant ideas all made by us with the goal of good, silly fun.  Thank you all for your help.  I can't wait to see what we make next.
 
 <div style="float: right;">
-— Kevin Kragenbrink, 2020
+&mdash; Kevin Kragenbrink, 2020
 </div>
 
 <div class="disclaimer wide">

@@ -74,7 +74,7 @@ body {
         // max depth of 2
         ol > li > ol > li > ol { display: none; }
     
-        &:hover { 
+        &:hover, &:active { 
             box-shadow: 1px 4px 14px #000;
             padding: 2mm;
             & > ol { display: block; }
@@ -132,11 +132,29 @@ body {
         }
 
         & + .page { margin-top: 0.5cm; }
+
+        .classTable {
+            margin-top: 25px;
+            margin-bottom: 40px;
+            border-collapse: separate;
+            background-color: white;
+            border: initial;
+            border-style: solid;
+            border-image-outset: 25px 17px;
+            border-image-repeat: stretch;
+            border-image-slice: 150 200 150 200;
+            border-image-source: url(../images/table-border.png);
+            border-image-width: 47px;
+        }
         
         .column-break {
             break-after: always;
             -webkit-column-break-after: always;
             -moz-column-break-after: always;
+
+            & + p {
+                text-indent: 0;
+            }
         }
 
         .footnote {
@@ -284,6 +302,10 @@ body {
                 -moz-column-span: all;
             }
 
+            & + ol {
+                margin-top: -0.8em;
+            }
+
             & + ul {
                 margin-bottom: 0.5em;
                 padding-left: 1em;
@@ -305,6 +327,15 @@ body {
             margin: 0 0 10.5px;
             text-indent: 1em;
 
+            & + p { margin-top: -0.8em; }
+        }
+
+        ol {
+            margin-bottom: .8em;
+            padding-left: 1.4em;
+            line-height: 1.3em;
+            list-style-position: outside;
+            list-style-type: decimal;
             & + p { margin-top: -0.8em; }
         }
 

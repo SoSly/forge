@@ -127,12 +127,12 @@ body {
       padding: 5px; }
     .document > nav.table-of-contents ol > li > ol > li > ol {
       display: none; }
-    .document > nav.table-of-contents:hover {
+    .document > nav.table-of-contents:hover, .document > nav.table-of-contents:active {
       box-shadow: 1px 4px 14px #000;
       padding: 2mm; }
-      .document > nav.table-of-contents:hover > ol {
+      .document > nav.table-of-contents:hover > ol, .document > nav.table-of-contents:active > ol {
         display: block; }
-      .document > nav.table-of-contents:hover:after {
+      .document > nav.table-of-contents:hover:after, .document > nav.table-of-contents:active:after {
         display: none; }
   .document .page {
     color: #000;
@@ -178,10 +178,24 @@ body {
       font-style: normal; }
     .document .page + .page {
       margin-top: 0.5cm; }
+    .document .page .classTable {
+      margin-top: 25px;
+      margin-bottom: 40px;
+      border-collapse: separate;
+      background-color: white;
+      border: initial;
+      border-style: solid;
+      border-image-outset: 25px 17px;
+      border-image-repeat: stretch;
+      border-image-slice: 150 200 150 200;
+      border-image-source: url(../images/table-border.png);
+      border-image-width: 47px; }
     .document .page .column-break {
       break-after: always;
       -webkit-column-break-after: always;
       -moz-column-break-after: always; }
+      .document .page .column-break + p {
+        text-indent: 0; }
     .document .page .footnote {
       border-bottom: 1px solid black;
       position: absolute;
@@ -301,6 +315,8 @@ body {
         column-span: all;
         -webkit-column-span: all;
         -moz-column-span: all; }
+      .document .page hr + ol {
+        margin-top: -0.8em; }
       .document .page hr + ul {
         margin-bottom: 0.5em;
         padding-left: 1em;
@@ -315,6 +331,14 @@ body {
       margin: 0 0 10.5px;
       text-indent: 1em; }
       .document .page p + p {
+        margin-top: -0.8em; }
+    .document .page ol {
+      margin-bottom: .8em;
+      padding-left: 1.4em;
+      line-height: 1.3em;
+      list-style-position: outside;
+      list-style-type: decimal; }
+      .document .page ol + p {
         margin-top: -0.8em; }
     .document .page ul {
       line-height: 1.3em;
