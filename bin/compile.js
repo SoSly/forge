@@ -23,8 +23,7 @@ const md = new MarkdownIt({
     breaks: false,
     langPrefix: 'language-',
     linkfiy: false,
-    typographer:  true,
-    quotes: '“”‘’',
+    typographer: false
 });
 md.use(Pagebreak);
 md.use(Columnbreak);
