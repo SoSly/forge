@@ -196,9 +196,8 @@ function headings2ast (tokens) {
 
       let level = parseInt(token.tag.substr(1), 10) + 1;
       
-      if (tokens[i - 1].type === 'html_block' && header.test(tokens[i - 1].content)) {
-        level -= 1;
-      }
+      // if (tokens[i - 1].type === 'html_block' && header.test(tokens[i - 1].content)) level--;
+      if (token.tag === 'h1' && tokens[i - 1].type !== 'hr') level--;  
 
       const node = {
         l: level,

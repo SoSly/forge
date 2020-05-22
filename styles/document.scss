@@ -107,6 +107,11 @@ body {
         page-break-after: always;
         box-shadow: 1px 4px 14px #000;
 
+        a, a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
         em {
             font-family: 'Bookmania Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-weight: normal;
@@ -149,6 +154,19 @@ body {
             & + p {
                 text-indent: 0;
             }
+        }
+
+        .descriptive {
+            display: block-inline;
+            margin-bottom: 1em;
+            background-color: #faf7ea;
+            font-family: ScalySans;
+            border-style: solid;
+            border-width: 7px;
+            border-image: url(../images/descriptive.png) 12 stretch;
+            border-image-repeat: stretch;
+            border-image-outset: 4px;
+            box-shadow: 0 0 6px #faf7ea;
         }
 
         .footnote {
@@ -200,6 +218,15 @@ body {
             column-span: all;
             -webkit-column-span: all;
             -moz-column-span: all;
+
+            &.two-column {
+                column-count: 2;
+                column-fill: auto;
+                column-gap: 1cm;
+                column-width: 8cm;
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+            }
         }
 
         blockquote {
@@ -259,15 +286,15 @@ body {
             -moz-column-span: all;
             font-size: 24pt; 
         }
-        h2 { font-size: 21pt; }
-        h3 { font-size: 18pt; }
-        h4 { font-size: 14pt; }
+        h2 { font-size: 20pt; }
+        h3 { font-size: 15pt; }
+        h4 { font-size: 12pt; }
 
         h2 { margin-bottom: .2em; }
         h3 { border-bottom: 1pt solid black; margin-bottom: .2em; }
         h5 {
             font-family: 'Scala Sans Caps';
-            font-size: 10pt;
+            font-size: 11pt;
             font-weight: bold;
         }
 
@@ -322,7 +349,11 @@ body {
             text-indent: 1em;
 
             & + p { margin-top: -0.8em; }
+            img {
+                max-width: 100%;
+            }
         }
+        & > p:first-of-type { text-indent: 0; }
 
         ol {
             margin-bottom: .8em;
@@ -349,7 +380,7 @@ body {
             border-collapse: collapse;
             border-spacing: 0;
             font-family: 'Scala Sans', Arial, Helvetica, sans-serif;
-            font-size: 10pt;
+            font-size: 8.5pt;
             line-height: 1.1em;
             margin-bottom: 1emm;
             overflow: hidden;

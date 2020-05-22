@@ -157,6 +157,9 @@ body {
     page-break-before: always;
     page-break-after: always;
     box-shadow: 1px 4px 14px #000; }
+    .document .page a, .document .page a:visited {
+      color: black;
+      text-decoration: none; }
     .document .page em {
       font-family: 'Bookmania Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
       font-weight: normal;
@@ -189,6 +192,17 @@ body {
       -moz-column-break-after: always; }
       .document .page .column-break + p {
         text-indent: 0; }
+    .document .page .descriptive {
+      display: block-inline;
+      margin-bottom: 1em;
+      background-color: #faf7ea;
+      font-family: ScalySans;
+      border-style: solid;
+      border-width: 7px;
+      border-image: url(../images/descriptive.png) 12 stretch;
+      border-image-repeat: stretch;
+      border-image-outset: 4px;
+      box-shadow: 0 0 6px #faf7ea; }
     .document .page .footnote {
       border-bottom: 1px solid black;
       position: absolute;
@@ -226,6 +240,13 @@ body {
       column-span: all;
       -webkit-column-span: all;
       -moz-column-span: all; }
+      .document .page .wide.two-column {
+        column-count: 2;
+        column-fill: auto;
+        column-gap: 1cm;
+        column-width: 8cm;
+        -webkit-column-count: 2;
+        -moz-column-count: 2; }
     .document .page blockquote {
       background-color: #e6e6e6;
       break-inside: avoid;
@@ -274,11 +295,11 @@ body {
       -moz-column-span: all;
       font-size: 24pt; }
     .document .page h2 {
-      font-size: 21pt; }
+      font-size: 20pt; }
     .document .page h3 {
-      font-size: 18pt; }
+      font-size: 15pt; }
     .document .page h4 {
-      font-size: 14pt; }
+      font-size: 12pt; }
     .document .page h2 {
       margin-bottom: .2em; }
     .document .page h3 {
@@ -286,7 +307,7 @@ body {
       margin-bottom: .2em; }
     .document .page h5 {
       font-family: 'Scala Sans Caps';
-      font-size: 10pt;
+      font-size: 11pt;
       font-weight: bold; }
     .document .page hr {
       visibility: hidden;
@@ -325,6 +346,10 @@ body {
       text-indent: 1em; }
       .document .page p + p {
         margin-top: -0.8em; }
+      .document .page p img {
+        max-width: 100%; }
+    .document .page > p:first-of-type {
+      text-indent: 0; }
     .document .page ol {
       margin-bottom: .8em;
       padding-left: 1.4em;
@@ -347,7 +372,7 @@ body {
       border-collapse: collapse;
       border-spacing: 0;
       font-family: 'Scala Sans', Arial, Helvetica, sans-serif;
-      font-size: 10pt;
+      font-size: 8.5pt;
       line-height: 1.1em;
       margin-bottom: 1emm;
       overflow: hidden;
