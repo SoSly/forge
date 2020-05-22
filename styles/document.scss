@@ -50,15 +50,9 @@ body {
         margin-left: -6px;
         max-width: 8cm;
         a, a:visited { color: tan; }
-        ol { counter-reset: list-item; }
-        li { display: block; counter-increment: list-item; }
-        li:before { 
-            content: counters(list-item,'.') ' '; 
-            width: 1cm;
-            text-align: right;
-            display: inline-block;
-            margin-left: -15px;
-            padding-right: 5px;
+        li { 
+            display: block; 
+            span { display: none; }
         }
     
         ol, li { text-indent: 0; margin: 0; padding: 0; }
@@ -69,10 +63,10 @@ body {
             display: none;
             color: tan;
             padding: 5px;
-        }  
+        }
     
-        // max depth of 2
-        ol > li > ol > li > ol { display: none; }
+        // max depth of 3
+        ol > li > ol > li > ol > li > ol { display: none; }
     
         &:hover, &:active { 
             box-shadow: 1px 4px 14px #000;

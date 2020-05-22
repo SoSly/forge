@@ -34,6 +34,22 @@
     font-variant: small-caps; }
   .document .page h3 {
     border-bottom: 2px solid orange; }
+  .document .page nav.table-of-contents a {
+    font-weight: bold; }
+  .document .page nav.table-of-contents a:after {
+    font-weight: normal; }
+  .document .page nav.table-of-contents > ol > li > a, .document .page nav.table-of-contents > ol > li > span {
+    border-bottom: 2px solid orange;
+    margin-bottom: 5px;
+    padding-bottom: 1px; }
+  .document .page nav.table-of-contents > ol > li > a {
+    color: saddlebrown;
+    font-family: mrs-eaves, serif;
+    font-variant: small-caps; }
+  .document .page nav.table-of-contents > ol > li > ol > li > a {
+    color: saddlebrown;
+    font-family: mrs-eaves, serif;
+    font-variant: small-caps; }
   .document .page section.header {
     text-align: center;
     position: absolute;

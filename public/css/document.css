@@ -102,18 +102,10 @@ body {
       right: -0.5cm; }
     .document > nav.table-of-contents a, .document > nav.table-of-contents a:visited {
       color: tan; }
-    .document > nav.table-of-contents ol {
-      counter-reset: list-item; }
     .document > nav.table-of-contents li {
-      display: block;
-      counter-increment: list-item; }
-    .document > nav.table-of-contents li:before {
-      content: counters(list-item, ".") " ";
-      width: 1cm;
-      text-align: right;
-      display: inline-block;
-      margin-left: -15px;
-      padding-right: 5px; }
+      display: block; }
+      .document > nav.table-of-contents li span {
+        display: none; }
     .document > nav.table-of-contents ol, .document > nav.table-of-contents li {
       text-indent: 0;
       margin: 0;
@@ -125,7 +117,7 @@ body {
       display: none;
       color: tan;
       padding: 5px; }
-    .document > nav.table-of-contents ol > li > ol > li > ol {
+    .document > nav.table-of-contents ol > li > ol > li > ol > li > ol {
       display: none; }
     .document > nav.table-of-contents:hover, .document > nav.table-of-contents:active {
       box-shadow: 1px 4px 14px #000;

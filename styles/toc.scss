@@ -1,4 +1,70 @@
 .page nav.table-of-contents {
-    // max depth of 2
-    ol > li > ol > li > ol { display: none; }
+    a, span {
+        border: 0;
+        color: black;
+        font-family: 'Bookmania';
+        font-size: 10pt;
+        font-weight: normal;
+        line-height: 12pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        overflow: hidden;
+        text-decoration: none;
+        white-space: nowrap;
+        width: auto;
+        
+        &:after {
+            border: 0;
+            color: black;
+            content: 
+                " ........................................"
+                "........................................."
+                "........................................."; 
+            font-family: 'Bookmania';
+            font-size: 10pt;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    ol {
+        list-style-type: none;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    span { float: right; }
+
+    // max depth of 3
+    ol > li > ol > li > ol > li > ol { display: none; }
+
+    // top-level elements
+    & > ol > li {
+        & > a { font-size: 14pt; }
+        & > a, & > span {
+            border-bottom: 1px solid black;
+            line-height: 15pt;
+            margin-bottom: 5px;
+            &:after { display: none; }
+        }
+
+        & + li {
+            margin-top: 10px;
+        }
+
+        li span { margin-left: 2px; }
+
+        // second-level elements
+        & > ol > li {
+            & > a { font-size: 12pt; }
+
+            // third-level elements
+            & > ol { padding-left: 1.4em; }
+        }
+    }
 }

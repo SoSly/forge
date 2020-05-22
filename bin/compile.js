@@ -10,7 +10,7 @@ import fs from 'fs';
 import Columnbreak from '../src/columnbreak.js';
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
-import MarkdownItTOCDoneRight from 'markdown-it-toc-done-right';
+import TOC from '../src/toc.js';
 import Pagebreak from '../src/pagebreak.js';
 import path from 'path';
 import sass from 'node-sass';
@@ -28,7 +28,7 @@ const md = new MarkdownIt({
 md.use(Pagebreak);
 md.use(Columnbreak);
 md.use(MarkdownItAnchor);
-md.use(MarkdownItTOCDoneRight, {
+md.use(TOC, {
     slugify: uslug
 });
 

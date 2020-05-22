@@ -1,2 +1,58 @@
-.page nav.table-of-contents ol > li > ol > li > ol {
+.page nav.table-of-contents a, .page nav.table-of-contents span {
+  border: 0;
+  color: black;
+  font-family: 'Bookmania';
+  font-size: 10pt;
+  font-weight: normal;
+  line-height: 12pt;
+  margin: 0;
+  padding: 0; }
+
+.page nav.table-of-contents a {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  width: auto; }
+  .page nav.table-of-contents a:after {
+    border: 0;
+    color: black;
+    content: " ........................................" "........................................." ".........................................";
+    font-family: 'Bookmania';
+    font-size: 10pt;
+    font-weight: normal;
+    margin: 0;
+    padding: 0; }
+
+.page nav.table-of-contents ol {
+  list-style-type: none;
+  margin-bottom: 0;
+  padding-left: 0; }
+
+.page nav.table-of-contents span {
+  float: right; }
+
+.page nav.table-of-contents ol > li > ol > li > ol > li > ol {
   display: none; }
+
+.page nav.table-of-contents > ol > li > a {
+  font-size: 14pt; }
+
+.page nav.table-of-contents > ol > li > a, .page nav.table-of-contents > ol > li > span {
+  border-bottom: 1px solid black;
+  line-height: 15pt;
+  margin-bottom: 5px; }
+  .page nav.table-of-contents > ol > li > a:after, .page nav.table-of-contents > ol > li > span:after {
+    display: none; }
+
+.page nav.table-of-contents > ol > li + li {
+  margin-top: 10px; }
+
+.page nav.table-of-contents > ol > li li span {
+  margin-left: 2px; }
+
+.page nav.table-of-contents > ol > li > ol > li > a {
+  font-size: 12pt; }
+
+.page nav.table-of-contents > ol > li > ol > li > ol {
+  padding-left: 1.4em; }

@@ -45,6 +45,36 @@
  
     h3 { border-bottom: 2px solid orange; }
 
+    nav.table-of-contents {
+        a { font-weight: bold; }
+        a:after { font-weight: normal; }
+        
+        // top-level elements
+        & > ol > li {
+            & > a, & > span { 
+                border-bottom: 2px solid orange; 
+                margin-bottom: 5px;
+                padding-bottom: 1px;
+            }
+            & > a {
+                color: saddlebrown;
+                font-family: mrs-eaves, serif;
+                font-variant: small-caps;
+            }
+
+            // second-level elements
+            & > ol > li {
+                & > a {
+                    color: saddlebrown;
+                    font-family: mrs-eaves, serif;
+                    font-variant: small-caps;
+                }
+
+                // third-level elements
+            }
+        }
+    }
+
     section.header {
         text-align: center;
         position: absolute;

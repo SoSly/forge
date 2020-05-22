@@ -94,6 +94,12 @@ Disclaimer: The Society of Silliness may take this game entirely too seriously. 
 \pagebreak
 
 <link rel=stylesheet type=text/css href=css/toc.css />
+<style>
+nav.table-of-contents > ol > li:first-of-type { display: none; }
+.page#p4 nav.table-of-contents > ol > li:nth-of-type(3) { display: none; }
+</style>
+
+# Contents
 
 ${toc}
 
@@ -123,14 +129,14 @@ Suspendisse tristique lorem nulla, id faucibus neque fermentum eu. Cras auctor t
 
 <section class="header">
 
-# Part 1 <span>Character Options</span>
+# Part 1<span style="display: none;">:</span> <span>Character Options</span>
 
 </section>
 
 \pagebreak
 
 ___
-# Chapter 1 <span>Races</span>
+# Chapter 1<span style="display: none;">:</span> <span>Races</span>
 
 Across the many planes and multiverses exists a cornucopia of races, all wildly different and varied and unique. This chapter presentse character races that are some of the more distinctive races options in the {dungeons-and-dragons} multiverse. They supplement the options in the _Player's Handbook_ and are mroe rare in the worlds of D&D than the races in that book are.
 
@@ -302,13 +308,13 @@ As a domestic, you were raised in the care of a wizard. You learned to respect h
 <div class="chapter-2"></div>
 
 ___
-# Chapter 2 <span>Classes</span>
+# Chapter 2<span style="display: none;">:</span> <span>Classes</span>
 
 This section needs some introductory text explaining what we're doing, here, and why.  Maybe we can also include some art!
 
 <div class=wide>
 
-##### Subclasses
+<h5 class=notoc>Subclasses</h5>
 | Class           | Subclass                | Description
 | :-------------- | :---------------------- | :---------------------
 | Fighter         | Cerebral Commander      | Warrior Leaders who have harnessed the power of the mind.
@@ -324,7 +330,7 @@ This section needs some introductory text explaining what we're doing, here, and
 
 ## Fighter
 
-## Martial Archetypes
+<h2 class=notoc>Martial Archetypes</h2>
 
 ### Cerebral Commander
 Where the mystic focuses on studying psionics and unlocking the mysteries of the mind, the cerebral commander simply uses his mental prowess to spur others into battle.  A cerebral commander blends psionics and martial prowess together harmoniously, becoming a fierce and effective leader.
@@ -398,7 +404,7 @@ Starting at 18th level, the target of your Ardent Commander feature no longer ha
 
 ## Monk
 
-## Monastic Traditions
+<h2 class=notoc>Monastic Traditions</h2>
 
 ### Way of the Beast Eaters
 It is said that those who follow the ways of the beast eaters have forsaken the very essence of mortality in exchange for untold power. A beast eater absorbs the power of the monsters they have slain, but many would argue they have sacrificed their own soul to do so. A beast eater bites with the sharpness of the wolf, strikes with the swiftness of the adder, and lashes out with the stinger of the scorpion, fueling strange and powerful magics with their ki.
@@ -498,12 +504,10 @@ Once you have used this ability, you must complete a long rest before you can us
 
 <div style="height: 160px;"></div>
 
-
 <style>
 .page#p14 .footnote { color: white; }
 .page#p14 .pageNumber { color: white; }
 </style>
-
 
 <img src="https://www.gmbinder.com/images/i6Po9MH.jpg" style="position: absolute; left: 0; bottom: 0; width: 100%;" />
 <img src="https://www.gmbinder.com/images/gezbRSW.png" style="position: absolute; left: 0; top: 0; width: 100%;" />
@@ -514,7 +518,7 @@ Once you have used this ability, you must complete a long rest before you can us
 
 ## Rogue
 
-## Rogueish Archetypes
+<h2 class=notoc>Rogueish Archetypes</h2>
 At 3rd level, a rogue gains the Roguish Archetype feature. The following options are available to a rogue, in addition to those offered in the _Player's Handbook_: the Sensate.
 
 ### Sensate
@@ -569,7 +573,7 @@ Once you have used this feature, you may not use it again until you have finishe
 
 ## Wizard
 
-## Arcane Traditions
+<h2 class=notoc>Arcane Traditions</h2>
 At 2nd level, a wizard gains the Arcane Tradition feature. The following options are available to a wizard, in addition to the options offered in the _Player's Handbook_: School of Theology.
 
 ### Theology
@@ -613,7 +617,7 @@ Once you have used this feature, you must complete a short or long rest before y
 \pagebreakNum
 
 ___
-# Chapter 3 <span>Customization Options</span>
+# Chapter 3<span style="display: none;">:</span> <span>Customization Options</span>
 
 ## Feats
 
@@ -782,7 +786,7 @@ Adding a new cantrip to your spellbook takes 8 hours, and costs 25 gp.  The cost
 \pagebreakNum
 
 ___
-# Chapter 4 <span>Equipment</span>
+# Chapter 4<span style="display: none;">:</span> <span>Equipment</span>
 
 <style>
 .page .masterwork table td {
@@ -827,14 +831,14 @@ Magical items are frequently also masterwork, although it isn't required, but a 
 
 <section class="header">
 
-# Part 2 <span>Spells and Powers</span>
+# Part 2<span style="display: none;">:</span> <span>Spells and Powers</span>
 
 </section>
 
 \pagebreak
 
 ___
-# Chapter 5 <span>Spells</span>
+# Chapter 5<span style="display: none;">:</span> <span>Spells</span>
 
 This chapter describes new and exciting spells in the worlds of {dungeons-and-dragons}. Some of these spells bear the names of their creator, and are limited to a specific spell list (for now), but many others provide a wealth of new character options for players and dungeon masters both to explore.
 
