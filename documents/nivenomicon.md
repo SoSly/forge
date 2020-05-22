@@ -18,6 +18,9 @@
 
 <div class='cover-header'>The Nivenomicon</div>
 
+<img src="https://66.media.tumblr.com/281ec7122ad3a7d9e97532991143b009/tumblr_mrjkojkQbR1sxb8tao1_r1_1280.jpg" style="display: block; margin: 0 auto; mix-blend-mode: darken; position: absolute; left: 0; top: 13em; width: 110%;" />
+<img src="https://i.imgur.com/9VGGwoJ.png" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;" />
+
 <img  src="https://content.writh.net/images/covers/And-persand.png" style="width: 75px; position: absolute; bottom: .75in; left: 45%; filter: hue-rotate(40deg) brightness(70%);" />
 
 \pagebreak
@@ -68,7 +71,7 @@ ___
 - **Art Director:** Lauren Clay
 - **Brand:** [Robert Guavara](https://www.graphicoverride.com/)
 - **Cover Illustrator:** [Joelin Tan](https://www.artstation.com/fiveonthe)
-- **Interior Illustrators:** [Batu Ince](https://www.artstation.com/wolffe), [Brian Chippy](http://www.chippyworks.com/), [David Nakayama](https://www.deviantart.com/dna-1), [Leroy van Vliet](https://www.deviantart.com/catbib), [Kan Liu](https://www.artstation.com/666kart), Marlene Macgara, [Rayph Beisner](https://www.artstation.com/rayph_beisner), [Tamara Rouwendal](https://www.deviantart.com/tamarar), [Taylor Payton](https://www.artstation.com/taylor-payton)
+- **Interior Illustrators:** [Batu Ince](https://www.artstation.com/wolffe), [Brian Chippy](http://www.chippyworks.com/), [Chris G Robinson](https://chrisgrobinson.tumblr.com/image/93422994265), [David Nakayama](https://www.deviantart.com/dna-1), [Leroy van Vliet](https://www.deviantart.com/catbib), [Kan Liu](https://www.artstation.com/666kart), Marlene Macgara, [Rayph Beisner](https://www.artstation.com/rayph_beisner), [Tamara Rouwendal](https://www.deviantart.com/tamarar), [Taylor Payton](https://www.artstation.com/taylor-payton)
 
 <br />
 
