@@ -101,7 +101,8 @@ body {
       top: 0px;
       right: -0.5cm; }
     .document > nav.table-of-contents a, .document > nav.table-of-contents a:visited {
-      color: tan; }
+      color: tan;
+      text-decoration: none; }
     .document > nav.table-of-contents li {
       display: block; }
       .document > nav.table-of-contents li span {
