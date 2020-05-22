@@ -315,6 +315,7 @@ This section needs some introductory text explaining what we're doing, here, and
 <div class=wide>
 
 <h5 class=notoc>Subclasses</h5>
+
 | Class           | Subclass                | Description
 | :-------------- | :---------------------- | :---------------------
 | Fighter         | Cerebral Commander      | Warrior Leaders who have harnessed the power of the mind.
