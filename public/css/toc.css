@@ -1,7 +1,7 @@
 .page nav.table-of-contents a, .page nav.table-of-contents span {
   border: 0;
   color: black;
-  font-family: 'Bookmania';
+  font-family: bookmania, serif;
   font-size: 10pt;
   font-weight: normal;
   line-height: 12pt;
@@ -18,7 +18,7 @@
     border: 0;
     color: black;
     content: " ........................................" "........................................." ".........................................";
-    font-family: 'Bookmania';
+    font-family: bookmania, serif;
     font-size: 10pt;
     font-weight: normal;
     margin: 0;

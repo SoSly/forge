@@ -84,7 +84,7 @@
     text-align: right;
     margin-top: .2em;
     margin-bottom: 0;
-    font-family: MrJeeves;
+    font-family: mrs-eaves, serif;
     font-weight: 800;
     text-shadow: 0px 0px 5px white; }
   .document .page:nth-child(even) p.foot {

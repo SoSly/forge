@@ -19,11 +19,11 @@ import uslug from 'uslug';
 
 const md = new MarkdownIt({
     html: true,
-    xhtmlOut: true,
+    xhtmlOut: false,
     breaks: false,
     langPrefix: 'language-',
     linkfiy: false,
-    typographer: false
+    typographer: true
 });
 md.use(Pagebreak);
 md.use(Columnbreak);
@@ -47,8 +47,9 @@ function compileHTML(importpath) {
     console.debug(`compiling HTML for ${filename}.`);
     const indoc = fs.readFileSync(importpath);
     const doccontent = `<!DOCTYPE html>
-<html>
+<html lang=en dir=ltr>
     <head>
+        <meta charset="UTF-8" />
         <link rel=stylesheet type=text/css href=css/document.css />
     </head>
 <body>

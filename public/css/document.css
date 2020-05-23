@@ -1,64 +1,4 @@
 @import url("https://use.typekit.net/htj6ghe.css");
-@font-face {
-  font-family: 'Bookmania';
-  src: url("fonts/bookmania_regular-webfont.woff2") format("woff2"), url("fonts/bookmania_regular-webfont.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Bookmania Bold';
-  src: url("fonts/bookmania_bold-webfont.woff2") format("woff2"), url("fonts/bookmania_bold-webfont.woff") format("woff");
-  font-weight: bold; }
-
-@font-face {
-  font-family: 'Bookmania Italic';
-  src: url("fonts/bookmania_regular_italic-webfont.woff2") format("woff2"), url("fonts/bookmania_regular_italic-webfont.woff") format("woff");
-  font-style: italic, oblique; }
-
-@font-face {
-  font-family: 'Bookmania Bold Italic';
-  src: url("fonts/bookmania_bold_italic-webfont.woff2") format("woff2"), url("fonts/bookmania_bold_italic-webfont.woff") format("woff");
-  font-weight: bold;
-  font-style: italic, oblique; }
-
-@font-face {
-  font-family: 'Scala Sans';
-  src: url("fonts/scalasans_regular-webfont.woff2") format("woff2"), url("fonts/scalasans_regular-webfont.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Scala Sans Bold';
-  src: url("fonts/scalasans_bold-webfont.woff2") format("woff2"), url("fonts/scalasans_bold-webfont.woff") format("woff");
-  font-weight: bold; }
-
-@font-face {
-  font-family: 'Scala Sans Italic';
-  src: url("fonts/scalasans_regular_italic-webfont.woff2") format("woff2"), url("fonts/scalasans_regular_italic-webfont.woff") format("woff");
-  font-style: italic, oblique; }
-
-@font-face {
-  font-family: 'Scala Sans Bold Italic';
-  src: url("fonts/scalasans_bold_italic-webfont.woff2") format("woff2"), url("fonts/scalasans_bold_italic-webfont.woff") format("woff");
-  font-weight: bold;
-  font-style: italic, oblique; }
-
-@font-face {
-  font-family: 'Scala Sans Caps';
-  src: url("fonts/scalasans-caps_regular-webfont.woff2") format("woff2"), url("fonts/scalasans-caps_regular-webfont.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Scala Sans Caps Bold';
-  src: url("fonts/scalasans-caps_bold-webfont.woff2") format("woff2"), url("fonts/scalasans-caps_bold-webfont.woff") format("woff");
-  font-weight: bold; }
-
-@font-face {
-  font-family: 'Scala Sans Caps Italic';
-  src: url("fonts/scalasans-caps_regular_italic-webfont.woff2") format("woff2"), url("fonts/scalasans-caps_regular_italic-webfont.woff") format("woff");
-  font-style: italic, oblique; }
-
-@font-face {
-  font-family: 'Scala Sans Caps Bold Italic';
-  src: url("fonts/scalasans-caps_bold_italic-webfont.woff2") format("woff2"), url("fonts/scalasans-caps_bold_italic-webfont.woff") format("woff");
-  font-weight: bold;
-  font-style: italic, oblique; }
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -148,7 +88,7 @@ body {
     padding-bottom: 1.5cm;
     background-color: #FFF;
     background-image: tbd;
-    font-family: 'Bookmania', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: bookmania, serif;
     font-weight: normal;
     font-style: normal;
     font-size: 8.7pt;
@@ -160,18 +100,6 @@ body {
     .document .page a, .document .page a:visited {
       color: black;
       text-decoration: none; }
-    .document .page em {
-      font-family: 'Bookmania Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-weight: normal;
-      font-style: italic; }
-      .document .page em strong {
-        font-family: 'Bookmania Bold Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-weight: bold;
-        font-style: italic; }
-    .document .page strong {
-      font-family: 'Bookmania Bold', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-weight: bold;
-      font-style: normal; }
     .document .page + .page {
       margin-top: 0.5cm; }
     .document .page .classTable {
@@ -264,7 +192,7 @@ body {
       overflow: hidden;
       padding: 5px 5px; }
       .document .page blockquote h1, .document .page blockquote h2, .document .page blockquote h3, .document .page blockquote h4, .document .page blockquote h5 {
-        font-family: 'Scala Sans'; }
+        font-family: ff-scala-sans-pro, sans-serif; }
       .document .page blockquote h1, .document .page blockquote h2, .document .page blockquote h3, .document .page blockquote h4, .document .page blockquote h5 {
         margin-top: 0; }
       .document .page blockquote p {
@@ -306,8 +234,9 @@ body {
       border-bottom: 1pt solid black;
       margin-bottom: .2em; }
     .document .page h5 {
-      font-family: 'Scala Sans Caps';
+      font-family: ff-scala-sans-pro, sans-serif;
       font-size: 11pt;
+      font-variant: small-caps;
       font-weight: bold; }
     .document .page hr {
       visibility: hidden;
@@ -371,7 +300,7 @@ body {
       -moz-column-break-inside: avoid;
       border-collapse: collapse;
       border-spacing: 0;
-      font-family: 'Scala Sans', Arial, Helvetica, sans-serif;
+      font-family: ff-scala-sans-pro, sans-serif;
       font-size: 8.5pt;
       line-height: 1.1em;
       margin-bottom: 1emm;

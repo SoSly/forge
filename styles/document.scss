@@ -1,7 +1,4 @@
-@import "_bookmania";
 @import "_ribbon";
-@import "_scala-sans";
-@import "_scala-sans-caps";
 @import url("https://use.typekit.net/htj6ghe.css");
 
 * { 
@@ -97,7 +94,7 @@ body {
         padding-bottom: 1.5cm;
         background-color: #FFF;
         background-image: tbd;
-        font-family: 'Bookmania', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-family: bookmania, serif;
         font-weight: normal;
         font-style: normal;
         font-size: 8.7pt;
@@ -110,24 +107,6 @@ body {
         a, a:visited {
             color: black;
             text-decoration: none;
-        }
-
-        em {
-            font-family: 'Bookmania Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-weight: normal;
-            font-style: italic;
-
-            strong {
-                font-family: 'Bookmania Bold Italic', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                font-weight: bold;
-                font-style: italic;
-            }
-        }
-
-        strong {
-            font-family: 'Bookmania Bold', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-weight: bold;
-            font-style: normal;
         }
 
         & + .page { margin-top: 0.5cm; }
@@ -247,7 +226,7 @@ body {
             overflow: hidden;
             padding: 5px 5px;
 
-            h1, h2, h3, h4, h5 { font-family: 'Scala Sans'; }
+            h1, h2, h3, h4, h5 { font-family: ff-scala-sans-pro, sans-serif; }
             h1, h2, h3, h4, h5 { margin-top: 0; }
 
             p {
@@ -293,8 +272,9 @@ body {
         h2 { margin-bottom: .2em; }
         h3 { border-bottom: 1pt solid black; margin-bottom: .2em; }
         h5 {
-            font-family: 'Scala Sans Caps';
+            font-family: ff-scala-sans-pro, sans-serif;
             font-size: 11pt;
+            font-variant: small-caps;
             font-weight: bold;
         }
 
@@ -379,7 +359,7 @@ body {
             -moz-column-break-inside: avoid;
             border-collapse: collapse;
             border-spacing: 0;
-            font-family: 'Scala Sans', Arial, Helvetica, sans-serif;
+            font-family: ff-scala-sans-pro, sans-serif;
             font-size: 8.5pt;
             line-height: 1.1em;
             margin-bottom: 1emm;

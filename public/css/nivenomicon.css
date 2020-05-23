@@ -13,7 +13,6 @@
     background-color: rgba(250, 166, 26, 0.4);
     box-shadow: 0 0 6px black; }
   .document .page h1 {
-    font-size: 34pt;
     font-variant: small-caps;
     text-align: center; }
     .document .page h1 + p::first-letter {
