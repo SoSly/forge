@@ -221,7 +221,8 @@ body {
       column-span: all;
       -webkit-column-span: all;
       -moz-column-span: all;
-      font-size: 24pt; }
+      font-size: 24pt;
+      margin-bottom: 0.5em; }
     .document .page h2 {
       font-size: 20pt; }
     .document .page h3 {

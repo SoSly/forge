@@ -20,19 +20,41 @@
       float: left;
       font-family: 'Solbera';
       font-size: 100pt;
-      line-height: .8em; }
+      line-height: 0.8em;
+      padding-top: 5px; }
+    .document .page h1 s {
+      display: none; }
     .document .page h1 span {
       border-top: 2px solid orange;
       display: block;
       font-size: 18pt;
       padding-top: 5px;
       margin: 0 auto;
-      width: 250px; }
+      width: 50%; }
   .document .page h1, .document .page h2, .document .page h3, .document .page h4 {
     color: saddlebrown;
     font-variant: small-caps; }
   .document .page h3 {
     border-bottom: 2px solid orange; }
+  .document .page img.bottom-full-image {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%; }
+  .document .page img.full-page {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%; }
+  .document .page .image-placeholder {
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; }
   .document .page nav.table-of-contents a {
     font-weight: bold; }
   .document .page nav.table-of-contents a:after {
@@ -79,3 +101,18 @@
         width: 175px; }
   .document .page table tbody tr:nth-child(odd) {
     background-color: rgba(250, 166, 26, 0.4); }
+  .document .page .ability-score-modifiers table tbody tr {
+    background-color: transparent; }
+    .document .page .ability-score-modifiers table tbody tr:nth-child(odd) td:nth-child(1), .document .page .ability-score-modifiers table tbody tr:nth-child(odd) td:nth-child(2),
+    .document .page .ability-score-modifiers table tbody tr:nth-child(odd) td:nth-child(4), .document .page .ability-score-modifiers table tbody tr:nth-child(odd) td:nth-child(5) {
+      background-color: rgba(250, 166, 26, 0.4); }
+  .document .page .ability-score-modifiers table td:nth-of-type(3) {
+    width: 15%; }
+  .document .page .character-advancement table tbody tr {
+    background-color: transparent; }
+    .document .page .character-advancement table tbody tr:nth-child(-n+4) {
+      background-color: rgba(250, 166, 26, 0.4); }
+    .document .page .character-advancement table tbody tr:nth-child(n+11) {
+      background-color: rgba(250, 166, 26, 0.4); }
+    .document .page .character-advancement table tbody tr:nth-child(n+17) {
+      background-color: transparent; }

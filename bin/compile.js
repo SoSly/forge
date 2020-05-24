@@ -29,7 +29,8 @@ md.use(Pagebreak);
 md.use(Columnbreak);
 md.use(MarkdownItAnchor);
 md.use(TOC, {
-    slugify: uslug
+    slugify: uslug,
+    level: [1,2,3]
 });
 
 const docspath = path.join(process.cwd(), DOCSPATH);
