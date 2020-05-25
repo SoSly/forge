@@ -259,8 +259,6 @@ body {
         column-span: all;
         -webkit-column-span: all;
         -moz-column-span: all; }
-      .document .page hr + ol {
-        margin-top: -0.8em; }
       .document .page hr + ul {
         margin-bottom: 0.5em;
         padding-left: 1em;
@@ -274,7 +272,7 @@ body {
     .document .page p {
       margin: 0 0 10.5px;
       text-indent: 1em; }
-      .document .page p + p {
+      .document .page p + p, .document .page p + ul, .document .page p + ol {
         margin-top: -0.8em; }
       .document .page p img {
         max-width: 100%; }

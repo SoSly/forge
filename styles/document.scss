@@ -304,10 +304,6 @@ body {
                 -moz-column-span: all;
             }
 
-            & + ol {
-                margin-top: -0.8em;
-            }
-
             & + ul {
                 margin-bottom: 0.5em;
                 padding-left: 1em;
@@ -329,7 +325,7 @@ body {
             margin: 0 0 10.5px;
             text-indent: 1em;
 
-            & + p { margin-top: -0.8em; }
+            & + p, & + ul, & + ol { margin-top: -0.8em; }
             img {
                 max-width: 100%;
             }

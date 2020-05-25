@@ -10,7 +10,7 @@
 
 <div class='cover-splotch'></div>
 
-<div class='cover-footer'>A collection of custom rules and options<br />for the world's greatest roleplaying game</div>
+<div class='cover-footer'>Everything a player needs to create heroic characters<br />in the beautiful world of Aesl</div>
 
 \pagebreak
 
@@ -187,6 +187,10 @@ ${toc}
 
 \pagebreak
 
+<img src="https://i.4pcdn.org/tg/1489934008052.jpg" class=full-page />
+
+\pagebreak
+
 # Introduction
 The Dungeons & Dragons roleplaying game is about storytelling in worlds of swords and sorcery. It shares elements with childhood games of make-believe. Like those games, D&D is driven by imagination. It's about picturing the towering castle beneath the stormy night sky and imagining how a fantasy adventurer might react to the challenges that scene presents.
 
@@ -305,12 +309,14 @@ The target number for an ability check or a saving throw is called a **Difficult
 
 This simple rule governs the resolution of most tasks in D&D play. Chapter 7 provides more detailed rules for using the d20 in the game.
 
+<img src="https://catrpgs.com/wp-content/uploads/2019/09/sketchydice.png" style="margin: 0 auto; mix-blend-mode: darken; width: 75%;" />
+
+\columnbreak
+
 ### Advantage and Disadvantage
 Sometimes an ability check, attack roll, or saving throw is modifed by special situations called advantage and disadvantage. Advantage reflects the positive circumstances surrounding a d20 roll, while disadvantage reflects the opposite. When you have either advantage or disadvantage, you roll a second d20 when you make the roll. Use the higher of the two rolls if you have advantage, and use the lower roll if you have disadvantage. For example, if you have disadvantage and roll a 17 and a 5, you use the 5. If you instead have advantage and roll those numbers, you use the 17.
 
 More detailed rules for advantage and disadvantage are presented in chapter 7.
-
-\columnbreak
 
 ### Specific Beats General
 This book contains rules, especially in parts 2 and 3, that govern how the game plays. That said, many racial traits, class features, spells, magic items, monster abilities, and other game elements break the general rules in some way, creating an exception to how the rest of the game works. Remember this: If a specifc rule contradicts a general rule, the specifc rule wins.
@@ -325,13 +331,13 @@ The Dungeons & Dragons game consists of a group of characters embarking on an ad
 
 The adventure is the heart of the game, a story with a beginning, a middle, and an end. An adventure might be created by the Dungeon Master or purchased off the shelf, tweaked and modifed to suit the DM's needs and desires. In either case, an adventure features a fantastic setting, whether it's an underground dungeon, a crumbling castle, a stretch of wilderness, or a bustling city. It features a rich cast of characters: the adventurers created and played by the other players at the table, as well as nonplayer characters (NPCs). Those characters might be patrons, allies, enemies, hirelings, or just background extras in an adventure. Often, one of the NPCs is a villain whose agenda drives much of an adventure's action.
 
-Over the course of their adventures, the characters are confronted by a variety of creatures, objects, and situations that they must deal with in some way. Sometimes the adventurers and other creatures do their best to kill or capture each other in combat. At other times, the adventurers talk to another creature (or even a magical object) with a goal in mind. And often, the adventurers spend time trying to solve a puzzle, bypass an obstacle, fnd something hidden, or unravel the current situation. Meanwhile, the adventurers explore the world, making decisions about which way to travel and what they'll try to do next.
-
-Adventures vary in length and complexity. A short adventure might present only a few challenges, and it might take no more than a single game session to complete. A long adventure can involve hundreds of combats, interactions, and other challenges, 
-
 <div class=footnote>Introduction</div>
 
 \pagebreakNum
+
+Over the course of their adventures, the characters are confronted by a variety of creatures, objects, and situations that they must deal with in some way. Sometimes the adventurers and other creatures do their best to kill or capture each other in combat. At other times, the adventurers talk to another creature (or even a magical object) with a goal in mind. And often, the adventurers spend time trying to solve a puzzle, bypass an obstacle, fnd something hidden, or unravel the current situation. Meanwhile, the adventurers explore the world, making decisions about which way to travel and what they'll try to do next.
+
+Adventures vary in length and complexity. A short adventure might present only a few challenges, and it might take no more than a single game session to complete. A long adventure can involve hundreds of combats, interactions, and other challenges, 
 
 and take dozens of sessions to play through, stretching over weeks or months of real time. Usually, the end of an adventure is marked by the adventurers heading back to civilization to rest and enjoy the spoils of their labors.
 
@@ -357,11 +363,10 @@ For adventurers, though, magic is key to their survival. Without the healing mag
 
 Magic is also a favored tool of villains. Many adventures are driven by the machinations of spellcasters who are hellbent on using magic for some ill end. A cult leader seeks to awaken a god who slumbers beneath the sea, a hag kidnaps youths to magically drain them of their vigor, a mad wizard labors to invest an army of automatons with a facsimile of life, a dragon begins a mystical ritual to rise up as a god of destruction—these are just a few of the magical threats that adventurers might face. With magic of their own, in the form of spells and magic items, the adventurers might prevail!
 
-<img src="https://catrpgs.com/wp-content/uploads/2019/09/sketchydice.png" style="display: block; margin: 15em auto 0; width: 200px; mix-blend-mode: darken;" />
+<img src="https://i.imgur.com/oF4JQBz.png" class=full-page />
+<div class="image-placeholder"></div>
 
-<div class=footnote>Introduction</div>
-
-\pagebreakNum
+\pagebreak
 
 <img src="https://qph.fs.quoracdn.net/main-qimg-0d9e4a0f88c9cac241063f63ae1a1338" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0;" />
 
@@ -627,70 +632,391 @@ At the **epic tier** (levels 17–20), characters achieve the pinnacle of their 
 ___
 # Chapter 2<s>:</s> <span>Races</span>
 
-Across the many planes and multiverses exists a cornucopia of races, all wildly different and varied and unique. This chapter presentse character races that are some of the more distinctive races options in the {dungeons-and-dragons} multiverse. They supplement the options in the _Player's Handbook_ and are mroe rare in the worlds of D&D than the races in that book are.
+A visit to one of the great cities in the world of Aesl&mdash;like Feldrun, Fallwater, or Cemenhuatl&mdash;overwhelms the senses. Voices chatter in countless different languages. The smells of cooking in dozens of different cuisines mingle with the odors of crowded streets and poor sanitation. Buildings in myriad architectural styles display the diverse origins of their inhabitants.
 
-The following races are detailed in this chapter:
-___
-**Tibbits** are the descendants of the most common wizards' familiars: cats, able to take the form of small humans.
+And the people themselves&mdash;people of varying size, shape, and color, dressed in a dazzling spectrum of styles and hues&mdash;represent many different races, from diminutive halflings and stout dwarves to majestically beautiful half-elves, mingling among a variety of human ethnicities.
 
-This chapter also contains new subraces for some existing races: **Lythari Elf**.
+Scattered among the members of these more common races are the true exotics: a hulking dragonborn here, pushing his way through the crowd, and a sly tiefling there, lurking in the shadows with mischief in her eyes. A group of gnomes laughs as one of them activates a clever wooden toy that moves of its own accord.  And there, slinking amongst the alleys, a lone tibbit watches all of the rest, curiosity warring with survival as the little cat decides whether to join in the merriment.
 
-At the end of the chapter is a section you can use to determine the height and weight of a character who is a member of any one of the races in this chapter.
+## Choosing a Race
+Humans are the most common people in the worlds of D&D, but they live and work alongside dwarves, half-elves, halflings, and countless other fantastic species. Your character belongs to one of these peoples.
 
-## Elf
-Most elves belong to the three most common subraces: high elves, wood elves, and drow. The Lythari are a new option for an elf's subrace, in addition to those found in the _Player's Handbook_.
+Not every intelligent race of the multiverse is appropriate for a player-controlled adventurer. Dwarves, half-elves, halflings, and humans are the most common races to produce the sort of adventurers who make up typical parties. Dragonborn, gnomes, elves, half-orcs, and tieflings are less common as adventurers.
 
-### Lythari
-The reclusive lythari (originally Ly-tel-quessir), known among the wood elves as silver shadows, are true lycanthropes: good-aligned elves capable of changing into lupine form.
+Your choice of race affects many different aspects of your character. It establishes fundamental qualities that exist throughout your character’s adventuring career. When making this decision, keep in mind the kind of character you want to play. For example, a halfling could be a good choice for a sneaky rogue, a dwarf makes a tough warrior, and an elf can be a master of arcane magic.
 
-#### Lythari Subrace Traits
-The lythari subrace has the elf traits in the _Player's Handbook_, plus the subrace traits below.
-
-***Ability Score Increase.*** Your Wisdom score increases by 1.
-
-***Damage Reduction.*** Bludgeoning, piercing, and slashing damage that you take from nonmagical weapons that aren't silvered is reduced by 1.
-
-***Shapechanger.*** You can use your action to polymorph into a wolf. You can revert to your true form, that of an elf, by using a bonus action on your turn. Your statistics, other than listed below, are the same in each form. You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for a wolf to wear a piece of equipment, based on its shape and size. Your equipment doesn't change size or shape to match the new form, and any equipment that the new form can't wear must either fall to the ground or merge with it. Equipment that merges with the new form has no effect until you leave the form. You revert to your true form if you die.
+Your character race not only affects your ability scores and traits but also provides the cues for building your character’s story. Each race’s description in this section includes information to help you roleplay a character of that race, including personality, physical appearance, features of society, and racial alignment tendencies. These details are suggestions to help you think about your character; adventurers can deviate widely from the norm for their race. It’s worthwhile to consider why your character is different, as a helpful way to think about your character’s background and personality.
 
 \columnbreak
 
-<p></p>
+## Racial Traits
+The description of each race includes racial traits that are common to members of that race. The following entries appear among the traits of most races.
 
-_Bite Attack._ While in wolf form, your bite is a natural weapon which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage for a normal unarmed strike. If the target is a creature, it must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked prone. You can only knock a creature prone with your bite attack once per turn.
+### Ability Score Increase
+Every race increases one or more of a character’s ability scores.
 
-_Fast Movement._ While in wolf form, your walking speed increases by 10 feet.
+### Age
+The age entry notes the age when a member of the race is considered an adult, as well as the race’s expected lifespan. This information can help you decide how old your character is at the start of the game. You can choose any age for your character, which could provide an explanation for some of your ability scores. For example, if you play a young or very old character, your age could explain a particularly low Strength or Constitution score, while advanced age could account for a high Intelligence or Wisdom.
 
-_Keen Hearing and Smell._ While in wolf form, you have advantage on Wisdom (Perception) checks that rely on hearing or smell.
+### Alignment
+Most races have tendencies toward certain alignments, described in this entry. These are not binding for player characters, but considering why your dwarf is chaotic, for example, in defiance of lawful dwarf society can help you better define your character.
 
-_Natural Armor._ While in wolf form, you gain a +1 bonus to Armor Class.
+### Size
+Characters of most races are Medium, a size category including creatures that are roughly 4 to 8 feet tall. Members of a few races are Small (between 2 and 4 feet tall), which means that certain rules of the game affect them differently. The most important of these rules is that Small characters have trouble wielding heavy weapons, as explained in Chapter 5.
 
-***Wolf Tongue.*** Wolves and dogs can understand your speech, and you have the ability to decipher their noises and motions. Most wolves and dogs lack the intelligence to convey or understand sophisticated concepts, but a friendly beast could relay what it has seen or heard in the recent past. This ability doesn't grant you friendship with wolves or dogs, though you can combine this ability with gifts to curry favor with them as you would with any nonplayer character.
+### Speed
+Your speed determines how far you can move when traveling (“Adventuring”) and fighting (“Combat”).
 
-<img src="https://5e.writh.net/w/images/3/38/Lythari.png" style="position: absolute; bottom: 0; right: 0; mix-blend-mode: darken; width: 40%;"  />
+### Languages
+By virtue of your race, your character can speak, read, and write certain languages. “Personality and Background” lists the most common languages of the D&D multiverse.
+
+### Subraces
+Some races have subraces. Members of a subrace have the traits of the parent race in addition to the traits specified for their subrace. Relationships among subraces vary significantly from race to race and country to country.
 
 <div class=footnote>Part 1 | Races</div>
 
 \pagebreakNum
 
-<img src="https://cdnb.artstation.com/p/assets/images/images/000/121/973/large/kan-liu-666k-the-elf-poet-and-cat.jpg?1443929085" style="position: absolute; left: -90px; bottom: 0; width: 60%;" />
-<img src="https://www.gmbinder.com/images/5PSCQzJ.png" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;" />
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/619/850/190/dwarfintro.png" class="top-full-image" style="width: 200%;" />
+
+<img src="https://vignette.wikia.nocookie.net/nerdiverse/images/1/16/Rurra_Rockhammer.png/revision/latest?cb=20190620225023" style="margin-left: -75px; width: 160%;" />
+
+
+## Dwarf
+
+<div class=racial-quote>
+
+“Yer late, elf!” came the rough edge of a familiar voice. Bruenor Battlehammer walked up the back of his dead foe, disregarding the fact that the heavy monster lay on top of his elven friend. In spite of the added discomfort, the dwarf’s long, pointed, often-broken nose and gray-streaked though still-fiery red beard came as a welcome sight to Drizzt. “Knew I’d find ye in trouble if I came out an’ looked for ye!”
+
+&mdash; R.A. Salvatore, The Crystal Shard
+</div>
+
+Kingdoms rich in ancient grandeur, halls carved into the roots of mountains, the echoing of picks and hammers in deep mines and blazing forges, a commitment to clan and tradition, and a burning hatred of goblins and orcs&mdash;these common threads unite all dwarves.
+
+\columnbreak
+
+<div style="height: 350px;"></div>
+
+<div style="float: left; height: 135px; width: 60px;">&nbsp;</div>
+
+### Short and Stout
+Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. Their courage and endurance are also easily a match for any of the larger folk.
+
+Dwarven skin ranges from deep brown to a paler hue tinged with red, but the most common shades are light brown or deep tan, like certain tones of earth. Their hair, worn long but in simple styles, is usually black, gray, or brown, though paler dwarves often have red hair. Male dwarves value their beards highly and groom them carefully.
+
+### Long Memory, Long Grudges
+Dwarves can live to be more than 400 years old, so the oldest living dwarves often remember a very different world. For example, some of the oldest dwarves living in Citadel Felbarr (in the world of the Forgotten Realms) can recall the day, more than three centuries ago, when orcs conquered the fortress and drove them into an exile that lasted over 250 years. This longevity grants them a perspective on the world that shorter-lived races such as humans and halflings lack.
+
+Dwarves are solid and enduring like the mountains they love, weathering the passage of centuries with stoic endurance and little change. They respect the traditions of their clans, tracing their ancestry back to the founding of their most ancient strongholds in the youth of the world, and don’t abandon those traditions lightly. Part of those traditions is devotion to the gods of the dwarves, who uphold the dwarven ideals of industrious labor, skill in battle, and devotion to the forge.
+
+Individual dwarves are determined and loyal, true to their word and decisive in action, sometimes to the point of stubbornness. Many dwarves have a strong sense of justice, and they are slow to forget wrongs they have suffered. A wrong done 
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/619/850/190/dwarfintro.png" class="top-full-image" style="left: auto; right: 0; width: 200%;" />
+
+<div class=wide style="height: 300px;"></div>
+
+to one dwarf is a wrong done to the dwarf’s entire clan, so what begins as one dwarf’s hunt for vengeance can become a full-blown clan feud.
+
+### Clans and Kingdoms
+Dwarven kingdoms stretch deep beneath the mountains where the dwarves mine gems and precious metals and forge items of wonder. They love the beauty and artistry of precious metals and fine jewelry, and in some dwarves this love festers into avarice. Whatever wealth they can’t find in their mountains, they gain through trade. They dislike boats, so enterprising humans and halflings frequently handle trade in dwarven goods along water routes. Trustworthy members of other races are welcome in dwarf settlements, though some areas are off limits even to them.
+
+The chief unit of dwarven society is the clan, and dwarves highly value social standing. Even dwarves who live far from their own kingdoms cherish their clan identities and affiliations, recognize related dwarves, and invoke their ancestors’ names in oaths and curses. To be clanless is the worst fate that can befall a dwarf.
+
+Dwarves in other lands are typically artisans, especially weaponsmiths, armorers, and jewelers. Some become mercenaries or bodyguards, highly sought after for their courage and loyalty.
+
+### Gods, Gold, and Clan
+Dwarves who take up the adventuring life might be motivated by a desire for treasure&mdash;for its own sake, for a specific purpose, or even out of an altruistic desire to help others. Other dwarves are driven by the command or inspiration of a deity, a direct calling or simply a desire to bring glory to one of the dwarf gods. Clan and ancestry are also important motivators. A dwarf might seek to restore a clan’s lost honor, avenge an ancient wrong the clan suffered, or earn a new place within the clan after having been exiled. Or a dwarf might search for the axe wielded by a mighty ancestor, lost on the field of battle centuries ago.
+
+\columnbreak
+
+> ##### Slow to Trust
+> Dwarves get along passably well with most other races. “The difference between an acquaintance and a friend is about a hundred years,” is a dwarf saying that might be hyperbole, but certainly points to how difficult it can be for a member of a short-lived race like humans to earn a dwarf’s trust.
+> 
+> ***Elves.*** “It’s not wise to depend on the elves. No telling what an elf will do next; when the hammer meets the orc’s head, they’re as apt to start singing as to pull out a sword. They’re flighty and frivolous. Two things to be said for them, though: They don’t have many smiths, but the ones they have do very fine work. And when orcs or goblins come streaming down out of the mountains, an elf’s good to have at your back. Not as good as a dwarf, maybe, but no doubt they hate the orcs as much as we do.”
+> 
+> ***Halflings.*** “Sure, they’re pleasant folk. But show me a halfling hero. An empire, a triumphant army. Even a treasure for the ages made by halfling hands. Nothing. How can you take them seriously?”
+> 
+> ***Humans.*** “You take the time to get to know a human, and by then the human’s on her deathbed. If you’re lucky, she’s got kin&mdash;a daughter or granddaughter, maybe&mdash;who’s got hands and heart as good as hers. That’s when you can make a human friend. And watch them go! They set their hearts on something, they’ll get it, whether it’s a dragon’s hoard or an empire’s throne. You have to admire that kind of dedication, even if it gets them in trouble more often than not.”
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/618/250/292/dwarf1.png" style="position: absolute; bottom: -75px; right: 0; width: 35%; z-index: -1; transform: scaleX(-1);" />
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+### Dwarf Names
+A dwarf’s name is granted by a clan elder, in accordance with tradition. Every proper dwarven name has been used and reused down through the generations. A dwarf’s name belongs to the clan, not to the individual. A dwarf who misuses or brings shame to a clan name is stripped of the name and forbidden by law to use any dwarven name in its place.
+
+___
+- **Male Names:** Adrik, Alberich, Baern, Barendd, Brottor, Bruenor, Dain, Darrak, Delg, Eberk, Einkil, Fargrim, Flint, Gardain, Harbek, Kildrak, Morgran, Orsik, Oskar, Rangrim, Rurik, Taklinn, Thoradin, Thorin, Tordek, Traubon, Travok, Ulfgar, Veit, Vondal
+- **Female Names:** Amber, Artin, Audhild, Bardryn, Dagnal, Diesa, Eldeth, Falkrunn, Finellen, Gunnloda, Gurdis, Helja, Hlin, Kathra, Kristryd, Ilde, Liftrasa, Mardred, Riswynn, Sannl, Torbera, Torgga, Vistra
+- **Clan Names:** Balderk, Battlehammer, Brawnanvil, Dankil, Fireforge, Frostbeard, Gorunn, Holderhek, Ironfist, Loderr, Lutgehr, Rumnaheim, Strakeln, Torunn, Ungart
+
+### Dwarf Traits
+Your dwarf character has an assortment of inborn abilities, part and parcel of dwarven nature.
+
+***Ability Score Increase.*** Your Constitution score increases by 2.
+
+***Age.*** Dwarves mature at the same rate as humans, but they’re considered young until they reach the age of 50. On average, they live about 350 years.
+
+***Alignment.*** Most dwarves are lawful, believing firmly in the benefits of a well-ordered society. They tend toward good as well, with a strong sense of fair play and a belief that everyone deserves to share in the benefits of a just order.
+
+***Size.*** Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium.
+
+***Speed.*** Your base walking speed is 25 feet. Your speed is not reduced by wearing heavy armor.
+
+***Darkvision.*** Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.
+
+***Dwarven Resilience.*** You have advantage on saving throws against poison, and you have resistance against poison damage (explained in chapter 9, “Combat”).
+
+***Dwarven Combat Training.*** You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.
+
+\columnbreak
+
+***Tool Proficiency.*** You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.
+
+***Stonecunning.*** Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus
+
+***Languages.*** You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak.
+
+***Subrace.*** Two main subraces of dwarves populate the worlds of D&D: hill dwarves and mountain dwarves. Choose one of these subraces.
+
+#### Hill Dwarf
+As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience. The gold dwarves of Faerûn in their mighty southern kingdom are hill dwarves, as are the exiled Neidar and the debased Klar of Krynn in the Dragonlance setting.
+
+***Ability Score Increase.*** Your Wisdom score increases by 1.
+
+***Dwarven Toughness.*** Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.
+
+#### Mountain Dwarf
+As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.
+
+***Ability Score Increase.*** Your Strength score increases by 2.
+
+***Dwarven Armor Training.*** You have proficiency with light and medium armor.
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/615/300/275/dwarf2.png" style="position: absolute; width: 60%; bottom: -75px; right: 100px;" />
+
+\pagebreak
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/0/621/elfintro.png" class="top-full-image" style="width: 200%;" />
+<img src="https://images-cdn.fantasyflightgames.com/ffg_content/wfrp/warhammer-fantasy-roleplay-combat-103/combat103_woodelf.png" style="margin-top: 3em;" />
+
+## Elf
+
+<div class=racial-quote>
+
+“I have never imagined such beauty existed,” Goldmoon said softly. The day’s march had been difficult, but the reward at the end was beyond their dreams. The companions stood on a high cliff over the fabled city of Qualinost.
+
+Four slender spires rose from the city’s corners like glistening spindles, their brilliant white stone marbled with shining silver. Graceful arches, swooping from spire to spire, soared through the air. Crafted by ancient dwarven metalsmiths, they were strong enough to hold the weight of an army, yet they appeared so delicate that a bird lighting on them might overthrow the balance. These glistening arches were the city’s only boundaries; there was no wall around Qualinost. The elven city opened its arms lovingly to the wilderness.
+
+&mdash; Margaret Weis & Tracy Hickman, Dragons of Autumn Twilight
+</div>
+
+Elves are a magical people of otherworldly grace, living in the world but not entirely part of it. They live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.
+
+\columnbreak
+
+<div style="height: 300px;"></div>
+
+### Slender and Graceful
+With their unearthly grace and fine features, elves appear hauntingly beautiful to humans and members of many other races. They are slightly shorter than humans on average, ranging from well under 5 feet tall to just over 6 feet. They are more slender than humans, weighing only 100 to 145 pounds. Males and females are about the same height, and males are only marginally heavier than females.
+
+Elves’ coloration encompasses the normal human range and also includes skin in shades of copper, bronze, and almost bluish-white, hair of green or blue, and eyes like pools of liquid gold or silver. Elves have no facial and little body hair. They favor elegant clothing in bright colors, and they enjoy simple yet lovely jewelry.
+
+### A Timeless Perspective
+Elves can live well over 700 years, giving them a broad perspective on events that might trouble the shorter-lived races more deeply. They are more often amused than excited, and more likely to be curious than greedy. They tend to remain aloof and unfazed by petty happenstance. When pursuing a goal, however, whether adventuring on a mission or learning a new skill or art, elves can be focused and relentless. They are slow to make friends and enemies, and even slower to forget them. They reply to petty insults with disdain and to serious insults with vengeance.
+
+Like the branches of a young tree, elves are flexible in the face of danger. They trust in diplomacy and compromise to resolve differences before they escalate to violence. They have been known to retreat from intrusions into their woodland homes, confident that they can simply wait the invaders out. But when the need arises, elves reveal a stern martial side, demonstrating skill with sword, bow, and strategy.
+
+### Hidden Woodland Realms
+Most elves dwell in small forest villages hidden among the trees. Elves hunt game, gather food, and grow vegetables, and their skill and magic allow them to support themselves without the need for clearing and plowing land. They are talented artisans, crafting finely worked clothes and art objects. Their contact with 
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/0/621/elfintro.png" class="top-full-image" style="left: auto; right: 0; width: 200%;" />
+<div style="height: 300px;" class=wide></div>
+
+outsiders is usually limited, though a few elves make a good living by trading crafted items for metals (which they have no interest in mining).
+
+Elves encountered outside their own lands are commonly traveling minstrels, artists, or sages. Human nobles compete for the services of elf instructors to teach swordplay or magic to their children.
+
+### Exploration and Adventure
+Elves take up adventuring out of wanderlust. Since they are so long-lived, they can enjoy centuries of exploration and discovery. They dislike the pace of human society, which is regimented from day to day but constantly changing over decades, so they find careers that let them travel freely and set their own pace. Elves also enjoy exercising their martial prowess or gaining greater magical power, and adventuring allows them to do so. Some might join with rebels fighting against oppression, and others might become champions of moral causes.
+
+> ##### Haughty but Gracious
+> Although they can be haughty, elves are generally gracious even to those who fall short of their high expectations—which is most non-elves. Still, they can find good in just about anyone.
+>
+> ***Dwarves.*** “Dwarves are dull, clumsy oafs. But what they lack in humor, sophistication, and manners, they make up in valor. And I must admit, their best smiths produce art that approaches elven quality.”
+>
+> ***Halflings.*** “Halflings are people of simple pleasures, and that is not a quality to scorn. They’re good folk, they care for each other and tend their gardens, and they have proven themselves tougher than they seem when the need arises.”
+>
+> ***Humans.*** “All that haste, their ambition and drive to accomplish something before their brief lives pass away—human endeavors seem so futile sometimes. But then you look at what they have accomplished, and you have to appreciate their achievements. If only they could slow down and learn some refinement.”
+
+\columnbreak
+
+### Elf Names
+Elves are considered children until they declare themselves adults, some time after the hundredth birthday, and before this period they are called by child names.
+
+On declaring adulthood, an elf selects an adult name, although those who knew him or her as a youngster might continue to use the child name. Each elf’s adult name is a unique creation, though it might reflect the names of respected individuals or other family members. Little distinction exists between male names and female names; the groupings here reflect only general tendencies. In addition, every elf bears a family name, typically a combination of other Elvish words. Some elves traveling among humans translate their family names into Common, but others retain the Elvish version.
+
+___
+- **Child Names:** Ara, Bryn, Del, Eryn, Faen, Innil, Lael, Mella, Naill, Naeris, Phann, Rael, Rinn, Sai, Syllin, Thia, Vall
+- **Male Adult Names:** Adran, Aelar, Aramil, Arannis, Aust, Beiro, Berrian, Carric, Enialis, Erdan, Erevan, Galinndan, Hadarai, Heian, Himo, Immeral, Ivellios, Laucian, Mindartis, Paelias, Peren, Quarion, Riardon, Rolen, Soveliss, Thamior, Tharivol, Theren, Varis
+- **Female Adult Names:** Adrie, Althaea, Anastrianna, Andraste, Antinua, Bethrynna, Birel, Caelynn, Drusilia, Enna, Felosial, Ielenia, Jelenneth, Keyleth, Leshanna, Lia, Meriele, Mialee, Naivara, Quelenna, Quillathe, Sariel, Shanairra, Shava, Silaqui, Theirastra, Thia, Vadania, Valanthe, Xanaphia
+- **Family Names (Common Translations):** Amakiir (Gemflower), Amastacia (Starflower), Galanodel (Moonwhisper), Holimion (Diamonddew), Ilphelkiir (Gemblossom), Liadon (Silverfrond), Meliamne (Oakenheel), Naïlo (Nightbreeze), Siannodel (Moonbrook), Xiloscient (Goldpetal)
+
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/623/300/300/elf1.png" style="position: absolute; bottom: 0; right: 15%; width: 25%;" />
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+### Elf Traits
+Your elf character has a variety of natural abilities, the result of thousands of years of elven refinement.
+
+***Ability Score Increase.*** Your Dexterity score increases by 2.
+
+***Age.*** Although elves reach physical maturity at about the same age as humans, the elven understanding of adulthood goes beyond physical growth to encompass worldly experience. An elf typically claims adulthood and an adult name around the age of 100 and can live to be 750 years old.
+
+***Alignment.*** Elves love freedom, variety, and self-expression, so they lean strongly toward the gentler aspects of chaos. They value and protect others’ freedom as well as their own, and they are more often good than not. The drow are an exception; their exile into the Underdark has made them vicious and dangerous. Drow are more often evil than not.
+
+***Size.*** Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium.
+
+***Speed.*** Your base walking speed is 30 feet.
+
+***Darkvision.*** Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.
+
+***Keen Senses.*** You have proficiency in the Perception skill.
+
+***Fey Ancestry.*** You have advantage on saving throws against being charmed, and magic can’t put you to sleep.
+
+***Trance.*** Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is “trance.”) While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.
+
+***Languages.*** You can speak, read, and write Common and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires.
+
+***Subrace.*** Ancient divides among the elven people resulted in several subraces: high elves, wood elves. Choose one of these subraces. In some worlds, these subraces are divided still further (such as the sun elves and moon elves of the Forgotten Realms), so if you wish, you can choose a narrower subrace.
+
+#### Alute Elf
+As an Alute (or "High") elf, you have a keen mind and a mastery of at least the basics of magic.  Like the Immortal elves who came before the curse, you are driven to flourish, to create, to discover, and to innovate.  The Alute are, in some ways, the most reclusive of the Elven people; prefering to spend their hours in contemplation of books of lore or philosophy, rather than reaching beyond the borders of Tarudamarë.  As such, Alute are exceptionally rare as adventurers, unless they are *Ahúna*&mdash;or banished from Tarudamarë.
+
+Alute are typically of bronze or alabaster skin, with copper, black, silver, or silver-blue hair.  Their eyes are golden, silver, black, brown, or blue.
+
+***Ability Score Increase.*** Your Intelligence score increases by 1.
+
+***Elven Discovery.*** You have proficiency with one weapon and one tool of your choice.
+
+***Cantrip.*** You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.
+
+***Extra Language.*** You can speak, read, and write one extra language of your choice.
+
+#### Elden Elf
+The Elden were the immortal elves who came before the curse.  No longer seen, these elves were incredibly inventive and creative, drawn almost instinctively to high magic. Regarded as cruel and capricious, the Elden were the progenitor of many of the common races of Aesl, today; using magical ritual to create and modify races to suit their whim and requirements.  Today, the Elden are believed to be extinct, consumed by the curse of mortality that claimed the Elven people.
+
+The Elden were a diverse people, with skin, hair, and eye colors spanning the spectrum of colors.
+
+***Ability Score Increase.*** Your intelligence score increases by 1.
+
+***Eldar Weapon Training.*** You have proficiency with one melee weapon and one ranged weapon of your choice.
+
+***Elven Low Magic.*** You know one cantrip of your choice from the wizard spell list.  When you reach 3rd level, you can cast _detect magic_ once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast _alter self_ once with this trait and regain the ability to do so when you finish a long rest.  Intelligence  is your spellcasting ability for these spells.
+
+#### Haruma Elf
+As an Haruma (or "Wolf") elf, you have keen senses and intuition, and are one of the rare few who has sought out the ritual of Haruma as a solution to the curse of mortality levied against your people.  Haruma believed that the curse was a means to harness the elven soul, preventing their rebirth.  By merging his soul with a wolf's, Haruma believed he was able to sidestep the curse, and that upon his death he would avoid the soulcatcher's fate.  Whether this is true, the Haruma are renowned for their insight and patience, and their ability to become the wolf they have merged with has granted them a talent many elves desire.
+
+Haruma elves were once members of a different subrace, and retain most of the physical characteristics of their past life.  However, most Haruma elves display silver streaks in their hair, and golden flecks in their eyes; characteristics attributed to the wolf spirit that they have merged with.
+
+***Ability Score Increase.*** Your Wisdom score increases by 1.
+
+***Shapechanger.*** You can use your action to polymorph into a wolf. You can revert to your true form, that of an elf, by using a bonus action on your turn. Your statistics, other than listed below, are the same in each form. You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for a wolf to wear a piece of equipment, based on its shape and size. Your equipment doesn't change size or shape to match the new form, and any equipment that the new 
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+form can't wear must either fall to the ground or merge with it. Equipment that merges with the new form has no effect until you leave the form. You revert to your true form if you die.
+
+___
+- _Bite Attack._ While in wolf form, your bite is a natural weapon which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage for a normal unarmed strike. If the target is a creature, it must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked prone. You can only knock a creature prone with your bite attack once per turn.
+- _Fast Movement._ While in wolf form, your walking speed increases by 10 feet.
+- _Keen Hearing and Smell._ While in wolf form, you have advantage on Wisdom (Perception) checks that rely on hearing or smell.
+- _Natural Armor._ While in wolf form, you gain a +1 bonus to Armor Class.
+
+***Wolf Tongue.*** Wolves and dogs can understand your speech, and you have the ability to decipher their noises and motions. Most wolves and dogs lack the intelligence to convey or understand sophisticated concepts, but a friendly beast could relay what it has seen or heard in the recent past. This ability doesn't grant you friendship with wolves or dogs, though you can combine this ability with gifts to curry favor with them as you would with any nonplayer character.
+
+#### Lyru Elf
+As a Lyru (or "Wild") elf, your fleet feet carry you quickly and stealthily through the forests native to Tarudamarë.  Your kind prefers to spend its time alone or in small social circles, leading others to believe that you are reclusive and distrusting of others.  This attitude is reinforced by the highly martial nature of the lyru, who have taken on the duty of defending the last home from invasion.
+
+Lyru skin tends to be copperish in hue, sometimes with traces of green. Their hair tends towards browns and blacks, but it is occasionally blond or copper-colored. Their eyes are green, brown, or hazel.
+
+***Ability Score Increase.*** Your Strength score increases by 1.
+
+***Elf Weapon Training.*** You have proficiency with the longsword, shortsword, shortbow, and longbow.
+
+***Fleet of Foot.*** Your base walking speed increases to 35 feet.
+
+***Mask of the Wild.*** You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.
+
+#### Vëala Elf
+As a Vëala (or "Seaward") elf, you hear the call of the world beyond Tarudamarë, and yearn to explore it.  Many on the last home consider your kind to be insane or out-of-touch with reality, but that speaks more to their reclusiveness than your actual mental state.  It was the Vëala that established the island of Mahata, where the elven people have begun to trade with the outside world for goods not normally available on the elven homeland.   The Vëala are the most purely artistic of the elven races, and the most likely to try to understand and sympathize with the other races.  By no means does this make them common, but it does mean that if another race has encountered a true elf at all, it was likely one of the Vëala.
+
+Vëala have porcelain skin, sometimes with traces of blue. Their hair tends towards silver, white, and gold, but occasionally traces of green and blue can be found. Their eyes are grey, black, or teal.
+
+***Ability Score Increase.*** Your Charisma score increases by 1.
+
+***Instinctive Communication.*** Using gestures and sounds, you can communicate simple ideas with any creature that has a language, and you can understand the gestures and sounds of those creatures, in return.
+
+***Navigator's Training.*** You are proficient in water vehicles.
+
+***Social Chameleon.*** You can ignore one source of disadvantage when making a Charisma check.
+
+<img src="https://5e.writh.net/w/images/3/38/Lythari.png" style="position: absolute; right: 0; bottom: 0; mix-blend-mode: darken; width: 50%;" />
+
+\pagebreak
+
+<img src="https://cdn.gamedevmarket.net/wp-content/uploads/20191203145628/6a81f5ab3bbf5233f2db5d5c9f1ca16b.png" class=top-full-image />
+<img src="https://i.imgur.com/XzbbBU4.png" class=full-page style="top:150px;" />
+<img src="https://www.pantheonmmo.com/images/halfling.png" style="margin-bottom: -2em;" />
+
+<div class=racial-quote>
+
+"Life's too short to let yourself worry over when you're going to die," Saia explained with a grin.  "I mean, you could wonder what's over the next hill until you're old and grey, but then you'd miss out on all the other things beyond even that!  Let your curiosity drive you, let your excitement guide you, because you *are* going to die, and the only thing you can control is how much mystery you uncover along the way."
+
+&mdash; Kevin Kragenbrink
+
+</div>
 
 ## Tibbit
 Tibbits (also known as catweres) are small, humanoid creatures that have the ability to turn into a common house cat. They arose from felines kept as familiars in ages past. The powerful magic that allows a familiar to gain intelligence and magic abilities slowly filtered from one generation of cats to the next. Whether tibbits evolved from a natural process, divine intervention, or a sudden surge in the magic running through their ancestry, none can say. Tibbits have never existed in large numbers, and their tendency to spread across the world leaves them with a fractured, incomplete racial history.
 
+\columnbreak
+
+<div style="height: 300px;"></div>
+
+### Independent Observers
 Much like their feline ancestor, catfolk exhibit independence, curiosity, and quickness of mind and body. They rarely form communities larger than two or three families, and even these small colonies rarely hold together for more than a few years. Shortly after reaching adulthood, a tibbit develops an intense desire to wander the world and satisfy her racial curiosity. Tibbits can be found wherever humans and other civilized humanoid races have established cities, towns, and colonies.
 
 Among humans and other humanoids tibbits usually remain in their cat form. The stray cat that prowls a neighborhood, the mangy cat adopted as a temple's unofficial pet, and the lazy feline always close at hand at the local tavern might be tibbits. Driven by curiosity, tibbits love to remain in their animal form while observing humans.
-
-\columnbreak
 
 Cynical observers contend that a tibbit seeks to spy on others. Tibbits hold that they merely like to keep an ear and eye out for any interesting bits of news. Tibbits are typically too chaotic, carefree, and impulsive to work as spies or hired killers. Upon overhearing a group of adventurers talking over a treasure map in hushed tones, a tibbit might be just as likely to shift into humanoid form on the spot and offer to join the adventure as she is to lose interest and chase down a juicy mouse she spotted across the tavern.
 
 ### The Lap of Luxury
 Tibbits, as befits their heritage, are moody, curious, and sometimes arrogant. Many tibbits prefer the comforts of a fine meal (whether a succulent rodent or a five-course feast in the lap of luxury), stiff drink, and a soft couch. Even the most decadent tibbit, however, eventually succumbs to the steady pull of its curiosity. A tibbit might spend years living off the treasures it won in adventure, only to suddenly strike out into the unknown once again.
 
-When dealing with others, tibbits show a similar capability to change their attitudes and posture depending on their moods. A tibbit might act relaxed and languid one moment, alert and inquisitive the next. They tend to have a slightly distant, arrogant attitude toward others, as if as a race they share a colossal, secret joke over other intelligent creatures. Still, once a tibbit marks someone as a friend few other creatures match their devotion. A tibbit might complain about a friend's needs or tend toward laziness, but when trouble arises she is a dauntless ally.
+When dealing with others, tibbits show a similar capability to change their attitudes and posture depending on their moods. A tibbit might act relaxed and languid one moment, alert and inquisitive the next. They tend to have a slightly distant, arrogant attitude toward others, as if as a race they share a colossal,
 
+
+<div class=foonote>Part 1 | Races</div>
+
+\pagebreakNum
+
+secret joke over other intelligent creatures. Still, once a tibbit marks someone as a friend few other creatures match their devotion. A tibbit might complain about a friend's needs or tend toward laziness, but when trouble arises she is a dauntless ally.
 
 ### Feline Features
 In humanoid form, tibbits are small, stealthy, dark-skinned people with pointed ears and catlike eyes. Their hair tends to grow thick and long and males tend to grow sideburns. Their skin tones range from a tawny brown to black, but occasionally a tibbit has pure white skin. Their hair color matches the wide range of colors found in house cats, from pure white to striped silver to deep black.
@@ -700,11 +1026,9 @@ In their cat form, tibbits look like fat but energetic house cats. They appear i
 ### Curiouser and Curiouser
 Tibbits tend to regard other folk with a detached sense of bemusement. Much of their lore and common wisdom regarding men, dwarves, and elves filters through their guise as house cats. Thus, tibbits see how other races act when they think no one else is around. To a tibbit, every intelligent creature is a bundle of secrets just waiting to unfurl before them.
 
-<div class=footnote>Part 1 | Races</div>
-
-\pagebreakNum
-
 In general, tibbits find humanity's ambition, drive, and fiery passion intriguing. They consider dwarves overly dour. Elves strike them as kindred spirits, as tibbits appreciate that the long-lived races share a similar tendency to see issues from different perspectives. They adore gnomes and halflings and many good-aligned tibbits adopt such folk. More than one kobold or goblin party has descended upon a sleepy gnome village or halfling caravan only to find an enraged tibbit wizard waiting for them. Gnome and halfling folk who have benefited from such welcome surprises have strong traditions of taking care of stray cats and treating their feline pets as treasured companions.
+
+\columnbreak
 
 ### Natural Explorers
 Tibbits have no lands of their own. Instead, they dwell within civilized territories established by other folk. Any civilization that keeps domesticated cats likely houses colonies of tibbits within its cities.
@@ -713,8 +1037,6 @@ Few tibbits make their identity openly known once they settle in an area. A tibb
 
 Tibbits who travel the land might keep their humanoid guise to make dealings with other creatures easier. Even these tibbits prefer to pass themselves off as travelers from other planes, and they rarely publicize their ability to change shape.
 
-\columnbreak
-
 ### Tibbit Names
 Tibbits tend to adopt names based on their physical traits and deeds. A tibbit kitten is given a nickname by her parents or her master, one that reflects her temperament and appearance. When a tibbit comes of age she adopts a name of her choice. Tibbits tend to pick names from other folk, usually based solely on the sound.
 
@@ -722,18 +1044,18 @@ Strangers and business partners use the name a tibbit picks for herself, while t
 
 As a tibbit travels the world, she adopts a surname that reflects her experiences and important deeds. A tibbit usually changes her surname after such an event, but her true name uses all of her adopted surnames from childhood onward, and not just her latest one. When two tibbits meet, they share these long-form names to express their pasts with one another.
 
-<p></p>
-
 In general, tibbit names work for either sex. Whether male or female, a tibbit who has a short tail in cat form likely ends up with the nickname "Spiketail."
 
 ***Parent-Bestowed Names:*** Blackpaw, Glittereye, Longear, Patchfur, Quickfang, Tumblepaw.
 
-### Adventurous
-The life of an adventurer comes naturally to a tibbit, as her curiosity pushes her ever onward. While many tibbits satisfy this drive with travel to civilized areas and exploration of a city's corners, some tibbits want more out of life. "Adventurer" is seen as a respected occupation among tibbits, and they have a natural fascination for adventurers of other races. In some cases, a tibbit in cat form takes to following an adventuring band, concealing its true nature until an opportune moment. A tibbit fighter might spring from cat to humanoid form in time to drive off a group of orcs that threatens the party's camp. In this manner, tibbits prove their valor and demonstrate their unmatched stealth in hopes of winning a place with their unwitting comrades.
+<img src="https://i.imgur.com/gezbRSW.png" class=full-page />
 
-<img src="https://orig00.deviantart.net/86c5/f/2013/065/1/0/wizard_s_familiar_by_tamarar-d5x55a8.jpg" style="position: absolute; bottom: 0; width: 100%; left: 0; mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1.0)); -webkit-mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1.0));" />
+<img src="https://orig00.deviantart.net/86c5/f/2013/065/1/0/wizard_s_familiar_by_tamarar-d5x55a8.jpg" class=bottom-full-image style="mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1.0)); -webkit-mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1.0)); z-index: -2;" />
 
 \pagebreak
+
+### Adventurous
+The life of an adventurer comes naturally to a tibbit, as her curiosity pushes her ever onward. While many tibbits satisfy this drive with travel to civilized areas and exploration of a city's corners, some tibbits want more out of life. "Adventurer" is seen as a respected occupation among tibbits, and they have a natural fascination for adventurers of other races. In some cases, a tibbit in cat form takes to following an adventuring band, concealing its true nature until an opportune moment. A tibbit fighter might spring from cat to humanoid form in time to drive off a group of orcs that threatens the party's camp. In this manner, tibbits prove their valor and demonstrate their unmatched stealth in hopes of winning a place with their unwitting comrades.
 
 ### Tibbit Traits
 Your tibbit character has a number of traits in common with all other tibbits.
@@ -762,8 +1084,6 @@ Your tibbit character has a number of traits in common with all other tibbits.
 
 ***Naturally Stealthy.*** You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.
 
-\columnbreak
-
 ***Subrace.*** The two main kinds of tibbits, alley cats and domestics, refer more to whether the tibbit was raised in a Wizard's tower, or on the streets.
 
 #### Alley Cat
@@ -786,871 +1106,7 @@ As a domestic, you were raised in the care of a wizard. You learned to respect h
 
 ***The Art of Laziness.*** You are used to taking short naps throughout the day whenever you can get the opportunity. You are able to complete a short rest in half the time, and after resting for at least 4 hours throughout the course of a day, you can gain the same benefit that a human does from 8 hours of uninterrupted sleep. You may still only benefit from one long rest in any twenty-four hour period.
 
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/87f17ddd-ab37-478a-a556-27876dde2543/dag3xa3-dd689a16-c8d8-4101-a1b3-5ccb266d1f6a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg3ZjE3ZGRkLWFiMzctNDc4YS1hNTU2LTI3ODc2ZGRlMjU0M1wvZGFnM3hhMy1kZDY4OWExNi1jOGQ4LTQxMDEtYTFiMy01Y2NiMjY2ZDFmNmEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.H-RW6sITzyLHZRg4c7un69MCOcrv7MeWsW9_Vte2BCg"  style="margin: 0 auto; width: 80%; mix-blend-mode: darken;" />
-
 <div class=footnote>Part 1 | Races</div>
-
-\pagebreakNum
-
-<div class="chapter-2"></div>
-
-___
-# Chapter 2<s>:</s> <span>Classes</span>
-
-This section needs some introductory text explaining what we're doing, here, and why.  Maybe we can also include some art!
-
-<div class=wide>
-
-<h5 class=notoc>Subclasses</h5>
-
-| Class           | Subclass                | Description
-| :-------------- | :---------------------- | :---------------------
-| Fighter         | Cerebral Commander      | Warrior Leaders who have harnessed the power of the mind.
-| Monk            | Way of the Beast Eaters | Monks who have drawn magic from their experiences
-| Rogue           | Sensate                 | Explorers in search of the fulfillment of every sensation
-| Wizard          | School of Theology      | Mages who find solace in the study of the divine
-
-</div>
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-## Fighter
-
-<h2 class=notoc>Martial Archetypes</h2>
-
-### Cerebral Commander
-Where the mystic focuses on studying psionics and unlocking the mysteries of the mind, the cerebral commander simply uses his mental prowess to spur others into battle.  A cerebral commander blends psionics and martial prowess together harmoniously, becoming a fierce and effective leader.
-
-#### Psionics
-When you reach 3rd level, you augment your martial prowess with the ability to use psionic powers.  See the Psionic Disciplines section of the _Psionics Handbook_ for the general rules of using powers.
-
-***Talents.*** You learn one talent of your choice.  You learn an additional talent of your choice at 7th and 10th level.
-
-***Psi Points.*** The Cerebral Commander Psionics table shows how many psi points you have to use your discipline effects.  The table also shows your psi limit. You regain all expended psi points when you finish a long rest.
-
-***Disciplines Known.*** You know the Mantle of Command discipline.
-
-The Disciplines Known column of the Cerebral Commander Psionics table sh ows when you learn more disciplines.
-
-In addition, whenever you gain a level in this class, you can replace one discipline you know with a different one of your choice.
-
-***Psionics Ability.*** Wisdom is your psionic ability for your psionic disciplines. You can use your Wisdom modifier when setting the saving throw DC for a psionic discipline, or when making an attack roll with one.
-
-<center>
-
-**Discipline save DC =** 8 + your proficiency bonus + your <br />Wisdom modifier.
-
-**Discipline attack modifier =** your proficiency bonus + <br />your Wisdom modifier.
-</center>
-
-#### Commander's Pride
-Starting at 3rd level, whenever an ally you can see within 30 feet of you other than you reduces a creature to 0 hit points, you immediately regain 2 psi points.  You can only benefit from this feature once per turn.
-
-#### Ardent Commander
-Beginning at 7th level, when you take the Attack action on your turn, you can forgo one of your attacks to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend 2 pp. That creature can immediately use its reaction to make one weapon attack.
-
-#### Rallying Surge
-At 10th level, when you use your Second Wind feature, you can choose up to five creatures within 60 feet of you that are allied with you. Each one regains hit points equal to your fighter level, provided that creature can see or hear you.
-
-\columnbreak
-
-##### Cerebral Commander Psionics
-| Fighter Level | Talents Known | Disciplines Known | Psi Points | Psi Limit
-|:----:|:-:|:-:|:--:|:-:|
-|  3rd | 1 | 1 |  4 | 2
-|  4th | 1 | 1 |  6 | 2
-|  5th | 1 | 1 |  6 | 2
-|  6th | 1 | 2 |  6 | 2
-|  7th | 2 | 2 | 14 | 3
-|  8th | 2 | 2 | 14 | 3
-|  9th | 2 | 2 | 14 | 3
-| 10th | 3 | 2 | 17 | 3
-| 11th | 3 | 3 | 17 | 3
-| 12th | 3 | 3 | 17 | 3
-| 13th | 3 | 3 | 27 | 5
-| 14th | 3 | 3 | 27 | 5
-| 15th | 3 | 3 | 27 | 5
-| 16th | 3 | 4 | 32 | 5
-| 17th | 3 | 4 | 32 | 5
-| 18th | 3 | 4 | 32 | 5
-| 19th | 3 | 4 | 38 | 6
-| 20th | 3 | 4 | 38 | 6
-
-#### Psychic Charge
-At 15th level, when you use the _Coordinated Movement_ effect of your Mantle of Command discipline, you can expend an additional 3 psi points to allow each creature to make a single melee weapon attack as a part of the movement.
-
-#### Improved Ardent Commander
-Starting at 18th level, the target of your Ardent Commander feature no longer has to expend their reaction to make a weapon attack.
-
-<img src="https://theevilgm.files.wordpress.com/2011/04/27.jpg?w=627" style="width: 85%; mix-blend-mode: darken; margin: 0 auto;" />
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-## Monk
-
-<h2 class=notoc>Monastic Traditions</h2>
-
-### Way of the Beast Eaters
-It is said that those who follow the ways of the beast eaters have forsaken the very essence of mortality in exchange for untold power. A beast eater absorbs the power of the monsters they have slain, but many would argue they have sacrificed their own soul to do so. A beast eater bites with the sharpness of the wolf, strikes with the swiftness of the adder, and lashes out with the stinger of the scorpion, fueling strange and powerful magics with their ki.
-
-A beast eater may spend as much time among the beasts he consumes as he does in civilization, and is equally adept at navigating either field, allowing him to go unnoticed until he summons forth the dread powers at his command.
-
-#### Beast Lore
-When you choose this tradition at 3rd level, you learn rituals which allow you to cast spells or monster abilities. Beast eaters refer to both spells and monster abilities as lore, and you must go out of your way to learn new lore during your adventures.
-
-***Basic Lore.*** You learn 3 cantrips selected from the Sorcerer spell list. You learn another cantrip of your choice at 10th level.
-
-In place of cantrips, you can learn "basic monster abilities", which are weapon attacks taken from any beast with a CR less than 1. When you take the Attack Action on your turn, you may choose to use a basic monster ability instead of your weapon or unarmed attack, using your Wisdom modifier for the attack and damage roll. Basic monster abilities do not expend any ki or spell slots.
-
-***Lore Costs.*** To cast a spell of 1st level or higher, you must expend a number of ki equal to the Spell's level. To use a monster ability, you must expend a number of ki equal to the monster's CR.
-
-Once you reach 5th level in this class, you can spend additional ki points to increase the level of a beast lore spell that you cast, provided that the spell has an enhanced effect at a higher level, as burning hands does. The spell's level increases by 1 for each additional ki point you spend. The maximum number of ki points (its base ki point cost plus any additional points) that you can spend on the spell is 2. This maximum increases to 3 at 7th level, 4 at 13th level, and 5 at 17th level. You are never limited in the number of ki you can spend to activate a monster ability.
-
-> ##### Basic Monster Abilities
-> In most cases, basic monster abilities are interesting and flavorful, such as an Ape's "rock", or a Crocodile's "bite". DMs are advised against allowing the use of the Giant Wasp's sting in their games as it deals more damage than intended.
-
-\columnbreak
-
-<p></p>
-
-***Gaining Lore.*** As you encounter new experiences, you are granted access to lore. In order to learn a new spell or monster ability, you must first experience the effects of that spell or monster ability by being targeted by it, or by being in the spell or ability's area of effect. During a short or long rest, you may learn a new lore that you have experienced in the past 24 hours.
-
-The Lore Known column of the Beast Eater Lore table shows how many spells or monster abilities you can learn. The Maximum Spell Lore column determines the maximum level of spell you may learn, and the Maximum Monster Lore column determines the maximum CR of a creature from which you can gain lore.
-
-If you have already learned your maximum amount of lore, you can choose to forget a lore you know in order to replace it with a new lore. If you experience a cantrip, or a weapon attack from a beast whose CR is less than 1, you may choose to replace one of your basic lore with these abilities.
-
-***Casting Lore.*** Wisdom is your spellcasting ability for your lore spells, since its power is drawn from your ki. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a lore spell or ability you cast, and when making an attack roll with one.
-
-
-<center>
-
-Spell save DC = 8 + your proficiency bonus + <br />your Wisdom modifier
-
-Spell attack modifier = your proficiency bonus + <br />your Wisdom modifier
-</center>
-
-#### Monster Affinity
-Also at 3rd level, your proficiency bonus is doubled for any ability check you make to identify monsters and their special powers or vulnerabilities. If you lack proficiency in the required skill, you are treated as having it only for the purposes of these monster knowledge checks, but your proficiency bonus is not doubled.
-
-#### Infusion
-At 6th level, you gain the ability to consume the monsters you fight to gain even more of their power. You can attempt to learn a monster's passive abilities (movement, natural armor, damage resistances, senses, save or skill proficiencies, languages, and special traits) in a manner similar to how you gain Lore.
-
-To gain an infusion, you must first experience that ability by attempting to consume a part of the monster who possesses it. You must eat enough of the monster to constitute a meal as a part of a short rest. Once you have done so, you learn one of the monster's passive abilities as an infusion.
-
-The Infusions Known column of the Beast Eater Lore table determines how many infusions you may know. You are still limited to creatures whose CR does not exceed your Maximum Monster Lore.
-
-A beast eater's form often changes to reflect the abilities learned. If you gain the natural base armor 14 of the Galeb Duhr, then your skin might take on a rocky appearance.
-
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-##### Beast Eater Lore
-| Beast Eater Level | Basic Lore Known | Lore Known | Infusions Known | Maximum Spell Lore | Maximum Monster Lore | 
-| :-: | :-: | :-: | :-: | :-: | :-: |
-| 3rd | 3 | 3 |&mdash;| 1st | 2
-| 4th | 3 | 4 |&mdash;| 1st | 2
-| 5th | 3 | 4 |&mdash;| 2nd | 3
-| 6th | 3 | 4 | 2 | 2nd | 3
-| 7th | 3 | 5 | 2 | 2nd | 4
-| 8th | 3 | 6 | 2 | 2nd | 4
-| 9th | 3 | 6 | 3 | 3rd | 5
-| 10th | 4 | 7 | 3 | 3rd | 5
-| 11th | 4 | 8 | 3 | 3rd | 6
-| 12th | 4 | 8 | 4 | 3rd | 6
-| 13th | 4 | 9 | 4 | 3rd | 7
-| 14th | 4 | 10 | 4 | 4th | 7
-| 15th | 4 | 10 | 5 | 4th | 8
-| 16th | 4 | 11 | 5 | 4th | 8
-| 17th | 4 | 11 | 5 | 4th | 9
-| 18th | 4 | 11 | 5 | 5th | 9
-| 19th | 4 | 12 | 5 | 5th | 10
-| 20th | 4 | 13 | 5 | 5th | 10
-
-\columnbreak
-
-#### Consumption
-By 11th level, through your study of spells and monsters, you gain the ability to consume the magic thrown against you, and turn it back on its creator. If you are targeted by a spell, or in its area of effect, you can use your reaction to make a Wisdom check against a DC equal to 10 + the spell's level. On a success, the spell fails and has no effect.
-
-Until the end of your next turn, you know the spell that you have consumed and can cast it with your own ki, even if the spell requires more ki to cast than you are normally allowed to spend on a spell at your level.
-
-Once you have used this ability, you cannot do so again until you have completed a long rest.
-
-#### Assimilation
-At 17th level, you have learned to absorb not only a monster's powers, but the monster itself. As an action, you can touch a creature and attempt to absorb it. The creature must make a Charisma saving throw against your lore save DC. On a failed saving throw, the target is banished to a demiplane associated with your existence, and you are transformed into that creature.
-
-The target remains there for up to ten minutes, or until it escapes or you fall unconscious. The target can use its action to attempt to escape. When it does so, it makes a DC 20 Intelligence check. If it succeeds, it escapes and the spell ends. When the spell ends, the target reappears in the nearest unoccupied space next to you.
-
-While transformed into the target, you gain the target's appearance and all of its equipment, and your statistics and ability scores become those of the target, except for your Hit Points, Intelligence, and Wisdom scores. You may use any of the creature's abilities or powers as if you were that creature.
-
-Once you have used this ability, you must complete a long rest before you can use it again.
-
-<div style="height: 160px;"></div>
-
-<img src="https://www.gmbinder.com/images/i6Po9MH.jpg" style="position: absolute; left: 0; bottom: 0; width: 100%;" />
-<img src="https://www.gmbinder.com/images/gezbRSW.png" style="position: absolute; left: 0; top: 0; width: 100%;" />
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-## Rogue
-
-<h2 class=notoc>Rogueish Archetypes</h2>
-At 3rd level, a rogue gains the Roguish Archetype feature. The following options are available to a rogue, in addition to those offered in the _Player's Handbook_: the Sensate.
-
-### Sensate
-The breeze that caresses the face brings with it a cooling balm and scent traces that trigger memories of old. The flavor of the fruit plucked from the tree is tart but sweet, and the sticky juice explodes in the mouth with a texture just as important as taste. The voices of the choir are rough but earnest, and they speak of experiences hidden in the melody that only a sensate can separate from the mix and appreciate.
-
-#### Heightened Senses
-Starting at 3rd level, your sense of smell, hearing, and touch intensify. You have advantage on Wisdom (Perception) checks which rely on your sense of smell, hearing or touch, and can track by your sense of smell.
-
-Additionally, you can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
-
-#### Joie de Vivre
-When you choose this archetype at 3rd level, your cheerful optimism and willing curiosity inspires hope in your allies. As a reaction, you may grant a bonus equal to your Charisma modifier to an ally when they make an ability check, attack roll, or saving throw.
-
-#### Sense Link
-Starting at 9th level, you are able to share your senses with another creature, and experience their senses as if they were your own. As an action on your turn, you may touch a creature to link with them. As an action, you or the creature you are linked with can experience through one another's senses (see through the other's eyes, hear what the other hears, etc.) until the start of your next turn.
-
-\columnbreak
-
-<p></p>
-
-As long as you remain on the same plane with the creature, this link will not break or end. You may only be linked with one creature at a time. If you link with a new creature, the link with the first will end immediately.
-
-#### Seen it Before
-Also at 9th level, you become skeptical to things that are out of place. You have Advantage on any saving throws or ability checks made to identify or see through an illusion.
-
-
-#### Intensify Sensation
-By 13th level, you have a keen understanding of the sensations of those around you, as well as your own. As a bonus action, choose a creature within 30 feet of you. That target must succeed on a Charisma saving throw (DC 8 + your proficiency bonus + your Charisma modifier) or suffer one of the following effects (your choice) for the next minute:
-
-- Vulnerability to slashing, bludgeoning, and piercing damage.
-- Disadvantage on Saving Throws.
-- Advantage on Wisdom (Perception) checks.
-
-Once you use this feature, you can't use it again until you finish a long rest.
-
-#### See it Again
-When you reach 17th level, you are able to recast a spell from another spellcaster. Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to cast that spell, yourself. When you cast the spell, you may choose the target or area affected as normal. Your Charisma is your spellcasting ability for this spell. The spell is cast at the same level as it was cast against you.
-
-Once you have used this feature, you may not use it again until you have finished a long rest.
-
-<img src="https://i.pinimg.com/originals/94/d8/ce/94d8ce1393237ebacef8f8c60585b8df.jpg" style="position: absolute; width: 100%; bottom: -175px; left: 0;" />
-<img src="https://www.gmbinder.com/images/sKQMREa.png" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;" />
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-## Wizard
-
-<h2 class=notoc>Arcane Traditions</h2>
-At 2nd level, a wizard gains the Arcane Tradition feature. The following options are available to a wizard, in addition to the options offered in the _Player's Handbook_: School of Theology.
-
-### Theology
-Students of the school of Theology are wizards who have turned their study to the divine. These scholars seek out and collect esoteric sources of divine lore, wherever those sources might be. Theologians are not always tied to a specific deity, but they do acknowledge that some of their power may be divinely fueled, as they draw upon the rituals and prayers used by the faithful.
-
-#### Bonus Proficiencies
-When you study the tradition of theology at 2nd level, you gain proficiency with the Religion skill. If you are already trained in Religion, your proficiency bonus is doubled for any ability check you make that uses that proficiency.
-
-#### Theology Savant
-Your study of divine magic allows you to learn spells from the cleric class.
-
-Starting at 2nd level, each level when your Spellcasting feature lets you add two new spells to your spellbook, you can choose to add one new spell from the cleric spell list or the wizard spell list. Your other spell must still be from the wizard spell list, and you must otherwise obey all the restrictions for selecting the spell. This spell becomes a wizard spell for you.
-
-In addition, when you find a cleric spell scroll or text of 1st level or higher, you can add it to your spellbook if it is of a level you can prepare, and if you can spare the time to decipher and copy it. Copying a cleric spell into your spellbook follows the same rules as those required for a wizard spell, and any spell you copy into your spellbook in this way becomes a wizard spell for you.
-
-You can prepare any cleric spells added to your spellbook via this feature as you would any other wizard spell.
-
-#### Arcane Censure
-Beginning at 6th level, when a creature you can see makes an attack roll, you can use your reaction to impose your arcane censure upon them. The creature must succeed on a Wisdom saving throw, or the triggering attack has disadvantage, and attack rolls against them have advantage until the end of the creature's next turn. Once you have used this feature, you cannot use it again until you have completed a short or long rest.
-
-#### Magical Secrets
-At 10th level, you learn may add two spells of your choice from any class to your spellbook. A spell you choose must be of a level you can cast, as shown on the Wizard table, or a cantrip. The chosen spells count as wizard spells for you.
-
-\columnbreak
-
-#### Divine Utterance
-At 14th level, you have learned secrets which were not meant to be learned without the protection of a divine agent. As a bonus action on your turn, you can utter these divine secrets to a creature within 60 feet of you that you can see and which can hear you. The creature must succeed on a Wisdom saving throw or be blinded, deafened, and incapacitated for 1 minute. At the end of its turn, the creature can reattempt the saving throw.
-
-Once you have used this feature, you must complete a short or long rest before you can use it again.
-
-<img src="https://cdnb.artstation.com/p/assets/images/images/003/448/617/large/batu-ince-cemre-bday-end.jpg?1473785006" style="position: absolute; width: 55%; bottom: -50px; right: -5px;" />
-<img src="https://www.gmbinder.com/images/oF4JQBz.png" style="position: absolute; width: 100%; top: 0; left: 0; height: 100%;" />
-
-<div class=footnote>Part 1 | Classes</div>
-
-\pagebreakNum
-
-___
-# Chapter 3<s>:</s> <span>Customization Options</span>
-
-## Feats
-
-#### Expanded Studies
-**Prerequisite:** The ability to cast spells as rituals.
-
-You have made a special study of the rituals you know, and are able to cast them with a level of flexibility.  You gain the following benefits:
-- Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
-- After you complete a long rest, you can spend an hour to prepare a number of rituals which you know equal to your ritual spellcasting ability modifier.  Spells prepared in this way can be cast as a ritual, but cannot be cast by expending a spell slot.
-
-#### Natural Shifter
-_Prerequisite:_ Wild Shape
-
-You find shifting to be as natural as breathing. You gain the following benefits:
-
-- While you have transformed into the form of a beast, you can still speak.
-- You may transform into a CR 0 creature without expending a use of your wild shape.
-- As an action on your turn, you can revert to your humanoid form without ending your current wild shape. Doing so, however, requires you to concentrate on the wild shape like it is a spell. At any point before your wild shape ends, you can return to your Wild Shape as a bonus action on your turn.
-
-#### Versatile Adept
-You have made a special study of versatile fighting techniques, and are quick to adapt on your feet. You gain the following benefits.
-
-- When you hit with an attack using a versatile weapon you are proficient with in both hands, roll the weapon's damage dice twice and use the higher of the two rolls.
-- When you make an attack with a versatile weapon in one hand with nothing in the other hand, you can choose to take a -2 penalty to attack rolls until the start of your next turn. If you do so, you receive a +2 bonus to armor class until the start of your next turn.
-- When you hit a creature with a versatile weapon on your turn, you can use a bonus action to attempt to grapple the target.
-
-\columnbreak
-
-## Variant Features
-Each class in {dungeons-and-dragons} gains features at particular levels.  Here, you'll find features that replace or enhance the normal features of your character's class.  The class feature variants each specify which feature they replace or enhance.  If a feature is replaced, you gain no benefit from it and don't qualify for anything in the game that requires it. If a feature is enhanced, you continue to enjoy its benefits but now with new capabilities.
-
-Your DM decides which of these options are available to the characters in a campaign.  A DM is free to prohibit these variants, allow all of them, or make a subset of them available to you.
-
-### All Classes
-All characters have access to the following features.
-
-#### Fighting Styles
-_Fighter, paladin, and ranger feature (enhances Fighting Style)_
-
-##### Zweihander Reach
-While you are using a two-handed melee weapon, or a versatile melee weapon in two hands, you may treat that weapon as if it had the Reach property if it didn't already.
-
-#### Skill Points
-_1st-level feature (enhances Proficiencies)_
-
-You gain a number of skill points equal to your Intelligence modifier (minimum 0). These points can be spent to gain additional proficiencies, according to the Skill Point Costs table, below.
-
-##### Skill Point Costs
-| Benefit     | Cost |
-| :---------- | :--: |
-| Skill proficiency | 2 |
-| Expertise in a skill you are proficient in | 3 |
-| Language proficiency | 1 |
-| Tool proficiency | 1 |
-| Tool expertise | 2 |
-| Weapon proficiency | 1 |
-
-If you gain additional skill points due to a permanent increase in your Intelligence, you may spend them at that point.  Skill points cannot be lost once gained.
-
-<div class=footnote>Part 1 | Customization Options</div>
-
-\pagebreakNum
-
-### Barbarian
-A barbarian has access to the following features.
-
-#### Savage Retaliation
-_2nd-level Barbarian feature (replaces Reckless attack)_
-
-Every time you make a melee attack, whether the attack hits or misses, you can choose to mark your target. The mark lasts until the end of your next turn. While a target is marked by you, it has disadvantage on attack rolls for any attack that doesn't include you as a target. A creature can be subject to only one mark at a time. A new mark supersedes a mark that was already in place.
-
-Any creature you have marked that makes an attack which does not include you is subject to your retaliation. Any hit you score against that creature before the end of your next turn is a critical hit.
-
-### Bard
-A bard has access to the following features.
-
-#### Songbook
-_1st-level bard feature (enhances Spellcasting)_
-
-You have a spellbook like a Wizard, and record your known bard spells in this spellbook.  You prepare spells a number of spells equal to your Charisma modifier + your bard level (minimum of one spell) from this book, exactly as a wizard does.
-
-### Cleric
-A cleric has access to the following features.
-
-#### Channel Divinity: Divine Prayer
-_2nd-level Cleric feature (replaces Turn Undead)_
-
-You pray to your deity for guidance and support. As a bonus action on your turn, you expend a use of your channel divinity to replace a cleric spell you have prepared with another spell from the cleric spell list which you are able to cast.
-
-### Fighter
-A fighter has access to the following features.
-
-#### Combat Challenge
-_2nd-level Fighter feature (replaces Action Surge)_
-
-Every time you make a melee attack, whether the attack hits or misses, you can choose to mark your target. The mark lasts until the end of your next turn. While a target is marked by you, it has disadvantage on attack rolls for any attack that doesn't include you as a target. A creature can be subject to only one mark at a time. A new mark supersedes a mark that was already in place.
-
-The first time a creature you have marked that is within reach of your weapon moves or makes an attack that does not include you, you can make an opportunity attack against that creature without expending your reaction.
-
-\columnbreak
-
-#### Roll with It
-_1st-level Fighter Feature (replaces Second Wind)_
-
-You have learned to roll with the punches and shake off the worst damage. As a reaction whenever you take damage, you can reduce the damage taken by a number of hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.
-
-### Monk
-A monk has access to the following features.
-
-#### Forceful Defense
-_1st-level Monk feature (replaces Unarmored Defense)_
-
-While you are wearing no armor and not wielding a shield, your Armor Class equals 10 + your Strength modifier + your Wisdom modifier.
-
-### Paladin
-A paladin has access to the following features.
-
-#### Divine Sanction
-_2nd-level Paladin feature (replaces Divine Smite)_
-
-As a bonus action on your turn, you mark one target you can see that is within 30 feet of you. While a target is marked by you, it has disadvantage on attack rolls for any attack that doesn't include you as a target. A creature can be subject to only one mark at a time. A new mark supersedes a mark that was already in place.
-
-When a creature you have marked makes an attack that doesn't include you as a target, you can expend one spell slot to deal radiant damage to the target. This damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 6d8. The damage increases by 1d8 if the target is an undead or a fiend, to a maximum of 6d8.
-
-The mark expires if you use this ability to mark a different creature. The mark also ends if you make an attack against a creature other than the target of the mark, unless you have also attacked your target during this turn, or are adjacent to the target.
-
-### Ranger
-A ranger has access to the following features
-
-#### Prepared Spellcasting
-_2nd-level Ranger feature (enhances spellcasting)_
-
-You no longer select spells known when you level up as a Ranger.  Instead, you can prepare a number of spells equal to your Wisdom modifier + 1/2 your ranger level (minimum of one spell) from the Ranger spell list, exactly as a Paladin does.
-
-<div class=footnote>Part 1 | Customization Options</div>
-
-\pagebreakNum
-
-### Warlock
-A warlock has access to the following features.
-
-#### Binder
-_1st-level Warlock feature (enhances all features)_
-
-Your spellcasting ability is Intelligence, and all class features which refer to Charisma instead refer to Intelligence. You are proficient in Wisdom and Intelligence saving throws.
-
-#### Pact of the Blade
-_3rd-level Warlock feature (enhances Pact of the Blade)_
-
-If the weapon you have created with your Pact of the Blade lacks the two-handed property, you can use your Charisma modifier, instead of Strength or Dexterity, for its attack and damage rolls.
-
-Starting at 5th level, you can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your turn.
-
-### Wizard
-A wizard has access to the following features.
-
-#### Cantrip Versatility
-_1st-level Wizard feature (enhances Cantrips)_
-
-You record your cantrips in your spellbook just like any other spell.  You begin play by adding 4 cantrips to your spellbook from the Wizard spell list.  You must prepare your cantrips in order to cast them, just as your other spells; however, these do not count against your usual spell preparation limit. Instead, you may prepare a number of cantrips equal to your proficiency bonus.
-
-Adding a new cantrip to your spellbook takes 8 hours, and costs 25 gp.  The cost represents the material components you expend as you experiment with the cantrip to master it, as well as the fine inks you need to record it.  Once you have spent this time and money, you can prepare the cantrip just like your other cantrips.
-
-<div class=footnote>Part 1 | Customization Options</div>
-
-\pagebreakNum
-
-___
-# Chapter 4<s>:</s> <span>Equipment</span>
-
-<style>
-.page .masterwork table td {
-    white-space: nowrap;
-}
-</style>
-
-## Masterwork Items
-Anyone with sufficient training, time, and resources can craft weapons, armor, and tools.  However, many craftsmen spend years of their life practicing their trade in the hopes of crafting perfection.  Sometimes, they achieve greatness, and create an item of surpassing quality.
-
-Masterwork weapons, armor, and tools provide a bonus based on their rarity.  Masterwork implements provide bonuses based on their type (attack and damage rolls for weapons, AC for armor, and relevant ability checks for tools).
-
-An uncommon (+1) masterwork item is typically the greatest a smith will achieve in their lifetime.  These are nearly perfect in every way: light, strong, well-balanced, durable.  They are truly impressive, but not the stuff of legends.
-
-A rare (+2) masterwork item surpasses the work of even talented smiths. Items of this quality may take years to forge, and most have storied pasts.  These are the pinnacle of what a mortal smith can achieve without magical assistance.
-
-Very rare (+3) masterwork items are the stuff of legends.  They are perfect in every way; flawless works of art that surely must have required a bit of magic just to forge.
-
-The value of a masterwork item is based on its rarity.  To determine the value of a masterwork item, add the base item cost to the appropriate value from the Mastework Items table, below.
-
-<div class=masterwork>
-
-##### Masterwork Items
-| Item | Uncommon Cost | Rare Cost | Very Rare Cost |
-| :--- | :--: | :-: | :-: |
-| Simple weapons | 100 gp | 1,000 gp | 10,000 gp |
-| Martial weapons | 200 gp | 2,000 gp | 20,000 gp |
-| Armor | 500 gp | 5,000 gp | 50,000 gp |
-| Tools | 50 gp | 500 gp | 5,000 gp |
-
-</div>
-
-Masterwork weapons are not magical, and do not bypass magical resistances.  Magical weapons, in turn, are frequently also masterwork, but always contain at least some magical properties which allows them to bypass resistance.
-
-Magical items are frequently also masterwork, although it isn't required, but a magical item which provides only a statistical bonus is never magical.  For example, a masterwork longsword is just masterwork, but a _masterwork glowing longsword_ is both masterwork and a common magical item.  When pricing such items, add the price of masterwork to the price of the item.  If it costs 100 gp to add the _glowing_ property to a weapon to make it magical, then a _masterwork glowing longsword_ should cost about 300 gp.
-
-<div class=footnote>Part 1 | Equipment</div>
-
-\pagebreakNum
-
-<img src="https://cdnb.artstation.com/p/assets/images/images/002/832/273/large/taylor-payton-payton-taylor-geomancy.jpg?1466225835" style="width: 100%; height: auto; position: absolute; left: 0; top: 0;" />
-
-<section class="header">
-
-# Part 2<s>:</s> <span>Spells and Powers</span>
-
-</section>
-
-\pagebreak
-
-___
-# Chapter 5<s>:</s> <span>Spells</span>
-
-This chapter describes new and exciting spells in the worlds of {dungeons-and-dragons}. Some of these spells bear the names of their creator, and are limited to a specific spell list (for now), but many others provide a wealth of new character options for players and dungeon masters both to explore.
-
-## Spell Lists
-The following spell lists show which spells can be cast by characters of each class. A spell's school of magic is noted in parentheses. If a spell can be cast as a ritual, the ritual tag also appears in the parentheses.
-ex
-<div class='spellList' style="margin: 1em 0;">
-
-### Bard Spells
-##### 1st Level
-___
-- _Phantasmal guardian_ (illusion)
-
-### Cleric Spells
-##### 1st Level
-___
-- _Granted strike_ (enchantment)
-
-##### 3rd Level
-___
-- _Animate dead*_ (necromancy)
-
-### Druid Spells
-##### 2nd Level
-___
-- _Wandering wisp_ (evocation)
-
-### Paladin Spells
-##### 1st Level
-___
-- _Granted strike_ (enchantment)
-
-\columnbreak
-
-### Sorcerer Spells
-##### Cantrips
-___
-- _Arc lightning_ (evocation)
-- _Pluck the heartstrings_ (enchantment)
-
-##### 1st level
-___
-- _Distracting ray_ (abjuration)
-
-##### 2nd Level
-___
-- _Frostborn legion_ (conjuration)
-- _Glitterdust_ (conjuration)
-- _Wandering wisp_ (evocation)
-
-### Warlock Spells
-##### Cantrips
-___
-- _Pluck the heartstrings_ (enchantment)
-
-##### 2nd Level
-___
-- _Frostborn legion_ (conjuration)
-- _Ray of enfeeblement*_ (necromancy)
-- _Wandering wisp_ (evocation)
-
-\columnbreak
-
-### Wizard Spells
-##### Cantrips
-___
-- _Arc lightning_ (evocation)
-- _Pluck the heartstrings_ (enchantment)
-
-##### 1st Level
-___
-- _Benoit's shield of blood_ (necromancy)
-- _Benoit's blood siphon_ (necromancy)
-- _Distracting ray_ (abjuration)
-- _Phantasmal guardian_ (illusion)
-- _Saga's instant insight_ (divination)
-
-##### 2nd Level
-___
-- _Benoit's ashes to ashes_ (necromancy)
-- _Benoit's bear the burden_ (necromancy)
-- _Frostborn legion_ (conjuration)
-- _Glitterdust_ (conjuration)
-- _Liadan's Arcane Investigation_ (divination)
-- _Ray of enfeeblement*_ (necromancy)
-
-##### 3rd Level
-___
-- _Animate dead*_ (necromancy)
-
-</div>
-
-<div class=wide style="text-align: center;">
-* Spells marked with an asterisk appear in official texts, but have been revised, here.
-</div>
-
-<div class=footnote>Part 2 | Spells and Powers</div>
-
-\pagebreakNum
-
-## Spell Descriptions
-The spells are presented in alphabetical order.
-
-#### Animate Dead
-_3rd-level necromancy_
-
-___
-- **Casting Time:** 1 minute
-- **Range:** 10 ft
-- **Components:** V, S, M (a drop of blood, a piece of flesh, and a pinch of bone dust)
-- **Duration:** Instantaneous
-
-This spell creates an undead servant. Choose a pile of bones or the corpse of a Medium or Small humanoid within range.  Your spell imbues the target with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton if you chose bones or a zombie if you chose a corpse (the DM has the creature's game statistics).  This creature is proficient with any armor or weapons you provide them, but cannot activate magical items or use complex tools.
-
-On each of your turns, you can use a bonus action to mentally command a creature you made with this spell if the creature is within 60 feet of you.  You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor.  If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
-
-The creature is under your control for 24 hours, or until you cast this spell again to animate a new creature, after which it stops obeying any command you've given it and becomes indifferent to you. To maintain control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over creatures you have animated with this spell, rather than animating a new one.
-
-***At Higher Levels.*** When you cast this spell using a spell slot of 4th level or higher, the creature gains multiattack and can make a number of attacks equal to one-third of the spell's level (rounded up).  Zombies created by this spell gain 10 extra hit points for each slot level above 3rd, as well as +1 to hit and damage for every two slot levels above 3rd.  Skeletons created with this spell gain 5 extra hit points for each slot level above 3rd, as well as +1 to hit and damage for every slot level above 3rd.
-
-\columnbreak
-
-#### Arc Lightning
-_Evocation cantrip_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** Instantaneous
-
-You draw a line of electricity in the air, and it jumps to your target. Make a ranged spell attack.  If you hit, the target takes 1d6 electricity damage, and you can choose another target within 10 feet of the previous target.  If you choose another target, make another ranged spell attack, and if you hit, the target takes electricity damage one die size smaller than the previous target took.  You may continue in this way until you miss, or until the die size is 1d4.
-
-The spell's damage increases when you reach higher levels. At 5th level, the initial damage is 1d8.  The damage increases again to 1d10 at 11th level, and 1d12 at 17th level.
-
-#### Benoit's Ashes to Ashes
-*2nd-level necromancy*
-
-___
-- **Casting Time:** 10 minutes
-- **Range:** 30 feet
-- **Components:** V, S, M (the corpse of a medium-sized creature which died within the last hour)
-- **Duration:** Instantaneous
-
-When you complete the ritual, the corpse dissolves into ashes.  Up to six creatures of your choice that you can see within range each regain hit points equal to 2d8 + your spellcasting ability modifier.
-
-***At Higher Levels.*** When you cast this spell using a spell slot of 3rd level or higher, the healing increases by 1d8 for each slot level above 2nd.
-
-#### Benoit's Bear the Burden
-*2nd-level necromancy*
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** 1 minute
-
-You draw weakness out of a creature of your choice that you can see within range.  You can end either one disease or one condition on the target. The condition can be blinded, deafened, paralyzed, or poisoned.
-
-You receive whichever affliction (disease or condition) cured from the target for the duration of this spell. At the end of each of your turns, you can make a Constitution saving throw against your own spell DC. On a success, the affliction ends early.
-
-<div class=footnote>Part 2 | Spells and Powers</div>
-
-\pagebreakNum
-
-#### Benoit's Blood Siphon
-*1st-level necromancy*
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** Instantaneous
-
-You point at a creature you can see within range, which must make a Constitution saving throw.  On a failed save, the creature takes 3d6 necrotic damage, and one creature of your choice that you can see within range regains a number of hit points equal to half the damage dealt.  On a successful save, the original target instead takes half damage, and you are unable to heal another creature.
-
-***At Higher Levels.*** When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.
-
-#### Benoit's Shield of Blood
-*1st-level necromancy*
-
-___
-- **Casting Time:** 1 bonus action
-- **Range:** 60 feet
-- **Components:** V, M (an athame)
-- **Duration:** Instantaneous
-
-You draw the athame along your palm while chanting the words of power that draw the magic from your blood.  You take 1d4 necrotic damage, and 3 other creatures of your choice within range gain a number of temporary hit points equal to twice the necrotic damage done.
-
-***At Higher Levels.*** When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d4 for each slot level above 1st.
-
-#### Distracting Ray
-_1st-level abjuration_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, S
-- **Duration:** 1 round
-
-You fire a multi-colored ray of scintillating, swirling light towards one creature you can see within range.  The target must make a Constitution saving throw or lose concentration and suffer disadvantage on attack rolls until the end of your next turn.
-
-\columnbreak
-
-#### Frostborn Legion
-_2nd-level conjuration_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 150 feet
-- **Components:** V, S, M (A frost-bitten finger)
-- **Duration:** Concentration, up to 10 minutes
-
-You draw forth a frozen mist filled with spectral figures in a 20-foot radius centered on a point within range.  The area becomes lightly obscured for the duration, and creatures within the area have their speed reduced by 10 feet.  When a creature moves into or within the area, it takes 2d4 cold damage for every 5 feet it travels as the spectral creatures grasp at them.
-
-#### Glitterdust
-_2nd-level conjuration_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, M (a pinch of gold dust)
-- **Duration:** 1 minute
-
-A cloud of fine golden particles covers everyone and everything in a 20-foot-radius centered on a point you can see within range.  Creatures in the area must succeed on a Dexterity saving throw or become blinded until the start of your next turn.
-
-For the duration, any creature or object which was in the area when the spell was cast cannot benefit from being invisible or hidden.
-
-#### Granted Strike
-_1st-level enchantment_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** Instantaneous
-
-Choose one willing creature in range who you can see and who can hear you. The target can use their reaction to make a melee attack against another creature of your choice within their weapon's range. If the attack hits, it deals an additional 1d8 psychic damage.
-
-***At Higher Levels.*** When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.
-
-<div class=footnote>Part 2 | Spells and Powers</div>
-
-\pagebreakNum
-
-#### Liadan's Arcane Investigation
-_2nd-level divination_
-
-___
-- **Casting Time:** 10 minutes
-- **Range:** 5 feet
-- **Components:** V, S, M (a glass lens or magnifying glass)
-- **Duration:** Instantaneous
-
-You attune yourself to the threads of magic around you. While within 5 feet of a magical effect or object, you can discern the source of the magic and how long it has been in place. if the magical item or effect was created within the last year and on the same plane of existence as the caster, this spell reveals the creature type that created the effect or item.   If the source of the magical effect is not the result of deliberate action (such as a wild magical effect), this spell fails.  If the effect was created on another plane of existence, or is older than one year, the spell has no effect.
-
-Additionally, the spell reveals the age of the magical effect in terms of one of the following categories:
-
-- **Immediate:** The effect was created within the last 24 hours.
-- **Recent:** The effect was created within the last month
-- **Old:** The effect was created within the last year.
-
-***At Higher Levels:*** When you cast this spell using a spell slot of 4th or 5th level, the spell can look back as far as the caster's lifetime, and magical effects may be revealed with the following category:
-
-- **Historic:** The effect was created within the caster's lifetime.
-
-When you cast this spell using a spell slot of 6th level or higher, the spell can look back as far as the creation of the plane the caster is on, and magical effects may be revealed with the following category:
-
-- **Ancient:** The effect was created before the caster was born.
-
-#### Phantasmal Guardian
-_1st-level illusion_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** S, M (a bit of glitter, or a pixie's wing)
-- **Duration:** Concentration, up to 1 minute
-
-You summon a phantasmal creature which occupies a space within range. As a bonus action on your turn, the phantasm can move up to 30 feet.  When a creature you can see attacks a target other than the phantasm that is within 5 feet of the phantasm, you can use your reaction to impose disadvantage on the attack roll.  The phantasm disappears, and you can resummon it anywhere within range on your turn as a bonus action. If the you end your turn more than 30 feet from the phantasm, this spell ends.
-
-\columnbreak
-
-#### Pluck the Heartstrings
-_Enchantment cantrip_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 120 feet
-- **Components:** V, S
-- **Duration:** Instantaneous
-
-A beam of emotion-laced energy lances from your hand to strike a target within range. Make a ranged spell attack against the creature to overwhelm it with these emotions.  On a hit, the target takes 1d8 psychic damage, and it can't regain hit points until the start of your next turn.
-
-This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
-
-#### Ray of Enfeeblement
-_2nd-level necromancy_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, S
-- **Duration:** 1 minute
-
-A black beam of enervating energy springs from your finger toward a creature within range. Make a ranged spell attack against the target. On a hit, the target deals onlly half damage with weapon attacks until the spell ends.
-
-At the end of each of the target's turns, it can make a Constitution saving throw against the spell. On a success, the spell ends.
-
-#### Saga's Instant Insight
-_1st-level divination_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 120 feet
-- **Components:** S
-- **Duration:** Instantaneous
-
-You glare at one creature you can see within range and the target must make a Charisma saving throw.  On a failed saving throw, you learn the answer to up to three questions.  The spell can only reveal objective facts about the target which have not been concealed or hidden.  If you ask a question which would lead to concealed or hidden information, you learn that the answer is concealed, but not the answer.  You can use each answer once to gain advantage on a social roll made against the target.
-
-<div class=footnote>Part 2 | Spells and Powers</div>
-
-\pagebreakNum
-
-#### Wandering Wisp
-_2nd-level evocation_
-
-___
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S, M (An unlit lantern or torch)
-- **Duration:** Instantaneous
-
-You create a ball of ghostly light, which rushes through your foes. A 1-foot-wide line up to 60 feet long extends from you. This line can have one turn of any angle, but no part of it can be further than 30 feet from you. Any creature in the line must make a Dexterity saving throw, suffering 4d6 lightning damage on a failure, or half as much damage on a success.
-
-***At Higher Levels.*** When you cast this spell using a 3rd level or higher slot, the damage increases by 1d6 for each slot level above 2nd.
-
-
-<div class=footnote>Part 2 | Spells and Powers</div>
 
 \pagebreakNum
 
@@ -1660,6 +1116,9 @@ Throughout this document, a number of rules have been changed from those which a
 ### Chapter 1: Character Creation
 - Ability scores are generated using a method known as the 23/25/27 method.  No other method is available for ability score generation.
 - When leveling up, players cannot take the average for hit points. They can, however, ask the DM to roll for them, instead.
+
+### Chapter 2: Races
+- The elven subraces have been tailored to games set on Aesl.  Subraces from other sources are allowed only with permission, and after carefully working them into the theme of Aesl.
 
 \pagebreakNum
 
