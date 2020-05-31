@@ -1,5 +1,6 @@
 import Convict from 'convict';
 import Path from 'path';
+import { existsSync } from 'fs';
 
 export default function config() {
     // Configuration definitions
@@ -21,7 +22,7 @@ export default function config() {
                 doc: 'The protocol that the API will run on',
                 format: String,
                 default: 'http',
-                env: 'PROTOCL'
+                env: 'PROTOCOL'
             }
         },
         Discord: {
@@ -43,7 +44,10 @@ export default function config() {
     
     // Load from file for local development
     const fileconfig = Path.join(process.cwd(), '.env.json');
-    config.loadFile(fileconfig);
+
+    if (existsSync(fileconfig)) {
+        config.loadFile(fileconfig);
+    }
 
     // Validate and return
     config.validate({allowed: 'strict'});
