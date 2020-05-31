@@ -705,7 +705,7 @@ Bold and hardy, dwarves are known as skilled warriors, miners, and workers of st
 Dwarven skin ranges from deep brown to a paler hue tinged with red, but the most common shades are light brown or deep tan, like certain tones of earth. Their hair, worn long but in simple styles, is usually black, gray, or brown, though paler dwarves often have red hair. Male dwarves value their beards highly and groom them carefully.
 
 ### Long Memory, Long Grudges
-Dwarves can live to be more than 400 years old, so the oldest living dwarves often remember a very different world. For example, some of the oldest dwarves living in Emo Qiang can recall the day, more than three centuries prior, when they repelled an invasion from demonic forces seeking to breach their stronghold. This longevity grants them a perspective on the world that shorter-lived races such as humans and halflings lack.
+Dwarves can live to be more than 400 years old, so the oldest living dwarves often remember a very different world. For example, some of the oldest dwarves living in Diyu Zhang can recall the day, more than three centuries prior, when they repelled an invasion from demonic forces seeking to breach their stronghold. This longevity grants them a perspective on the world that shorter-lived races such as humans and halflings lack.
 
 Dwarves are solid and enduring like the mountains they love, weathering the passage of centuries with stoic endurance and little change. They respect the traditions of their clans, tracing their ancestry back to the founding of their most ancient strongholds in the youth of the world, and don’t abandon those traditions lightly. Part of those traditions is devotion to the gods of the dwarves, who uphold the dwarven ideals of industrious labor, skill in battle, and devotion to the forge.
 
@@ -983,7 +983,6 @@ Vëala have porcelain skin, sometimes with traces of blue. Their hair tends towa
 <img src="https://media-waterdeep.cursecdn.com/attachments/0/628/halflingintro.png" class=top-full-image style="width: 200%;" />
 <img src="https://i.pinimg.com/originals/3e/9b/54/3e9b5470a47db99e557c4522476b4f42.png" />
 
-## Halfling
 <div class=racial-quote>
 
 Regis the halfling, the only one of his kind for hundreds of miles in any direction, locked his fingers behind his head and leaned back against the mossy blanket of the tree trunk. Regis was short, even by the standards of his diminutive race, with the fluff of his curly brown locks barely cresting the three-foot mark, but his belly was amply thickened by his love of a good meal, or several, as the opportunities presented themselves. The crooked stick that served as his fishing pole rose up above him, clenched between two of his toes, and hung out over the quiet lake, mirrored perfectly in the glassy surface of Maer Dualdon.
@@ -995,6 +994,7 @@ Regis the halfling, the only one of his kind for hundreds of miles in any direct
 
 <div style="height: 350px;"></div>
 
+## Halfling
 The comforts of home are the goals of most halflings’ lives: a place to settle in peace and quiet, far from marauding monsters and clashing armies; a blazing fire and a generous meal; fine drink and fine conversation. Though some halflings live out their days in remote agricultural communities, others form nomadic bands that travel constantly, lured by the open road and the wide horizon to discover the wonders of new lands and peoples. But even these wanderers love peace, food, hearth, and home, though home might be a wagon jostling along an dirt road or a raft floating downriver.
 
 ### Small and Practical
@@ -1005,7 +1005,7 @@ Halflings’ skin ranges from tan to pale with a ruddy cast, and their hair is u
 Halfling practicality extends beyond their clothing. They’re concerned with basic needs and simple pleasures and have little use for ostentation. Even the wealthiest of halflings keep their treasures locked in a cellar rather than on display for all to see. They have a knack for finding the most straightforward solution to a problem, and have little patience for dithering.
 
 ### Kind and Curious
-Halflings are an affable and cheerful people. They cherish the bonds of family and friendship as well as the comforts of hearth and home, harboring few dreams of gold or glory. Even adventurers among them usually venture into the world for reasons of community, friendship, wanderlust, or curiosity. They 
+Halflings are an affable and cheerful people. They cherish the bonds of family and friendship as well as the comforts of hearth 
 
 <div class=footnote>Part 1 | Races</div>
 
@@ -1014,7 +1014,7 @@ Halflings are an affable and cheerful people. They cherish the bonds of family a
 <img src="https://media-waterdeep.cursecdn.com/attachments/0/628/halflingintro.png" class=top-full-image style="width: 200%; left: auto; right: 0;" />
 <div class=wide style="height: 350px;"></div>
 
-love discovering new things, even simple things, such as an exotic food or an unfamiliar style of clothing.
+and home, harboring few dreams of gold or glory. Even adventurers among them usually venture into the world for reasons of community, friendship, wanderlust, or curiosity. They love discovering new things, even simple things, such as an exotic food or an unfamiliar style of clothing.
 
 Halflings are easily moved to pity and hate to see any living thing suffer. They are generous, happily sharing what they have even in lean times.
 
@@ -1031,8 +1031,6 @@ Many halflings live among other races, where the halflings’ hard work and loya
 ### Exploring Opportunities
 Halflings usually set out on the adventurer’s path to defend their communities, support their friends, or explore a wide and wonder-filled world. For them, adventuring is less a career than an opportunity or sometimes a necessity.
 
-\columnbreak
-
 > ##### Affable and Positive
 > Halflings try to get along with everyone else and are loath to make sweeping generalizations — especially negative ones.
 > 
@@ -1042,7 +1040,7 @@ Halflings usually set out on the adventurer’s path to defend their communities
 >I%yLc6K3^V$&TbSpu95c
 > ***Humans.*** “Humans are a lot like us, really. At least some of them are. Step out of the castles and keeps, go talk to the farmers and herders and you’ll find good, solid folk. Not that there’s anything wrong with the barons and soldiers — you have to admire their conviction. And by protecting their own lands, they protect us as well.”
 
-<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/627/400/235/halfling1.png" style="width: 125%; margin-left: -10%; margin-top: 3em;" />
+<img src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/627/400/235/halfling1.png" />
 
 <div class=footnote>Part 1 | Races</div>
 
@@ -1144,10 +1142,10 @@ In humanoid form, tibbits are small, stealthy, dark-skinned people with pointed 
 
 In their cat form, tibbits look like fat but energetic house cats. They appear identical to—and indistinguishable from—any common, domesticated breed.
 
-### Curiouser and Curiouser
-Tibbits tend to regard other folk with a detached sense of bemusement. Much of their lore and common wisdom regarding men, dwarves, and elves filters through their guise as house cats. Thus, tibbits see how other races act when they think no one else is around. To a tibbit, every intelligent creature is a bundle of secrets just waiting to unfurl before them.
-
-In general, tibbits find humanity's ambition, drive, and fiery passion intriguing. They consider dwarves overly dour. Elves strike them as kindred spirits, as tibbits appreciate that the long-lived races share a similar tendency to see issues from different perspectives. They adore gnomes and halflings and many good-aligned tibbits adopt such folk. More than one kobold or goblin party has descended upon a sleepy gnome village or halfling caravan only to find an enraged tibbit wizard waiting for them. Gnome and halfling folk who have benefited from such welcome surprises have strong traditions of taking care of stray cats and treating their feline pets as treasured companions.
+> ##### Curiouser and Curiouser
+> Tibbits tend to regard other folk with a detached sense of bemusement. Much of their lore and common wisdom regarding men, dwarves, and elves filters through their guise as house cats. Thus, tibbits see how other races act when they think no one else is around. To a tibbit, every intelligent creature is a bundle of secrets just waiting to unfurl before them.
+> 
+> In general, tibbits find humanity's ambition, drive, and fiery passion intriguing. They consider dwarves overly dour. Elves strike them as kindred spirits, as tibbits appreciate that the long-lived races share a similar tendency to see issues from different perspectives. They adore gnomes and halflings and many good-aligned tibbits adopt such folk. More than one kobold or goblin party has descended upon a sleepy gnome village or halfling caravan only to find an enraged tibbit wizard waiting for them. Gnome and halfling folk who have benefited from such welcome surprises have strong traditions of taking care of stray cats and treating their feline pets as treasured companions.
 
 \columnbreak
 
@@ -1231,6 +1229,167 @@ As a domestic, you were raised in the care of a wizard. You learned to respect h
 
 \pagebreakNum
 
+<img src="https://media-waterdeep.cursecdn.com/attachments/0/648/tieflingintro.png" class=top-full-image style="width: 200%;" />
+<img src="https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/641/420/618/636287076637981942.png" style="margin-top: -25px;" />
+
+<div class=racial-quote>
+
+“But you do see the way people look at you, devil’s child.”
+
+Those black eyes, cold as a winter storm, were staring right into her heart and the sudden seriousness in his voice jolted her.
+
+“What is it they say?” he asked. “One’s a curiosity, two’s a conspiracy —”
+
+“Three’s a curse,” she finished. “You think I haven’t heard that rubbish before?”
+
+“I know you have.” When she glared at him, he added, “It’s not as if I’m plumbing the depths of your mind, dear girl. That is the burden of every tiefling. Some break under it, some make it the millstone around their neck, some revel in it.” He tilted his head again, scrutinizing her, with that wicked glint in his eyes. “You fight it, don’t you? Like a little wildcat, I wager. Every little jab and comment just sharpens your claws.”
+
+&mdash; Erin M. Evans, Brimstone Angels
+</div>
+
+## Tiefling
+To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife, tieflings know that this is because a pact struck generations ago infused the essence of Asmodeus — overlord of the Nine Hells — into their bloodline. Their appearance and their nature are not their fault but the result of an ancient sin, for which they and their children and their children’s children will always be held accountable.
+
+\columnbreak
+
+<div style="height: 300px;"></div>
+
+### Infernal Bloodline
+Tieflings are derived from human bloodlines, and in the broadest possible sense, they still look human. However, their infernal heritage has left a clear imprint on their appearance. Tieflings have large horns that take any of a variety of shapes: some have curling horns like a ram, others have straight and tall horns like a gazelle’s, and some spiral upward like an antelopes’ horns. They have thick tails, four to five feet long, which lash or coil around their legs when they get upset or nervous. Their canine teeth are sharply pointed, and their eyes are solid colors — black, red, white, silver, or gold — with no visible sclera or pupil. Their skin tones cover the full range of human coloration, but also include various shades of red. Their hair, cascading down from behind their horns, is usually dark, from black or brown to dark red, blue, or purple.
+
+> ##### Mutual Mistrust
+> People tend to be suspicious of tieflings, assuming that their infernal heritage has left its mark on their personality and morality, not just their appearance. Shopkeepers keep a close eye on their goods when tieflings enter their stores, the town watch might follow a tiefling around for a while, and demagogues blame tieflings for strange happenings. The reality, though, is that a tiefling’s bloodline doesn’t affect his or her personality to any great degree. Years of dealing with mistrust does leave its mark on most tieflings, and they respond to it in different ways. Some choose to live up to the wicked stereotype, but others are virtuous. Most are simply very aware of how people respond to them. After dealing with this mistrust throughout youth, a tiefling often develops the ability to overcome prejudice through charm or intimidation.
+
+### Self-reliant and Suspicious
+Tieflings subsist in small minorities found mostly in human cities or towns, often in the roughest quarters of those places, where they grow up to be swindlers, thieves, or crime lords. Sometimes they live among other minority populations in enclaves where they are treated with more respect.
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+Lacking a homeland, tieflings know that they have to make their own way in the world and that they have to be strong to survive. They are not quick to trust anyone who claims to be a friend, but when a tiefling’s companions demonstrate that they trust him or her, the tiefling learns to extend the same trust to them. And once a tiefling gives someone loyalty, the tiefling is a firm friend or ally for life.
+
+### Tiefling Names
+Tiefling names fall into three broad categories. Tieflings born into another culture typically have names reflective of that culture. Some have names derived from the Infernal language, passed down through generations, that reflect their fiendish heritage. And some younger tieflings, striving to find a place in the world, adopt a name that signifies a virtue or other concept and then try to embody that concept. For some, the chosen name is a noble quest. For others, it’s a grim destiny.
+
+___
+- **Male Infernal Names:** Akmenos, Amnon, Barakas, Damakos, Ekemon, Iados, Kairon, Leucis, Melech, Mordai, Morthos, Pelaios, Skamos, Therai
+- **Female Infernal Names:** Akta, Anakis, Bryseis, Criella, Damaia, Ea, Kallista, Lerissa, Makaria, Nemeia, Orianna, Phelaia, Rieta
+- **“Virtue” Names:** Art, Carrion, Chant, Creed, Despair, Excellence, Fear, Glory, Hope, Ideal, Music, Nowhere, Open, Poetry, Quest, Random, Reverence, Sorrow, Temerity, Torment, Weary
+
+### Tiefling Traits
+Tieflings share certain racial traits as a result of their infernal descent.
+
+***Ability Score Increase.*** Your Constitution increases by 1.
+
+***Age.*** Tieflings mature at the same rate as humans but live a few years longer.
+
+***Alignment.*** Tieflings might not have an innate tendency toward evil, but many of them end up there. Evil or not, an independent nature inclines many tieflings toward a chaotic alignment.
+
+***Size.*** Tieflings are about the same size and build as humans. Your size is Medium.
+
+***Speed.*** Your base walking speed is 30 feet.
+
+***Darkvision.*** Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.
+
+***Languages.*** You can speak, read, and write Common and Infernal.
+
+***Subraces.*** Tieflings derive their subrace from their infernal ancestor.
+
+#### Asmodeus
+The tieflings connected to Nessus command the power of fire and darkness, guided by a keener than normal intellect, as befits those linked to Asmodeus himself.
+
+***Ability Score Increase.*** Your Intelligence score increases by 2.
+
+***Hellish Resistance.*** You have resistance to fire damage.
+
+***Legacy of Nessus.*** You know the _thaumaturgy_ cantrip. When you reach 3rd level, you can cast the _hellish rebuke_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _darkness_ spell once with this trait and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells.
+
+#### Baalzebul
+The crumbling realm of Maladomini is ruled by Baalzebul, who excels at corrupting those whose minor sins can be transformed into acts of damnation. Tieflings linked to this archdevil can corrupt others both physically and psychically.
+
+***Ability Score Increase.*** Your Charisma score increases by 2.
+
+***Fallen Resistance.*** You have resistance to necrotic damage.
+
+***Legacy of Maladomini.*** You know the _thaumaturgy_ cantrip. When you reach 3rd level, you can cast the _ray of sickness_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _crown of madness_ spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.
+
+#### Dispater
+The great city of Dis occupies most of Hel's second layer. It is a place where secrets are uncovered and shared with the highest bidder, making tieflings tied to Dispater excellent spies and infiltrators.
+
+***Ability Score Increase.*** Your Dexterity score increases by 2.
+
+***Hellish Resistance.*** You have resistance to fire damage.
+
+***Legacy of Dis.*** You know the _thaumaturgy_ cantrip. When you reach 3rd level, you can cast the _disguise self_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _detect thoughts_ spell once with this trait and regain the ability to do so when you finish a long rest. Constitution is your spellcasting ability for these spells.
+
+#### Fierna
+A master manipulator, Fierna grants forceful personalities to those tieflings tied to her.
+
+***Ability Score Increase.*** Your Charisma score increases by 2.
+
+***Hellish Resistance.*** You have resistance to fire damage.
+
+***Legacy of Phlegethos.*** You know the _friends_ cantrip. When you reach 3rd level, you can cast the _charm person_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _suggestion_ spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.
+
+<center><img src="http://media-waterdeep.cursecdn.com/attachments/0/647/tiefling1.png" style="width: 75%;" /></center>
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
+<img src="https://i.stack.imgur.com/pIqQ1.png" class=top-full-image style="mix-blend-mode: darken; width: 82%; margin-left: 8%;" />
+<div class=wide style="height: 410px;"></div>
+
+#### Glasya
+Glasya, Hell's criminal mastermind, grants her tieflings magic that is useful for committing heists.
+
+***Ability Score Increase.*** Your Dexterity score increases by 1.
+
+***Hellish Resistance.*** You have resistance to fire damage.
+
+***Legacy of Malbolge.*** You know the _minor illusion_ cantrip. When you reach 3rd level, you can cast the _disguise self_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _invisibility_ spell once with this trait and regain the ability to do so when you finish a long rest. Constitution is your spellcasting ability for these spells.
+
+#### Levistus
+Frozen Stygia is ruled by Levistus, an archdevil known for offering bargains to those who face an inescapable doom.
+
+***Ability Score Increase.*** Your Constitution score increases by 1, and your Charism ascore increases by 1.
+
+***Frigid Resistance.*** You have resistance to cold damage.
+
+***Legacy of Stygia.*** You know the _ray of frost_ cantrip. When you reach 3rd level, you can cast the _armor of Agathys_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _darkness_ spell once with this trait and regain the ability to do so when you finish a long rest. Constitution is your spellcasting ability for these spells.
+
+#### Mammon
+The great miser Mammon loves coins above all else.  Tieflings tied to him excel at gathering and safeguarding wealth.
+
+***Ability Score Increase.*** Your Intelligence score increases by 1.
+
+***Boggy Resistance.*** You have resistance to acid damage.
+
+***Legacy of Minauros.*** You know the _mage hand__ cantrip. When you reach 3rd level, you can cast the _floating disk_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _arcane lock__ spell once with this trait and regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells.
+
+#### Mephistopheles
+In the frozen realm of Cania, Mephistopheles offers arcane power to those who entreat with him. Tieflings linked to him master some arcane magic.
+
+***Ability Score Increase.*** Your Charisma score increases by 2.
+
+***Frigid Resistance.*** You have resistance to cold damage.
+
+***Legacy of Cania.*** You know the _mage hand_ cantrip. When you reach 3rd level, you can cast the _burning hands_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _flame blade_ spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.
+
+#### Zariel
+Tieflings with a blood tie to Azariel are stronger than the typical tiefling, and receive magical abilities that aid them in battle.
+
+***Ability Score Increase.*** Your Strength score increases by 2.
+
+***Radiant Resistance.*** You have resistance to radiant damage.
+
+***Legacy of Avernus.*** You know the _thaumaturgy_ cantrip. When you reach 3rd level, you can cast the _searing smite_ spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the _branding smite_ spell once with this trait and regain the ability to do so when you finish a long rest. Strength is your spellcasting ability for these spells.
+
+<div class=footnote>Part 1 | Races</div>
+
+\pagebreakNum
+
 # Appendix B<s>:</s> <span>Rules Changes</span>
 Throughout this document, a number of rules have been changed from those which appear in the Dungeons & Dragons Basic Rules.  In order to aid players with understanding the differences between this document and the Basic Rules, this appendix attempts to detail each rules change.  Explanations for these changes have not been provided, in order to keep this section succinct.
 
@@ -1239,7 +1398,8 @@ Throughout this document, a number of rules have been changed from those which a
 - When leveling up, players cannot take the average for hit points. They can, however, ask the DM to roll for them, instead.
 
 ### Chapter 2: Races
-- The elven subraces have been tailored to games set on Aesl.  Subraces from other sources are allowed only with permission, and after carefully working them into the theme of Aesl.
+- The elven subraces have been tailored to games set on Aesl.
+- Tieflings now have subraces, and these have been tailored to games set on Aesl.
 
 \pagebreakNum
 
