@@ -89,8 +89,10 @@ export default {
                     padding: 0 0.5em;
                     text-decoration: none;
 
-                    &:hover {
+                    &:hover { border-bottom: 4px solid #08C; }
+                    &.router-link-active {
                         border-bottom: 4px solid #08C;
+                        color: #08C;
                     }
                 }
 
