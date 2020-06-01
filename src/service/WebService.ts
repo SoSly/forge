@@ -24,7 +24,7 @@ export default class WebService {
         this.app.keys = ['my secret'];
         this.app.use(Session({}, this.app));
         this.app.use(bodyParser());
-        this.app.use(serve(path.resolve('./vue')))
+        this.app.use(serve(path.resolve('./public')))
 
         setupAuthMiddleware(this.app, config);
         setupProfileMiddleware(this.app, config);
