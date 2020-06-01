@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "14.2.x",
-    "npmm": "6.14.x"
+    "npm": "6.14.x"
   },
   "repository": {
     "type": "git",
@@ -50,8 +50,9 @@
     "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.25",
     "typescript": "^3.9.3",
-    "vue": "^2.5.11",
-    "vue-router": "^3.0.1"
+    "vue": "^2.6.11",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
