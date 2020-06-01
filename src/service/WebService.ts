@@ -8,6 +8,7 @@ import bodyParser from "koa-bodyparser";
 import path from 'path';
 import serve from 'koa-static';
 import {setupAuthMiddleware} from "@usecase/api/Auth";
+import { setupProfileMiddleware } from "@usecase/api/Profile";
 
 export default class WebService {
     app: Koa;
@@ -23,9 +24,10 @@ export default class WebService {
         this.app.keys = ['my secret'];
         this.app.use(Session({}, this.app));
         this.app.use(bodyParser());
-        this.app.use(serve(path.resolve('./public')))
+        this.app.use(serve(path.resolve('./vue')))
 
         setupAuthMiddleware(this.app, config);
+        setupProfileMiddleware(this.app, config);
     }
 
     async start(): Promise<void> {
