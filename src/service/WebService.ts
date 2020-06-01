@@ -1,12 +1,13 @@
 import {Config} from "convict";
-import Koa, { Context } from 'koa';
+import Koa from 'koa';
 import KoaLogger from 'koa-logger';
 import {Server} from 'net';
 import Session from 'koa-session';
+
 import bodyParser from "koa-bodyparser";
-import { setupAuthMiddleware } from "@usecase/api/Auth";
-import { setupWelcomeMiddleware } from "@usecase/api/Welcome";
-import { setupProfileMiddleware } from "@usecase/api/Profile";
+import path from 'path';
+import serve from 'koa-static';
+import {setupAuthMiddleware} from "@usecase/api/Auth";
 
 export default class WebService {
     app: Koa;
@@ -22,10 +23,9 @@ export default class WebService {
         this.app.keys = ['my secret'];
         this.app.use(Session({}, this.app));
         this.app.use(bodyParser());
+        this.app.use(serve(path.resolve('./public')))
 
-        setupWelcomeMiddleware(this.app, config);
         setupAuthMiddleware(this.app, config);
-        setupProfileMiddleware(this.app, config);
     }
 
     async start(): Promise<void> {

@@ -1,13 +1,16 @@
+import dotenv from 'dotenv';
 import {Config} from 'convict';
 import convict from 'convict';
 import { existsSync } from 'fs';
+
+dotenv.config();
 
 const ForgeConfig: Config<any> = convict({
     Database: {
         driver: {
             doc: 'The Database type to instantiate',
             format: String,
-            default: 'sqlite',
+            default: 'sqljs',
             env: 'DATABASE_DRIVER'
         },
         logging: {
@@ -19,7 +22,7 @@ const ForgeConfig: Config<any> = convict({
         connection: {
             doc: 'The filename or URL to connect to the database',
             format: String,
-            default: '',
+            default: null,
             env: 'DATABASE_URL',
             sensitive: true
         }
@@ -45,11 +48,6 @@ const ForgeConfig: Config<any> = convict({
             format: ['development', 'production', 'test'],
             default: 'development',
             env: 'NODE_ENV'
-        },
-        filePath: {
-            doc: 'ThePath to .env file',
-            format: String,
-            default: '.env.json',
         }
     },
     HTTP: {
@@ -73,11 +71,6 @@ const ForgeConfig: Config<any> = convict({
         }
     },
 });
-
-const environment = ForgeConfig.get('Environment');
-if (environment.name === 'development' && existsSync(environment.filePath)) {
-    ForgeConfig.loadFile(environment.filePath);
-}
 
 ForgeConfig.validate();
 
