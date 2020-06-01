@@ -20,7 +20,9 @@
     <ul class="left">
         <li class="logo"><router-link to="/"><img src="../assets/logo.png" /></router-link></li>
         <template v-if="loggedIn">
-            <li class="workbench"><router-link to="/workbench">Your workbench</router-link></li>
+            <li class="documents"><router-link to="/documents">Your documents</router-link></li>
+            <li class="maps"><router-link to="/maps">Your maps</router-link></li>
+            <li class="characters"><router-link to="/characters">Your characters</router-link></li>
         </template>
     </ul>
 </nav>
@@ -81,7 +83,7 @@ export default {
                 a, a:visited {
                     align-items: center;
                     border-bottom: 4px solid transparent;
-                    color: white;
+                    color: #999;
                     display: flex;
                     font-size: 14pt;
                     font-weight: bold;
@@ -92,12 +94,13 @@ export default {
                     &:hover { border-bottom: 4px solid #08C; }
                     &.router-link-active {
                         border-bottom: 4px solid #08C;
-                        color: #08C;
+                        color: white;
                     }
                 }
 
                 &.logo {
-                    background: white;
+                    background: #CCC;
+                    border: 1px solid transparent;
                     border-radius: 50%;
                     height: 35px;
                     width: 35px;
@@ -116,7 +119,8 @@ export default {
                     }
 
                     &:hover {
-                        background: #CCC;
+                        background: #FFF;
+                        border: 1px solid #08C;
                     }
                 }
             }
