@@ -21,10 +21,10 @@ export default {
 </script>
 
 <style lang="scss">
+html { height: 100% }
 body {
     background: white;
-    article {
-        padding-top: 64px;
-    }
+    min-height: 100%;
+    article { padding-top: 64px; }
 }
 </style>
