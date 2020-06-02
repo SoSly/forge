@@ -1,4 +1,4 @@
-vue/dist/
 node_modules/
+public/dist/
 yarn-error.log
 .env
