@@ -20,9 +20,11 @@
     <ul class="left">
         <li class="logo"><router-link to="/"><img src="../assets/logo.png" /></router-link></li>
         <template v-if="loggedIn">
-            <li class="documents"><router-link to="/documents">Your documents</router-link></li>
-            <li class="maps"><router-link to="/maps">Your maps</router-link></li>
+            <li class="workbench"><router-link to="/workbench">Your workbench</router-link></li>
+            <!--
+            <li class="campaigns"><router-link to="/campaigns">Your campaigns</router-link></li>
             <li class="characters"><router-link to="/characters">Your characters</router-link></li>
+            //-->
         </template>
     </ul>
 </nav>
