@@ -294,16 +294,16 @@ export default {
 }
 
 .dark #pagenav {
-    background: #333;
+    background: #111;
 
     ul.right li.profile-menu .submenu {
-        background: #111;
+        background: #333;
         ul {
-            border-top-color: #333;
-            a { color: #FFF; }
+            border-top-color: #111;
+            a { color: #AAA; }
         }
 
-        li > span { color: #FFF; }
+        li > span { color: #AAA; }
     }
 }
 </style>

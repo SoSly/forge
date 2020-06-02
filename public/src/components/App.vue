@@ -36,8 +36,8 @@ body { min-height: 100%; }
     article { padding-top: 64px; }
 
     &.dark { 
-        background: #111; 
-        color: white;
+        background: #333; 
+        color: #DDD;
     }
 }
 </style>
