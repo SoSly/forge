@@ -1,5 +1,5 @@
 <template>
-<div id="home">Welcome to the Document Forge</div>
+<section id="home">Welcome to the Document Forge</section>
 </template>
 
 <script>

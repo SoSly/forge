@@ -2,13 +2,20 @@
 <nav id="pagenav">
     <ul class="right">
         <template v-if="loggedIn">
-            <li class="profile" v-on:click="showProfileMenu()" v-click-outside="hideProfileMenu">
-                <img v-bind:src="avatar" v-on:click="showProfileMenu()" />
+            <li class="profile-menu" v-on:click="showProfileMenu()" v-click-outside="hideProfileMenu">
+                <img v-bind:src="avatar" v-on:click="showProfileMenu()" />                
                 <div v-if="profileMenu" class="submenu">
                     <p>Signed in as <strong>{{user.username}}</strong>.</p>
                     <ul>
-                        <li><router-link to="/profile">Your profile</router-link></li>
-                        <li><a href="/auth/logout">Sign out</a></li>
+                        <li class="profile"><router-link to="/profile">Your profile</router-link></li>
+                        <li class="darkmode">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" v-model="darkmode" />
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li class="logout"><a href="/auth/logout">Sign out</a></li>
                     </ul>
                 </div>
             </li>
@@ -49,6 +56,14 @@ export default {
         }
     },
     computed: {
+        darkmode: {
+            get() {
+                return this.$store.state.user.darkmode;
+            },
+            set(val) {
+                this.$store.commit('user/toggleDarkMode', val);
+            }
+        },
         ...mapState({
             loggedIn: (state) => state.user.loggedIn,
             user: (state) => state.user.user
@@ -150,7 +165,7 @@ export default {
                     }
                 }
 
-                &.profile {
+                &.profile-menu {
                     background: white;
                     border-radius: 50%;
                     cursor: pointer;
@@ -180,7 +195,7 @@ export default {
                             strong { font-weight: bold; }
                         }
 
-                        ul { 
+                        ul {
                             border-top: 1px solid black;
                             display: block; 
                             padding-top: 0.5em;
@@ -190,6 +205,13 @@ export default {
                             display: block;
                             height: auto;
                             margin-left: 0;
+
+                            & > span {
+                                display: inline-block;
+                                color: black;
+                                line-height: 1.2em;
+                                padding: 0.25em 0.5em;
+                            }
 
                             a {
                                 border-bottom: none;
@@ -206,15 +228,82 @@ export default {
                             }
                         }
 
-                        a {
+                        a, span {
                             display: block;
                             font-size: 10pt;
+                            font-weight: bold;
                             text-decoration: none;
+                        }
+
+                        label.switch {
+                            position: relative;
+                            display: inline-block;
+                            width: 2em;
+                            height: 1em;
+
+                            input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+
+                                &:checked + .slider { 
+                                    background-color: #08C; 
+                                    &:before {
+                                        -webkit-transform: translateX(1em);
+                                        -ms-transform: translateX(1em);
+                                        transform: translateX(1em);
+                                    }
+                                }
+                                &:focus + .slider { box-shadow: 0 0 1px #08C; }
+                            }
+
+                            .slider {
+                                position: absolute;
+                                cursor: pointer;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background-color: #ccc;
+                                -webkit-transition: 0.4s;
+                                transition: 0.4s;
+
+                                &.round { 
+                                    border-radius: 1em; 
+                                    &:before { border-radius: 50%; }
+                                }
+
+                                &:before {
+                                    position: absolute;
+                                    content: '';
+                                    height: 1em;
+                                    width: 1em;
+                                    left: 2px;
+                                    bottom: 2px;
+                                    background-color: white;
+                                    -webkit-transition: 0.4s;
+                                    transition: 0.4s;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+    }
+}
+
+.dark #pagenav {
+    background: #333;
+
+    ul.right li.profile-menu .submenu {
+        background: #111;
+        ul {
+            border-top-color: #333;
+            a { color: #FFF; }
+        }
+
+        li > span { color: #FFF; }
     }
 }
 </style>

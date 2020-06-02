@@ -1,10 +1,10 @@
 <template>
-    <div id="profile" v-if="loggedIn">
+    <section id="profile" v-if="loggedIn">
         <section class="left">
             <img v-bind:src="avatar" />
             <h1>{{user.displayName || user.username}}</h1>
         </section>
-    </div>
+    </section>
 </template>
 
 <script>
