@@ -2,7 +2,7 @@ import {Config} from 'convict';
 import DiscordStrategy from 'passport-discord';
 import Passport from 'koa-passport';
 import Router from '@koa/router';
-import {User, UserInterface} from '@domain/User';
+import {User} from '@domain/User';
 import Koa, {Context, Next, Middleware} from 'koa';
 
 const ErrUserNotFound = new Error('User not found');
@@ -21,7 +21,7 @@ class Auth {
             clientID: config.get('Discord').client,
             clientSecret: config.get('Discord').secret,
             scope: ['identify'],
-        }, this.verifyStrategy);
+        }, this.verifyDiscordStrategy);
 
         // configure Passport
         Passport.serializeUser(this.serializeUser);
@@ -38,7 +38,7 @@ class Auth {
 
     private async deserializeUser(obj: string, done:  (err: any, user?: User) => void): Promise<any> {
         try {
-            const profile: UserInterface = JSON.parse(obj);
+            const profile: Object = JSON.parse(obj);
             const user = await User.findOneOrCreate(profile);
             if (user) done(null, user);
             done(ErrUserNotFound);
@@ -58,10 +58,8 @@ class Auth {
     private getCallbackURL(): string {
         const http = this.config.get('HTTP');
         switch(this.config.get('Environment').name) {
-            case 'development':
-                return `${http.protocol}://${http.host}:${http.port}/auth/discord/callback`;
-            default:
-                return `${http.protocol}://${http.host}/auth/discord/callback`;
+            case 'development': return `${http.protocol}://${http.host}:${http.port}/auth/discord/callback`;
+            default: return `${http.protocol}://${http.host}/auth/discord/callback`;
         }
     }
 
@@ -86,16 +84,15 @@ class Auth {
         done(null, JSON.stringify(user));
     }
 
-    private async verifyStrategy(accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, done: CallableFunction): Promise<void> {
+    private async verifyDiscordStrategy(accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, done: CallableFunction): Promise<void> {
         try {
-            const lookup: UserInterface = {
+            const user = await User.findOneOrCreate({
                 provider: profile.provider,
                 provider_id: profile.id,
                 username: profile.username,
                 avatar: profile.avatar,
                 locale: profile.locale
-            }
-            const user = await User.findOneOrCreate(lookup);
+            });
             done(null, user);
         }
         catch (err) {

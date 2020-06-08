@@ -4,34 +4,44 @@ import {User} from '@domain/User'
 
 
 export default class DatabaseService {
-    config: ConnectionOptions
-    connection: Connection
+    private config: ConnectionOptions
+    private connection: Connection
 
     constructor(config: Config<any>) {
+        this.config = this.getConnectionConfig(config);
+    }
+
+    private getConnectionConfig(config: Config<any>): ConnectionOptions {
+        const baseConfig = {
+            entities: [User]
+        };
+
+        let connectionConfig: ConnectionOptions;
         switch (config.get('Database').driver) {
             case 'sqlite':
-                this.config = {
+                connectionConfig = {
+                    ...baseConfig,
                     database: config.get('Database').connection,
-                    entities: [User],
-                    type: 'sqlite',
+                    type: 'sqlite'
                 };
                 break;
             default:
-                this.config = {
-                    entities: [User],
-                    synchronize: true,
+                connectionConfig = {
+                    ...baseConfig,
                     type: config.get('Database').driver,
                     url: config.get('Database').connection,
+                    migrations: ['../usecase/migrations/*.ts']
                 };
                 break;
         }
+        return connectionConfig;
     }
-    
-    async start(): Promise<void> {
+
+    public async start(): Promise<void> {
         this.connection = await createConnection(this.config);
     }
 
-    async stop(): Promise<void> {
+    public async stop(): Promise<void> {
         await this.connection.close();
     }
 }

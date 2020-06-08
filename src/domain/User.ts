@@ -1,46 +1,32 @@
 import FlakeId from "flake-idgen";
-import {Entity, Column, PrimaryColumn, BaseEntity} from 'typeorm';
-import { Interface } from "readline";
+import {Entity, Column, PrimaryColumn, BaseEntity, DeepPartial, FindOneOptions} from 'typeorm';
 
-export interface UserInterface {
-    id?: string,
-    username?: string,
-    provider?: string,
-    provider_id?: string,
-    avatar?: string,
-    locale?: string 
-}
-
-@Entity()
+@Entity({name: 'user'})
 export class User extends BaseEntity {
     @PrimaryColumn()
-    id: string;
+    public id: string;
 
     @Column()
-    username: string;
+    public username: string;
 
     @Column()
-    provider: string;
+    public provider: string;
 
     @Column()
-    provider_id: string;
+    public provider_id: string;
 
     @Column()
-    avatar?: string;
+    public avatar?: string;
     
     @Column()
-    locale: string;
+    public locale: string;
 
-    static async findOneOrCreate(params: UserInterface): Promise<User|void> {
-        let user = await User.findOne(params);
-        if (!user) {
-            user = new User();
-            user.id = new FlakeId().next().toString('base64');
-            user.provider = 'discord';
-            if (params.provider_id) user.provider_id = params.provider_id;
-            if (params.locale) user.locale = params.locale;
-            if (params.username) user.username = params.username;
-            user.avatar = params.avatar;
+    public static async findOneOrCreate(params: DeepPartial<User>): Promise<User|void> {
+        const {provider, provider_id} = params;        
+        let user: User|undefined = await this.findOne({provider, provider_id});
+        if (user === undefined) {
+            params.id = new FlakeId().next().toString('hex');
+            user = this.create(params);
             await user.save();
         }
         return user;
