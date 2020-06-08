@@ -12,9 +12,8 @@ export default {
         avatar(state) {
             switch(state.user.provider) {
                 case 'discord':
-                    const id = state.user.provider_id;
-                    const avatar = state.user.avatar;
-                    return `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`;
+                    const {providerId, avatar} = state.user;
+                    return `https://cdn.discordapp.com/avatars/${providerId}/${avatar}.png`;
             }
         }
     },
