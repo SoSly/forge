@@ -1,7 +1,10 @@
 import {Config} from 'convict';
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
-import {User} from '@domain/User'
 
+// Models
+import {Document} from '@domain/Document';
+import {Folder} from '@domain/Folder';
+import {User} from '@domain/User';
 
 export default class DatabaseService {
     private config: ConnectionOptions
@@ -13,7 +16,8 @@ export default class DatabaseService {
 
     private getConnectionConfig(config: Config<any>): ConnectionOptions {
         const baseConfig = {
-            entities: [User]
+            entities: [Document,Folder,User],
+            synchronize: true
         };
 
         let connectionConfig: ConnectionOptions;
@@ -29,8 +33,7 @@ export default class DatabaseService {
                 connectionConfig = {
                     ...baseConfig,
                     type: config.get('Database').driver,
-                    url: config.get('Database').connection,
-                    migrations: ['../usecase/migrations/*.ts']
+                    url: config.get('Database').connection
                 };
                 break;
         }

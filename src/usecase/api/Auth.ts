@@ -88,7 +88,7 @@ class Auth {
         try {
             const user = await User.findOneOrCreate({
                 provider: profile.provider,
-                provider_id: profile.id,
+                providerId: profile.id,
                 username: profile.username,
                 avatar: profile.avatar,
                 locale: profile.locale
