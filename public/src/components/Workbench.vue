@@ -51,6 +51,9 @@ export default {
         ...mapGetters({
         })
     },
+    created() {
+        this.$store.dispatch('folder/getFolder', this.$route.params.id);
+    },
     methods: {
         lastModified(timestamp) { 
             timestamp = Math.floor(Math.random() * timestamp);

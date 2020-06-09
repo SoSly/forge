@@ -8,7 +8,8 @@ import bodyParser from "koa-bodyparser";
 import path from 'path';
 import serve from 'koa-static';
 import {setupAuthMiddleware} from "@usecase/api/Auth";
-import { setupProfileMiddleware } from "@usecase/api/Profile";
+import {setupFolderMiddleware} from "@usecase/api/Folder";
+import {setupProfileMiddleware} from "@usecase/api/Profile";
 
 export default class WebService {
     app: Koa;
@@ -27,6 +28,7 @@ export default class WebService {
         this.app.use(serve(path.resolve('./public')))
 
         setupAuthMiddleware(this.app, config);
+        setupFolderMiddleware(this.app, config);
         setupProfileMiddleware(this.app, config);
     }
 

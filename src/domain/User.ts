@@ -3,8 +3,7 @@ import {Entity, Column, PrimaryColumn, BaseEntity, DeepPartial, Index, OneToMany
 
 // Models
 import {Folder} from "./Folder";
-import {Document} from "./Document";
-import { UserSettings } from "./UserSettings";
+import {UserSettings} from "./UserSettings";
 
 @Entity({name: 'user'})
 @Index(['provider', 'providerId'], {unique: true})
@@ -27,22 +26,22 @@ export class User extends BaseEntity {
     @Column({type: 'varchar', length: 255, nullable: false})
     public locale: string;
 
-    @OneToMany(type => Folder, folder => folder.user)
+    @OneToMany(type => Folder, folder => folder.user, {cascade: true})
     public folders: Folder[];
-
-    @OneToMany(type => Document, document => document.user)
-    public documents: Document[];
 
     @OneToOne(type => UserSettings, settings => settings.user, {cascade: true})
     public settings: UserSettings;
 
     public static async findOneOrCreate(params: DeepPartial<User>): Promise<User|void> {
         const {provider, providerId} = params;        
-        let user: User|undefined = await this.findOne({provider, providerId}, {relations: ['settings']});
+        let user: User|undefined = await User.findOne({provider, providerId}, {relations: ['settings']});
         if (user === undefined) {
             const id = new FlakeId().next().toString('hex');
-            user = this.create({id, ...params});
+            user = User.create({id, ...params});
             user.settings = UserSettings.create({id, user});
+            const rootFolder = Folder.create({id, user, name: `Your Workbench`});
+            user.folders = [rootFolder];
+            console.log(user);
             await user.save();
         }
         return user;

@@ -1,8 +1,11 @@
-import {Entity, Column, PrimaryColumn, BaseEntity, Index, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import FlakeId from 'flake-idgen';
+import {Entity, Column, PrimaryColumn, BaseEntity, Index, ManyToOne, OneToMany, CreateDateColumn, DeepPartial, UpdateDateColumn} from 'typeorm';
 
 // Models
 import {Document} from './Document';
 import {User} from './User';
+
+const ROOT_FOLDER_NAME = 'Root Folder';
 
 @Entity({name: 'folder'})
 export class Folder extends BaseEntity {

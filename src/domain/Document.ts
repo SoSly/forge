@@ -21,7 +21,7 @@ export class Document extends BaseEntity {
     @UpdateDateColumn()
     public updatedAt: Date;
 
-    @ManyToOne(type => User, user => user.documents)
+    @ManyToOne(type => User)
     public user: User;
 
     @ManyToOne(type => Folder, folder => folder.documents)

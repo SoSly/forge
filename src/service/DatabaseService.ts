@@ -1,11 +1,12 @@
 import {Config} from 'convict';
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
+import Path from 'path';
 
 // Models
 import {Document} from '@domain/Document';
 import {Folder} from '@domain/Folder';
 import {User} from '@domain/User';
-import { UserSettings } from '@domain/UserSettings';
+import {UserSettings} from '@domain/UserSettings';
 
 export default class DatabaseService {
     private config: ConnectionOptions
@@ -23,11 +24,12 @@ export default class DatabaseService {
 
         let connectionConfig: ConnectionOptions;
         switch (config.get('Database').driver) {
-            case 'sqlite':
+            case 'sqljs':
                 connectionConfig = {
                     ...baseConfig,
-                    database: config.get('Database').connection,
-                    type: 'sqlite'
+                    autoSave: true,
+                    location: Path.join(process.cwd(), config.get('Database').connection),
+                    type: 'sqljs',
                 };
                 break;
             default:

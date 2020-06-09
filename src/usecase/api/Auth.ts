@@ -6,9 +6,8 @@ import {User} from '@domain/User';
 import Koa, {Context, Next, Middleware} from 'koa';
 
 const ErrUserNotFound = new Error('User not found');
-const RETURN_TO_COOKIE = 'forge.returnTo';
 
-class Auth {
+class AuthRouter {
     private config: Config<any>;
     private router: Router;
 
@@ -48,11 +47,9 @@ class Auth {
         }
     }
 
-    public ensureAuth(ctx: Context, next: Next): void {
-        if (!ctx.isAuthenticated()) {
-            return ctx.throw(401, 'Unauthorized');
-        }
-        next();
+    public async ensureAuth(ctx: Context, next: Next): Promise<void> {
+        if (!ctx.isAuthenticated()) return ctx.throw(401, {data: {error: 'UNAUTHORIZED', message: 'Invalid token.'}});
+        await next();
     }
 
     private getCallbackURL(): string {
@@ -71,7 +68,7 @@ class Auth {
         ctx.redirect('/');
     }
 
-    private handleLogout(ctx: Context, next: Next): void {
+    private async handleLogout(ctx: Context, next: Next): Promise<void> {
         ctx.logout();
         ctx.redirect('/');
     }
@@ -102,7 +99,7 @@ class Auth {
 }
 
 export function setupAuthMiddleware(app: Koa, config: Config<any>): void {
-    const auth = new Auth(config);
+    const auth = new AuthRouter(config);
     app.use(Passport.initialize());
     app.use(Passport.session());
     app.use(auth.routes());

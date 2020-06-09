@@ -2,7 +2,7 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
 
-class Profile {
+class ProfileRouter {
     private config: Config<any>;
     private router: Router;
 
@@ -47,7 +47,7 @@ class Profile {
 }
 
 export function setupProfileMiddleware(app: Koa, config: Config<any>): void {
-    const profile = new Profile(config);
+    const profile = new ProfileRouter(config);
     app.use(profile.routes());
     app.use(profile.allowedMethods());
 }

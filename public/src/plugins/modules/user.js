@@ -1,16 +1,14 @@
 import axios from 'axios';
 
 function errorHandler(err) {
-    console.error(`API Error: ${err}`);
+    console.error(`API Error`, err);
 }
 
 export default {
     actions: {
         getUser(context) {
             axios.get('/api/profile')
-                .then((result) => {
-                    context.commit('load', result.data);
-                })
+                .then((result) => context.commit('load', result.data))
                 .catch(errorHandler);
         },
         toggleDarkMode(context, mode) {
