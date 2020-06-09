@@ -20,6 +20,9 @@
     "start:dev": "concurrently \"npm run build:dev\" \"ts-node-dev --require tsconfig-paths/register --inspect --respawn --transpileOnly ./src/main.ts\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
     "@koa/router": "^9.0.1",
     "@types/convict": "^5.2.1",
     "@types/dotenv": "^8.2.0",

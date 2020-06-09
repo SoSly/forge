@@ -26,7 +26,6 @@ export default {
 
 <style lang="scss">
 #profile {
-    background: white;
     margin: 25px auto 0;
     width: 8.5in;
 
@@ -45,5 +44,9 @@ export default {
             font-weight: bold;
         }
     }
+}
+
+.dark #profile {
+    .left { border-right: 1px solid #666; }
 }
 </style>

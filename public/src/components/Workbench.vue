@@ -2,9 +2,11 @@
     <section id="workbench" v-if="loggedIn">
         <nav>
             <ul>
-                <li><router-link to="workbench">home-icon-here</router-link></li>
+                <li><router-link to="/workbench">
+                    <font-awesome-icon icon="home" size="1x" />
+                </router-link></li>
                 <li v-for="path in folder.path" :key="path.id">
-                    <router-link :to="{path: `workbench/${path.id}`}">{{path.name}}</router-link>
+                    <router-link :to="{path: `/workbench/${path.id}`}">{{path.name}}</router-link>
                 </li>
                 <li class="current">{{folder.name}}</li>
             </ul>
