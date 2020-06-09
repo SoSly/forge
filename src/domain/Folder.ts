@@ -6,7 +6,7 @@ import {User} from './User';
 
 @Entity({name: 'folder'})
 export class Folder extends BaseEntity {
-    @PrimaryColumn({type: 'char', length: 16})
+    @PrimaryColumn({type: 'varchar', length: 16})
     public id: string;
 
     @Column({type: 'varchar', length: 255, nullable: false})

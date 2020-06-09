@@ -16,7 +16,10 @@ export default {
     name: 'app',
     computed: {
         darkmode() {
-            return this.$store.state.user.darkmode ? 'dark' : 'light';
+            if (this.$store.state.user.user) {
+                return this.$store.state.user.user.settings.darkmode ? 'dark' : 'light';
+            }
+            return 'light';
         }
     },
     created() {

@@ -58,10 +58,10 @@ export default {
     computed: {
         darkmode: {
             get() {
-                return this.$store.state.user.darkmode;
+                return this.$store.state.user.user.settings.darkmode;
             },
             set(val) {
-                this.$store.commit('user/toggleDarkMode', val);
+                this.$store.dispatch('user/toggleDarkMode', val);
             }
         },
         ...mapState({
@@ -182,7 +182,7 @@ export default {
                     .submenu {
                         background: white;
                         border-radius: 5px;
-                        border: 1px solid #333;
+                        border: 1px solid #666;
                         display: block;
                         right: 1em;
                         padding: 0.5em 0;

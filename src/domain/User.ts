@@ -1,14 +1,15 @@
 import FlakeId from "flake-idgen";
-import {Entity, Column, PrimaryColumn, BaseEntity, DeepPartial, Index, OneToMany} from 'typeorm';
+import {Entity, Column, PrimaryColumn, BaseEntity, DeepPartial, Index, OneToMany, OneToOne} from 'typeorm';
 
 // Models
 import {Folder} from "./Folder";
 import {Document} from "./Document";
+import { UserSettings } from "./UserSettings";
 
 @Entity({name: 'user'})
 @Index(['provider', 'providerId'], {unique: true})
 export class User extends BaseEntity {
-    @PrimaryColumn({type: 'char', length: 16})
+    @PrimaryColumn({type: 'varchar', length: 16})
     public id: string;
 
     @Column({type: 'varchar', length: 255, nullable: false})
@@ -32,12 +33,16 @@ export class User extends BaseEntity {
     @OneToMany(type => Document, document => document.user)
     public documents: Document[];
 
+    @OneToOne(type => UserSettings, settings => settings.user, {cascade: true})
+    public settings: UserSettings;
+
     public static async findOneOrCreate(params: DeepPartial<User>): Promise<User|void> {
         const {provider, providerId} = params;        
-        let user: User|undefined = await this.findOne({provider, providerId});
+        let user: User|undefined = await this.findOne({provider, providerId}, {relations: ['settings']});
         if (user === undefined) {
-            params.id = new FlakeId().next().toString('hex');
-            user = this.create(params);
+            const id = new FlakeId().next().toString('hex');
+            user = this.create({id, ...params});
+            user.settings = UserSettings.create({id, user});
             await user.save();
         }
         return user;

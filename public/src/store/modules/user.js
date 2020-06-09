@@ -1,11 +1,24 @@
 import axios from 'axios';
 
+function errorHandler(err) {
+    console.error(`API Error: ${err}`);
+}
+
 export default {
     actions: {
-        getUser({commit}) {
+        getUser(context) {
             axios.get('/api/profile')
-                .then((result) => commit('load', result.data))
-                .catch((err) => {throw new Error(`API ${err}`);});
+                .then((result) => {
+                    context.commit('load', result.data);
+                })
+                .catch(errorHandler);
+        },
+        toggleDarkMode(context, mode) {
+            axios.patch('/api/settings', {darkmode: mode})
+                .then((result) => {
+                    context.commit('toggleDarkMode', mode);
+                })
+                .catch(errorHandler);
         }
     },
     getters: {
@@ -15,6 +28,9 @@ export default {
                     const {providerId, avatar} = state.user;
                     return `https://cdn.discordapp.com/avatars/${providerId}/${avatar}.png`;
             }
+        },
+        darkmode(state) {
+            return (state.user.settings.darkmode === true);
         }
     },
     mutations: {
@@ -22,16 +38,14 @@ export default {
             if (user && user.id) {
                 state.loggedIn = true;
                 state.user = user;
-                // state.darkmode = user.darkmode === false ? false : true;
             }
         },
         toggleDarkMode(state, mode) {
-            state.darkmode = mode;
+            state.user.settings.darkmode = mode;
         }
     },
     namespaced: true,
     state: {
-        darkmode: false,
         loggedIn: false,
         user: null
     }

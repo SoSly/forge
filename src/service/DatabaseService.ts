@@ -5,6 +5,7 @@ import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 import {Document} from '@domain/Document';
 import {Folder} from '@domain/Folder';
 import {User} from '@domain/User';
+import { UserSettings } from '@domain/UserSettings';
 
 export default class DatabaseService {
     private config: ConnectionOptions
@@ -16,7 +17,7 @@ export default class DatabaseService {
 
     private getConnectionConfig(config: Config<any>): ConnectionOptions {
         const baseConfig = {
-            entities: [Document,Folder,User],
+            entities: [Document,Folder,User,UserSettings],
             synchronize: true
         };
 
