@@ -2,6 +2,12 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
 import {Folder} from '@domain/Folder';
+import {User} from '@domain/User';
+
+function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
+    if (!folder) ctx.throw(404);
+    if (folder.user.id !== ctx.state.user.id) ctx.throw(401);
+}
 
 class FolderRouter {
     private config: Config<any>;
@@ -22,7 +28,9 @@ class FolderRouter {
     private async deleteFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            await Folder.delete({id});
+            const folder = await Folder.findOne({id});
+            validateFolderOwner(ctx, folder);
+            await Folder.delete(folder!);
             ctx.status = 203;
             ctx.body = '';
         }
@@ -36,7 +44,8 @@ class FolderRouter {
         try {
             const user = ctx.state.user;
             const id = ctx.params.id || user.id;
-            const folder = await Folder.findOne({id}, {relations: ['children', 'parent']});
+            const folder = await Folder.findOne({id}, {relations: ['children', 'parent', 'user']});
+            validateFolderOwner(ctx, folder);
             ctx.type = 'json';
             ctx.body = folder;
         }
@@ -49,14 +58,13 @@ class FolderRouter {
     private async patchFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const folder = await Folder.findOne({id});
-            if (folder === undefined) return ctx.throw(404);
+            const folder = await Folder.findOne({id}, {relations: ['user']});
+            validateFolderOwner(ctx, folder);
             const changes = ctx.request.body;
             for (let field in changes) {
-                folder[field] = changes[field];
+                folder![field] = changes[field];
             }
-            console.log(folder);
-            await folder.save();
+            await folder!.save();
             ctx.status = 204;
             ctx.body = '';
         }
@@ -69,6 +77,8 @@ class FolderRouter {
     private async postFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const body = ctx.request.body;
+            const parentFolder = await Folder.findOne({id: body.parentId}, {relations: ['user']});
+            validateFolderOwner(ctx, parentFolder);
             const folder = await Folder.createChildFolder(body.parentId, body.name);
             ctx.status = 201;
             ctx.type = 'json';
