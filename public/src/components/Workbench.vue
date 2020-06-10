@@ -78,6 +78,16 @@ const typeMap = {
     'image': {name: 'Image'},
 };
 
+function generatePath(folder, path) {
+    path = path || [];
+    if (folder && folder.parent) {
+        const {id, name} = folder.parent;
+        path.unshift({id, name});
+        return generatePath(folder.parent, path);
+    }
+    else if (folder) return path;
+}
+
 export default {
     name: 'workbench',
     data() {
@@ -95,16 +105,14 @@ export default {
         contents() {
             const folders = this.folder.children.map((child) => { child.type = 'folder'; return child; });
             // const documents = this.folder.documents.map((doc) => { doc.type = 'document'; return doc; });
-            console.log(folders);
             const contents = [...folders].sort(this.sortContents);
-            console.log(contents);
             return contents;
         },
         path() {
-            if (this.folder && this.folder.parent) {
-                if (this.folder.parent.id === this.$store.state.user.user.id) return;
-                const {id, name} = this.folder.parent
-                return [{id, name}];
+            if (this.folder) {
+                const path = generatePath(this.folder);
+                path.shift();
+                return path;
             }
         }
     },
@@ -122,7 +130,8 @@ export default {
     methods: {
         createNewFolder() {
             const {id} = this.$store.state.folder.folder;
-            this.$store.dispatch('folder/createFolder', {parentId: id, name: 'New Folder'});
+            this.$store.dispatch('folder/createFolder', {parentId: id, name: 'New Folder'})
+                .then(({data}) => this.$router.push(`/workbench/${data.id}`));
         },
         deleteFolder(id) {
             this.$store.dispatch('folder/deleteFolder', id);

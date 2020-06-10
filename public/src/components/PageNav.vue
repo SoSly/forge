@@ -25,7 +25,7 @@
         </template>
     </ul>
     <ul class="left">
-        <li class="logo"><router-link to="/"><img src="../assets/logo.png" /></router-link></li>
+        <li class="logo"><router-link to="/"><img src="/assets/logo.png" /></router-link></li>
         <template v-if="loggedIn">
             <li class="workbench"><router-link to="/workbench">Your workbench</router-link></li>
             <!--

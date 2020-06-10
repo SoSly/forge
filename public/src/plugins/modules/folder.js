@@ -7,8 +7,7 @@ function errorHandler(err) {
 export default {
     actions: {
         createFolder(context, folder) {
-            axios.post('/api/folder', folder)
-                .then((result) => context.dispatch('getFolder', folder.parentId))
+            return axios.post('/api/folder', folder)
                 .catch(errorHandler);
         },
         deleteFolder(context, id) {

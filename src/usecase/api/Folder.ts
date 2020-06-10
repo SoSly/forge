@@ -50,6 +50,7 @@ class FolderRouter {
             const id = ctx.params.id || user.id;
             const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['children', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
+            await getTreeRepository(Folder).findAncestorsTree(folder!);
             ctx.type = 'json';
             ctx.body = folder;
         }
