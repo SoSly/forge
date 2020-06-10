@@ -19,7 +19,8 @@ export default class DatabaseService {
     private getConnectionConfig(config: Config<any>): ConnectionOptions {
         const baseConfig = {
             entities: [Document,Folder,User,UserSettings],
-            synchronize: true
+            synchronize: true,
+            logger: "debug",
         };
 
         let connectionConfig: ConnectionOptions;

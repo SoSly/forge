@@ -13,12 +13,6 @@ const ForgeConfig: Config<any> = convict({
             default: 'sqljs',
             env: 'DATABASE_DRIVER'
         },
-        logging: {
-            doc: 'Whether to enable database logging',
-            format: Boolean,
-            default: false,
-            env: 'DATABASE_LOGGING'
-        },
         connection: {
             doc: 'The filename or URL to connect to the database',
             format: String,

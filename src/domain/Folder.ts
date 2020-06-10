@@ -1,13 +1,12 @@
 import FlakeId from 'flake-idgen';
-import {Entity, Column, PrimaryColumn, BaseEntity, Index, ManyToOne, OneToMany, CreateDateColumn, DeepPartial, UpdateDateColumn} from 'typeorm';
+import {Entity, Column, PrimaryColumn, BaseEntity, Index, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn, Tree, TreeChildren, TreeParent} from 'typeorm';
 
 // Models
 import {Document} from './Document';
 import {User} from './User';
 
-const ROOT_FOLDER_NAME = 'Root Folder';
-
 @Entity({name: 'folder'})
+@Tree('nested-set')
 export class Folder extends BaseEntity {
     @PrimaryColumn({type: 'varchar', length: 16})
     public id: string;
@@ -24,13 +23,13 @@ export class Folder extends BaseEntity {
     @ManyToOne(type => User, user => user.folders)
     public user: User;
     
-    @ManyToOne(type => Folder, folder => folder.children, {cascade: true})
+    @TreeParent()
     public parent: Folder;
 
-    @OneToMany(type => Folder, folder => folder.parent)
+    @TreeChildren({cascade: ['remove']})
     public children: Folder[];
 
-    @OneToMany(type => Document, document => document.folder, {cascade: true})
+    @OneToMany(type => Document, document => document.folder)
     public documents: Document[];
 
     public static async createChildFolder(parentId: string, name: string): Promise<Folder> {

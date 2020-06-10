@@ -26,14 +26,15 @@ export default class WebService {
         this.app.use(Session({}, this.app));
         this.app.use(bodyParser());
 
+        // Setup static file routing
+        // Rewrite routes that don't match a specific file or an api or auth call to /
+        this.app.use(Rewrite(/^\/((?!api|auth|.*\.ico|.*\.js|.*\.png|.*\.jpg|.*\.css).)+/i, '/'));
+        this.app.use(serve(path.resolve('./public')));
+
+        // Setup API middlewares
         setupAuthMiddleware(this.app, config);
         setupFolderMiddleware(this.app, config);
         setupProfileMiddleware(this.app, config);
-
-        // Setup static file routing
-        // Rewrite routes that don't match a specific file or an api or auth call to /
-        this.app.use(Rewrite(/^\/((?!api|auth|.*\.js|.*\.png|.*\.jpg|.*\.css).)+/i, '/'));
-        this.app.use(serve(path.resolve('./public')));
     }
 
     async start(): Promise<void> {

@@ -32,7 +32,7 @@ export default {
     },
     mutations: {
         delete(state, id) {
-            state.folder = state.folder.children.filter((child) => child.id != id);
+            state.folder.children = state.folder.children.filter((child) => child.id != id);
         },
         load(state, folder) {
             if (folder && folder.id) {

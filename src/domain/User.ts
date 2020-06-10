@@ -39,9 +39,8 @@ export class User extends BaseEntity {
             const id = new FlakeId().next().toString('hex');
             user = User.create({id, ...params});
             user.settings = UserSettings.create({id, user});
-            const rootFolder = Folder.create({id, user, name: `Your Workbench`});
+            const rootFolder = Folder.create({id, name: `Your Workbench`});
             user.folders = [rootFolder];
-            console.log(user);
             await user.save();
         }
         return user;

@@ -2,7 +2,7 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
 import {Folder} from '@domain/Folder';
-import {User} from '@domain/User';
+import {getTreeRepository, TreeRepository} from 'typeorm';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
@@ -11,6 +11,7 @@ function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
 
 class FolderRouter {
     private config: Config<any>;
+    private repository: TreeRepository<Folder>;
     private router: Router;
 
     constructor (config: Config<any>) {
@@ -28,13 +29,16 @@ class FolderRouter {
     private async deleteFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const folder = await Folder.findOne({id});
+            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['user']});
             validateFolderOwner(ctx, folder);
-            await Folder.delete(folder!);
+            const children = await getTreeRepository(Folder).findDescendants(folder!);
+            await getTreeRepository(Folder).remove(children);
+            await getTreeRepository(Folder).remove(folder!);
             ctx.status = 203;
             ctx.body = '';
         }
         catch (err) {
+            console.error(err);
             ctx.status = 400;
             ctx.body = {err};
         }
@@ -44,13 +48,15 @@ class FolderRouter {
         try {
             const user = ctx.state.user;
             const id = ctx.params.id || user.id;
-            const folder = await Folder.findOne({id}, {relations: ['children', 'parent', 'user']});
+            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['children', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
             ctx.type = 'json';
             ctx.body = folder;
         }
         catch (err) {
+            console.error(err);
             ctx.status = 400;
+            ctx.type = 'json';
             ctx.body = {err};
         }
     }
@@ -58,7 +64,7 @@ class FolderRouter {
     private async patchFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const folder = await Folder.findOne({id}, {relations: ['user']});
+            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['user']});
             validateFolderOwner(ctx, folder);
             const changes = ctx.request.body;
             for (let field in changes) {
@@ -77,7 +83,7 @@ class FolderRouter {
     private async postFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const body = ctx.request.body;
-            const parentFolder = await Folder.findOne({id: body.parentId}, {relations: ['user']});
+            const parentFolder = await getTreeRepository(Folder).findOne({id: body.parentId}, {relations: ['user']});
             validateFolderOwner(ctx, parentFolder);
             const folder = await Folder.createChildFolder(body.parentId, body.name);
             ctx.status = 201;
