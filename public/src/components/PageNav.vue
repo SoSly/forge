@@ -112,9 +112,9 @@ export default {
                     padding: 0 0.5em;
                     text-decoration: none;
 
-                    &:hover { border-bottom: 4px solid #08C; }
+                    &:hover { border-bottom: 4px solid #39C; }
                     &.router-link-active {
-                        border-bottom: 4px solid #08C;
+                        border-bottom: 4px solid #39C;
                         color: white;
                     }
                 }
@@ -141,7 +141,7 @@ export default {
 
                     &:hover {
                         background: #FFF;
-                        border: 1px solid #08C;
+                        border: 1px solid #39C;
                     }
                 }
             }
@@ -165,7 +165,7 @@ export default {
                     text-decoration: none;
 
                     &:hover {
-                        border-bottom: 4px solid #08C;
+                        border-bottom: 4px solid #39C;
                     }
                 }
 
@@ -226,7 +226,7 @@ export default {
                                 padding: 0.25em 0.5em;
 
                                 &:hover { 
-                                    background-color: #08C; 
+                                    background-color: #39C; 
                                     color: white;
                                 }
                             }
@@ -251,14 +251,14 @@ export default {
                                 height: 0;
 
                                 &:checked + .slider { 
-                                    background-color: #08C; 
+                                    background-color: #39C; 
                                     &:before {
                                         -webkit-transform: translateX(1em);
                                         -ms-transform: translateX(1em);
                                         transform: translateX(1em);
                                     }
                                 }
-                                &:focus + .slider { box-shadow: 0 0 1px #08C; }
+                                &:focus + .slider { box-shadow: 0 0 1px #39C; }
                             }
 
                             .slider {

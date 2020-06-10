@@ -196,16 +196,15 @@ export default {
                 &:before { content: '/'; padding: 0.25em; }
                 &:first-of-type:before { display: none; }
                 a {
-                    color: #08C;
+                    color: #39C;
                 }
             }
         }
     }
 
     a {
-        color: #08C;
+        color: #39C;
         text-decoration: none;
-        &:hover { text-decoration: underline; }
     }
 
     table {
