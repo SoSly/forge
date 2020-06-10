@@ -7,6 +7,8 @@ import Workbench from '../components/Workbench';
 
 Vue.use(VueRouter);
 export default new VueRouter({
+    mode: 'history',
+    hash: 'false',
     routes: [
         {name: 'home', path: '/', component: Home},
         {name: 'profile', path: '/profile', component: Profile},
@@ -17,4 +19,4 @@ export default new VueRouter({
             children: [{name: 'workbenchChild', path: ':id', component: Workbench}]
         }
     ]
-})
+});
