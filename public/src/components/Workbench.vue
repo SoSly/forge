@@ -35,18 +35,27 @@
         <table>
         <thead>
             <tr>
-                <th v-on:click="sortBy('name')">Name</th>
-                <th>Last Modified</th>
-                <th>Type</th>
+                <th v-on:click="sortBy = 'name'">Name</th>
+                <th v-on:click="sortBy = 'updatedAt'">Last Modified</th>
+                <th v-on:click="sortBy = 'type'">Type</th>
                 <th>Size</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in folder.children" :key="item.id">
-                <td><router-link :to="{path: `/workbench/${item.id}`}">{{item.name}}</router-link></td>
+            <tr v-for="item in contents" :key="item.id">
+                <td v-if="item.type === 'folder'">
+                    <router-link :to="{path: `/workbench/${item.id}`}">
+                        <font-awesome-icon icon="folder" size="1x" /> {{item.name}}
+                    </router-link>
+                </td>
+                <td v-if="item.type === 'document'">
+                    <router-link :to="{path: `/document/${item.id}`}">
+                        <font-awesome-icon icon="file-alt" size="1x" /> {{item.name}}
+                    </router-link>
+                </td>
                 <td>{{lastModified(item.updatedAt)}}</td>
-                <td></td>
+                <td>{{type(item.type)}}</td>
                 <td></td>
                 <td>
                     <font-awesome-icon icon="trash" size="1x" v-on:click="deleteFolder(item.id)" />
@@ -67,14 +76,15 @@ const typeMap = {
     'folder': {name: 'File Folder'},
     'document': {name: 'Document'},
     'image': {name: 'Image'},
-}
+};
 
 export default {
     name: 'workbench',
     data() {
         return {
             editFolder: false,
-            newMenu: false
+            newMenu: false,
+            sortBy: 'name'
         }
     },
     computed: {
@@ -82,6 +92,14 @@ export default {
             loggedIn: (state) => state.user.loggedIn,
             folder: (state) => state.folder.folder
         }),
+        contents() {
+            const folders = this.folder.children.map((child) => { child.type = 'folder'; return child; });
+            // const documents = this.folder.documents.map((doc) => { doc.type = 'document'; return doc; });
+            console.log(folders);
+            const contents = [...folders].sort(this.sortContents);
+            console.log(contents);
+            return contents;
+        },
         path() {
             if (this.folder && this.folder.parent) {
                 if (this.folder.parent.id === this.$store.state.user.user.id) return;
@@ -127,11 +145,10 @@ export default {
             this.$store.dispatch('folder/patchFolder', {id, name});
             this.editFolder = false;
         },
-        sortBy(field) {
-            if (this.folder) {
-                this.folder.children = this.folder.children.sort((a, b) => {
-                    return ('' + a[field]).localeCompare(b[field]);
-                })
+        sortContents(a, b) {
+            switch (this.sortBy) {
+                case 'updatedAt': return a[this.sortBy] - b[this.sortBy];
+                default: return ('' + a[this.sortBy]).localeCompare(b[this.sortBy]);
             }
         },
         lastModified(timestamp) {
@@ -151,9 +168,6 @@ export default {
             } while(size > 1024);
             return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
         }
-    },
-    mounted() {
-        this.sortBy('name');
     }
 }
 </script>
@@ -211,6 +225,7 @@ export default {
             th {
                 border-right: 1px solid #EEE;
                 color: #AAA;
+                cursor: pointer;
                 font-size: 10pt;
                 text-align: left;
                 &:last-of-type { border-right: none; }
