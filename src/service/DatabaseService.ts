@@ -17,30 +17,14 @@ export default class DatabaseService {
     }
 
     private getConnectionConfig(config: Config<any>): ConnectionOptions {
-        const baseConfig = {
+        const connectionConfig: ConnectionOptions = {
             entities: [Document,Folder,User,UserSettings],
             synchronize: true,
+            type: config.get('Database').driver,
+            url: config.get('Database').connection,
             logger: "debug",
         };
 
-        let connectionConfig: ConnectionOptions;
-        switch (config.get('Database').driver) {
-            case 'sqljs':
-                connectionConfig = {
-                    ...baseConfig,
-                    autoSave: true,
-                    location: Path.join(process.cwd(), config.get('Database').connection),
-                    type: 'sqljs',
-                };
-                break;
-            default:
-                connectionConfig = {
-                    ...baseConfig,
-                    type: config.get('Database').driver,
-                    url: config.get('Database').connection
-                };
-                break;
-        }
         return connectionConfig;
     }
 
