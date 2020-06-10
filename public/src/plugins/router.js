@@ -8,9 +8,13 @@ import Workbench from '../components/Workbench';
 Vue.use(VueRouter);
 export default new VueRouter({
     routes: [
-        {path: '/', component: Home},
-        {path: '/profile', component: Profile},
-        {path: '/workbench', component: Workbench},
-        {path: '/workbench/:id', component: Workbench}
+        {name: 'home', path: '/', component: Home},
+        {name: 'profile', path: '/profile', component: Profile},
+        {
+            name: 'workbench',
+            path: '/workbench', 
+            component: Workbench,
+            children: [{name: 'workbenchChild', path: ':id', component: Workbench}]
+        }
     ]
 })

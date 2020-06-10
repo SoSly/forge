@@ -26,10 +26,10 @@ class ProfileRouter {
             for (let field in changes) {
                 ctx.state.user.settings[field] = changes[field];
             }
+            await ctx.state.user.settings.save();
+
             ctx.status = 201;
             ctx.body = '';
-
-            await ctx.state.user.settings.save();
         }
         catch (err) {
             ctx.status = 400;

@@ -24,12 +24,22 @@ export class Folder extends BaseEntity {
     @ManyToOne(type => User, user => user.folders)
     public user: User;
     
-    @ManyToOne(type => Folder, folder => folder.children)
+    @ManyToOne(type => Folder, folder => folder.children, {cascade: true})
     public parent: Folder;
 
     @OneToMany(type => Folder, folder => folder.parent)
     public children: Folder[];
 
-    @OneToMany(type => Document, document => document.folder)
+    @OneToMany(type => Document, document => document.folder, {cascade: true})
     public documents: Document[];
+
+    public static async createChildFolder(parentId: string, name: string): Promise<Folder> {
+        const parent = await Folder.findOne({id: parentId}, {relations: ['user']});
+        if (parent === undefined) throw new Error(`Could not find parent folder with ID '${parentId}'.`);
+        const id = new FlakeId().next().toString('hex');
+        const folder = Folder.create({id, name});
+        folder.parent = <Folder>parent;
+        folder.user = parent.user;
+        return await folder.save();
+    }
 }

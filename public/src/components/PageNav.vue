@@ -39,6 +39,7 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex';
+import ClickOutside from 'vue-click-outside';
 
 export default {
     name: 'pagenav',
@@ -71,6 +72,9 @@ export default {
         ...mapGetters({
             avatar: 'user/avatar'
         })
+    },
+    directives: {
+        ClickOutside
     }
 }
 </script>
