@@ -13,14 +13,18 @@
             </ul>
             <ul>
                 <li><router-link to="/workbench">
-                    <font-awesome-icon icon="home" size="1x" />
+                    <drop v-on:drop="setFolderParent($store.state.user.user.id, ...arguments)">
+                        <font-awesome-icon icon="home" size="1x" />
+                    </drop>
                 </router-link></li>
                 <template v-if="path">
                 <li v-for="path in path" :key="path.id">
-                    <router-link :to="{path: `/workbench/${path.id}`}">{{path.name}}</router-link>
+                    <drop v-on:drop="setFolderParent(path.id, ...arguments)">
+                        <router-link :to="{path: `/workbench/${path.id}`}">{{path.name}}</router-link>
+                    </drop>
                 </li>
                 </template>
-                <li v-if="folder.id != $store.state.user.user.id" class="current">
+                <li v-if="folder.parent !== null" class="current">
                     <input v-show="editFolder" ref="editFolderName" type="text" v-bind:value="folder.name" 
                         v-on:blur="saveFolderName($event)" 
                         v-on:keyup.enter="$event.target.blur()"
@@ -43,24 +47,30 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in contents" :key="item.id">
-                <td v-if="item.type === 'folder'">
-                    <router-link :to="{path: `/workbench/${item.id}`}">
-                        <font-awesome-icon icon="folder" size="1x" /> {{item.name}}
-                    </router-link>
-                </td>
-                <td v-if="item.type === 'document'">
-                    <router-link :to="{path: `/document/${item.id}`}">
-                        <font-awesome-icon icon="file-alt" size="1x" /> {{item.name}}
-                    </router-link>
-                </td>
-                <td>{{lastModified(item.updatedAt)}}</td>
-                <td>{{type(item.type)}}</td>
-                <td></td>
-                <td>
-                    <font-awesome-icon icon="trash" size="1x" v-on:click="deleteFolder(item.id)" />
-                </td>
-            </tr>
+            <template v-for="item in contents">
+            <drag :transfer-data="item">
+                <drop v-on:drop="setFolderParent(item.id, ...arguments)">
+                    <tr>
+                        <td v-if="item.type === 'folder'">
+                            <router-link :to="{path: `/workbench/${item.id}`}">
+                                <font-awesome-icon icon="folder" size="1x" /> {{item.name}}
+                            </router-link>
+                        </td>
+                        <td v-if="item.type === 'document'">
+                            <router-link :to="{path: `/document/${item.id}`}">
+                                <font-awesome-icon icon="file-alt" size="1x" /> {{item.name}}
+                            </router-link>
+                        </td>
+                        <td>{{lastModified(item.updatedAt)}}</td>
+                        <td>{{type(item.type)}}</td>
+                        <td></td>
+                        <td>
+                            <font-awesome-icon icon="trash" size="1x" v-on:click="deleteFolder(item.id)" />
+                        </td>
+                    </tr>
+                </drop>
+            </drag>
+            </template>
         </tbody>
         </table>
     </section>
@@ -154,6 +164,10 @@ export default {
             this.$store.dispatch('folder/patchFolder', {id, name});
             this.editFolder = false;
         },
+        setFolderParent(parentId, item) {
+            this.$store.dispatch('folder/setParent', {id: item.id, parentId})
+                .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+        },
         sortContents(a, b) {
             switch (this.sortBy) {
                 case 'updatedAt': return a[this.sortBy] - b[this.sortBy];
@@ -205,6 +219,7 @@ export default {
             &:last-of-type > li {
                 display: inline-block;
                 position: relative;
+                > div { display: inline-block; }
                 &:before { content: '/'; padding: 0.25em; }
                 &:first-of-type:before { display: none; }
                 a {
@@ -258,12 +273,13 @@ export default {
             overflow-y: scroll;
             width: 7.5in;
 
+            div[draggable]:nth-child(odd) { background: #E0E0E0; }
+
             tr {
                 display: table;
                 width: 100%;
                 table-layout: fixed;
 
-                &:nth-child(odd) { background: #F3F3F3; }
                 &:hover { background: #DDD; }
             }
 
@@ -290,7 +306,7 @@ export default {
 
         tbody {
             border: 1px solid #666;
-            tr:nth-child(odd) { background: #3F3F3F; }
+            div[draggable]:nth-child(odd) { background: #3F3F3F; }
             tr:hover { background: #555; }
         }
     }

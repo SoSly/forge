@@ -2,7 +2,9 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
 import {Folder} from '@domain/Folder';
-import {getTreeRepository, TreeRepository} from 'typeorm';
+import {getTreeRepository, TreeRepository, IsNull, getCustomRepository, getConnection, getRepository} from 'typeorm';
+import { User } from '@domain/User';
+import { isNull } from 'util';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
@@ -47,8 +49,9 @@ class FolderRouter {
     private async getFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const user = ctx.state.user;
-            const id = ctx.params.id || user.id;
-            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['children', 'parent', 'user']});
+            const id = ctx.params.id;
+            const searchParams = id ? {id} : {user, parent: IsNull()};
+            const folder = await getTreeRepository(Folder).findOne(searchParams, {relations: ['children', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
             await getTreeRepository(Folder).findAncestorsTree(folder!);
             ctx.type = 'json';
@@ -65,12 +68,23 @@ class FolderRouter {
     private async patchFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['user']});
+            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['children', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
             const changes = ctx.request.body;
-            for (let field in changes) {
+            let parent: Folder|undefined;
+            for (let field in changes) {    
+                if (field === 'parentId') {
+                    // TypeORM does not currently support updating the tree properly.
+                    // We're going to have to do it manually.
+                    // See: https://github.com/typeorm/typeorm/issues/2032
+                    await Folder.setParentFolder(folder!, changes[field], 
+                        (folder: Folder|undefined) => validateFolderOwner(ctx, folder));
+                    continue;
+                }
+
                 folder![field] = changes[field];
             }
+
             await folder!.save();
             ctx.status = 204;
             ctx.body = '';

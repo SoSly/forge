@@ -27,6 +27,11 @@ export default {
             axios.patch(path, changes)
                 .then((result) => context.commit('patch', changes))
                 .catch(errorHandler);
+        },
+        setParent(context, {id, parentId}) {
+            let path = `/api/folder/${id}`;
+            return axios.patch(path, {parentId})
+                .catch(errorHandler);
         }
     },
     mutations: {
