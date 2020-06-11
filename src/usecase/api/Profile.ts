@@ -1,12 +1,14 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
+import { AbstractRouter } from './AbstractRouter';
 
-class ProfileRouter {
+class ProfileRouter extends AbstractRouter {
     private config: Config<any>;
-    private router: Router;
 
     constructor (config: Config<any>) {
+        super();
+
         this.config = config;
 
         // configure routes
@@ -35,14 +37,6 @@ class ProfileRouter {
             ctx.status = 400;
             ctx.body = {err};
         }
-    }
-
-    public routes(): Middleware {
-        return this.router.routes();
-    }
-
-    public allowedMethods(): Middleware {
-        return this.router.allowedMethods();
     }
 }
 

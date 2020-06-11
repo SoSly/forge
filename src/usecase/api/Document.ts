@@ -1,0 +1,97 @@
+import {Config} from 'convict';
+import Router from '@koa/router';
+import Koa, {Context, Next, Middleware} from 'koa';
+import {Document} from '@domain/Document';
+import {Folder} from '@domain/Folder';
+import { AbstractRouter } from './AbstractRouter';
+
+function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
+    if (!obj) ctx.throw(404);
+    if (obj.user.id !== ctx.state.user.id) ctx.throw(401);
+}
+
+class DocumentRouter extends AbstractRouter {
+    private config: Config<any>;
+    
+    constructor(config: Config<any>) {
+        super();
+
+        this.config = config;
+
+        // configure routes
+        this.router = new Router({prefix: '/api'});
+        this.router.delete('/document/:id', this.deleteDocument);
+        this.router.patch('/document/:id', this.patchDocument);
+        this.router.post('/document', this.postDocument);
+    }
+
+    private async deleteDocument(ctx: Context, next: Next): Promise<void> {
+        try {
+            const id = ctx.params.id;
+            const document = await Document.findOne({id}, {relations: ['user']});
+            validateOwnership(ctx, document);
+            await Document.remove(document!);
+            ctx.status = 203;
+            ctx.body = '';
+        }
+        catch (err) {
+            ctx.status = 400;
+            ctx.body = err;
+        }
+    }
+
+    private async patchDocument(ctx: Context, next: Next): Promise<void> {
+        try {
+            const id = ctx.params.id;
+            const document = await Document.findOne({id}, {relations: ['user']});
+            validateOwnership(ctx, document);
+
+            const changes = ctx.request.body;
+            for (let field in changes) {
+                if (field === 'folderId') {
+                    const folder = await Folder.findOne({id: changes[field]}, {relations: ['user']});
+                    validateOwnership(ctx, folder);
+
+                    document!.folder = folder!;
+                    continue;
+                }
+
+                document![field] = changes[field];
+            }
+
+            await document!.save();
+            ctx.status = 204;
+            ctx.body = '';
+        }
+        catch (err) {
+            ctx.status = 400;
+            ctx.body = err;
+        }
+    }
+
+    private async postDocument(ctx: Context, next: Next): Promise<void> {
+        try {
+            const {name, folderId} = ctx.request.body;
+            const user = ctx.state.user;
+            
+            const folder = await Folder.findOne({id: folderId}, {relations: ['user']});
+            validateOwnership(ctx, folder);
+
+            const document = Document.create({name, folder, user});
+            await document.save();
+            ctx.status = 201;
+            ctx.type = 'json';
+            ctx.body = document;
+        }
+        catch (err) {
+            ctx.status = 400;
+            ctx.body = err;
+        }
+    }
+}
+
+export function setupDocumentMiddleware(app: Koa, config: Config<any>): void {
+    const document = new DocumentRouter(config);
+    app.use(document.routes());
+    app.use(document.allowedMethods());
+}

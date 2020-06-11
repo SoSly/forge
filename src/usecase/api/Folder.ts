@@ -1,22 +1,21 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
-import Koa, {Context, Next, Middleware} from 'koa';
+import Koa, {Context, Next} from 'koa';
 import {Folder} from '@domain/Folder';
 import {getTreeRepository, TreeRepository, IsNull, getCustomRepository, getConnection, getRepository} from 'typeorm';
-import { User } from '@domain/User';
-import { isNull } from 'util';
+import { AbstractRouter } from './AbstractRouter';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
     if (folder.user.id !== ctx.state.user.id) ctx.throw(401);
 }
 
-class FolderRouter {
+class FolderRouter extends AbstractRouter {
     private config: Config<any>;
-    private repository: TreeRepository<Folder>;
-    private router: Router;
 
     constructor (config: Config<any>) {
+        super();
+
         this.config = config;
 
         // configure routes
@@ -40,9 +39,8 @@ class FolderRouter {
             ctx.body = '';
         }
         catch (err) {
-            console.error(err);
             ctx.status = 400;
-            ctx.body = {err};
+            ctx.body = err;
         }
     }
 
@@ -51,7 +49,7 @@ class FolderRouter {
             const user = ctx.state.user;
             const id = ctx.params.id;
             const searchParams = id ? {id} : {user, parent: IsNull()};
-            const folder = await getTreeRepository(Folder).findOne(searchParams, {relations: ['children', 'parent', 'user']});
+            const folder = await getTreeRepository(Folder).findOne(searchParams, {relations: ['children', 'documents', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
             await getTreeRepository(Folder).findAncestorsTree(folder!);
             ctx.type = 'json';
@@ -110,18 +108,10 @@ class FolderRouter {
             ctx.body = err;
         }
     }
-
-    public routes(): Middleware {
-        return this.router.routes();
-    }
-
-    public allowedMethods(): Middleware {
-        return this.router.allowedMethods();
-    }
 }
 
 export function setupFolderMiddleware(app: Koa, config: Config<any>): void {
-    const profile = new FolderRouter(config);
-    app.use(profile.routes());
-    app.use(profile.allowedMethods());
+    const folder = new FolderRouter(config);
+    app.use(folder.routes());
+    app.use(folder.allowedMethods());
 }

@@ -10,9 +10,8 @@ export default {
             return axios.post('/api/folder', folder)
                 .catch(errorHandler);
         },
-        deleteFolder(context, id) {
-            axios.delete(`/api/folder/${id}`)
-                .then((Result) => context.commit('delete', id))
+        delete(context, id) {
+            return axios.delete(`/api/folder/${id}`)
                 .catch(errorHandler);
         },
         getFolder(context, id) {
@@ -35,9 +34,6 @@ export default {
         }
     },
     mutations: {
-        delete(state, id) {
-            state.folder.children = state.folder.children.filter((child) => child.id != id);
-        },
         load(state, folder) {
             if (folder && folder.id) {
                 state.folder = folder;

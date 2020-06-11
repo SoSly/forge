@@ -4,14 +4,16 @@ import Passport from 'koa-passport';
 import Router from '@koa/router';
 import {User} from '@domain/User';
 import Koa, {Context, Next, Middleware} from 'koa';
+import { AbstractRouter } from './AbstractRouter';
 
 const ErrUserNotFound = new Error('User not found');
 
-class AuthRouter {
+class AuthRouter extends AbstractRouter {
     private config: Config<any>;
-    private router: Router;
 
     constructor(config: Config<any>) {
+        super();
+
         this.config = config;
         
         // configure Discord oauth
@@ -73,10 +75,6 @@ class AuthRouter {
         ctx.redirect('/');
     }
 
-    public routes(): Middleware {
-        return this.router.routes();
-    }
-
     private serializeUser(user: User, done: (err: any, user: string) => void): void {
         done(null, JSON.stringify(user));
     }
@@ -103,5 +101,6 @@ export function setupAuthMiddleware(app: Koa, config: Config<any>): void {
     app.use(Passport.initialize());
     app.use(Passport.session());
     app.use(auth.routes());
+    app.use(auth.allowedMethods());
     app.use(auth.ensureAuth);
 }

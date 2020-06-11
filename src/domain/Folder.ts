@@ -1,5 +1,5 @@
 import FlakeId from 'flake-idgen';
-import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove} from 'typeorm';
+import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany} from 'typeorm';
 
 // Models
 import {Document} from './Document';
@@ -31,8 +31,8 @@ export class Folder extends BaseEntity {
     @TreeChildren({cascade: ['remove', 'update']})
     public children: Folder[];
 
-    // @OneToMany(type => Document, document => document.folder)
-    // public documents: Document[];
+    @OneToMany(type => Document, document => document.folder)
+    public documents: Document[];
 
     public static async createChildFolder(parentId: number, name: string): Promise<Folder> {
         const parent = await Folder.findOne({id: parentId}, {relations: ['user']});

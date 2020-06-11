@@ -9,6 +9,7 @@ import bodyParser from "koa-bodyparser";
 import path from 'path';
 import serve from 'koa-static';
 import {setupAuthMiddleware} from "@usecase/api/Auth";
+import {setupDocumentMiddleware} from "@usecase/api/Document";
 import {setupFolderMiddleware} from "@usecase/api/Folder";
 import {setupProfileMiddleware} from "@usecase/api/Profile";
 
@@ -33,6 +34,7 @@ export default class WebService {
 
         // Setup API middlewares
         setupAuthMiddleware(this.app, config);
+        setupDocumentMiddleware(this.app, config);
         setupFolderMiddleware(this.app, config);
         setupProfileMiddleware(this.app, config);
     }

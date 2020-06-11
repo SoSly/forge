@@ -2,24 +2,22 @@
     <section id="workbench" v-if="folder">
         <nav>
             <ul>
-                <li class="new-folder">
-                    <span v-on:click="createNewFolder">
-                        <font-awesome-icon icon="folder" size="1x" /> New Folder
-                    </span>
+                <li class="new-folder" v-on:click="createNewFolder">
+                    <font-awesome-icon icon="folder" size="1x" /> New Folder
                 </li>
-                <li class="new-document">
+                <li class="new-document" v-on:click="createNewDocument">
                     <font-awesome-icon icon="file-alt" size="1x" /> New Document
                 </li>
             </ul>
             <ul>
                 <li><router-link to="/workbench">
-                    <drop v-on:drop="setFolderParent($store.state.user.user.id, ...arguments)">
+                    <drop v-on:drop="setItemParent($store.state.user.user.id, ...arguments)">
                         <font-awesome-icon icon="home" size="1x" />
                     </drop>
                 </router-link></li>
                 <template v-if="path">
                 <li v-for="path in path" :key="path.id">
-                    <drop v-on:drop="setFolderParent(path.id, ...arguments)">
+                    <drop v-on:drop="setItemParent(path.id, ...arguments)">
                         <router-link :to="{path: `/workbench/${path.id}`}">{{path.name}}</router-link>
                     </drop>
                 </li>
@@ -49,23 +47,23 @@
         <tbody>
             <template v-for="item in contents">
             <drag :transfer-data="item">
-                <drop v-on:drop="setFolderParent(item.id, ...arguments)">
+                <drop v-on:drop="setItemParent(item.id, ...arguments)">
                     <tr>
                         <td v-if="item.type === 'folder'">
                             <router-link :to="{path: `/workbench/${item.id}`}">
-                                <font-awesome-icon icon="folder" size="1x" /> {{item.name}}
+                                <span><font-awesome-icon icon="folder" size="1x" /></span> {{item.name}}
                             </router-link>
                         </td>
                         <td v-if="item.type === 'document'">
                             <router-link :to="{path: `/document/${item.id}`}">
-                                <font-awesome-icon icon="file-alt" size="1x" /> {{item.name}}
+                                <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
                             </router-link>
                         </td>
                         <td>{{lastModified(item.updatedAt)}}</td>
                         <td>{{type(item.type)}}</td>
                         <td></td>
                         <td>
-                            <font-awesome-icon icon="trash" size="1x" v-on:click="deleteFolder(item.id)" />
+                            <font-awesome-icon icon="trash" size="1x" v-on:click="deleteItem(item)" />
                         </td>
                     </tr>
                 </drop>
@@ -114,8 +112,8 @@ export default {
         }),
         contents() {
             const folders = this.folder.children.map((child) => { child.type = 'folder'; return child; });
-            // const documents = this.folder.documents.map((doc) => { doc.type = 'document'; return doc; });
-            const contents = [...folders].sort(this.sortContents);
+            const documents = this.folder.documents.map((doc) => { doc.type = 'document'; return doc; });
+            const contents = [...folders, ...documents].sort(this.sortContents);
             return contents;
         },
         path() {
@@ -138,13 +136,19 @@ export default {
         ClickOutside
     },
     methods: {
+        createNewDocument() {
+            const {id} = this.folder;
+            this.$store.dispatch('document/createDocument', {folderId: id, name: 'New Document'})
+                .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+        },
         createNewFolder() {
-            const {id} = this.$store.state.folder.folder;
+            const {id} = this.folder;
             this.$store.dispatch('folder/createFolder', {parentId: id, name: 'New Folder'})
                 .then(({data}) => this.$router.push(`/workbench/${data.id}`));
         },
-        deleteFolder(id) {
-            this.$store.dispatch('folder/deleteFolder', id);
+        deleteItem(item) {
+            this.$store.dispatch(`${item.type}/delete`, item.id)
+                .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
         },
         editFolderName() {
             this.editFolder = true;
@@ -164,9 +168,17 @@ export default {
             this.$store.dispatch('folder/patchFolder', {id, name});
             this.editFolder = false;
         },
-        setFolderParent(parentId, item) {
-            this.$store.dispatch('folder/setParent', {id: item.id, parentId})
-                .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+        setItemParent(id, item) {
+            switch (item.type) {
+                case 'document':
+                    this.$store.dispatch('document/setFolder', {id: item.id, folderId: id})
+                        .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+                        break;
+                case 'folder':
+                    this.$store.dispatch('folder/setParent', {id: item.id, parentId: id})
+                        .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+                        break;
+            }
         },
         sortContents(a, b) {
             switch (this.sortBy) {
@@ -250,6 +262,11 @@ export default {
         }
         
         td:last-of-type svg { cursor: pointer; }
+        td:first-of-type span {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
 
         thead {
             display: table;
