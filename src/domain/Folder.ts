@@ -1,5 +1,5 @@
 import FlakeId from 'flake-idgen';
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove} from 'typeorm';
+import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove} from 'typeorm';
 
 // Models
 import {Document} from './Document';
@@ -15,11 +15,11 @@ export class Folder extends BaseEntity {
     @Column({type: 'varchar', length: 255, nullable: false})
     public name: string;
 
-    // @CreateDateColumn()
-    // public createdAt: Date;
+    @CreateDateColumn()
+    public createdAt: Date;
 
-    // @UpdateDateColumn()
-    // public updatedAt: Date;
+    @UpdateDateColumn()
+    public updatedAt: Date;
 
     @ManyToOne(type => User, user => user.folders)
     @JoinColumn({name: 'User'})
