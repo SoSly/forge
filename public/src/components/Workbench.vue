@@ -183,12 +183,16 @@ export default {
 
 <style lang="scss">
 #workbench {
+    background: #EEE;
     margin: 0 auto;
+    height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 0.5in;
     width: 8.5in;
 
     nav {
         padding-bottom: 0.5em;
-        border-bottom: 2px solid #EEE;
+        border-bottom: 2px solid #DDD;
         margin-top: 1em;
         ul {
             &:first-of-type {
@@ -228,10 +232,10 @@ export default {
         td:last-of-type svg { cursor: pointer; }
 
         thead {
-            border-bottom: 1px solid rgba(0,0,0,.025);
+            border-bottom: 1px solid #DDD;
 
             th {
-                border-right: 1px solid #EEE;
+                border-right: 1px solid #DDD;
                 color: #AAA;
                 cursor: pointer;
                 font-size: 10pt;
@@ -243,12 +247,14 @@ export default {
 }
 
 .dark #workbench {
+    background: #444;
     nav {
         border-bottom: 2px solid #666;
     }
     table {
         thead { 
             border-bottom: 1px solid rgba(255,255,255,.025); 
+
             th {
                 border-right: 1px solid #666;
                 &:last-of-type { border-right: none; }

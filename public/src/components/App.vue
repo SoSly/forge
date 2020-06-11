@@ -36,7 +36,10 @@ body { min-height: 100%; }
     background: white;
     color: black;
     min-height: 100vh;
-    article { padding-top: 64px; }
+    article { 
+        min-height: 100vh;
+        padding-top: 48px;
+    }
 
     &.dark { 
         background: #333; 

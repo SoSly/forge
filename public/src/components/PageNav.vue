@@ -82,9 +82,9 @@ export default {
 <style lang=scss>
 #pagenav {
     background: #333;
+    left: 0;
     padding: 1em 1em 0;
     position: fixed;
-    left: 0;
     top: 0;
     width: 100%;
 
