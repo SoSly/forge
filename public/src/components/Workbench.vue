@@ -185,8 +185,7 @@ export default {
 #workbench {
     background: #EEE;
     margin: 0 auto;
-    height: calc(100vh - 48px);
-    overflow-y: auto;
+    max-height: calc(100vh - 48px);
     padding: 0.5in;
     width: 8.5in;
 
@@ -227,12 +226,20 @@ export default {
         th, td { 
             line-height: 1.2em; 
             padding: 0 5px;
+
+            &:nth-of-type(1) { width: 40%; }
+            &:nth-of-type(2) { width: 25%; }
+            &:nth-of-type(3) { width: 20%; }
+            &:nth-of-type(4) { width: 10%; }
+            &:nth-of-type(5) { width: 5%; }
         }
         
         td:last-of-type svg { cursor: pointer; }
 
         thead {
-            border-bottom: 1px solid #DDD;
+            display: table;
+            table-layout: fixed;
+            width: calc(100% - 0.5em);
 
             th {
                 border-right: 1px solid #DDD;
@@ -242,6 +249,28 @@ export default {
                 text-align: left;
                 &:last-of-type { border-right: none; }
             }
+        }
+
+        tbody {
+            border: 1px solid #DDD;
+            display: block;
+            height: calc(100vh - 27px - 48px - 1.5in);    
+            overflow-y: scroll;
+            width: 7.5in;
+
+            tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+
+                &:nth-child(odd) { background: #F3F3F3; }
+                &:hover { background: #DDD; }
+            }
+
+            &::-webkit-scrollbar { width: 0.5em; }
+            &::-webkit-scrollbar-track { box-shadow: inset 0 0 6px #AAA; }
+            &::-webkit-scrollbar-thumb { background-color: #CCC; outline: 1px solid #CCC; }
+
         }
     }
 }
@@ -253,12 +282,16 @@ export default {
     }
     table {
         thead { 
-            border-bottom: 1px solid rgba(255,255,255,.025); 
-
             th {
                 border-right: 1px solid #666;
                 &:last-of-type { border-right: none; }
             }
+        }
+
+        tbody {
+            border: 1px solid #666;
+            tr:nth-child(odd) { background: #3F3F3F; }
+            tr:hover { background: #555; }
         }
     }
 }
