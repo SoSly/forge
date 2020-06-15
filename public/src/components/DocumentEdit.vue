@@ -6,16 +6,21 @@
             </ul>
             <input type="text" v-model="document.name" v-on:blur="rename($event)" />
         </nav>
-        <rs-panes split-to="columns" :allow-resize="true" size="600" min-size="200px">
-            <div slot="firstPane" class="editor-pane">
-                <editor ref="contents" v-model="document.current.contents"
-                    @init="editorInit" lang="markdown" theme="monokai">
-                ></editor>
+        <multipane>
+            <div :style="{width: '575px', minWidth: '300px', maxWidth: '900px'}">
+                <div class="editor-pane">
+                    <editor ref="contents" v-model="document.current.contents"
+                        @init="editorInit" lang="markdown" theme="monokai">
+                    ></editor>
+                </div>
             </div>
-            <div slot="secondPane" class="preview-pane">
-                <pre class="page">{{document.current.contents}}</pre>
+            <multipane-resizer></multipane-resizer>
+            <div :style="{flexGrow: 1}">
+                <div class="preview-pane">
+                    <pre class="page">{{document.current.contents}}</pre>
+                </div>
             </div>
-        </rs-panes>
+        </multipane>
     </section>
 </template>
 
@@ -23,11 +28,15 @@
 import throttle from 'lodash.throttle';
 import editor from 'vue2-ace-editor';
 import {mapGetters, mapState} from 'vuex';
-import ResSplitPane from 'vue-resize-split-pane';
+import {Multipane, MultipaneResizer} from 'vue-multipane';
 
 export default {
     name: 'document-editor',
-    components: {editor, 'rs-panes': ResSplitPane},
+    components: {
+        editor, 
+        Multipane,
+        MultipaneResizer
+    },
     data() {
         return {
             dirty: false
@@ -88,7 +97,17 @@ export default {
 </script>
 
 <style lang="scss">
-#document-editor {
+#document-editor {   
+    .multipane {
+        .multipane-resizer {
+            background: #AAA;
+            height: auto; 
+            left: 0;
+            margin: 0;
+            width: 1px;
+        }
+    }
+
     nav {
         background: #AAA;
         color: #333;
@@ -137,18 +156,12 @@ export default {
         }
     }
 
-    .ace_editor {
-        min-height: calc(100vh - 64px - 2em);
-        min-width: 200px;
-    }
-
-    .pane-rs {
-        max-height: calc(100vh - 64px - 2em);
-    }
+    .ace_editor { min-height: calc(100vh - 64px - 2em); }
 
     .preview-pane {
         height: calc(100vh - 64px - 2em);
         overflow-y: scroll;
+        width: 100%;
 
         pre {
             margin: 1em auto;

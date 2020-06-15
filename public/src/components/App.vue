@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-html { height: 100% }
+html { height: 100%; overflow: hidden; }
 body { min-height: 100%; }
 #app {
     background: white;
