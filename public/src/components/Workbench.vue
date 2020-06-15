@@ -1,5 +1,5 @@
 <template>
-    <section id="workbench" v-if="folder">
+    <section id="workbench" v-if="folder" class="page">
         <nav>
             <ul>
                 <li class="new-folder" v-on:click="createNewFolder">
@@ -29,7 +29,7 @@
                         />
                     <span v-show="!editFolder" v-on:dblclick="editFolderName">
                         {{folder.name}}
-                        <font-awesome-icon icon="pencil-alt" size="1x" v-on:click="editFolderName" />
+7                        <font-awesome-icon icon="pencil-alt" size="1x" v-on:click="editFolderName" />
                     </span>
                 </li>
             </ul>
@@ -78,8 +78,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
-import {mapGetters, mapState} from 'vuex';
+import {mapState} from 'vuex';
 import ClickOutside from 'vue-click-outside';
 import Vue from 'vue';
 
@@ -110,7 +109,6 @@ export default {
     },
     computed: {
         ...mapState({
-            loggedIn: (state) => state.user.loggedIn,
             folder: (state) => state.folder.folder
         }),
         contents() {
@@ -212,9 +210,8 @@ export default {
 
 <style lang="scss">
 #workbench {
-    background: #EEE;
-    margin: 0 auto;
-    max-height: calc(100vh - 48px);
+    margin: 1em auto;
+    max-height: calc(100vh - 64px - 2em);
     padding: 0.5in;
     width: 8.5in;
 
@@ -289,7 +286,7 @@ export default {
         tbody {
             border: 1px solid #DDD;
             display: block;
-            height: calc(100vh - 27px - 48px - 1.5in);    
+            height: calc(100vh - 27px - 64px - 1.5in - 2em);    
             overflow-y: scroll;
             width: 7.5in;
 
@@ -312,7 +309,6 @@ export default {
 }
 
 .dark #workbench {
-    background: #444;
     nav {
         border-bottom: 2px solid #666;
     }

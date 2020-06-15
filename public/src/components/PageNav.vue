@@ -80,13 +80,15 @@ export default {
 </script>
 
 <style lang=scss>
-#pagenav {
+#pagenav {    
     background: #333;
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.15), 0 -1px 10px rgba(0,0,0,0.15), 0 -3px 24px rgba(0,0,0,0.25), 0 -9px 80px rgba(0,0,0,0.35);
     left: 0;
     padding: 1em 1em 0;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 65535;
 
     ul {
         display: flex;
