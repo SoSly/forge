@@ -1,9 +1,8 @@
 import FlakeId from "flake-idgen";
-import {Entity, Column, PrimaryColumn, BaseEntity, DeepPartial, Index, OneToMany, OneToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {Entity, Column, BaseEntity, DeepPartial, Index, OneToMany, OneToOne, PrimaryGeneratedColumn, JoinColumn} from 'typeorm';
 
 // Models
 import {Folder} from "./Folder";
-import {UserSettings} from "./UserSettings";
 
 @Entity({name: 'user'})
 @Index(['provider', 'providerId'], {unique: true})
@@ -47,4 +46,17 @@ export class User extends BaseEntity {
         }
         return user;
     }
+}
+
+@Entity({name: 'user_settings'})
+export class UserSettings extends BaseEntity {
+    @PrimaryGeneratedColumn()
+    public id: string;
+
+    @OneToOne(type => User, user => user.settings)
+    @JoinColumn()
+    public user: User;
+
+    @Column({default: false})
+    public darkmode: boolean;
 }

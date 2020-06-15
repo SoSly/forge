@@ -55,7 +55,7 @@
                             </router-link>
                         </td>
                         <td v-if="item.type === 'document'">
-                            <router-link :to="{path: `/document/${item.id}`}">
+                            <router-link :to="{path: `/document/edit/${item.id}`}">
                                 <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
                             </router-link>
                         </td>
@@ -63,7 +63,10 @@
                         <td>{{type(item.type)}}</td>
                         <td></td>
                         <td>
-                            <font-awesome-icon icon="trash" size="1x" v-on:click="deleteItem(item)" />
+                            <a><font-awesome-icon icon="trash" size="1x" v-on:click="deleteItem(item)" /></a>
+                            <router-link :to="{path: `/document/view/${item.id}`}">
+                                <font-awesome-icon icon="eye" size="1x" />
+                            </router-link>
                         </td>
                     </tr>
                 </drop>
@@ -254,11 +257,11 @@ export default {
             line-height: 1.2em; 
             padding: 0 5px;
 
-            &:nth-of-type(1) { width: 40%; }
-            &:nth-of-type(2) { width: 25%; }
-            &:nth-of-type(3) { width: 20%; }
+            &:nth-of-type(1) { width: 50%; }
+            &:nth-of-type(2) { width: 27%; }
+            &:nth-of-type(3) { width: 15%; }
             &:nth-of-type(4) { width: 10%; }
-            &:nth-of-type(5) { width: 5%; }
+            &:nth-of-type(5) { width: 8%; }
         }
         
         td:last-of-type svg { cursor: pointer; }
