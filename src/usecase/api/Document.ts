@@ -20,9 +20,24 @@ class DocumentRouter extends AbstractRouter {
 
         // configure routes
         this.router = new Router({prefix: '/api'});
+        this.router.get('/document/:id', this.getDocument);
         this.router.delete('/document/:id', this.deleteDocument);
         this.router.patch('/document/:id', this.patchDocument);
         this.router.post('/document', this.postDocument);
+    }
+
+    private async getDocument(ctx: Context, next: Next): Promise<void> {
+        try {
+            const id = ctx.params.id;
+            const document = await Document.findOne({id}, {relations: ['current', 'user']});
+            validateOwnership(ctx, document);
+            ctx.type = 'json';
+            ctx.body = document;
+        }
+        catch (err) {
+            ctx.status = 400;
+            ctx.body = err;
+        }
     }
 
     private async deleteDocument(ctx: Context, next: Next): Promise<void> {

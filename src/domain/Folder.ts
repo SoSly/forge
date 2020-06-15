@@ -37,7 +37,6 @@ export class Folder extends BaseEntity {
     public static async createChildFolder(parentId: number, name: string): Promise<Folder> {
         const parent = await Folder.findOne({id: parentId}, {relations: ['user']});
         if (parent === undefined) throw new Error(`Could not find parent folder with ID '${parentId}'.`);
-        // const id = new FlakeId().next().toString('hex');
         const folder = Folder.create({name});
         folder.parent = <Folder>parent;
         folder.user = parent.user;

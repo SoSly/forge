@@ -3,10 +3,9 @@ import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 import Path from 'path';
 
 // Models
-import {Document} from '@domain/Document';
+import {Document,DocumentContent} from '@domain/Document';
 import {Folder} from '@domain/Folder';
-import {User} from '@domain/User';
-import {UserSettings} from '@domain/UserSettings';
+import {User,UserSettings} from '@domain/User';
 
 export default class DatabaseService {
     private config: ConnectionOptions
@@ -18,7 +17,7 @@ export default class DatabaseService {
 
     private getConnectionConfig(config: Config<any>): ConnectionOptions {
         const connectionConfig: ConnectionOptions = {
-            entities: [Document,Folder,User,UserSettings],
+            entities: [Document,DocumentContent,Folder,User,UserSettings],
             synchronize: true,
             type: config.get('Database').driver,
             url: config.get('Database').connection,

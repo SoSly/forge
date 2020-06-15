@@ -14,10 +14,22 @@ export default {
             return axios.delete(`/api/document/${id}`)
                 .catch(errorHandler);
         },
+        get(context, id) {
+            return axios.delete(`/api/document/${id}`)
+                .then((result) => context.commit('load', result.data))
+                .catch(errorHandler);
+        },
         setFolder(context, {id, folderId}) {
             let path = `/api/document/${id}`;
             return axios.patch(path, {folderId})
                 .catch(errorHandler);
+        }
+    },
+    mutations: {
+        load(state, document) {
+            if (document && document.id) {
+                state.document = document
+            }
         }
     },
     namespaced: true,
