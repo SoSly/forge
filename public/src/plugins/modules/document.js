@@ -19,6 +19,10 @@ export default {
                 .then((result) => context.commit('load', result.data))
                 .catch(errorHandler);
         },
+        rename(context, {id, name}) {
+            return axios.patch(`/api/document/${id}`, {name})
+                .catch(errorHandler);
+        },
         setFolder(context, {id, folderId}) {
             return axios.patch(`/api/document/${id}`, {folderId})
                 .catch(errorHandler);

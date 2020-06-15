@@ -99,7 +99,7 @@ class DocumentRouter extends AbstractRouter {
             validateOwnership(ctx, folder);
 
             const document = Document.create({name, folder, user});
-            document.contents = [DocumentContent.create()];
+            document.current = DocumentContent.create();
             await document.save();
             ctx.status = 201;
             ctx.type = 'json';

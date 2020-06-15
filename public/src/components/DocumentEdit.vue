@@ -4,6 +4,7 @@
             <ul>
                 <li class="button save" v-bind:class="dirty ? 'dirty' : ''" v-on:click="save"><font-awesome-icon icon="save" size="1x" /> Save</li>
             </ul>
+            <input type="text" v-model="document.name" v-on:blur="rename($event)" />
         </nav>
         <rs-panes split-to="columns" :allow-resize="true" size="600" min-size="200px">
             <div slot="firstPane" class="editor-pane">
@@ -72,6 +73,15 @@ export default {
             this.$store
                 .dispatch('document/save', {id: this.$route.params.id, contents: this.$store.state.document.document.current.contents})
                 .then(() => this.dirty = false);
+        },
+        rename($event) {
+            const {id} = this.$route.params.id;
+            const name = $event.target.value;
+
+            this.$store
+                .dispatch('document/rename', {id: this.$route.params.id, name})
+                .then(() => this.dirty = false);
+
         }
     }
 }
@@ -83,6 +93,17 @@ export default {
         background: #AAA;
         color: #333;
         height: 2em;
+
+        input {
+            background: #CCC;
+            border: 1px solid #666;
+            line-height: 1.4em;
+            padding: 0 0.5em;
+            font-weight: bold;
+            width: 200px;
+            text-align: center;
+            margin-left: 40%;
+        }
 
         ul {
             display: inline-block;
