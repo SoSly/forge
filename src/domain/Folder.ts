@@ -1,5 +1,5 @@
 import FlakeId from 'flake-idgen';
-import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany} from 'typeorm';
+import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository} from 'typeorm';
 
 // Models
 import {Document} from './Document';
@@ -64,7 +64,20 @@ export class Folder extends BaseEntity {
         await tr.findDescendantsTree(this);
         const queries: Array<Query> = [];
         generateClosureDeletions(queries, this);
-        return runQueries(queries);
+        await runQueries(queries);
+
+        const documents = await Document.find({relations: ['current'], where: {folder: this}});
+        for (const document of documents) {
+            try {
+                console.log(document);
+                await document.remove();
+            }
+            catch (err) { 
+                console.error(err); 
+            }
+        }
+
+        return;
     }
 }
 

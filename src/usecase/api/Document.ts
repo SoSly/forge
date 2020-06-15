@@ -43,7 +43,7 @@ class DocumentRouter extends AbstractRouter {
     private async deleteDocument(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const document = await Document.findOne({id}, {relations: ['user']});
+            const document = await Document.findOne({id}, {relations: ['current', 'user']});
             validateOwnership(ctx, document);
             await Document.remove(document!);
             ctx.status = 203;

@@ -1,4 +1,4 @@
-import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn, OneToOne, OneToMany} from 'typeorm';
+import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn, OneToOne, OneToMany, BeforeRemove} from 'typeorm';
 
 // Models
 import { Folder } from './Folder';
@@ -25,11 +25,13 @@ export class Document extends BaseEntity {
     @JoinColumn()
     public folder: Folder;
 
-    @OneToMany(type => DocumentContent, content => content.document, {cascade: true})
-    public contents: DocumentContent[];
-
-    @OneToOne(type => DocumentContent, content => content.document)
+    @OneToOne(type => DocumentContent, content => content.document, {cascade: true, onDelete: 'CASCADE'})
     public current: DocumentContent;
+
+    @BeforeRemove()
+    async removeCurrentContents() {
+        await this.current.remove();
+    }
 }
 
 @Entity({name: 'document_content'})
@@ -37,7 +39,7 @@ export class DocumentContent extends BaseEntity {
     @PrimaryGeneratedColumn()
     public id: number;
 
-    @ManyToOne(type => Document, document => document.contents)
+    @OneToOne(type => Document, document => document.current)
     @JoinColumn()
     public document: Document;
 

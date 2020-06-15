@@ -29,7 +29,7 @@
                         />
                     <span v-show="!editFolder" v-on:dblclick="editFolderName">
                         {{folder.name}}
-7                        <font-awesome-icon icon="pencil-alt" size="1x" v-on:click="editFolderName" />
+                        <font-awesome-icon icon="pencil-alt" size="1x" v-on:click="editFolderName" />
                     </span>
                 </li>
             </ul>
@@ -140,7 +140,7 @@ export default {
         createNewDocument() {
             const {id} = this.folder;
             this.$store.dispatch('document/createDocument', {folderId: id, name: 'New Document'})
-                .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
+                .then(({data}) => this.$router.push(`/document/edit/${data.id}`));
         },
         createNewFolder() {
             const {id} = this.folder;
