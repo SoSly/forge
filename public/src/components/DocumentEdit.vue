@@ -1,0 +1,146 @@
+<template>
+    <section id="document-editor" v-if="document" v-shortkey.once="['ctrl','s']" @shortkey="save" @input="input">
+        <nav>
+            <ul>
+                <li class="button save" v-bind:class="dirty ? 'dirty' : ''" v-on:click="save"><font-awesome-icon icon="save" size="1x" /> Save</li>
+            </ul>
+        </nav>
+        <rs-panes split-to="columns" :allow-resize="true" size="600" min-size="200px">
+            <div slot="firstPane" class="editor-pane">
+                <editor ref="contents" v-model="document.current.contents"
+                    @init="editorInit" lang="markdown" theme="monokai">
+                ></editor>
+            </div>
+            <div slot="secondPane" class="preview-pane">
+                <pre class="page">{{document.current.contents}}</pre>
+            </div>
+        </rs-panes>
+    </section>
+</template>
+
+<script>
+import throttle from 'lodash.throttle';
+import editor from 'vue2-ace-editor';
+import {mapGetters, mapState} from 'vuex';
+import ResSplitPane from 'vue-resize-split-pane';
+
+export default {
+    name: 'document-editor',
+    components: {editor, 'rs-panes': ResSplitPane},
+    data() {
+        return {
+            dirty: false
+        }
+    },
+    computed: {
+        darkmode: {
+            get() {
+                return this.$store.state.user.user.settings.darkmode;
+            }
+        },
+        ...mapState({
+            document: (state) => state.document.document
+        })
+    },
+    created() {
+        this.$store.dispatch('document/get', this.$route.params.id);
+    },
+    methods: {
+        editorInit() {
+            require('brace/ext/language_tools'); //language extension prerequsite...
+            require('brace/mode/markdown');      //language
+            require('brace/theme/monokai');
+            
+            const editor = this.$refs.contents.editor;
+            editor.setOptions({
+                wrapBehavioursEnabled: true,
+                enableMultiselect: true,
+                scrollPastEnd: 0.25,
+                wrap: true
+            });
+        },
+        input() {
+            this.dirty = true;
+
+            throttle(async () => {
+                await this.$store
+                    .dispatch('document/save', {id: self.$route.params.id, contents: self.$store.state.document.document.current.contents})
+                    .then(() => this.dirty = false);
+            }, 1000);
+        },
+        save() {
+            this.$store
+                .dispatch('document/save', {id: this.$route.params.id, contents: this.$store.state.document.document.current.contents})
+                .then(() => this.dirty = false);
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+#document-editor {
+    nav {
+        background: #AAA;
+        color: #333;
+        height: 2em;
+
+        ul {
+            display: inline-block;
+            padding-left: 0.5em;
+
+            li {
+                border-right: 1px solid #999;
+                display: inline-block;
+                padding: 0 0.25em 0;
+                position: relative;
+                &:first-of-type { border-left: 1px solid #999; }
+                line-height: 2em;
+                
+                a {
+                    color: #39C;
+                }
+
+                &.button {
+                    cursor: pointer; 
+                    &:hover {
+                        background: #BBB;
+                        color: #111;
+                    }
+
+                    &.save.dirty { 
+                        background: #C33; 
+                        &:hover { color: white; }
+                    }
+                }
+            }
+        }
+    }
+
+    .ace_editor {
+        min-height: calc(100vh - 64px - 2em);
+        min-width: 200px;
+    }
+
+    .pane-rs {
+        max-height: calc(100vh - 64px - 2em);
+    }
+
+    .preview-pane {
+        height: calc(100vh - 64px - 2em);
+        overflow-y: scroll;
+
+        pre {
+            margin: 1em auto;
+            max-width: 100%;
+            padding: 0.5in;
+            width: 8.5in;
+
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    }
+}
+</style>

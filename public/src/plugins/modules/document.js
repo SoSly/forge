@@ -15,13 +15,16 @@ export default {
                 .catch(errorHandler);
         },
         get(context, id) {
-            return axios.delete(`/api/document/${id}`)
+            return axios.get(`/api/document/${id}`)
                 .then((result) => context.commit('load', result.data))
                 .catch(errorHandler);
         },
         setFolder(context, {id, folderId}) {
-            let path = `/api/document/${id}`;
-            return axios.patch(path, {folderId})
+            return axios.patch(`/api/document/${id}`, {folderId})
+                .catch(errorHandler);
+        },
+        save(context, {id, contents}) {
+            return axios.patch(`/api/document/${id}`, {contents})
                 .catch(errorHandler);
         }
     },

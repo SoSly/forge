@@ -1,7 +1,7 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next, Middleware} from 'koa';
-import {Document} from '@domain/Document';
+import {Document, DocumentContent} from '@domain/Document';
 import {Folder} from '@domain/Folder';
 import { AbstractRouter } from './AbstractRouter';
 
@@ -58,20 +58,26 @@ class DocumentRouter extends AbstractRouter {
     private async patchDocument(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const document = await Document.findOne({id}, {relations: ['user']});
+            const document = await Document.findOne({id}, {relations: ['current', 'user']});
             validateOwnership(ctx, document);
 
             const changes = ctx.request.body;
             for (let field in changes) {
-                if (field === 'folderId') {
-                    const folder = await Folder.findOne({id: changes[field]}, {relations: ['user']});
-                    validateOwnership(ctx, folder);
+                switch (field) {
+                    case 'folderId': 
+                        const folder = await Folder.findOne({id: changes[field]}, {relations: ['user']});
+                        validateOwnership(ctx, folder);
 
-                    document!.folder = folder!;
-                    continue;
+                        document!.folder = folder!;
+                        continue;
+                    case 'contents':
+                        document!.current.contents = changes[field];
+                        await document!.current.save();
+                        break;
+                    default:
+                        document![field] = changes[field];
+                        break;
                 }
-
-                document![field] = changes[field];
             }
 
             await document!.save();
@@ -93,6 +99,7 @@ class DocumentRouter extends AbstractRouter {
             validateOwnership(ctx, folder);
 
             const document = Document.create({name, folder, user});
+            document.contents = [DocumentContent.create()];
             await document.save();
             ctx.status = 201;
             ctx.type = 'json';
