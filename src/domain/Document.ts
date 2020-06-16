@@ -1,4 +1,4 @@
-import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn, OneToOne, OneToMany, BeforeRemove} from 'typeorm';
+import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn, OneToOne, BeforeRemove} from 'typeorm';
 
 // Models
 import { Folder } from './Folder';
@@ -11,6 +11,9 @@ export class Document extends BaseEntity {
 
     @Column({type: 'varchar', length: 255, nullable: false})
     public name: string;
+
+    @Column({type: 'enum', enum: ['markdown', 'stylesheet'], default: 'markdown'})
+    public type: 'markdown' | 'stylesheet';
 
     @CreateDateColumn()
     public createdAt: Date;
@@ -30,7 +33,7 @@ export class Document extends BaseEntity {
 
     @BeforeRemove()
     async removeCurrentContents() {
-        await this.current.remove();
+        await this.current?.remove();
     }
 }
 

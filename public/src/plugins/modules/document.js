@@ -27,8 +27,11 @@ export default {
             return axios.patch(`/api/document/${id}`, {folderId})
                 .catch(errorHandler);
         },
-        save(context, {id, contents}) {
-            return axios.patch(`/api/document/${id}`, {contents})
+        save(context, changes) {
+            const {id} = changes;
+            delete changes.id;
+            debugger;
+            return axios.patch(`/api/document/${id}`, changes)
                 .catch(errorHandler);
         }
     },

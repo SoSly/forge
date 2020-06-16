@@ -28,7 +28,12 @@ export default class DatabaseService {
     }
 
     public async start(): Promise<void> {
-        this.connection = await createConnection(this.config);
+        try {
+            this.connection = await createConnection(this.config);
+        }
+        catch (err) {
+            throw err;
+        }
     }
 
     public async stop(): Promise<void> {
