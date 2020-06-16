@@ -3,6 +3,10 @@
         <nav>
             <ul>
                 <li class="button save" v-bind:class="dirty ? 'dirty' : ''" v-on:click="save"><font-awesome-icon icon="save" size="1x" /> Save</li>
+                <select v-model="document.type" v-on:change="dirty = true">
+                    <option value="markdown">Markdown</option>
+                    <option value="stylesheet">Stylesheet</option>
+                </select>
             </ul>
             <input type="text" v-model="document.name" v-on:blur="rename($event)" />
         </nav>
@@ -79,8 +83,19 @@ export default {
             }, 1000);
         },
         save() {
+            console.log({
+                    id: this.$route.params.id, 
+                    contents: this.$store.state.document.document.current.contents,
+                    name: this.$store.state.document.document.name,
+                    type: this.$store.state.document.document.type,
+                });
             this.$store
-                .dispatch('document/save', {id: this.$route.params.id, contents: this.$store.state.document.document.current.contents})
+                .dispatch('document/save', {
+                    id: this.$route.params.id, 
+                    contents: this.$store.state.document.document.current.contents,
+                    name: this.$store.state.document.document.name,
+                    type: this.$store.state.document.document.type,
+                })
                 .then(() => this.dirty = false);
         },
         rename($event) {

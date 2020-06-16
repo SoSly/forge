@@ -4,10 +4,16 @@ import DatabaseService from '@service/DatabaseService';
 import WebService from '@service/WebService';
 
 (async function main(): Promise<void> {
-    const db = new DatabaseService(config);
-    await db.start();
-    const ws = new WebService(config);
-    await ws.start();
+    try {
+        const db = new DatabaseService(config);
+        await db.start();
+        const ws = new WebService(config);
+        await ws.start();
+    }
+    catch (err) {
+        console.error(err);
+        process.exit(1);
+    }
 
     async function shutdown(): Promise<void> {
         console.log('shutting down');
