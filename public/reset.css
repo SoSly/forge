@@ -32,6 +32,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+em {
+	font-style: italic;
+}
 ol, ul {
 	list-style: none;
 }
@@ -42,6 +45,9 @@ blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
+}
+strong {
+	font-weight: bold;
 }
 table {
 	border-collapse: collapse;

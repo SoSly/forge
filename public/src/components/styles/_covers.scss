@@ -1,0 +1,121 @@
+.document .page {
+    .back-cover-close {
+        margin-top: 200px;
+        text-align: center;
+
+        a, a:visited { color: orange; }
+    }
+
+    .back-cover-close p, .back-cover-text p {
+        color: #fff;
+        font-family: ff-scala-sans-pro, sans-serif;
+        font-size: 12pt;
+        line-height: 1.3em;
+        margin: 25px 0 0;
+        text-indent: 0;
+
+        & + p { margin-top: 25px; }
+    }
+
+    .back-cover-diamond {
+        background-image: url('/assets/cover-diamond.png');
+        background-size: 280px;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 90px;
+        top: 110px;
+        width: 280px;
+        height: 8px;
+    }
+
+    .back-cover-header {
+        color: #ff2a1a;
+        font-family: modesto-condensed, serif;
+        font-size: 64px;
+        font-variant: small-caps;
+        line-height: 1em;
+        text-align: center;
+        text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+    }
+
+    .back-cover-image {
+        position: absolute;
+        height: 1066px;
+        left: 0;
+        top: 0;
+        width: 475px;
+        background-image: url('/assets/back-cover.png');
+        background-size: 475px 1066px;
+        z-index: -1;
+    }
+
+    .back-cover-logo {
+        background-image: url(https://cdn.discordapp.com/emojis/616473064523300874.png?v=1);
+        background-size: 74px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: 165px;
+        bottom: 95px;
+        width: 120px;
+        height: 74px;
+    }
+
+    .cover-diamond {
+        background-image: url('/assets/cover-diamond.png');
+        background-size: 400px;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 210px;
+        top: 115px;
+        width: 400px;
+        height: 12px;
+    }
+
+    .cover-footer {
+        position: absolute;
+        font-family: ScalySans;
+        font-size: 20px;
+        line-height: 1.2em;
+        color: white;
+        bottom: 50px;
+        right: 55px;
+        width: 700px;
+        text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+        filter: opacity(100%);
+        text-align: center;
+    }
+
+    .cover-header {
+        position: absolute;
+        font-family: modesto-condensed, serif;
+        transform: scale(2, 2) !important;
+        font-weight: normal;
+        font-size: 36px;
+        color: white;
+        width: 700px;
+        text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+        transform: scaleY(3) scaleX(1);
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        top: 65px;
+        text-align: center;
+    }
+
+    .cover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 824px;
+    }
+
+    .cover-splotch {
+        background-image: url('/assets/cover-splotch.png');
+        background-size: 350px;
+        position: absolute;
+        left: 0;
+        bottom: 180px;
+        width: 345px;
+        height: 56px;
+    }
+}

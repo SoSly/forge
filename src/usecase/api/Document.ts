@@ -75,13 +75,11 @@ class DocumentRouter extends AbstractRouter {
                         await document!.current.save();
                         break;
                     default:
-                        console.log(field, '=>', changes[field]);
                         document![field] = changes[field];
                         break;
                 }
             }
 
-            console.log(document);
             await document!.save();
             ctx.status = 204;
             ctx.body = '';

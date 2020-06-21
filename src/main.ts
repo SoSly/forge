@@ -9,13 +9,18 @@ import WebService from '@service/WebService';
         await db.start();
         const ws = new WebService(config);
         await ws.start();
+        
+        process.on('SIGINT', shutdown(db, ws))
+        process.on('SIGTERM', shutdown(db, ws));
     }
     catch (err) {
         console.error(err);
         process.exit(1);
     }
+})();
 
-    async function shutdown(): Promise<void> {
+function shutdown(db: DatabaseService, ws: WebService): () => Promise<void> {
+    return async function(): Promise<void> {
         console.log('shutting down');
         setTimeout(() => {
             console.log('shutdown timeout exceeded');
@@ -25,6 +30,4 @@ import WebService from '@service/WebService';
         await ws.stop();
         process.exit(0);
     }
-    process.on('SIGINT', shutdown)
-    process.on('SIGTERM', shutdown);
-})();
+}

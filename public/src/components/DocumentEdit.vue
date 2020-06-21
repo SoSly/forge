@@ -13,7 +13,7 @@
         <multipane>
             <div :style="{width: '575px', minWidth: '300px', maxWidth: '900px'}">
                 <div class="editor-pane">
-                    <editor ref="contents" v-model="document.current.contents"
+                   <editor ref="contents" v-model="document.current.contents"
                         @init="editorInit" lang="markdown" theme="monokai">
                     ></editor>
                 </div>
@@ -21,7 +21,12 @@
             <multipane-resizer></multipane-resizer>
             <div :style="{flexGrow: 1}">
                 <div class="preview-pane">
-                    <pre class="page">{{document.current.contents}}</pre>
+                    <template v-if="this.document.type == 'stylesheet'">
+                        <pre class="page">{{document.current.contents}}</pre>
+                    </template>
+                    <template v-if="this.document.type == 'markdown'">
+                        <article class="document" v-html="markdownPreview"></article>
+                    </template>
                 </div>
             </div>
         </multipane>
@@ -33,6 +38,29 @@ import throttle from 'lodash.throttle';
 import editor from 'vue2-ace-editor';
 import {mapGetters, mapState} from 'vuex';
 import {Multipane, MultipaneResizer} from 'vue-multipane';
+
+import MarkdownIt from 'markdown-it';
+import MarkdownItAnchor from 'markdown-it-anchor';
+import Columnbreak from '../plugins/markdown/columnbreak.js';
+import Pagebreak from '../plugins/markdown/pagebreak.js';
+import TOC from '../plugins/markdown/toc.js';
+import uslug from 'uslug';
+
+const md = new MarkdownIt({
+    html: true,
+    xhtmlOut: false,
+    breaks: false,
+    langPrefix: 'language-',
+    linkify: false,
+    typographer: true
+});
+md.use(Columnbreak);
+md.use(MarkdownItAnchor);
+md.use(Pagebreak);
+md.use(TOC, {
+    slugify: uslug,
+    level: [1,2,3]
+});
 
 export default {
     name: 'document-editor',
@@ -47,10 +75,18 @@ export default {
         }
     },
     computed: {
-        darkmode: {
-            get() {
-                return this.$store.state.user.user.settings.darkmode;
-            }
+        markdownPreview() {
+            const contents = [];
+            contents.push('\${toc}');
+            contents.push('<section class="page" id="p1">');
+            contents.push('');
+            contents.push(this.document.current.contents);
+            contents.push('</section>');
+            console.log(contents.join('\n'));
+            return md.render(contents.join('\n'));
+        },
+        darkmode() {
+            return this.$store.state.user.user.settings.darkmode;
         },
         ...mapState({
             document: (state) => state.document.document
@@ -83,12 +119,6 @@ export default {
             }, 1000);
         },
         save() {
-            console.log({
-                    id: this.$route.params.id, 
-                    contents: this.$store.state.document.document.current.contents,
-                    name: this.$store.state.document.document.name,
-                    type: this.$store.state.document.document.type,
-                });
             this.$store
                 .dispatch('document/save', {
                     id: this.$route.params.id, 
@@ -112,6 +142,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'styles/markdown.scss';
+
 #document-editor {   
     .multipane {
         .multipane-resizer {
@@ -123,7 +155,7 @@ export default {
         }
     }
 
-    nav {
+    & > nav {
         background: #AAA;
         color: #333;
         height: 2em;
@@ -178,12 +210,14 @@ export default {
         overflow-y: scroll;
         width: 100%;
 
-        pre {
+        .page {
             margin: 1em auto;
             max-width: 100%;
             padding: 0.5in;
             width: 8.5in;
+        }
 
+        pre {
             white-space: pre-wrap;
             white-space: -moz-pre-wrap;
             white-space: -pre-wrap;
