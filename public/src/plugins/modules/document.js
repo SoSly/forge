@@ -30,7 +30,6 @@ export default {
         save(context, changes) {
             const {id} = changes;
             delete changes.id;
-            debugger;
             return axios.patch(`/api/document/${id}`, changes)
                 .catch(errorHandler);
         }
