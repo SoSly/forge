@@ -1,9 +1,10 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
-import Koa, {Context, Next, Middleware} from 'koa';
-import {Document, DocumentContent} from '@domain/Document';
-import {Folder} from '@domain/Folder';
-import { AbstractRouter } from './AbstractRouter';
+import Koa, {Context, Next} from 'koa';
+import {Document, DocumentContent} from '@domain/DocumentEntities';
+import {Folder} from '@domain/FolderEntities';
+import {AbstractRouter} from './AbstractRouter';
+import {DeepPartial, getConnection} from 'typeorm';
 
 function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
     if (!obj) ctx.throw(404);
@@ -98,9 +99,15 @@ class DocumentRouter extends AbstractRouter {
             const folder = await Folder.findOne({id: folderId}, {relations: ['user']});
             validateOwnership(ctx, folder);
 
-            const document = Document.create({name, folder, user});
-            document.current = DocumentContent.create();
+            const results = await getConnection().createQueryBuilder()
+                .insert().into(Document).values({name, folder, user}).returning("*")
+                .execute();
+            const document = Document.create(results.generatedMaps[0] as DeepPartial<Document>);
+
+            const content = DocumentContent.create();
+            document.current = content;
             await document.save();
+
             ctx.status = 201;
             ctx.type = 'json';
             ctx.body = document;

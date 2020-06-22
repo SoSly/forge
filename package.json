@@ -14,10 +14,15 @@
   },
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --watch",
-    "build:prod": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build:prod": "cross-env NODE_ENV=production webpack --progress --hide-modules && npm run migrations:run",
     "build": "npm run build:prod",
+    "migrations:clean": "rm ./src/migrations/*.js",
+    "migrations:compile": "tsc -p ./src/migrations",
+    "migrations:revert": "typeorm migration:revert",
+    "migrations:run": "npm run migrations:compile && typeorm migration:run",
     "start": "ts-node --require tsconfig-paths/register ./src/main.ts",
-    "start:dev": "concurrently \"npm run build:dev\" \"ts-node-dev --require tsconfig-paths/register --inspect --respawn --transpileOnly ./src/main.ts\""
+    "start:dev": "concurrently \"npm run build:dev\" \"ts-node-dev --require tsconfig-paths/register --inspect --respawn --transpileOnly ./src/main.ts\"",
+    "typeorm": "typeorm"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -26,7 +31,6 @@
     "@koa/router": "^9.0.1",
     "@types/convict": "^5.2.1",
     "@types/dotenv": "^8.2.0",
-    "@types/flake-idgen": "^0.1.30",
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-logger": "^3.1.1",
@@ -39,7 +43,6 @@
     "axios": "^0.19.2",
     "convict": "^6.0.0",
     "dotenv": "^8.2.0",
-    "flake-idgen": "^1.4.0",
     "koa": "^2.12.0",
     "koa-bodyparser": "^4.3.0",
     "koa-logger": "^3.2.1",

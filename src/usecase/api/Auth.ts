@@ -2,9 +2,9 @@ import {Config} from 'convict';
 import DiscordStrategy from 'passport-discord';
 import Passport from 'koa-passport';
 import Router from '@koa/router';
-import {User} from '@domain/User';
+import {Auth} from '@domain/UserEntities';
 import Koa, {Context, Next, Middleware} from 'koa';
-import { AbstractRouter } from './AbstractRouter';
+import {AbstractRouter} from './AbstractRouter';
 
 const ErrUserNotFound = new Error('User not found');
 
@@ -37,10 +37,10 @@ class AuthRouter extends AbstractRouter {
         this.router.get('/logout', this.handleLogout);
     }
 
-    private async deserializeUser(obj: string, done:  (err: any, user?: User) => void): Promise<any> {
+    private async deserializeUser(obj: string, done:  (err: any, user?: Auth) => void): Promise<any> {
         try {
             const profile: Object = JSON.parse(obj);
-            const user = await User.findOneOrCreate(profile);
+            const user = await Auth.findOneOrCreate(profile);
             if (user) done(null, user);
             done(ErrUserNotFound);
         }
@@ -75,13 +75,13 @@ class AuthRouter extends AbstractRouter {
         ctx.redirect('/');
     }
 
-    private serializeUser(user: User, done: (err: any, user: string) => void): void {
+    private serializeUser(user: Auth, done: (err: any, user: string) => void): void {
         done(null, JSON.stringify(user));
     }
 
     private async verifyDiscordStrategy(accessToken: string, refreshToken: string, profile: DiscordStrategy.Profile, done: CallableFunction): Promise<void> {
         try {
-            const user = await User.findOneOrCreate({
+            const user = await Auth.findOneOrCreate({
                 provider: profile.provider,
                 providerId: profile.id,
                 username: profile.username,

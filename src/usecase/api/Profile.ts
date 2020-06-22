@@ -1,7 +1,7 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
-import Koa, {Context, Next, Middleware} from 'koa';
-import { AbstractRouter } from './AbstractRouter';
+import Koa, {Context, Next} from 'koa';
+import {AbstractRouter} from './AbstractRouter';
 
 class ProfileRouter extends AbstractRouter {
     private config: Config<any>;

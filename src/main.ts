@@ -9,6 +9,7 @@ import WebService from '@service/WebService';
         await db.start();
         const ws = new WebService(config);
         await ws.start();
+        console.log('service started');
         
         process.on('SIGINT', shutdown(db, ws))
         process.on('SIGTERM', shutdown(db, ws));

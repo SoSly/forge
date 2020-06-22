@@ -1,5 +1,5 @@
 import {Config} from "convict";
-import Koa, {Context, Next} from 'koa';
+import Koa from 'koa';
 import KoaLogger from 'koa-logger';
 import {Server} from 'net';
 import Session from 'koa-session';
