@@ -1,5 +1,6 @@
 node_modules/
 public/dist/
+src/migrations/*.js
 yarn-error.log
 .env
 .temp/

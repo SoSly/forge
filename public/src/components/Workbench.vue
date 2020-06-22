@@ -308,22 +308,28 @@ export default {
     }
 }
 
-.dark #workbench {
-    nav {
-        border-bottom: 2px solid #666;
+.dark {
+    & > article #workbench.page { 
+        background: #333;
+        color: #DDD;
     }
-    table {
-        thead { 
-            th {
-                border-right: 1px solid #666;
-                &:last-of-type { border-right: none; }
-            }
+    #workbench {
+        nav {
+            border-bottom: 2px solid #666;
         }
+        table {
+            thead { 
+                th {
+                    border-right: 1px solid #666;
+                    &:last-of-type { border-right: none; }
+                }
+            }
 
-        tbody {
-            border: 1px solid #666;
-            div[draggable]:nth-child(odd) { background: #3F3F3F; }
-            tr:hover { background: #555; }
+            tbody {
+                border: 1px solid #666;
+                div[draggable]:nth-child(odd) { background: #3F3F3F; }
+                tr:hover { background: #555; }
+            }
         }
     }
 }

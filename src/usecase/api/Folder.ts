@@ -1,9 +1,9 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
-import {Folder} from '@domain/Folder';
-import {getTreeRepository, TreeRepository, IsNull, getCustomRepository, getConnection, getRepository} from 'typeorm';
-import { AbstractRouter } from './AbstractRouter';
+import {Folder} from '@domain/FolderEntities';
+import {getTreeRepository, IsNull} from 'typeorm';
+import {AbstractRouter} from './AbstractRouter';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);

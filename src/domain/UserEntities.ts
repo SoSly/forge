@@ -1,13 +1,11 @@
-import FlakeId from "flake-idgen";
-import {Entity, Column, BaseEntity, DeepPartial, Index, OneToMany, OneToOne, PrimaryGeneratedColumn, JoinColumn} from 'typeorm';
+import {Entity, Column, BaseEntity, DeepPartial, OneToMany, OneToOne, PrimaryColumn, JoinColumn, getConnection} from 'typeorm';
 
 // Models
-import {Folder} from "./Folder";
+import {Folder} from "./FolderEntities";
 
-@Entity({name: 'user'})
-@Index(['provider', 'providerId'], {unique: true})
-export class User extends BaseEntity {
-    @PrimaryGeneratedColumn()
+@Entity({name: 'auth'})
+export class Auth extends BaseEntity {
+    @PrimaryColumn({type: 'bigint'})
     public id: string;
 
     @Column({type: 'varchar', length: 255, nullable: false})
@@ -16,7 +14,7 @@ export class User extends BaseEntity {
     @Column({type: 'varchar', length: 255, nullable: false})
     public provider: string;
 
-    @Column({type: 'varchar', length: 255, nullable: false})
+    @Column({name: 'id_provider', type: 'varchar', length: 255, nullable: false})
     public providerId: string;
 
     @Column({type: 'varchar', length: 255, nullable: true})
@@ -31,15 +29,19 @@ export class User extends BaseEntity {
     @OneToOne(type => UserSettings, settings => settings.user, {cascade: true})
     public settings: UserSettings;
 
-    public static async findOneOrCreate(params: DeepPartial<User>): Promise<User|void> {
+    public static async findOneOrCreate(params: DeepPartial<Auth>): Promise<Auth|void> {
         const {provider, providerId} = params;        
-        let user: User|undefined = await User.findOne({provider, providerId}, {relations: ['settings']});
+        let user: Auth|undefined = await Auth.findOne({provider, providerId}, {relations: ['settings']});
         if (user === undefined) {
-            // const id = new FlakeId().next().toString('hex');
-            user = User.create(params);
-            user.settings = UserSettings.create();
-            await user.save();
-            
+            const results = await getConnection().createQueryBuilder()
+                .insert().into(Auth).values(params).returning("*")
+                .execute();
+            user = Auth.create(results.generatedMaps[0] as DeepPartial<Auth>);
+
+            const settings = UserSettings.create();
+            settings.user = user;
+            await settings.save();
+
             const rootFolder = Folder.create({name: `Your Workbench`});
             rootFolder.user = user;
             await rootFolder.save();
@@ -50,12 +52,12 @@ export class User extends BaseEntity {
 
 @Entity({name: 'user_settings'})
 export class UserSettings extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn({type: 'bigint'})
     public id: string;
 
-    @OneToOne(type => User, user => user.settings)
-    @JoinColumn()
-    public user: User;
+    @OneToOne(type => Auth, user => user.settings)
+    @JoinColumn({name: 'id_auth'})
+    public user: Auth;
 
     @Column({default: false})
     public darkmode: boolean;

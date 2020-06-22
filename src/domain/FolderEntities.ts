@@ -1,16 +1,15 @@
-import FlakeId from 'flake-idgen';
 import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository} from 'typeorm';
 
 // Models
-import {Document} from './Document';
-import {User} from './User';
-import { Query } from 'typeorm/driver/Query';
+import {Document} from './DocumentEntities';
+import {Auth} from './UserEntities';
+import {Query} from 'typeorm/driver/Query';
 
 @Entity({name: 'folder'})
 @Tree('closure-table')
 export class Folder extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    public id: number;
+    @PrimaryGeneratedColumn('uuid')
+    public id: string;
 
     @Column({type: 'varchar', length: 255, nullable: false})
     public name: string;
@@ -21,11 +20,12 @@ export class Folder extends BaseEntity {
     @UpdateDateColumn()
     public updatedAt: Date;
 
-    @ManyToOne(type => User, user => user.folders)
-    @JoinColumn({name: 'User'})
-    public user: User;
+    @ManyToOne(type => Auth, user => user.folders)
+    @JoinColumn({name: 'id_auth'})
+    public user: Auth;
     
     @TreeParent()
+    @JoinColumn({name: 'id_parent'})
     public parent: Folder;
 
     @TreeChildren({cascade: ['remove', 'update']})
@@ -34,7 +34,7 @@ export class Folder extends BaseEntity {
     @OneToMany(type => Document, document => document.folder)
     public documents: Document[];
 
-    public static async createChildFolder(parentId: number, name: string): Promise<Folder> {
+    public static async createChildFolder(parentId: string, name: string): Promise<Folder> {
         const parent = await Folder.findOne({id: parentId}, {relations: ['user']});
         if (parent === undefined) throw new Error(`Could not find parent folder with ID '${parentId}'.`);
         const folder = Folder.create({name});
@@ -43,7 +43,7 @@ export class Folder extends BaseEntity {
         return await folder.save();
     }
 
-    public static async setParentFolder(folder: Folder, id: number, validateFolderOwner: (folder: Folder|undefined) => void): Promise<void> {
+    public static async setParentFolder(folder: Folder, id: string, validateFolderOwner: (folder: Folder|undefined) => void): Promise<void> {
         const tr = getTreeRepository(Folder)
         const parent = await tr.findOne({id}, {relations: ['user']});
         validateFolderOwner(parent);        
@@ -51,7 +51,7 @@ export class Folder extends BaseEntity {
         await tr.findDescendantsTree(folder);
         folder.parent = parent!;
         const queries: Array<Query> = [];
-        queries.push({query: `UPDATE "folder" SET "parentId" = $1 WHERE "id" = $2`, parameters: [parent?.id, folder.id]});
+        queries.push({query: `UPDATE "folder" SET "id_parent" = $1 WHERE "id" = $2`, parameters: [parent?.id, folder.id]});
         generateClosureDeletions(queries, folder);
         queries.push({query:`INSERT INTO "folder_closure" ("id_ancestor", "id_descendant") VALUES` + 
             generateClosureRelations(folder).map(({id_ancestor, id_descendant}) => ` (${id_ancestor}, ${id_descendant})`).join(',')});
@@ -69,7 +69,6 @@ export class Folder extends BaseEntity {
         const documents = await Document.find({relations: ['current'], where: {folder: this}});
         for (const document of documents) {
             try {
-                console.log(document);
                 await document.remove();
             }
             catch (err) { 
@@ -82,8 +81,8 @@ export class Folder extends BaseEntity {
 }
 
 interface ClosureRelation {
-    id_ancestor: number,
-    id_descendant: number,
+    id_ancestor: string,
+    id_descendant: string,
 }
 
 function generateClosureDeletions(queries: Array<Query>, folder: Folder): void {
@@ -102,7 +101,7 @@ function generateClosureRelations(folder: Folder): Array<ClosureRelation> {
     return [selfRelation, ...ancestorRelations, ...descendantRelations];
 }
 
-function generateAncestorClosureRelations(folder: Folder, descendantId: number): Array<ClosureRelation> {
+function generateAncestorClosureRelations(folder: Folder, descendantId: string): Array<ClosureRelation> {
     if (folder.parent) {
         const relation = {
             id_ancestor: folder.parent.id,

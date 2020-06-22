@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "CommonJS",
+        "declaration": false,
+        "noImplicitAny": false,
+        "allowSyntheticDefaultImports": true,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",    
+    },
+    "include": ["./*.ts"]
+}
