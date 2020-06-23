@@ -19,7 +19,7 @@ export default {
             if (this.$store.state.user.user) {
                 return this.$store.state.user.user.settings.darkmode ? 'dark' : 'light';
             }
-            return 'light';
+            return 'dark';
         }
     },
     created() {

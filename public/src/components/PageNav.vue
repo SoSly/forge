@@ -122,7 +122,7 @@ export default {
                 }
 
                 &.logo {
-                    background: #CCC;
+                    background: white;
                     border: 1px solid transparent;
                     border-radius: 50%;
                     height: 35px;

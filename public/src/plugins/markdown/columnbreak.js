@@ -38,4 +38,4 @@ function columnbreakPlugin(md, options) {
     md.renderer.rules.columnbreak = tokenizeColumnbreak(md, options);
 }
 
-export default columnbreakPlugin;
+module.exports = columnbreakPlugin;

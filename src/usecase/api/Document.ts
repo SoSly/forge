@@ -1,10 +1,12 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
-import {Document, DocumentContent} from '@domain/DocumentEntities';
-import {Folder} from '@domain/FolderEntities';
 import {AbstractRouter} from './AbstractRouter';
 import {DeepPartial, getConnection} from 'typeorm';
+
+// Models
+import {Document, DocumentContent} from '@domain/DocumentEntities';
+import {Folder} from '@domain/FolderEntities';
 
 function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
     if (!obj) ctx.throw(404);

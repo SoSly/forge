@@ -240,4 +240,4 @@ function headings2ast (tokens) {
   })
 }
 
-export default tocPlugin
+module.exports = tocPlugin
