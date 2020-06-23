@@ -2,7 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './public/src/main.js',
+  entry: [
+      './public/src/main.js',
+      './public/src/styles/markdown.scss',
+      './public/reset.css',
+  ],
   output: {
     path: path.resolve(__dirname, 'public/dist'),
     publicPath: 'dist/',
@@ -13,23 +17,30 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
-          'css-loader'
+          {
+            loader: 'file-loader',
+            options: { name: '[name].min.css'}
+          },
+          'sass-loader'
         ],
       },
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader',
-          'css-loader',
+          {
+            loader: 'file-loader',
+            options: { name: '[name].min.css'}
+          },
           'sass-loader'
         ],
       },
       {
         test: /\.sass$/,
         use: [
-          'vue-style-loader',
-          'css-loader',
+          {
+            loader: 'file-loader',
+            options: { name: '[name].min.css'}
+          },
           'sass-loader?indentedSyntax'
         ],
       },

@@ -12,6 +12,7 @@ import {setupAuthMiddleware} from "@usecase/api/Auth";
 import {setupDocumentMiddleware} from "@usecase/api/Document";
 import {setupFolderMiddleware} from "@usecase/api/Folder";
 import {setupProfileMiddleware} from "@usecase/api/Profile";
+import {setupViewerMiddleware} from "@usecase/api/Viewer";
 
 export default class WebService {
     app: Koa;
@@ -29,10 +30,13 @@ export default class WebService {
 
         // Setup static file routing
         // Rewrite routes that don't match a specific file or an api or auth call to /
-        this.app.use(Rewrite(/^\/((?!api|auth|.*\.ico|.*\.js|.*\.png|.*\.jpg|.*\.css).)+/i, '/'));
+        this.app.use(Rewrite(/^\/((?!api|auth|view|.*\.ico|.*\.js|.*\.png|.*\.jpg|.*\.css).)+/i, '/'));
         this.app.use(serve(path.resolve('./public')));
 
-        // Setup API middlewares
+        // Setup unrestricted middlewares
+        setupViewerMiddleware(this.app, config);
+
+        // Setup restricted middlewares
         setupAuthMiddleware(this.app, config);
         setupDocumentMiddleware(this.app, config);
         setupFolderMiddleware(this.app, config);

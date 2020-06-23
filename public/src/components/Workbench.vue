@@ -63,10 +63,12 @@
                         <td>{{type(item.type)}}</td>
                         <td></td>
                         <td>
-                            <a><font-awesome-icon icon="trash" size="1x" v-on:click="deleteItem(item)" /></a>
-                            <router-link :to="{path: `/document/view/${item.id}`}">
+                            <a v-on:click="deleteItem(item)" >
+                                <font-awesome-icon icon="trash" size="1x" />
+                            </a>
+                            <a v-bind:href="'/view/' + item.id" target="_blank" v-if="item.type === 'document'">
                                 <font-awesome-icon icon="eye" size="1x" />
-                            </router-link>
+                            </a>
                         </td>
                     </tr>
                 </drop>

@@ -45,4 +45,4 @@ function pagebreakPlugin(md, options) {
     md.renderer.rules.pagebreak = tokenizePagebreak(md, options);
 }
 
-export default pagebreakPlugin;
+module.exports = pagebreakPlugin;

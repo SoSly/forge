@@ -48,5 +48,5 @@ export class DocumentContent extends BaseEntity {
     public document: Document;
 
     @Column({default: '', type: 'text'})
-    public contents: String;
+    public contents: string;
 }

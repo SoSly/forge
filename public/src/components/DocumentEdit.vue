@@ -25,6 +25,7 @@
                         <pre class="page">{{document.current.contents}}</pre>
                     </template>
                     <template v-if="this.document.type == 'markdown'">
+                        <link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />
                         <article class="document" v-html="markdownPreview"></article>
                     </template>
                 </div>
@@ -39,6 +40,7 @@ import editor from 'vue2-ace-editor';
 import {mapGetters, mapState} from 'vuex';
 import {Multipane, MultipaneResizer} from 'vue-multipane';
 
+// todo: put this somewhere the frontend and the backend can both get at it.
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
 import Columnbreak from '../plugins/markdown/columnbreak.js';
@@ -142,8 +144,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'styles/markdown.scss';
-
 #document-editor {   
     .multipane {
         .multipane-resizer {
