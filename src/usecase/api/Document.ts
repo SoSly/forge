@@ -46,9 +46,10 @@ class DocumentRouter extends AbstractRouter {
     private async deleteDocument(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const document = await Document.findOne({id}, {relations: ['current', 'user']});
+            const document = await Document.findOne({id}, {relations: ['current', 'folder', 'user']});
             validateOwnership(ctx, document);
             await Document.remove(document!);
+            await Folder.updateSize(document!.folder.id);
             ctx.status = 203;
             ctx.body = '';
         }
@@ -61,29 +62,32 @@ class DocumentRouter extends AbstractRouter {
     private async patchDocument(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const document = await Document.findOne({id}, {relations: ['current', 'user']});
+            const document = await Document.findOne({id}, {relations: ['current', 'folder', 'user']});
             validateOwnership(ctx, document);
 
             const changes = ctx.request.body;
             for (let field in changes) {
                 switch (field) {
                     case 'folderId': 
-                        const folder = await Folder.findOne({id: changes[field]}, {relations: ['user']});
+                        const folder = await Folder.findOne({id: changes[field]}, {relations: ['user', 'folder']});
                         validateOwnership(ctx, folder);
-
                         document!.folder = folder!;
-                        continue;
+                        await document!.folder!.save();
+                        break;
                     case 'contents':
                         document!.current.contents = changes[field];
                         await document!.current.save();
                         break;
                     default:
                         document![field] = changes[field];
-                        break;
+                       break;
                 }
             }
-
+            await document!.updateDocumentSize();
             await document!.save();
+
+            await Folder.updateSize(document!.folder.id);
+ 
             ctx.status = 204;
             ctx.body = '';
         }
@@ -105,10 +109,14 @@ class DocumentRouter extends AbstractRouter {
                 .insert().into(Document).values({name, folder, user}).returning("*")
                 .execute();
             const document = Document.create(results.generatedMaps[0] as DeepPartial<Document>);
+            document.folder = folder!;
 
             const content = DocumentContent.create();
             document.current = content;
+            await document.updateDocumentSize();
             await document.save();
+
+            await Folder.updateSize(document!.folder.id);
 
             ctx.status = 201;
             ctx.type = 'json';

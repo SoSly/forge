@@ -61,7 +61,7 @@
                         </td>
                         <td>{{lastModified(item.updatedAt)}}</td>
                         <td>{{type(item.type)}}</td>
-                        <td></td>
+                        <td>{{size(item.size)}}</td>
                         <td>
                             <a v-on:click="deleteItem(item)" >
                                 <font-awesome-icon icon="trash" size="1x" />
@@ -165,6 +165,16 @@ export default {
         showNewMenu() {
             this.newMenu = true;
         },
+        size(fileSizeInBytes) {
+            var i = -1;
+            var byteUnits = [' kb', ' mb', ' gb', ' tb', ' pb', ' eb', ' zb', ' yb'];
+            do {
+                fileSizeInBytes = fileSizeInBytes / 1024;
+                i++;
+            } while (fileSizeInBytes > 1024);
+
+            return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
+        },
         saveFolderName($event) {
             const {id} = this.$store.state.folder.folder;
             const name = $event.target.value;
@@ -256,10 +266,10 @@ export default {
             line-height: 1.2em; 
             padding: 0 5px;
 
-            &:nth-of-type(1) { width: 50%; }
+            &:nth-of-type(1) { width: 48%; }
             &:nth-of-type(2) { width: 27%; }
             &:nth-of-type(3) { width: 15%; }
-            &:nth-of-type(4) { width: 10%; }
+            &:nth-of-type(4) { width: 12%; }
             &:nth-of-type(5) { width: 8%; }
         }
         
