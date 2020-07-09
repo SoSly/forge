@@ -26,6 +26,7 @@ function folderToFolderResponse(folder: Folder): FolderResponse {
     return <FolderResponse>{
         id: folder?.id,
         name: folder?.name,
+        parent: folder?.parent,
         createdAt: folder?.createdAt,
         updatedAt: folder?.updatedAt,
         size: folder?.size,
