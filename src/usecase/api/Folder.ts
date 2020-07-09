@@ -1,13 +1,35 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
-import {Folder} from '@domain/FolderEntities';
-import {getTreeRepository, IsNull} from 'typeorm';
+import {Document,DocumentResponse} from '@domain/DocumentEntities';
+import {Folder,FolderResponse} from '@domain/FolderEntities';
+import {getTreeRepository,IsNull} from 'typeorm';
 import {AbstractRouter} from './AbstractRouter';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
     if (folder.user.id !== ctx.state.user.id) ctx.throw(401);
+}
+
+
+function documentToDocumentResponse(document: Document): DocumentResponse {
+    return <DocumentResponse>{
+        id: document?.id,
+        name: document?.name,
+        createdAt: document?.createdAt,
+        updatedAt: document?.updatedAt,
+        size: document?.size
+    }
+}
+
+function folderToFolderResponse(folder: Folder): FolderResponse {
+    return <FolderResponse>{
+        id: folder?.id,
+        name: folder?.name,
+        createdAt: folder?.createdAt,
+        updatedAt: folder?.updatedAt,
+        size: folder?.size,
+    };
 }
 
 class FolderRouter extends AbstractRouter {
@@ -30,11 +52,14 @@ class FolderRouter extends AbstractRouter {
     private async deleteFolder(ctx: Context, next: Next): Promise<void> {
         try {
             const id = ctx.params.id;
-            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['user']});
+            const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['parent', 'user']});
             validateFolderOwner(ctx, folder);
             const children = await getTreeRepository(Folder).findDescendants(folder!);
             await getTreeRepository(Folder).remove(children);
             await getTreeRepository(Folder).remove(folder!);
+            if (folder!.parent) {
+                await Folder.updateSize(folder!.parent.id);
+            }
             ctx.status = 203;
             ctx.body = '';
         }
@@ -52,8 +77,13 @@ class FolderRouter extends AbstractRouter {
             const folder = await getTreeRepository(Folder).findOne(searchParams, {relations: ['children', 'documents', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
             await getTreeRepository(Folder).findAncestorsTree(folder!);
+
+            const res = folderToFolderResponse(folder!)
+            res.children = folder?.children.map(folderToFolderResponse);
+            res.documents = folder?.documents.map(documentToDocumentResponse);
+
             ctx.type = 'json';
-            ctx.body = folder;
+            ctx.body = res;
         }
         catch (err) {
             console.error(err);
@@ -84,6 +114,7 @@ class FolderRouter extends AbstractRouter {
             }
 
             await folder!.save();
+            await Folder.updateSize(folder!.id);
             ctx.status = 204;
             ctx.body = '';
         }
@@ -99,6 +130,7 @@ class FolderRouter extends AbstractRouter {
             const parentFolder = await getTreeRepository(Folder).findOne({id: body.parentId}, {relations: ['user']});
             validateFolderOwner(ctx, parentFolder);
             const folder = await Folder.createChildFolder(body.parentId, body.name);
+            await Folder.updateSize(folder!.id);
             ctx.status = 201;
             ctx.type = 'json';
             ctx.body = folder;

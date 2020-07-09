@@ -1,8 +1,21 @@
-import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn, OneToOne, BeforeRemove, ValueTransformer} from 'typeorm';
+import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn, OneToOne, BeforeRemove, ValueTransformer, BeforeUpdate, BeforeInsert, getRepository, InsertEvent, getConnection, AfterInsert, AfterRemove, AfterUpdate, AdvancedConsoleLogger} from 'typeorm';
 
 // Models
 import {Folder} from './FolderEntities';
 import {Auth} from './UserEntities';
+
+export class DocumentResponse {
+    public id: string;
+    public name: string;
+    public type: string;
+    public createdAt: Date;
+    public updatedAt: Date;
+    public current: {
+        id: string;
+        contents: string;
+    }
+    public size: number;
+}
 
 @Entity({name: 'document'})
 export class Document extends BaseEntity {
@@ -15,6 +28,9 @@ export class Document extends BaseEntity {
     @Column({type: 'enum', enum: ['markdown', 'stylesheet'], default: 'markdown'})
     public type: 'markdown' | 'stylesheet';
 
+    @Column({type: 'int'})
+    public size: number;
+
     @CreateDateColumn()
     public createdAt: Date;
 
@@ -25,15 +41,23 @@ export class Document extends BaseEntity {
     @JoinColumn({name: 'id_auth'})
     public user: Auth;
 
-    @ManyToOne(type => Folder, folder => folder.documents)
+    @ManyToOne(type => Folder, folder => folder.documents, {cascade: true})
     @JoinColumn({name: 'id_folder'})
     public folder: Folder;
 
     @OneToOne(type => DocumentContent, content => content.document, {cascade: true, onDelete: 'CASCADE'})
     public current: DocumentContent;
 
+    public async updateDocumentSize() {
+        console.log('Document.updateDocumentSize');
+        if (this.current && this.current.contents) {
+            this.size = this.name.length + this.current.contents.length;
+            console.log('size=', this.size);
+        }
+    }
+
     @BeforeRemove()
-    async removeCurrentContents() {
+    private async removeCurrentContents() {
         await this.current?.remove();
     }
 }

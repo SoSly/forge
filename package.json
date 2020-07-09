@@ -17,6 +17,7 @@
     "build:prod": "cross-env NODE_ENV=production webpack --progress --hide-modules && npm run migrations:run",
     "build": "npm run build:prod",
     "migrations:clean": "rm ./src/migrations/*.js",
+    "migrations:create": "typeorm migration:create",
     "migrations:compile": "tsc -p ./src/migrations",
     "migrations:revert": "typeorm migration:revert",
     "migrations:run": "npm run migrations:compile && typeorm migration:run",

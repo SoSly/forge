@@ -1,9 +1,19 @@
-import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository} from 'typeorm';
+import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository, AfterUpdate, AfterInsert, AfterRemove} from 'typeorm';
 
 // Models
-import {Document} from './DocumentEntities';
+import {Document, DocumentResponse} from './DocumentEntities';
 import {Auth} from './UserEntities';
 import {Query} from 'typeorm/driver/Query';
+
+export class FolderResponse {
+    public id: string;
+    public name: string;
+    public createdAt: Date;
+    public updatedAt: Date;
+    public size: number;
+    public children: FolderResponse[] | undefined;
+    public documents: DocumentResponse[] | undefined;
+}
 
 @Entity({name: 'folder'})
 @Tree('closure-table')
@@ -13,6 +23,9 @@ export class Folder extends BaseEntity {
 
     @Column({type: 'varchar', length: 255, nullable: false})
     public name: string;
+
+    @Column({type: 'int'})
+    public size: number;
 
     @CreateDateColumn()
     public createdAt: Date;
@@ -77,6 +90,25 @@ export class Folder extends BaseEntity {
         }
 
         return;
+    }
+
+    public static async updateSize(id: string) {
+        console.log('Folder.updateSize');
+        const folder = await Folder.findOne(id, {relations: ['children', 'documents', 'parent']});
+        let size = folder!.name.length;
+        for (const child of folder!.children) {
+            size += child.size;
+        }
+        for (const document of folder!.documents) {
+            size += document.size;
+        }
+        folder!.size = size;
+        console.log('size=', folder!.size);
+        await folder!.save();
+
+        if (folder!.parent) {
+            await Folder.updateSize(folder!.parent.id);
+        }
     }
 }
 

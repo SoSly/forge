@@ -84,7 +84,6 @@ export default {
             contents.push('');
             contents.push(this.document.current.contents);
             contents.push('</section>');
-            console.log(contents.join('\n'));
             return md.render(contents.join('\n'));
         },
         darkmode() {
