@@ -13,6 +13,7 @@ export class FolderResponse {
     public size: number;
     public children: FolderResponse[] | undefined;
     public documents: DocumentResponse[] | undefined;
+    public parent: Folder;
 }
 
 @Entity({name: 'folder'})
