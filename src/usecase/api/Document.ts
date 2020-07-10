@@ -3,6 +3,7 @@ import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
 import {DeepPartial, getConnection} from 'typeorm';
+import * as Usage from '@usecase/helpers/Usage';
 
 // Models
 import {Document, DocumentContent} from '@domain/DocumentEntities';
@@ -61,6 +62,10 @@ class DocumentRouter extends AbstractRouter {
 
     private async patchDocument(ctx: Context, next: Next): Promise<void> {
         try {
+            if (await Usage.isOverLimit(ctx.state.user)) {
+                return ctx.throw(402);
+            }
+
             const id = ctx.params.id;
             const document = await Document.findOne({id}, {relations: ['current', 'folder', 'user']});
             validateOwnership(ctx, document);
@@ -99,9 +104,13 @@ class DocumentRouter extends AbstractRouter {
 
     private async postDocument(ctx: Context, next: Next): Promise<void> {
         try {
+            if (await Usage.isOverLimit(ctx.state.user)) {
+                return ctx.throw(402);
+            }
+
             const {name, folderId} = ctx.request.body;
             const user = ctx.state.user;
-            
+
             const folder = await Folder.findOne({id: folderId}, {relations: ['user']});
             validateOwnership(ctx, folder);
 

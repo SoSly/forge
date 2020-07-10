@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner} from "typeorm";
 
 export class createSnowflakeIdGenerator1592792809195 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE SEQUENCE seq_snowflake;`);
+        await queryRunner.query(`CREATE SEQUENCE seq_snowflake`);
         await queryRunner.query(`
             CREATE OR REPLACE FUNCTION id_generator()
                 returns bigint

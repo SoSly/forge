@@ -3,6 +3,23 @@ import {Entity, Column, BaseEntity, DeepPartial, OneToMany, OneToOne, PrimaryCol
 // Models
 import {Folder} from "./FolderEntities";
 
+export class ProfileResponse {
+    public id: string;
+    public username: string;
+    public provider: string;
+    public providerId: string;
+    public type: 'free' | 'unlimited';
+    public avatar: string;
+    public locale: string;
+    public settings: {
+        darkmode: boolean
+    };
+    public usage: {
+        current: number,
+        max: number
+    };
+}
+
 @Entity({name: 'auth'})
 export class Auth extends BaseEntity {
     @PrimaryColumn({type: 'bigint'})
@@ -16,6 +33,9 @@ export class Auth extends BaseEntity {
 
     @Column({name: 'id_provider', type: 'varchar', length: 255, nullable: false})
     public providerId: string;
+
+    @Column({type: 'enum', enum: ['free', 'unlimited'], default: 'free'})
+    public type: 'free' | 'unlimited';
 
     @Column({type: 'varchar', length: 255, nullable: true})
     public avatar?: string;

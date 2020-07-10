@@ -5,6 +5,7 @@ import {Document,DocumentResponse} from '@domain/DocumentEntities';
 import {Folder,FolderResponse} from '@domain/FolderEntities';
 import {getTreeRepository,IsNull} from 'typeorm';
 import {AbstractRouter} from './AbstractRouter';
+import * as Usage from '@usecase/helpers/Usage';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
@@ -96,6 +97,10 @@ class FolderRouter extends AbstractRouter {
 
     private async patchFolder(ctx: Context, next: Next): Promise<void> {
         try {
+            if (await Usage.isOverLimit(ctx.state.user)) {
+                return ctx.throw(402);
+            }
+
             const id = ctx.params.id;
             const folder = await getTreeRepository(Folder).findOne({id}, {relations: ['children', 'parent', 'user']});
             validateFolderOwner(ctx, folder);
@@ -127,6 +132,10 @@ class FolderRouter extends AbstractRouter {
 
     private async postFolder(ctx: Context, next: Next): Promise<void> {
         try {
+            if (await Usage.isOverLimit(ctx.state.user)) {
+                return ctx.throw(402);
+            }
+            
             const body = ctx.request.body;
             const parentFolder = await getTreeRepository(Folder).findOne({id: body.parentId}, {relations: ['user']});
             validateFolderOwner(ctx, parentFolder);
