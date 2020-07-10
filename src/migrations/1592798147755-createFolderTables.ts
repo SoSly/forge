@@ -12,7 +12,7 @@ export class createDocumentsTables1592798147755 implements MigrationInterface {
                 "updatedAt" DATE NOT NULL DEFAULT CURRENT_DATE,
                 CONSTRAINT "fk_folder_id_parent" FOREIGN KEY ("id_parent") REFERENCES folder ("id"),
                 CONSTRAINT "fk_folder_id_auth" FOREIGN KEY ("id_auth") REFERENCES auth ("id")
-            );
+            )
         `);
         queryRunner.query(`
             CREATE TABLE folder_closure (
@@ -21,7 +21,7 @@ export class createDocumentsTables1592798147755 implements MigrationInterface {
                 CONSTRAINT "idx_folder_closure_ids" UNIQUE ("id_ancestor", "id_descendant"),
                 CONSTRAINT "fk_folder_closure_ancestor" FOREIGN KEY ("id_ancestor") REFERENCES folder ("id"),
                 CONSTRAINT "fk_folder_closure_descendant" FOREIGN KEY ("id_descendant") REFERENCES folder ("id")
-            );
+            )
         `);
     }
 

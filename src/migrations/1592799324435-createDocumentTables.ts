@@ -14,7 +14,7 @@ export class createDocumentTables1592799324435 implements MigrationInterface {
                 "id_folder" bigint NOT NULL,
                 CONSTRAINT "fk_document_id_auth" FOREIGN KEY ("id_auth") REFERENCES auth ("id"),
                 CONSTRAINT "fk_document_id_folder" FOREIGN KEY ("id_folder") REFERENCES folder ("id")
-            );
+            )
         `);
         await queryRunner.query(`
             CREATE TABLE document_content (
@@ -22,7 +22,7 @@ export class createDocumentTables1592799324435 implements MigrationInterface {
                 "id_document" bigint NOT NULL,
                 "contents" text NOT NULL DEFAULT '',
                 CONSTRAINT "fk_document_content_document_id" FOREIGN KEY ("id_document") REFERENCES document ("id")
-            );
+            )
         `)
     }
 

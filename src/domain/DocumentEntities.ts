@@ -49,10 +49,8 @@ export class Document extends BaseEntity {
     public current: DocumentContent;
 
     public async updateDocumentSize() {
-        console.log('Document.updateDocumentSize');
         if (this.current && this.current.contents) {
             this.size = this.name.length + this.current.contents.length;
-            console.log('size=', this.size);
         }
     }
 

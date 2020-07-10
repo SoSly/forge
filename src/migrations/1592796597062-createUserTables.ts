@@ -11,7 +11,7 @@ export class createUserTables1592796597062 implements MigrationInterface {
                 "avatar" varchar(255),
                 "locale" char(5),
                 CONSTRAINT "idx_provider" UNIQUE ("provider", "id_provider")
-            );
+            )
         `);
         await queryRunner.query(`
             CREATE TABLE user_settings (
@@ -19,7 +19,7 @@ export class createUserTables1592796597062 implements MigrationInterface {
                 "id_auth" bigint,
                 "darkmode" boolean DEFAULT true,
                 CONSTRAINT "fk_user_settings_id_auth" FOREIGN KEY ("id_auth") REFERENCES auth ("id")
-            );
+            )
         `);
     }
 

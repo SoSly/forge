@@ -94,7 +94,6 @@ export class Folder extends BaseEntity {
     }
 
     public static async updateSize(id: string) {
-        console.log('Folder.updateSize');
         const folder = await Folder.findOne(id, {relations: ['children', 'documents', 'parent']});
         let size = folder!.name.length;
         for (const child of folder!.children) {
@@ -104,12 +103,19 @@ export class Folder extends BaseEntity {
             size += document.size;
         }
         folder!.size = size;
-        console.log('size=', folder!.size);
         await folder!.save();
 
         if (folder!.parent) {
             await Folder.updateSize(folder!.parent.id);
         }
+    }
+
+    public static async getRootFolder(auth: Auth) {
+        return await getRepository(Folder).createQueryBuilder('Folder')
+            .innerJoin('Folder.user', 'User')
+            .where('User.id = :id', {id: auth.id})
+            .andWhere('Folder.parent IS NULL')
+            .getOne();
     }
 }
 
