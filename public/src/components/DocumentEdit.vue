@@ -25,7 +25,7 @@
                         <pre class="page">{{document.current.contents}}</pre>
                     </template>
                     <template v-if="this.document.type == 'markdown'">
-                        <link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />
+                        <span id="article-styles" v-html="stylesFromMarkdown"></span>
                         <article class="document" v-html="markdownPreview"></article>
                     </template>
                 </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import throttle from 'lodash.throttle';
+import {throttle} from 'lodash';
 import editor from 'vue2-ace-editor';
 import {mapGetters, mapState} from 'vuex';
 import {Multipane, MultipaneResizer} from 'vue-multipane';
@@ -64,6 +64,8 @@ md.use(TOC, {
     level: [1,2,3]
 });
 
+const reStyleSheet = new RegExp(`<link.*?rel="?stylesheet"?.*?\/>`, 'gmi');
+
 export default {
     name: 'document-editor',
     components: {
@@ -77,12 +79,20 @@ export default {
         }
     },
     computed: {
+        stylesFromMarkdown() {
+            const styles = this.document.current.contents.match(reStyleSheet) || [];
+            styles.unshift(`<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />`);
+            return styles.join('\n');
+        },
         markdownPreview() {
+            const tc = this.document.current.contents;
+            tc.replace(reStyleSheet, '');
+            
             const contents = [];
             contents.push('\${toc}');
             contents.push('<section class="page" id="p1">');
             contents.push('');
-            contents.push(this.document.current.contents);
+            contents.push(tc);
             contents.push('</section>');
             return md.render(contents.join('\n'));
         },
