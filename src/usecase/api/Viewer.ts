@@ -69,6 +69,9 @@ class ViewerRouter extends AbstractRouter {
                     contents.push('<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />');
                     contents.push('<link rel="stylesheet" type="text/css" href="/dist/reset.min.css" />');
                     contents.push('<title>' + document.name + '</title>');
+                    contents.push(`<meta property="og:title" content="${document.name}" />`);
+                    contents.push(`<meta property="og:site_name" content="Document Forge" />`);
+                    contents.push(`<meta property="og:image" content="https://forge.sosly.org/assets/logo.png" />`);
                     contents.push('</head><body><article class="document">');
                     contents.push('');
                     contents.push('${toc}');
