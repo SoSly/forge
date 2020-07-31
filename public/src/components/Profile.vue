@@ -29,6 +29,10 @@ export default {
     margin: 25px auto 0;
     width: 8.5in;
 
+    background: white;
+    color: black;
+    box-shadow: 1px 5px 15px #000;
+
     .left {
         border-right: 1px solid black;
         padding: 1em;
@@ -47,6 +51,8 @@ export default {
 }
 
 .dark #profile {
+    background: #333; 
+    color: #DDD;
     .left { border-right: 1px solid #666; }
 }
 </style>
