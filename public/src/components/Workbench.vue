@@ -227,6 +227,12 @@ export default {
     padding: 0.5in;
     width: 8.5in;
 
+    &.page {
+        background: white;
+        color: black;
+        box-shadow: 1px 5px 15px #000;
+    }
+
     nav {
         padding-bottom: 0.5em;
         border-bottom: 2px solid #DDD;

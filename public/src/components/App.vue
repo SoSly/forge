@@ -41,12 +41,6 @@ body { min-height: 100%; }
         background: rgba(51,153,204,0.3);
         min-height: 100vh;
         padding-top: 64px;
-
-        .page {
-            background: white;
-            color: black;
-            box-shadow: 1px 5px 15px #000;
-        }
     }
 
     &.dark { 
