@@ -2,6 +2,12 @@
 @import "ribbon";
 @import url("https://use.typekit.net/htj6ghe.css");
 
+@font-face {
+    font-family: 'Solbera';
+    src: url('/assets/solbera_imitation-webfont.woff2') format('woff2'),
+         url('/assets/solbera_imitation-webfont.woff') format('woff');
+}
+
 body {
     background: #356;
 }
