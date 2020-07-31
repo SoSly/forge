@@ -227,6 +227,8 @@ export default {
         }
 
         pre {
+            background: white;
+            color: black;
             white-space: pre-wrap;
             white-space: -moz-pre-wrap;
             white-space: -pre-wrap;
