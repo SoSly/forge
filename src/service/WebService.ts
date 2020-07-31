@@ -30,7 +30,7 @@ export default class WebService {
 
         // Setup static file routing
         // Rewrite routes that don't match a specific file or an api or auth call to /
-        this.app.use(Rewrite(/^\/((?!api|auth|view|.*\.ico|.*\.js|.*\.png|.*\.jpg|.*\.css).)+/i, '/'));
+        this.app.use(Rewrite(/^\/((?!api|auth|view|.*\.ico|.*\.js|.*\.png|.*\.jpg|.*\.css|.*\.woff2?).)+/i, '/'));
         this.app.use(serve(path.resolve('./public')));
 
         // Setup unrestricted middlewares
