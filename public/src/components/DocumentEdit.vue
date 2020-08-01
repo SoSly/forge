@@ -108,6 +108,7 @@ export default {
     },
     methods: {
         editorInit() {
+            require('brace/ext/searchbox'); // search box prerequisite
             require('brace/ext/language_tools'); //language extension prerequsite...
             require('brace/mode/markdown');      //language
             require('brace/theme/monokai');
