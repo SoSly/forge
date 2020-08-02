@@ -338,6 +338,8 @@ body {
         column-break-inside: avoid;
     }
 
+    hr + p { text-indent: 0; }
+
     p {
         margin: 0 0 10.5px;
         text-indent: 1em;
