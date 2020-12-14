@@ -150,6 +150,10 @@ export default {
                 .then(({data}) => this.$router.push(`/workbench/${data.id}`));
         },
         deleteItem(item) {
+            const confirmed = confirm(`Are you sure you want to delete ${item.name}?`);
+            if (!confirmed) {
+                return;
+            }
             this.$store.dispatch(`${item.type}/delete`, item.id)
                 .then(({data}) => this.$store.dispatch('folder/getFolder', this.$route.params.id));
         },
