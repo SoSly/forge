@@ -45,8 +45,9 @@ class ViewerRouter extends AbstractRouter {
         this.config = config;
 
         // configure routes
-        this.router = new Router();
-        this.router.get('/view/:id', this.getDocument);
+        this.router = new Router({prefix: '/view'});
+        this.router.get('/:id', this.getDocument); // deprecated in favor of /document
+        this.router.get('/document/:id', this.getDocument);
     }
 
     private async getDocument(ctx: Context, next: Next): Promise<void> {
