@@ -64,6 +64,9 @@ md.use(TOC, {
     level: [1,2,3]
 });
 
+import LinkToHeader from '../plugins/markdown/link-to-header.js'; // this component is for the editor only, and should not be in the backend.
+md.use(LinkToHeader);
+
 const reStyleSheet = new RegExp(`<link.*?rel="?stylesheet"?.*?\/>`, 'gmi');
 
 export default {
@@ -75,6 +78,8 @@ export default {
     },
     data() {
         return {
+            html: "",
+            editor: null,
             dirty: false
         }
     },
@@ -94,6 +99,9 @@ export default {
             contents.push('');
             contents.push(tc);
             contents.push('</section>');
+            
+            setTimeout(this.setupScrollToLine, 1);
+
             return md.render(contents.join('\n'));
         },
         darkmode() {
@@ -113,13 +121,14 @@ export default {
             require('brace/mode/markdown');      //language
             require('brace/theme/monokai');
             
-            const editor = this.$refs.contents.editor;
-            editor.setOptions({
+            this.editor = this.$refs.contents.editor;
+            this.editor.setOptions({
                 wrapBehavioursEnabled: true,
                 enableMultiselect: true,
                 scrollPastEnd: 0.25,
                 wrap: true
             });
+            this.editor.resize(true);
         },
         input() {
             this.dirty = true;
@@ -139,6 +148,17 @@ export default {
                     type: this.$store.state.document.document.type,
                 })
                 .then(() => this.dirty = false);
+        },
+        scrollToLine(line) {
+            this.editor.scrollToLine(line, true, true, () => {});
+            this.editor.gotoLine(line, 10, true);
+        },
+        setupScrollToLine() {
+            const els = document.getElementsByClassName('source-line');
+            for (let el of els) {
+                const line = el.getAttribute('data-source-line');
+                el.addEventListener('click', () => this.scrollToLine(line));
+            }
         },
         rename($event) {
             const {id} = this.$route.params.id;
@@ -236,6 +256,8 @@ export default {
             white-space: -o-pre-wrap;
             word-wrap: break-word;
         }
+
+        .source-line { cursor: pointer; }
     }
 }
 </style>
