@@ -1,8 +1,8 @@
 <template>
-    <section id="document-editor" v-if="document" v-shortkey.once="['ctrl','s']" @shortkey="save" @input="input">
+    <section id="document-editor" v-if="document" v-shortkey.once="['ctrl','s']" @shortkey="debouncedSave" @input="input">
         <nav>
             <ul>
-                <li class="button save" v-bind:class="dirty ? 'dirty' : ''" v-on:click="save"><font-awesome-icon icon="save" size="1x" /> Save</li>
+                <li class="button save" v-bind:class="dirty ? 'dirty' : ''" v-on:click="debouncedSave"><font-awesome-icon icon="save" size="1x" /> Save</li>
                 <select v-model="document.type" v-on:change="dirty = true">
                     <option value="markdown">Markdown</option>
                     <option value="stylesheet">Stylesheet</option>
@@ -14,7 +14,7 @@
             <div :style="{width: '575px', minWidth: '300px', maxWidth: '900px'}">
                 <div class="editor-pane">
                    <editor ref="contents" v-model="document.current.contents"
-                        @init="editorInit" lang="markdown" theme="monokai">
+                        @init="editorInit" v-on:input="input" lang="markdown" theme="monokai">
                     ></editor>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     </template>
                     <template v-if="this.document.type == 'markdown'">
                         <span id="article-styles" v-html="stylesFromMarkdown"></span>
-                        <article class="document" v-html="markdownPreview"></article>
+                        <article class="document" v-html="getPreview"></article>
                     </template>
                 </div>
             </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import {throttle} from 'lodash';
+import {debounce, throttle} from 'lodash';
 import editor from 'vue2-ace-editor';
 import {mapGetters, mapState} from 'vuex';
 import {Multipane, MultipaneResizer} from 'vue-multipane';
@@ -80,6 +80,9 @@ export default {
     },
     data() {
         return {
+
+            preview: "",
+            editor: null,
             dirty: false
         }
     },
@@ -89,17 +92,10 @@ export default {
             styles.unshift(`<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />`);
             return styles.join('\n');
         },
-        markdownPreview() {
-            const tc = this.document.current.contents;
-            tc.replace(reStyleSheet, '');
-            
-            const contents = [];
-            contents.push('\${toc}');
-            contents.push('<section class="page" id="p1">');
-            contents.push('');
-            contents.push(tc);
-            contents.push('</section>');
-            return md.render(contents.join('\n'));
+        getPreview() {
+            this.throttledCompilePreview();
+            setTimeout(this.setupScrollToLine, 1);
+            return this.preview;
         },
         darkmode() {
             return this.$store.state.user.user.settings.darkmode;
@@ -110,6 +106,8 @@ export default {
     },
     created() {
         this.$store.dispatch('document/get', this.$route.params.id);
+        this.throttledCompilePreview = throttle(this.compilePreview, 500);
+        this.debouncedSave = debounce(this.save, 1000);
     },
     methods: {
         editorInit() {
@@ -142,15 +140,23 @@ export default {
         },
         input() {
             this.dirty = true;
-
-            throttle(async () => {
-                await this.$store
-                    .dispatch('document/save', {id: self.$route.params.id, contents: self.$store.state.document.document.current.contents})
-                    .then(() => this.dirty = false);
-            }, 1000);
+            this.throttledCompilePreview();
+            this.debouncedSave();
         },
-        save() {
-            this.$store
+        compilePreview() {
+            if (!this.$store.state.document.document) return;
+            const tc = this.$store.state.document.document.current.contents;
+            tc.replace(reStyleSheet, '');
+            const contents = [];
+            contents.push('\${toc}');
+            contents.push('<section class="page" id="p1">');
+            contents.push('');
+            contents.push(tc);
+            contents.push('</section>');
+            this.preview = md.render(contents.join('\n'));
+        },
+        async save() {
+            await this.$store
                 .dispatch('document/save', {
                     id: this.$route.params.id, 
                     contents: this.$store.state.document.document.current.contents,
