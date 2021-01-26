@@ -11,7 +11,7 @@
             </ul>
             <ul>
                 <li><router-link to="/workbench">
-                    <drop v-on:drop="setItemParent($store.state.user.user.id, ...arguments)">
+                    <drop v-on:drop="setItemParent(root.id, ...arguments)">
                         <font-awesome-icon icon="home" size="1x" />
                     </drop>
                 </router-link></li>
@@ -100,6 +100,13 @@ function generatePath(folder, path) {
     else if (folder) return path;
 }
 
+function getRootFolder(folder) {
+    if (folder && folder.parent) {
+        return getRootFolder(folder.parent);
+    }
+    return folder;
+}
+
 export default {
     name: 'workbench',
     data() {
@@ -118,6 +125,11 @@ export default {
             const documents = this.folder.documents.map((doc) => { doc.type = 'document'; return doc; });
             const contents = [...folders, ...documents].sort(this.sortContents);
             return contents;
+        },
+        root() {
+            if (this.folder) {
+                return getRootFolder(this.folder);
+            }
         },
         path() {
             if (this.folder) {
