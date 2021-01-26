@@ -74,7 +74,7 @@ class DocumentRouter extends AbstractRouter {
             for (let field in changes) {
                 switch (field) {
                     case 'folderId': 
-                        const folder = await Folder.findOne({id: changes[field]}, {relations: ['user', 'folder']});
+                        const folder = await Folder.findOne({id: changes[field]}, {relations: ['user', 'parent']});
                         validateOwnership(ctx, folder);
                         document!.folder = folder!;
                         await document!.folder!.save();
