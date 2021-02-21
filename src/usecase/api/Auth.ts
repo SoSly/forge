@@ -2,7 +2,7 @@ import {Config} from 'convict';
 import DiscordStrategy from 'passport-discord';
 import Passport from 'koa-passport';
 import Router from '@koa/router';
-import {Auth} from '@domain/UserEntities';
+import {Auth} from '@domain/UserEntity';
 import Koa, {Context, Next, Middleware} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
 

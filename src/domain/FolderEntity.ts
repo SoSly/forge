@@ -1,8 +1,8 @@
 import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository, AfterUpdate, AfterInsert, AfterRemove} from 'typeorm';
 
 // Models
-import {Document, DocumentResponse} from './DocumentEntities';
-import {Auth} from './UserEntities';
+import {Document, DocumentResponse} from './DocumentEntity';
+import {Auth} from '@domain/UserEntity';
 import {Query} from 'typeorm/driver/Query';
 
 export class FolderResponse {

@@ -2,9 +2,11 @@ import {Config} from 'convict';
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 
 // Entities
-import {Auth,UserSettings} from '@domain/UserEntities';
-import {Folder} from '@domain/FolderEntities';
-import {Document,DocumentContent} from '@domain/DocumentEntities';
+import {Auth} from '@domain/UserEntity';
+import {UserSettings} from '@domain/UserSettingsEntity';
+import {Folder} from '@domain/FolderEntity';
+import {Document} from '@domain/DocumentEntity';
+import {DocumentContent} from '@domain/DocumentContentEntity';
 
 export default class DatabaseService {
     private config: ConnectionOptions

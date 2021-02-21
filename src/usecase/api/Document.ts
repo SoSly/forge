@@ -6,8 +6,9 @@ import {DeepPartial, getConnection} from 'typeorm';
 import * as Usage from '@usecase/helpers/Usage';
 
 // Models
-import {Document, DocumentContent} from '@domain/DocumentEntities';
-import {Folder} from '@domain/FolderEntities';
+import {Document} from '@domain/DocumentEntity';
+import {DocumentContent} from '@domain/DocumentContentEntity';
+import {Folder} from '@domain/FolderEntity';
 
 function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
     if (!obj) ctx.throw(404);

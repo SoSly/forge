@@ -1,0 +1,40 @@
+---
+import { explodeDice, keepDice, rollDice, targetDice } from '../helpers/Roll';
+---
+
+// todo: Use the Setanta parser as an example of how to actually write this
+//       It is available at: https://github.com/EoinDavey/Setanta/tree/master/src
+
+Program := expr=expr $
+expr :=   target
+        | explosion
+        | label
+        | keep
+        | fatedice
+        | dice
+        | sum
+        | num
+dice := amount=expr 'd' sides=num
+    .results = number[] { return rollDice(this.amount.value, this.sides.value); }
+    .value = number { return this.results.reduce((total, next) => total + next); }
+explosion := dice={keep|dice} operation='!>|!<|!!|!' target={num}?
+    .results = number[] { return explodeDice(this.dice, this.operation, this.target); }
+    .value = number { return this.results.reduce((total, next) => total + next); }
+fatedice := amount=expr 'dF'
+    .sides = num { return new num('3'); }
+    .results = number[] { return rollDice(this.amount.value, 3).map((v: number) => v - 2); }
+    .value = number { return this.results.reduce((total, next) => total + next); }
+keep := dice=dice operation='dh|dl|kh|kl' keep=num
+    .amount = number { return this.dice.amount.value; }
+    .sides = number { return this.dice.sides.value; }
+    .results = number[] { return keepDice(this.dice.results, this.operation, this.keep.value); }
+    .value = number { return this.results.reduce((total, next) => total + next); }
+label := expr=expr label='\[.+?\]'
+    .value = number { return this.expr.value }
+num := literal='[0-9]+'
+    .value = number { return parseInt(this.literal) }
+sum := left=expr operation='\+|\-' right=expr
+    .value = number { return (operation == '-') ? this.left.value - this.right.value : this.left.value + this.right.value; }
+target := expr=sum operation='>=|<=|>|<|=' target=num
+    .test = boolean { return targetDice(this.expr, this.operation, this.target.value); }
+    .value = number { return expr.value; }

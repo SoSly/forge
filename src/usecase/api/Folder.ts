@@ -1,8 +1,8 @@
 import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
-import {Document,DocumentResponse} from '@domain/DocumentEntities';
-import {Folder,FolderResponse} from '@domain/FolderEntities';
+import {Document,DocumentResponse} from '@domain/DocumentEntity';
+import {Folder,FolderResponse} from '@domain/FolderEntity';
 import {getTreeRepository,IsNull} from 'typeorm';
 import {AbstractRouter} from './AbstractRouter';
 import * as Usage from '@usecase/helpers/Usage';

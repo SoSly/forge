@@ -1,0 +1,29 @@
+---
+import { EvalFn, LabelResult, NumberResult } from './Values';
+
+import { keep } from './Keep';
+import { label } from './Label';
+import { roll } from './Roll';
+import { sum } from './Sum';
+---
+
+DiceExpression := expr=expr $
+expr := Sum|Label|Keep|Roll|int
+nosumexpr := Label|Keep|Roll|int
+nosumlabelexpr := Keep|Roll|int
+
+Keep := raw=Roll style='kh|kl|dh|dl|k|d' amount=int
+    .evalfn = EvalFn { return keep(raw, style, amount.value); }
+Label := expr=nosumlabelexpr _ '\[' _ comment='[^\]]+' _ '\]'
+    .evalfn = EvalFn { return label(expr, comment); }
+Roll := amount=int 'd' sides=int
+    .evalfn = EvalFn { return roll(amount.value, sides.value); }
+Sum := head=nosumexpr _ tail={_ op=sumops _ expr=nosumexpr}+
+    .evalfn = EvalFn { return sum(this); }
+
+int := int='-?[0-9]+'
+    .value = number { return parseInt(int); }
+    .evalfn = EvalFn { return () => Promise.resolve(new NumberResult(this.value)); }
+_ := wspace*
+wspace := '\s|\n'
+sumops := '\+|-'
