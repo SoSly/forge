@@ -34,7 +34,6 @@ export default class DiscordService {
         let length = 0;
         try {
            switch (interaction.name) {
-                case ping.Command.name: length = await ping.do(interaction); break;
                 case roll.Command.name: length = await roll.do(interaction); break;
             }
         } catch (error) {
@@ -47,8 +46,7 @@ export default class DiscordService {
     async start(): Promise<void> {
         this.client.on('interactionCreate', this.onInteraction);
         this.client.on('ready', async () => {
-            // await this.interactor.createCommand(ping.Command).catch(this.onError);
-            await this.interactor.createCommand(roll.Command, '475027030656679976').catch(this.onError);
+            await this.interactor.createCommand(roll.Command).catch(this.onError);
             await this.interactor.getCommands().then(console.log);
         })
 
