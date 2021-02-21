@@ -1,8 +1,9 @@
-import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn, OneToOne, BeforeRemove, ValueTransformer, BeforeUpdate, BeforeInsert, getRepository, InsertEvent, getConnection, AfterInsert, AfterRemove, AfterUpdate, AdvancedConsoleLogger} from 'typeorm';
+import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn, OneToOne, BeforeRemove} from 'typeorm';
 
 // Models
-import {Folder} from './FolderEntities';
-import {Auth} from './UserEntities';
+import {DocumentContent} from './DocumentContentEntity';
+import {Folder} from './FolderEntity';
+import {Auth} from './UserEntity';
 
 export class DocumentResponse {
     public id: string;
@@ -58,17 +59,4 @@ export class Document extends BaseEntity {
     private async removeCurrentContents() {
         await this.current?.remove();
     }
-}
-
-@Entity({name: 'document_content'})
-export class DocumentContent extends BaseEntity {
-    @PrimaryColumn({type: 'bigint'})
-    public id: string;
-
-    @OneToOne(type => Document, document => document.current)
-    @JoinColumn({name: 'id_document'})
-    public document: Document;
-
-    @Column({default: '', type: 'text'})
-    public contents: string;
 }

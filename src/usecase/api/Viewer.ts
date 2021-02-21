@@ -28,7 +28,7 @@ md.use(TOC, {
 });
 
 // Models
-import {Document, DocumentContent} from '@domain/DocumentEntities';
+import {Document} from '@domain/DocumentEntity';
 
 function validateViewingPrivileges(ctx: Context, obj: Document|undefined): void {
     if (!obj) ctx.throw(404);

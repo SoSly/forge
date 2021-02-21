@@ -1,5 +1,5 @@
 import {Auth} from "@domain/UserEntities";
-import {Folder} from "@domain/FolderEntities";
+import {Folder} from "@domain/FolderEntity";
 
 export function getUsageMax(type: string): number {
     switch (type) {

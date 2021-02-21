@@ -12,6 +12,7 @@ import {setupAuthMiddleware} from "@usecase/api/Auth";
 import {setupDocumentMiddleware} from "@usecase/api/Document";
 import {setupFolderMiddleware} from "@usecase/api/Folder";
 import {setupProfileMiddleware} from "@usecase/api/Profile";
+import {setupRollerMiddleware} from "@usecase/api/Roller";
 import {setupViewerMiddleware} from "@usecase/api/Viewer";
 
 export default class WebService {
@@ -19,7 +20,7 @@ export default class WebService {
     port: number;
     server: Server;
 
-    constructor(config: Config<any>) {       
+    constructor(config: Config<any>) {
         this.app = new Koa();
         this.app.use(KoaLogger());
         this.port = config.get('HTTP').port;
@@ -34,6 +35,7 @@ export default class WebService {
         this.app.use(serve(path.resolve('./public')));
 
         // Setup unrestricted middlewares
+        setupRollerMiddleware(this.app, config);
         setupViewerMiddleware(this.app, config);
 
         // Setup restricted middlewares

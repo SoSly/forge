@@ -1,7 +1,8 @@
 import {Entity, Column, BaseEntity, DeepPartial, OneToMany, OneToOne, PrimaryColumn, JoinColumn, getConnection} from 'typeorm';
 
 // Models
-import {Folder} from "./FolderEntities";
+import {UserSettings} from '@domain/UserSettingsEntity';
+import {Folder} from "@domain/FolderEntity";
 
 export class ProfileResponse {
     public id: string;
@@ -68,17 +69,4 @@ export class Auth extends BaseEntity {
         }
         return user;
     }
-}
-
-@Entity({name: 'user_settings'})
-export class UserSettings extends BaseEntity {
-    @PrimaryColumn({type: 'bigint'})
-    public id: string;
-
-    @OneToOne(type => Auth, user => user.settings)
-    @JoinColumn({name: 'id_auth'})
-    public user: Auth;
-
-    @Column({default: false})
-    public darkmode: boolean;
 }

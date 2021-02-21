@@ -2,8 +2,8 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
-import {Auth, ProfileResponse} from '@domain/UserEntities';
-import {Folder} from '@domain/FolderEntities';
+import {Auth, ProfileResponse} from '@domain/UserEntity';
+import {Folder} from '@domain/FolderEntity';
 import * as Usage from '@usecase/helpers/Usage';
 
 class ProfileRouter extends AbstractRouter {
