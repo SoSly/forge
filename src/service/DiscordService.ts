@@ -15,7 +15,7 @@ export default class DiscordService {
     constructor(config: Config<any>) {
         this.config = config;
         const clientID = this.config.get('Discord').client;
-        const secret = this.config.get('Discord').secret;
+        const secret = this.config.get('Discord').token;
         this.interactor = new InteractionsClient(secret, clientID);
         this.client = new DiscordClient();
         this.client.interactions = this.interactor;
@@ -48,8 +48,8 @@ export default class DiscordService {
             await this.interactor.createCommand(roll.Command).catch(this.onError);
         })
 
-        const secret = this.config.get('Discord').secret;
-        this.client.login(secret);
+        const secret = this.config.get('Discord').token;
+        await this.client.login(secret);
     }
 
     async stop(): Promise<void> {

@@ -28,6 +28,12 @@ const ForgeConfig: Config<any> = convict({
             default: null,
             env: 'DISCORD_CLIENT_ID'
         },
+        token: {
+            doc: 'The client token for the discord server',
+            format: String,
+            default: null,
+            env: 'DISCORD_CLIENT_TOKEN',
+        },
         secret: {
             doc: 'The secret key for discord OAUTH',
             format: String,
