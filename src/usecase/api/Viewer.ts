@@ -47,6 +47,7 @@ class ViewerRouter extends AbstractRouter {
         // configure routes
         this.router = new Router();
         this.router.get('/view/:id', this.getDocument);
+        this.router.get('/view/document/:id', this.getDocument);
     }
 
     private async getDocument(ctx: Context, next: Next): Promise<void> {
