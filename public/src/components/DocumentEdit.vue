@@ -49,6 +49,9 @@ import Pagebreak from '../plugins/markdown/pagebreak.js';
 import TOC from '../plugins/markdown/toc.js';
 import uslug from 'uslug';
 
+// The number of lines that are offset by additional content wrapped around the user's document.
+const LINE_NUMBER_OFFSET = 2;
+
 const md = new MarkdownIt({
     html: true,
     xhtmlOut: false,
@@ -123,13 +126,15 @@ export default {
             });
         },
         scrollToLine(el) {
-            const lineNumber = el.getAttribute('data-source-line');
-            const editor = this.$refs.contents.editor;
-            editor.gotoLine(lineNumber, 10, true);
+            
         },
-        handleClick(e) {
+        handleScrollToLine(e) {
             if (e.target.matches('.source-line')) {
-                this.scrollToLine(e.target);
+                const lineNumber = parseInt(el.getAttribute('data-source-line'));
+                if (isNaN(lineNumber)) return;
+                const destination = lineNumber - LINE_NUMBER_OFFSET;
+                const editor = this.$refs.contents.editor;
+                editor.gotoLine(destination, 0, true);
             }
         },
         input() {
