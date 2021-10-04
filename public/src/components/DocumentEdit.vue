@@ -20,7 +20,7 @@
             </div>
             <multipane-resizer></multipane-resizer>
             <div :style="{flexGrow: 1}">
-                <div class="preview-pane">
+                <div class="preview-pane" @click="handleClick">
                     <template v-if="this.document.type == 'stylesheet'">
                         <pre class="page">{{document.current.contents}}</pre>
                     </template>
@@ -44,9 +44,13 @@ import {Multipane, MultipaneResizer} from 'vue-multipane';
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
 import Columnbreak from '../plugins/markdown/columnbreak.js';
+import LineNumbers from '../plugins/markdown/injectLineNumbers';
 import Pagebreak from '../plugins/markdown/pagebreak.js';
 import TOC from '../plugins/markdown/toc.js';
 import uslug from 'uslug';
+
+// The number of lines that are offset by additional content wrapped around the user's document.
+const LINE_NUMBER_OFFSET = 2;
 
 const md = new MarkdownIt({
     html: true,
@@ -57,6 +61,7 @@ const md = new MarkdownIt({
     typographer: true
 });
 md.use(Columnbreak);
+md.use(LineNumbers);
 md.use(MarkdownItAnchor);
 md.use(Pagebreak);
 md.use(TOC, {
@@ -119,6 +124,21 @@ export default {
                 scrollPastEnd: 0.25,
                 wrap: true
             });
+        },
+        scrollToLine(el) {
+            const lineNumber = parseInt(el.getAttribute('data-source-line'));
+            if (isNaN(lineNumber)) {
+                console.warn("attempted to scroll to a non-numerical line number");
+                return;
+            }
+            const destination = lineNumber - LINE_NUMBER_OFFSET;
+            const editor = this.$refs.contents.editor;
+            editor.gotoLine(destination, 0, true);
+        },
+        handleClick(e) {
+            if (e.target.matches('.source-line')) {
+                this.scrollToLine(e.target);
+            }
         },
         input() {
             this.dirty = true;
