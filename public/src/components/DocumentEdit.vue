@@ -20,7 +20,7 @@
             </div>
             <multipane-resizer></multipane-resizer>
             <div :style="{flexGrow: 1}">
-                <div class="preview-pane">
+                <div class="preview-pane" @click="handleClick">
                     <template v-if="this.document.type == 'stylesheet'">
                         <pre class="page">{{document.current.contents}}</pre>
                     </template>
@@ -44,6 +44,7 @@ import {Multipane, MultipaneResizer} from 'vue-multipane';
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
 import Columnbreak from '../plugins/markdown/columnbreak.js';
+import LineNumbers from '../plugins/markdown/injectLineNumbers';
 import Pagebreak from '../plugins/markdown/pagebreak.js';
 import TOC from '../plugins/markdown/toc.js';
 import uslug from 'uslug';
@@ -57,6 +58,7 @@ const md = new MarkdownIt({
     typographer: true
 });
 md.use(Columnbreak);
+md.use(LineNumbers);
 md.use(MarkdownItAnchor);
 md.use(Pagebreak);
 md.use(TOC, {
@@ -119,6 +121,16 @@ export default {
                 scrollPastEnd: 0.25,
                 wrap: true
             });
+        },
+        scrollToLine(el) {
+            const lineNumber = el.getAttribute('data-source-line');
+            const editor = this.$refs.contents.editor;
+            editor.gotoLine(lineNumber, 10, true);
+        },
+        handleClick(e) {
+            if (e.target.matches('.source-line')) {
+                this.scrollToLine(e.target);
+            }
         },
         input() {
             this.dirty = true;
