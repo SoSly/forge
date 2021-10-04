@@ -68,6 +68,7 @@ class ViewerRouter extends AbstractRouter {
                     contents.push('<html lang="en" dir="ltr"><head><meta charset="UTF-8" />');
                     contents.push('<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />');
                     contents.push('<link rel="stylesheet" type="text/css" href="/dist/reset.min.css" />');
+                    contents.push('<title>' + document.name + '</title>');
                     contents.push('</head><body><article class="document">');
                     contents.push('');
                     contents.push('${toc}');
