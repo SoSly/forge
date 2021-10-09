@@ -25,7 +25,10 @@ export default class WebService {
         this.port = config.get('HTTP').port;
 
         this.app.keys = ['my secret'];
-        this.app.use(Session({}, this.app));
+        this.app.use(Session({
+            key: config.get('Session').key,
+            maxAge: config.get('Session').maxAge
+        }, this.app));
         this.app.use(bodyParser());
 
         // Setup static file routing

@@ -64,6 +64,20 @@ const ForgeConfig: Config<any> = convict({
             env: 'PROTOCOL'
         }
     },
+    Session: {
+        key: {
+            doc: 'The session key used for cookie steorage',
+            format: String,
+            default: null,
+            env: 'SESSION_KEY'
+        },
+        maxAge: {
+            doc: 'The maximum age of your session',
+            format: Number,
+            default: 86400000,
+            env: 'SESSION_AGE'
+        },
+    }
 });
 
 ForgeConfig.validate();
