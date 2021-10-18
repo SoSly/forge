@@ -14,7 +14,7 @@
             <div :style="{width: '575px', minWidth: '300px', maxWidth: '900px'}">
                 <div class="editor-pane">
                    <editor ref="contents" v-model="document.current.contents"
-                        @init="editorInit" v-on:input="input" lang="markdown" theme="monokai">
+                        @init="editorInit" v-on:input="input" v-bind:lang="language" theme="monokai">
                     ></editor>
                 </div>
             </div>
@@ -80,7 +80,6 @@ export default {
     },
     data() {
         return {
-
             preview: "",
             editor: null,
             dirty: false
@@ -99,6 +98,9 @@ export default {
         },
         darkmode() {
             return this.$store.state.user.user.settings.darkmode;
+        },
+        language() {
+            return this.document.type == 'stylesheet' ? 'css' : 'markdown';
         },
         ...mapState({
             document: (state) => state.document.document
@@ -261,5 +263,10 @@ export default {
             word-wrap: break-word;
         }
     }
+}
+
+.page { 
+    background: white; 
+    color: black;
 }
 </style>
