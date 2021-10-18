@@ -256,6 +256,7 @@ export default {
         }
 
         pre {
+            color: black;
             white-space: pre-wrap;
             white-space: -moz-pre-wrap;
             white-space: -pre-wrap;
@@ -267,6 +268,5 @@ export default {
 
 .page { 
     background: white; 
-    color: black;
 }
 </style>
