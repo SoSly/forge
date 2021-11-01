@@ -123,7 +123,12 @@ export default {
                 wrapBehavioursEnabled: true,
                 enableMultiselect: true,
                 scrollPastEnd: 0.25,
-                wrap: true
+                wrap: true,
+                selectionStyle: 'text',
+                highlightActiveLine: false,
+                highlightSelectedWord: true,
+                cursorStyle: 'smooth',
+                firstLineNumber: 1
             });
         },
         scrollToLine(el) {
