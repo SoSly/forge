@@ -1,4 +1,4 @@
-import {Config} from 'convict';
+import { forge } from "types";
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 
 // Entities
@@ -7,29 +7,33 @@ import {Folder} from '@domain/FolderEntities';
 import {Document,DocumentContent} from '@domain/DocumentEntities';
 
 export default class DatabaseService {
-    private config: ConnectionOptions
+    private config: ConnectionOptions | undefined
     private connection: Connection
 
-    constructor(config: Config<any>) {
+    constructor(config: forge.Config) {
         this.config = this.getConnectionConfig(config);
     }
 
-    private getConnectionConfig(config: Config<any>): ConnectionOptions {
-        const connectionConfig: ConnectionOptions = {
-            entities: [Auth,Document,DocumentContent,Folder,UserSettings],
-            migrations: ['../migrations/{.ts,*.js}'],
-            migrationsRun: true,
-            synchronize: false,
-            type: config.get('Database').driver,
-            url: config.get('Database').connection,
-            logger: "debug",
-        };
-
-        return connectionConfig;
+    private getConnectionConfig(config: forge.Config): ConnectionOptions | undefined {
+        switch (config.Database.driver) {
+            case 'postgres':
+                const conn: ConnectionOptions = {
+                    entities: [Auth,Document,DocumentContent,Folder,UserSettings],
+                    type: config.Database.driver,
+                    url: config.Database.connection,
+                    ssl: config.Database.ssl,
+                    logger: config.Database.logger,
+                }
+                return conn;
+        }
     }
 
     public async start(): Promise<void> {
         try {
+            if (!this.config) {
+                console.error('invalid database configuration');
+                process.exit(1);
+            }
             this.connection = await createConnection(this.config);
         }
         catch (err) {

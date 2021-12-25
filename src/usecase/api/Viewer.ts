@@ -2,6 +2,7 @@ import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
+import { forge } from 'types';
 
 // todo: put this somewhere the frontend and backend can both get at it.
 import MarkdownIt from 'markdown-it';
@@ -37,9 +38,9 @@ function validateViewingPrivileges(ctx: Context, obj: Document|undefined): void 
 }
 
 class ViewerRouter extends AbstractRouter {
-    private config: Config<any>;
+    private config: forge.Config;
 
-    constructor (config: Config<any>) {
+    constructor (config: forge.Config) {
         super();
 
         this.config = config;
@@ -92,7 +93,7 @@ class ViewerRouter extends AbstractRouter {
     }
 }
 
-export function setupViewerMiddleware(app: Koa, config: Config<any>): void {
+export function setupViewerMiddleware(app: Koa, config: forge.Config): void {
     const viewer = new ViewerRouter(config);
     app.use(viewer.routes());
     app.use(viewer.allowedMethods());

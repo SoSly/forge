@@ -1,4 +1,3 @@
-import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
 import {Document,DocumentResponse} from '@domain/DocumentEntities';
@@ -6,6 +5,7 @@ import {Folder,FolderResponse} from '@domain/FolderEntities';
 import {getTreeRepository,IsNull} from 'typeorm';
 import {AbstractRouter} from './AbstractRouter';
 import * as Usage from '@usecase/helpers/Usage';
+import { forge } from 'types';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
@@ -35,9 +35,9 @@ function folderToFolderResponse(folder: Folder): FolderResponse {
 }
 
 class FolderRouter extends AbstractRouter {
-    private config: Config<any>;
+    private config: forge.Config;
 
-    constructor (config: Config<any>) {
+    constructor (config: forge.Config) {
         super();
 
         this.config = config;
@@ -152,7 +152,7 @@ class FolderRouter extends AbstractRouter {
     }
 }
 
-export function setupFolderMiddleware(app: Koa, config: Config<any>): void {
+export function setupFolderMiddleware(app: Koa, config: forge.Config): void {
     const folder = new FolderRouter(config);
     app.use(folder.routes());
     app.use(folder.allowedMethods());

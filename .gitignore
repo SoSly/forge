@@ -1,6 +1,8 @@
-node_modules/
-public/dist/
+node_modules
+.DS_Store
+dist
+dist-ssr
 src/migrations/*.js
 yarn-error.log
 .env
-.temp/
+*.local

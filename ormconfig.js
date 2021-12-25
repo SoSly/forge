@@ -1,4 +1,5 @@
-require('dotenv');
+require('dotenv').config();
+
 const join = require('path').join;
 
 const config = {
@@ -9,5 +10,6 @@ const config = {
     synchronize: false,
     type: 'postgres',
     url: process.env.DATABASE_URL,
+    ssl: (process.env.DATABASE_SSL == 'true')
 };
 module.exports = config;

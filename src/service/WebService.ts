@@ -1,4 +1,3 @@
-import {Config} from "convict";
 import Koa from 'koa';
 import KoaLogger from 'koa-logger';
 import {Server} from 'net';
@@ -13,21 +12,22 @@ import {setupDocumentMiddleware} from "@usecase/api/Document";
 import {setupFolderMiddleware} from "@usecase/api/Folder";
 import {setupProfileMiddleware} from "@usecase/api/Profile";
 import {setupViewerMiddleware} from "@usecase/api/Viewer";
+import { forge } from "types";
 
 export default class WebService {
     app: Koa;
     port: number;
     server: Server;
 
-    constructor(config: Config<any>) {       
+    constructor(config: forge.Config) {       
         this.app = new Koa();
         this.app.use(KoaLogger());
-        this.port = config.get('HTTP').port;
+        this.port = config.HTTP.port;
 
         this.app.keys = ['my secret'];
         this.app.use(Session({
-            key: config.get('Session').key,
-            maxAge: config.get('Session').maxAge
+            key: config.Session.key,
+            maxAge: config.Session.maxAge
         }, this.app));
         this.app.use(bodyParser());
 

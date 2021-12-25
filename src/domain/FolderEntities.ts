@@ -1,4 +1,4 @@
-import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository, AfterUpdate, AfterInsert, AfterRemove} from 'typeorm';
+import {Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, BaseEntity, ManyToOne, Tree, TreeChildren, TreeParent, JoinColumn, getTreeRepository, getConnection, BeforeRemove, OneToMany, getRepository} from 'typeorm';
 
 // Models
 import {Document, DocumentResponse} from './DocumentEntities';

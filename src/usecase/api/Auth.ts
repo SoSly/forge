@@ -1,17 +1,17 @@
-import {Config} from 'convict';
 import DiscordStrategy from 'passport-discord';
 import Passport from 'koa-passport';
 import Router from '@koa/router';
 import {Auth} from '@domain/UserEntities';
 import Koa, {Context, Next, Middleware} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
+import { forge } from 'types';
 
 const ErrUserNotFound = new Error('User not found');
 
 class AuthRouter extends AbstractRouter {
-    private config: Config<any>;
+    private config: forge.Config;
 
-    constructor(config: Config<any>) {
+    constructor(config: forge.Config) {
         super();
 
         this.config = config;
@@ -19,8 +19,8 @@ class AuthRouter extends AbstractRouter {
         // configure Discord oauth
         const strategy = new DiscordStrategy({
             callbackURL: this.getCallbackURL(),
-            clientID: config.get('Discord').client,
-            clientSecret: config.get('Discord').secret,
+            clientID: config.Discord.client,
+            clientSecret: config.Discord.secret,
             scope: ['identify'],
         }, this.verifyDiscordStrategy);
 
@@ -55,8 +55,8 @@ class AuthRouter extends AbstractRouter {
     }
 
     private getCallbackURL(): string {
-        const http = this.config.get('HTTP');
-        switch(this.config.get('Environment').name) {
+        const http = this.config.HTTP;
+        switch(this.config.Environment.name) {
             case 'development': return `${http.protocol}://${http.host}:${http.port}/auth/discord/callback`;
             default: return `${http.protocol}://${http.host}/auth/discord/callback`;
         }
@@ -96,7 +96,7 @@ class AuthRouter extends AbstractRouter {
     }
 }
 
-export function setupAuthMiddleware(app: Koa, config: Config<any>): void {
+export function setupAuthMiddleware(app: Koa, config: forge.Config): void {
     const auth = new AuthRouter(config);
     app.use(Passport.initialize());
     app.use(Passport.session());
