@@ -1,10 +1,15 @@
+import * as dotenv from 'dotenv';
 import 'reflect-metadata';
-import config from '@domain/Config';
+import ForgeConfig from '@domain/Config';
 import DatabaseService from '@service/DatabaseService';
 import WebService from '@service/WebService';
+import { TSConvict } from 'ts-convict';
+import { forge } from 'types';
 
 (async function main(): Promise<void> {
     try {
+        dotenv.config();
+        const config: forge.Config = new TSConvict<ForgeConfig>(ForgeConfig).load();
         const db = new DatabaseService(config);
         await db.start();
         const ws = new WebService(config);

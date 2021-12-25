@@ -1,9 +1,9 @@
-import {Config} from 'convict';
 import Router from '@koa/router';
 import Koa, {Context, Next} from 'koa';
 import {AbstractRouter} from './AbstractRouter';
 import {DeepPartial, getConnection} from 'typeorm';
 import * as Usage from '@usecase/helpers/Usage';
+import { forge } from 'types';
 
 // Models
 import {Document, DocumentContent} from '@domain/DocumentEntities';
@@ -15,9 +15,9 @@ function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
 }
 
 class DocumentRouter extends AbstractRouter {
-    private config: Config<any>;
+    private config: forge.Config;
     
-    constructor(config: Config<any>) {
+    constructor(config: forge.Config) {
         super();
 
         this.config = config;
@@ -138,7 +138,7 @@ class DocumentRouter extends AbstractRouter {
     }
 }
 
-export function setupDocumentMiddleware(app: Koa, config: Config<any>): void {
+export function setupDocumentMiddleware(app: Koa, config: forge.Config): void {
     const document = new DocumentRouter(config);
     app.use(document.routes());
     app.use(document.allowedMethods());
