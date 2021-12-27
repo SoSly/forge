@@ -27,7 +27,7 @@ md.use(injectLineNumbersPlugin, {offset: -2});
 md.use(pagebreakPlugin);
 md.use(tocPlugin, {
     slugify: uslug,
-    level: [1,2,3]
+    level: [1,2,3,4]
 });
 
 
@@ -39,7 +39,7 @@ function handleClick($event) {
 
 const render = ref(() => {
         const contents: string[] = [];
-        contents.push('\${toc}')
+        contents.push('\${toc}');
         contents.push('<section class="page" id="p1">\n');
         contents.push(props.document.current.contents);
         contents.push('</section>');
@@ -53,7 +53,7 @@ const render = ref(() => {
 #preview-pane {
     margin-left: 580px;
     overflow-y: scroll;
-    height: calc(100vh - 64px - 2em); 
+    height: calc(100vh - 65px - 2em);
     width: calc(100vw - 580px);
 
     pre {

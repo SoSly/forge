@@ -9,19 +9,20 @@ $store.dispatch('user/get');
 </script>
 
 <style lang="scss">
-body#app { min-height: 100%; overflow: hidden; }
-body#app { font-size: 11pt; }
+html { height: 100%; }
+a, a:visited { color: #39C; text-decoration: none; }
+body#app { font-size: 11pt; min-height: 100%; }
 body#app > article {
   background: white;
   color: black;
   min-height: 100vh;
 
-  a, a:visited { color: #39C; text-decoration: none; }
-
   & > main {
+    position: fixed;
+    top: 64px;
     background: rgba(51, 153, 204, 0.3);
     min-height: 100vh;
-    padding-top: 64px;
+    width: 100%;
   }
 
   &.dark {

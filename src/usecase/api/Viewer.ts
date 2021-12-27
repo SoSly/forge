@@ -26,7 +26,7 @@ md.use(MarkdownItAnchor);
 md.use(Pagebreak);
 md.use(TOC, {
     slugify: uslug,
-    level: [1,2,3]
+    level: [1,2,3,4]
 });
 
 // Models
