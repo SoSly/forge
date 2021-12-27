@@ -13,10 +13,16 @@ const title = 'Editor';
 
 const dirty = ref(false);
 const document = ref($store.state.document);
+
 const save = debounce(async function() {
     await $store.dispatch('document/save');
     dirty.value = false;
 }, 1000);
+
+function change() {
+    dirty.value = true;
+    save();
+}
 
 let ed;
 function editor(instance) {
@@ -37,8 +43,8 @@ function scroll(el: HTMLElement) {
 
 <template>
 <section id="document-editor" v-if="document">
-    <Header :document="document" :save="save" :dirty="dirty"></Header>
-    <Editor :document="document" :save="save" :dirty="dirty" @editor="editor"></Editor>
-    <Preview :document="document" :save="save" :dirty="dirty" @scroll="scroll"></Preview>
+    <Header :document="document" :dirty="dirty" @save="save" @change="change"></Header>
+    <Editor :document="document" @editor="editor" @save="save" @change="change"></Editor>
+    <Preview :document="document" @scroll="scroll"></Preview>
 </section>
 </template>

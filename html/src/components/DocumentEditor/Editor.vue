@@ -6,12 +6,8 @@ import 'ace-builds/src-noconflict/mode-css';
 import 'ace-builds/src-noconflict/theme-textmate';
 import 'ace-builds/src-noconflict/theme-monokai';
 
-const props = defineProps<{document: forge.Document, save: CallableFunction, dirty: boolean}>();
-const emits = defineEmits(['editor']);
-
-function change() {
-    props.save();
-}
+const props = defineProps<{document: forge.Document}>();
+const emits = defineEmits(['editor', 'change', 'save']);
 
 function init(ed) {
     ed.setOptions({
@@ -45,8 +41,8 @@ function language() {
 
 <template>
 <v-ace-editor v-model:value="document.current.contents" :lang="language()" theme="monokai"
-    @change="change"
+    @change="emits('change')"
     @init="init"
-    @shortkey.once="['ctrl', 's']"
-    @shortkey="save()" />
+    v-shortkey.once="['ctrl', 's']"
+    v-shortkey="emits('save')" />
 </template>
