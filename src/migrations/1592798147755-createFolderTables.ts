@@ -14,7 +14,7 @@ export class createDocumentsTables1592798147755 implements MigrationInterface {
                 CONSTRAINT "fk_folder_id_auth" FOREIGN KEY ("id_auth") REFERENCES auth ("id")
             )
         `);
-        queryRunner.query(`
+        await queryRunner.query(`
             CREATE TABLE folder_closure (
                 "id_ancestor" bigint NOT NULL,
                 "id_descendant" bigint NOT NULL,

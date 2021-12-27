@@ -29,7 +29,7 @@ async function deleteFolder(folder: forge.FolderItem) {
 }
 
 function lastModified(time) {
-    return time.toLocaleString('en-US');
+    return new Date(time).toLocaleString('en-US');
 }
 
 function size(size) {
