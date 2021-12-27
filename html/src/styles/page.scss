@@ -1,4 +1,3 @@
-@import "covers";
 @import "ribbon";
 @import url("https://use.typekit.net/htj6ghe.css");
 
@@ -28,9 +27,9 @@ body {
 }
 
 .document {
-    margin: 0.5in auto;
     position: relative;
     width: 8.5in;
+    margin: 0.25in auto;
 
     & > nav.table-of-contents {
         z-index: 2147483647;
@@ -137,7 +136,7 @@ body {
         border-image-outset: 25px 17px;
         border-image-repeat: stretch;
         border-image-slice: 150 200 150 200;
-        border-image-source: url('/assets/table-border.png');
+        border-image-source: url('/table-border.png');
         border-image-width: 47px;
     }
 
@@ -158,7 +157,7 @@ body {
         font-family: ScalySans;
         border-style: solid;
         border-width: 7px;
-        border-image: url('/assets/descriptive.png') 12 stretch;
+        border-image: url('/descriptive.png') 12 stretch;
         border-image-repeat: stretch;
         border-image-outset: 4px;
         box-shadow: 0 0 6px #faf7ea;
@@ -232,7 +231,7 @@ body {
         border-left-color: rgb(245, 245, 245);
         border-style: solid;
         border-width: 5px;                
-        border-image: url('/assets/note-wrap.png') 11;
+        border-image: url('/note-wrap.png') 11;
         border-image-outset: 5px 0px;
         box-shadow: 0px 1px 5px;
         font-family: Calibri;
@@ -384,18 +383,4 @@ body {
 
         tbody tr:nth-child(odd) { background-color: #CCC; }
     }
-}
-
-@media print {
-    body {
-        background: white;
-
-        .document { margin: 0 auto; width: auto; }
-        .document nav.table-of-contents { display: none; }
-        .page { 
-            box-shadow: none; 
-            & + .page { margin-top: none; }
-        }
-        .sosly-forge-logo-link { display: none; }
-    }    
 }

@@ -1,0 +1,234 @@
+.page {
+    background-image : url('https://www.gmbinder.com/images/VXHkQzp.jpg');
+    background-size  : 100% 100%;
+    filter           : brightness(100%);
+}
+
+
+/* Background */
+.page .back-cover-logo{
+    background-image : url('https://www.gmbinder.com/images/GrViGdC.png');
+    background-size  : 125px;
+}
+
+.page p.head {
+    font-size        : 100%;
+}
+
+/* End Background */
+/* Notes */
+.page blockquote {
+    background-color : #E8F2F8;
+    box-shadow       : 0 0 6px black;
+    border-width: 11px;
+    border-image: url('https://www.gmbinder.com/images/4DowZjU.png') 11;
+    border-image-outset: 10px 0;
+}
+
+.page .descriptive {
+    background-color : white;
+    box-shadow       : 0 0 6px black;
+    border-image     : url('https://www.gmbinder.com/images/16uasjU.png');
+    border-image-slice: 10;
+    border-image-outset: 2px .8;
+}
+
+/* End Notes*/
+/* Tables */
+.page table tr:nth-child(odd) td {
+    background-color : #c3d6e2;
+}
+
+.page hr + blockquote {
+    background-color : white;
+    background-image : url('');
+    border-image     : url('https://www.gmbinder.com/images/FFpbsDm.png');
+    border-image-slice : 20;
+    border-image-outset: 7px .12;
+}
+
+.page hr + blockquote tr:nth-child(odd) td {
+    background-color : transparent;
+}
+
+.page .classTable {
+    border-image-source : url('https://www.gmbinder.com/images/K2HdDg9.png');
+    border-image-outset: 15px 17px;
+    margin-top: 15px;
+}
+
+.page .classTable table { margin-bottom: 0; }
+
+/* Footer */
+.page .footnote {
+    border-bottom    : none;
+    color            : black;
+    font-size        : 12px;
+    width            : 500px;
+}
+
+.page:nth-child(odd):after {
+    content          : '';
+    position         : absolute;
+    bottom           : -1px;
+    left             : 1px;
+    z-index          : -1;
+    height           : 100%;
+    width            : 100%;
+    background-image : url('https://www.gmbinder.com/images/HLSzYx9.png');
+    background-size  : cover;
+}
+
+.page:nth-child(even):after {
+    content          : '';
+    position         : absolute;
+    bottom           : -2px;
+    left             : -2px;
+    z-index          : -1;
+    height           : 100%;
+    width            : 100%;
+    background-image : url('https://www.gmbinder.com/images/HLSzYx9.png');
+    background-size  : cover;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.page p.foot {
+    content          : '';
+    color            : #09386d;
+    position         : absolute;
+    bottom           : 10px;
+    font-size        : 15.2px;
+    text-align       : right;
+    margin-top       : .2em;
+    margin-bottom    : 0;
+    font-family      : mrs-eaves, serif;
+    font-weight      : 800;
+    text-shadow      : 0px 0px 5px white;
+}
+
+.page:nth-child(even) p.foot {
+    left             : 78px;
+}
+
+.page:nth-child(odd) p.foot {
+    right            : 78px;
+}
+/* End Footer */
+
+/* Page Number */
+.page .pageNumber {
+    position         : absolute;
+    bottom           : 29px;
+    width            : 48px;
+    text-align       : center;
+    color            : black;
+    text-shadow      : 0px 0px 13px white;
+    font-size        : 16px;
+    font-weight      : 1000;
+}
+
+.page:nth-child(even) .pageNumber {
+    left             : 17px;
+    transform        : rotate(13.5deg);
+}
+
+.page:nth-child(odd) .pageNumber {
+    right            : 17.3px;
+    transform        : rotate(-13.5deg);
+}
+
+.page .pageNumber {
+    position         : absolute;
+    bottom           : 29px;
+    width            : 48px;
+    text-align       : center;
+    color            : black;
+    text-shadow      : 0px 0px 13px white;
+    font-size        : 16px;
+    font-weight      : 1000;
+}
+
+.page:nth-child(even) .pageNumber {
+    left             : 17px;
+    transform        : rotate(13.5deg);
+}
+
+.page:nth-child(odd) .pageNumber.auto {
+    right            : 17px;
+    transform        : rotate(-13.5deg);
+}
+/* End Page Number */
+
+/* Colors */
+.page h5{
+    font-size        : 134%;
+}
+
+.page blockquote h5{
+    font-size        : 104%;
+}
+
+.page h4{
+    color            : #293f50;
+    font-size        : 155%;
+}
+
+.page h3{
+    color            : #293f50;
+    border-bottom    : 2px solid black;
+    font-size        : 186%;
+}
+
+.page hr + blockquote h3 {
+    font-size        : 120%;
+}
+
+.page .page h2 {
+    color            : #293f50;
+    font-size        : 250%;
+}
+
+.page hr + blockquote h2 {
+    color            : #09386d;
+    font-size        : 140%;
+}
+
+.page h1 {
+    color            : #293f50;
+    font-size        : 400%;
+}
+
+.page p {
+    font-size        : 100%;
+}
+
+.page a {
+    color            : #09386d;
+}
+
+.page code {
+    color            : #09386d;
+}
+
+.page hr + blockquote table {
+    color            : black;
+}
+
+.page hr + blockquote hr + ul {
+    color            : black;
+}
+/* End Colors */
+
+.page hr+blockquote hr {
+    background: url("https://raw.githubusercontent.com/nivthefox/content.writh.net/master/images/stat-block-header-bar.svg");
+    background-repeat: no-repeat;
+    min-height: 5px;
+    border: none;
+    margin: 0.1em 0;
+    visibility: visible;
+}
+
+.page hr+blockquote ul span { float: right; }
+.page hr+blockquote p + ul { list-style-type: none; }
+.page hr+blockquote p + ul li { margin-bottom: 0.5em; margin-left: -0.5em; }

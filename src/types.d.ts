@@ -38,4 +38,39 @@ declare namespace forge {
         key: string,
         maxAge: number,
     }
+
+    export interface Document {
+        id: string
+        name: string
+        type: 'markdown' | 'stylesheet'
+        size: number
+        createdAt: Date
+        updatedAt: Date
+        current: DocumentContent
+    }
+
+    export interface DocumentContent {
+        id: string
+        document: Document
+        contents: string
+        remove(): Promise<this>
+        save(): Promise<this>
+    }
+
+    export interface User {
+        id: string
+        username: string
+        provider: string
+        providerId: string
+        type: 'free' | 'unlimited'
+        avatar: string | null
+        locale: string
+    }
+
+    export interface UserSettings {
+        id: string
+        user: User
+        darkmode: boolean
+        save(): Promise<this>
+    }
 }

@@ -1,4 +1,5 @@
 import {Entity, Column, BaseEntity, DeepPartial, OneToMany, OneToOne, PrimaryColumn, JoinColumn, getConnection} from 'typeorm';
+import { forge } from '../types';
 
 // Models
 import {Folder} from "./FolderEntities";
@@ -21,7 +22,7 @@ export class ProfileResponse {
 }
 
 @Entity({name: 'auth'})
-export class Auth extends BaseEntity {
+export class Auth extends BaseEntity implements forge.User {
     @PrimaryColumn({type: 'bigint'})
     public id: string;
 
@@ -38,7 +39,7 @@ export class Auth extends BaseEntity {
     public type: 'free' | 'unlimited';
 
     @Column({type: 'varchar', length: 255, nullable: true})
-    public avatar?: string;
+    public avatar: string | null;
     
     @Column({type: 'varchar', length: 255, nullable: false})
     public locale: string;
@@ -47,7 +48,7 @@ export class Auth extends BaseEntity {
     public folders: Folder[];
 
     @OneToOne(type => UserSettings, settings => settings.user, {cascade: true})
-    public settings: UserSettings;
+    public settings: forge.UserSettings;
 
     public static async findOneOrCreate(params: DeepPartial<Auth>): Promise<Auth|void> {
         const {provider, providerId} = params;        
@@ -71,7 +72,7 @@ export class Auth extends BaseEntity {
 }
 
 @Entity({name: 'user_settings'})
-export class UserSettings extends BaseEntity {
+export class UserSettings extends BaseEntity implements forge.UserSettings {
     @PrimaryColumn({type: 'bigint'})
     public id: string;
 
