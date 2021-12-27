@@ -10,6 +10,6 @@ const config = {
     synchronize: false,
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    ssl: (process.env.DATABASE_SSL == 'true')
+    ssl: (process.env.DATABASE_SSL == 'false') ? 'false' : undefined,
 };
 module.exports = config;

@@ -21,7 +21,7 @@ export default class DatabaseService {
                     entities: [Auth,Document,DocumentContent,Folder,UserSettings],
                     type: config.Database.driver,
                     url: config.Database.connection,
-                    ssl: config.Database.ssl,
+                    ssl: config.Database.ssl === false ? false : undefined,
                     logger: config.Database.logger,
                 }
                 return conn;
