@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build:dev": "npm run migrations:run && npm run parser:generate && vite build",
-    "build:prod": "npm run migrations:run && npm run parser:generate && vite build --watch",
+    "build:prod": "npm run migrations:run && npm run parser:generate && vite build",
     "build": "npm run build:prod",
     "dev": "ts-node-dev --require tsconfig-paths/register ./src/main.ts --inspect --respawn --transpileOnly",
     "migrations:clean": "rm ./src/migrations/*.js",
