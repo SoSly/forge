@@ -10,6 +10,7 @@ let mockUser = {
     "provider":"discord",
     "providerId":"60468942044405760",
     "settings":{"darkmode":true},
+    "rights":{audit: true, ban_user: true, delete_content: true, document_list: true, grant: true, user_list: true},
     "usage":{"current":1140759,"max":null}
 };
 

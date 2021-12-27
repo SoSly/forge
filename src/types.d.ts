@@ -73,4 +73,15 @@ declare namespace forge {
         darkmode: boolean
         save(): Promise<this>
     }
+
+    export interface UserRights {
+        user: User
+        grant: boolean
+        audit: boolean
+        user_list: boolean
+        document_list: boolean
+        ban_user: boolean
+        delete_content: boolean
+        save(): Promise<this>
+    }
 }

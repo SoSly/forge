@@ -66,8 +66,18 @@ export module forge {
         locale: string
         provider: string
         providerId: string
+        rights?: UserRights
         settings: UserSettings
         usage: UserUsage
+    }
+
+    export interface UserRights {
+        audit: boolean
+        ban_user: boolean
+        delete_content: boolean
+        document_list: boolean
+        grant: boolean
+        user_list: boolean        
     }
 
     export interface UserSettings {

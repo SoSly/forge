@@ -38,6 +38,9 @@ export default {
         darkmode(state: forge.User) {
             return state.settings.darkmode;
         },
+        isAdmin(state: forge.User) {
+            return state.rights !== undefined;
+        },
         loggedIn(state: forge.User) {
             return state.id !== null;
         }

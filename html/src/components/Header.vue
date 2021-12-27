@@ -251,6 +251,7 @@ function closeProfileMenu() {
     <ul class="left">
         <li class="logo"><router-link to="/"><img src="/logo.png" /></router-link></li>
         <li v-if="$store.getters['user/loggedIn']" class="workbench"><router-link to="/workbench">Your workbench</router-link></li>
+        <li v-if="$store.getters['user/isAdmin']" class="management"><router-link to="/management">User Management</router-link></li>
     </ul>
 </header>
 </template>

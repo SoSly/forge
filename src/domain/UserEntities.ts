@@ -12,6 +12,14 @@ export class ProfileResponse {
     public type: 'free' | 'unlimited';
     public avatar: string;
     public locale: string;
+    public rights?: {
+        grant: boolean,
+        audit: boolean
+        user_list: boolean,
+        document_list: boolean,
+        ban_user: boolean,
+        delete_content: boolean,
+    }
     public settings: {
         darkmode: boolean
     };
@@ -47,12 +55,15 @@ export class Auth extends BaseEntity implements forge.User {
     @OneToMany(type => Folder, folder => folder.user)
     public folders: Folder[];
 
+    @OneToOne(type => AuthRights, rights => rights.user, {cascade: true})
+    public rights: forge.UserRights;
+    
     @OneToOne(type => UserSettings, settings => settings.user, {cascade: true})
     public settings: forge.UserSettings;
 
     public static async findOneOrCreate(params: DeepPartial<Auth>): Promise<Auth|void> {
         const {provider, providerId} = params;        
-        let user: Auth|undefined = await Auth.findOne({provider, providerId}, {relations: ['settings']});
+        let user: Auth|undefined = await Auth.findOne({provider, providerId}, {relations: ['rights', 'settings']});
         if (user === undefined) {
             const results = await getConnection().createQueryBuilder()
                 .insert().into(Auth).values(params).returning("*")
@@ -62,6 +73,10 @@ export class Auth extends BaseEntity implements forge.User {
             const settings = UserSettings.create();
             settings.user = user;
             await settings.save();
+
+            const rights = AuthRights.create();
+            rights.user = user;
+            await rights.save();
 
             const rootFolder = Folder.create({name: `Your Workbench`});
             rootFolder.user = user;
@@ -82,4 +97,30 @@ export class UserSettings extends BaseEntity implements forge.UserSettings {
 
     @Column({default: false})
     public darkmode: boolean;
+}
+
+@Entity({name: 'auth_rights'})
+export class AuthRights extends BaseEntity {
+    @PrimaryColumn({type: 'bigint', name: 'id_auth'})
+    @OneToOne(type => Auth, user => user.rights)
+    @JoinColumn({name: 'id_auth'})
+    public user: Auth;
+
+    @Column({default: false})
+    public grant: boolean;
+
+    @Column({default: false})
+    public audit: boolean;
+
+    @Column({default: false})
+    public user_list: boolean;
+
+    @Column({default: false})
+    public document_list: boolean;
+
+    @Column({default: false})
+    public ban_user: boolean;
+
+    @Column({default: false})
+    public delete_content: boolean;
 }
