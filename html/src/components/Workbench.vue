@@ -3,18 +3,41 @@ import Contents from './Workbench/Contents.vue';
 import Header from './Workbench/Header.vue';
 
 import { forge } from '../types';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const $store = useStore();
 const title = 'Your Workbench';
 
 const folder = ref($store.state.folder);
+const contents = computed(() => {
+    let contents = $store.getters['folder/contents']
+    contents.sort((a, b) => {
+        if (a[sortColumn.value] > b[sortColumn.value]) {
+            return sortAscending.value ? 1 : -1;
+        } else if (a[sortColumn.value] < b[sortColumn.value]) {
+            return sortAscending.value ? -1 : 1;
+        }
+        return 0;
+    });
+    return contents;
+});
 
 let dragging: forge.FolderItem | undefined = undefined;
 function drag(item) {
     if (dragging !== undefined) return; // todo: warning maybe?
     dragging = item;
+}
+
+let sortColumn = ref('name')
+let sortAscending = ref(true);
+function sortTable(col) {
+    if (sortColumn.value === col) {
+        sortAscending.value = !sortAscending.value;
+    } else {
+        sortAscending.value = true;
+        sortColumn.value = col;
+    }
 }
 
 async function drop(item) {
@@ -126,15 +149,15 @@ async function drop(item) {
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Last Modified</th>
-                    <th>Type</th>
-                    <th>Size</th>
+                    <th @click="sortTable('name')">Name</th>
+                    <th @click="sortTable('updatedAt');">Last Modified</th>
+                    <th @click="sortTable('type');">Type</th>
+                    <th @click="sortTable('size');">Size</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <template v-for="item in $store.getters['folder/contents']" :key="`${item.type}-${item.id}`">
+                <template v-for="item in contents" :key="`${item.type}-${item.id}`">
                     <Contents :item="item" @drag="drag" @drop="drop"></Contents>
                 </template>
             </tbody>
