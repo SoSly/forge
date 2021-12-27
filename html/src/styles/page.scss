@@ -384,3 +384,17 @@ body {
         tbody tr:nth-child(odd) { background-color: #CCC; }
     }
 }
+
+@media print {
+    body {
+        background: white;
+
+        .document { margin: 0 auto; width: auto; }
+        .document nav.table-of-contents { display: none; }
+        .page { 
+            box-shadow: none; 
+            & + .page { margin-top: 0; }
+        }
+        .sosly-forge-logo-link { display: none; }
+    }    
+}
