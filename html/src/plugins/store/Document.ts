@@ -15,11 +15,16 @@ export default {
             const response = await axios.get(`/api/document/${id}`);
             await commit('load', response.data);
         },
-        async delete ({dispatch, rootState}, id) {
+        async delete({dispatch, rootState}, id) {
             const response = await axios.delete(`/api/document/${id}`);
             await dispatch('folder/get', rootState.folder.id, {root: true});
         },
-        async rename ({state}) {
+        async move({commit}, {folderId, document}) {
+            const {id} = document;
+            await axios.patch(`/api/document/${id}`, {folderId});
+            commit('folder/removeDocument', {folderId, document}, {root: true});
+        },
+        async rename({state}) {
             const {id, name} = state;
             await axios.patch(`/api/document/${id}`, {name});
         },

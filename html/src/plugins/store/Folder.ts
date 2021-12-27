@@ -24,6 +24,11 @@ export default {
             await axios.delete(`/api/folder/${deleted}`);
             state.children = state.children.filter(({id}) => id != deleted);
         },
+        async move({commit}, {parentId, folder}) {
+            const {id} = folder;
+            await axios.patch(`/api/folder/${id}`, {parentId});
+            commit('removeChild', {parentId, folder});
+        },
         async save({state}) {
             const {id, name} = state;
             await axios.patch(`/api/folder/${id}`, {id, name});
@@ -32,6 +37,24 @@ export default {
     mutations: {
         async load(state: forge.Folder | {}, folder: forge.Folder) {
             Object.keys(folder).map(k => state[k] = folder[k]);
+        },
+        removeDocument(state: forge.Folder, {folderId, document}) {
+            if (state.id != folderId) {
+                state.documents = state.documents.filter(({id}) => id != document.id);
+            }
+        },
+        removeChild(state: forge.Folder, {parentId, folder}) {
+            if (state.id != parentId) {
+                state.children = state.children.filter(({id}) => id != folder.id);
+            }
+        }
+    },
+    getters: {
+        contents(state) {
+            const contents: forge.FolderItem[] = [];
+            state.children.forEach(({id, name, createdAt, updatedAt, size}) => contents.push({id, name, createdAt, updatedAt, size, type: 'folder'}));
+            state.documents.forEach(({id, name, createdAt, updatedAt, size}) => contents.push({id, name, createdAt, updatedAt, size, type: 'document'}));
+            return contents;
         }
     }
 }

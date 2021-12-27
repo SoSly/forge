@@ -1,6 +1,6 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { forge } from '../html/src/types';
-import { addDocumentToFolder } from './folder';
+import { addDocumentToFolder, removeDocumentFromFolder } from './folder';
 import { mockDocuments, mockFolders } from './store';
 import { readFileSync } from 'fs';
 
@@ -62,8 +62,12 @@ export default [
         response: (req) => {
             const {id} = req.query;
             const document: forge.Document = mockDocuments.get(id);
+            const currentFolderId = document.folderId;
+
             Object.keys(req.body).forEach(k => document[k] = req.body[k]);
             mockDocuments.set(id, document);
+            
+            removeDocumentFromFolder(currentFolderId, document);
             addDocumentToFolder(document.folderId, document);
         }
     },

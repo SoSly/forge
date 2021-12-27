@@ -35,14 +35,46 @@ function serialize(folder: forge.Folder): forge.Folder {
     return destination as forge.Folder;
 }
 
+
+export function addChildToFolder(id: string, folder: forge.Folder) {
+    if (!mockFolders.has(id)) {
+        console.log(`Could not find folder ${id}`);
+        return;
+    }
+    const parentFolder = mockFolders.get(id);
+    removeChildFromFolder(id, folder);
+    parentFolder.children.push(folder);
+    mockFolders.set(id, parentFolder);
+}
+
+export function removeChildFromFolder(id: string, folder: forge.Folder) {
+    if (!mockFolders.has(id)) {
+        console.log(`Could not find folder ${id}`);
+        return;
+    }
+    const parentFolder = mockFolders.get(id);
+    parentFolder.children = parentFolder.children.filter(({id}) => id != folder.id);
+    mockFolders.set(id, parentFolder);
+}
+
 export function addDocumentToFolder(id: string, document: forge.Document) {
     if (!mockFolders.has(id)) {
         console.log(`Could not find folder ${id}`);
         return;
     }
     const folder = mockFolders.get(id);
-    folder.documents = folder.documents.filter(({id}) => id != document.id);
+    removeDocumentFromFolder(id, document);
     folder.documents.push(document);
+    mockFolders.set(id, folder);
+}
+
+export function removeDocumentFromFolder(id: string, document: forge.Document) {
+    if (!mockFolders.has(id)) {
+        console.log(`Could not find folder ${id}`);
+        return;
+    }
+    const folder = mockFolders.get(id);
+    folder.documents = folder.documents.filter(({id}) => id != document.id);
     mockFolders.set(id, folder);
 }
 
@@ -98,9 +130,29 @@ export default [
         url: '/api/folder/:id',
         method: 'patch',
         response: (req) => {
-            const {id, name} = req.body;
-            mockFolders.get(id).name = name;
-            return serialize(mockFolders.get(id));
+            const {id} = req.query;
+            const folder: forge.Folder = mockFolders.get(id);
+            
+            if (!folder.parent) {
+                console.error('cannot modify root folder');
+                return;
+            }
+            const currentParentId = folder.parent.id;
+            
+            if (req.body.parentId) {
+                const parentId = req.body.parentId;
+                delete req.body.parentId;
+
+                const parent = mockFolders.get(parentId);
+                folder.parent = parent;
+
+                removeChildFromFolder(currentParentId, folder);
+                addChildToFolder(parentId, folder);
+            }
+
+            Object.keys(req.body).forEach(k => folder[k] = req.body[k]);
+            mockFolders.set(id, folder);
+
         }
     },
     {
