@@ -1,7 +1,7 @@
 node_modules
 .DS_Store
-dist
-dist-ssr
+html/dist
+html/dist-ssr
 src/migrations/*.js
 yarn-error.log
 .env

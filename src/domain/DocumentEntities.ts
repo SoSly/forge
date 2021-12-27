@@ -1,4 +1,5 @@
 import {Entity, Column, BaseEntity, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn, OneToOne, BeforeRemove} from 'typeorm';
+import { forge } from '../types';
 
 // Models
 import {Folder} from './FolderEntities';
@@ -18,7 +19,7 @@ export class DocumentResponse {
 }
 
 @Entity({name: 'document'})
-export class Document extends BaseEntity {
+export class Document extends BaseEntity implements forge.Document {
     @PrimaryColumn({type: 'bigint'})
     public id: string;
 
@@ -46,28 +47,30 @@ export class Document extends BaseEntity {
     public folder: Folder;
 
     @OneToOne(type => DocumentContent, content => content.document, {cascade: true, onDelete: 'CASCADE'})
-    public current: DocumentContent;
+    public current: forge.DocumentContent;
 
-    public async updateDocumentSize() {
+    public async updateDocumentSize(): Promise<this> {
         if (this.current && this.current.contents) {
             this.size = this.name.length + this.current.contents.length;
         }
+        return this
     }
 
     @BeforeRemove()
-    private async removeCurrentContents() {
+    public async removeCurrentContents(): Promise<this> {
         await this.current?.remove();
+        return this
     }
 }
 
 @Entity({name: 'document_content'})
-export class DocumentContent extends BaseEntity {
+export class DocumentContent extends BaseEntity implements forge.DocumentContent {
     @PrimaryColumn({type: 'bigint'})
     public id: string;
 
     @OneToOne(type => Document, document => document.current)
     @JoinColumn({name: 'id_document'})
-    public document: Document;
+    public document: forge.Document;
 
     @Column({default: '', type: 'text'})
     public contents: string;

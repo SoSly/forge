@@ -1,4 +1,4 @@
-import { forge } from "types";
+import { forge } from "../types";
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 
 // Entities

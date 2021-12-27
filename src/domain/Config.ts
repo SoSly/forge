@@ -1,4 +1,4 @@
-import { forge } from "types";
+import { forge } from "../types";
 import { DatabaseType } from 'typeorm';
 import { Property, Config, TSConvict } from 'ts-convict';
 

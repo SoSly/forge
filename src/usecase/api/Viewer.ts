@@ -7,10 +7,11 @@ import { forge } from 'types';
 // todo: put this somewhere the frontend and backend can both get at it.
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
-import Columnbreak from '../../../public/src/plugins/markdown/columnbreak';
-import Pagebreak from '../../../public/src/plugins/markdown/pagebreak';
-import TOC from '../../../public/src/plugins/markdown/toc';
+import Columnbreak from '../../../html/src/plugins/markdown/columnbreak';
+import Pagebreak from '../../../html/src/plugins/markdown/pagebreak';
+import TOC from '../../../html/src/plugins/markdown/toc';
 import uslug from 'uslug';
+import {readFile} from 'fs/promises';
 
 const md = new MarkdownIt({
     html: true,
@@ -37,6 +38,12 @@ function validateViewingPrivileges(ctx: Context, obj: Document|undefined): void 
     // todo: implement privileges
 }
 
+async function getCSSDocuments(): Promise<string[]> {
+    const bytes = await readFile('html/dist/manifest.json');
+    const manifest = JSON.parse(bytes.toString());
+    return manifest['index.html'].css;
+}
+
 class ViewerRouter extends AbstractRouter {
     private config: forge.Config;
 
@@ -53,6 +60,14 @@ class ViewerRouter extends AbstractRouter {
 
     private async getDocument(ctx: Context, next: Next): Promise<void> {
         try {
+        // .forEach(filename => contents.push(`<link rel="stylesheet" type="text/css" href="/dist/${filename}" />`));
+        }
+        catch (err) {
+            console.error(err);
+        }
+
+
+        try {
             const id = ctx.params.id;
             const document = await Document.findOne({id}, {relations: ['current', 'user']});
             validateViewingPrivileges(ctx, document);
@@ -67,12 +82,12 @@ class ViewerRouter extends AbstractRouter {
                     let contents: string[] = [];
                     contents.push('<!DOCTYPE html>');
                     contents.push('<html lang="en" dir="ltr"><head><meta charset="UTF-8" />');
-                    contents.push('<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />');
-                    contents.push('<link rel="stylesheet" type="text/css" href="/dist/reset.min.css" />');
                     contents.push('<title>' + document.name + '</title>');
+                    contents.push('<link rel="stylesheet" type="text/css" href="/reset.css" />');
+                    (await getCSSDocuments()).forEach(file => contents.push(`<link rel="stylesheet" type="text/css" href="/${file}" />`));
                     contents.push(`<meta property="og:title" content="${document.name}" />`);
                     contents.push(`<meta property="og:site_name" content="Document Forge" />`);
-                    contents.push(`<meta property="og:image" content="https://forge.sosly.org/assets/logo.png" />`);
+                    contents.push(`<meta property="og:image" content="https://forge.sosly.org/logo.png" />`);
                     contents.push('</head><body><article class="document">');
                     contents.push('');
                     contents.push('${toc}');
@@ -80,7 +95,7 @@ class ViewerRouter extends AbstractRouter {
                     contents.push('');
                     contents.push(document.current.contents);
                     contents.push('</section></article>');
-                    contents.push('<a class="sosly-forge-logo-link" href="/" target="_blank"><img src="/assets/logo.png" alt="The Forge" /></a>');
+                    contents.push('<a class="sosly-forge-logo-link" href="/" target="_blank"><img src="/logo.png" alt="The Forge" /></a>');
                     contents.push('</body></html>');
                     ctx.body = md.render(contents.join('\n'));
                     break;
