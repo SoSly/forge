@@ -11,7 +11,7 @@ import {Folder} from '@domain/FolderEntities';
 
 function validateOwnership(ctx: Context, obj: Folder|Document|undefined): void {
     if (!obj) ctx.throw(404);
-    if (obj.user.id !== ctx.state.user.id) ctx.throw(401);
+    if (obj!.user!.id !== ctx.state.user.id) ctx.throw(401);
 }
 
 class DocumentRouter extends AbstractRouter {

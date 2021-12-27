@@ -9,7 +9,7 @@ import { forge } from 'types';
 
 function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (!folder) ctx.throw(404);
-    if (folder.user.id !== ctx.state.user.id) ctx.throw(401);
+    if (folder!.user!.id !== ctx.state.user.id) ctx.throw(401);
 }
 
 
