@@ -33,7 +33,7 @@ function language() {
 #document-editor .ace_editor {
     display: block;
     float: left;
-    min-height: calc(100vh - 64px - 2em); 
+    min-height: calc(100vh - 69px - 2em); 
     min-width: 580px;
     max-width: calc(100vh - 8.5in);
 }
