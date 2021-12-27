@@ -1,11 +1,14 @@
 <script setup lang=ts>
-import {forge} from '../../types';
+import { forge } from '../../types';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { ref } from 'vue';
+import document from '../../../../mock/document';
 
 const $router = useRouter();
 const $store = useStore();
 const props = defineProps<{item: forge.FolderItem}>();
+const emits = defineEmits(['drag', 'drop']);
 
 const typeMap = {
     'folder': {name: 'File Folder'},
@@ -41,15 +44,23 @@ function size(size) {
     return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
 }
 
+function dragStart($event, item) {
+    console.log(item.id);
+}
+
+function drop($event, item) {
+    console.log(item.id);
+}
+
 function type(type) {
     return typeMap[type].name;
 }
 </script>
 
 <template>
-<tr>
+<tr draggable="true" @dragstart="emits('drag', item)" @drop="emits('drop', item)" @dragover.prevent @dragenter.prevent>
     <td v-if="item.type === 'folder'">
-        <router-link :to='{path: `/workbench/${item.id}`}'>
+        <router-link :to='{path: `/workbench/${item.id}`}' class="drop-zone">
             <span><font-awesome-icon icon="folder" size="1x" /></span> {{item.name}}
         </router-link>
     </td>

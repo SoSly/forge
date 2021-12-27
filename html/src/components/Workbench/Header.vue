@@ -8,7 +8,7 @@ const $router = useRouter();
 const $store = useStore();
 
 const props = defineProps<{folder: forge.Folder}>();
-
+const emits = defineEmits(['drop']);
 
 const folderNameEditor = ref(false);
 function getFolderNameEditor(): HTMLInputElement | null {
@@ -34,26 +34,32 @@ async function createDocument() {
     const newDocument = await $store.dispatch('document/create', {folderId: props.folder.id, name: 'New Document'});
 }
 
-type pathPart = {id: string, name: string};
-function generatePath(folder: forge.NodeFolder, path: pathPart[]) {
+function generatePath(folder: forge.NodeFolder, path: forge.FolderItem[]) {
     if (!folder.parent) {
         return path;
     }
 
     if (path.length > 1) {
-        path.unshift({id: '...', name: '...'});
+        path.unshift({id: '...', name: '...'} as forge.FolderItem);
         return path;
     }
 
     if (folder !== $store.state.folder) {
-        const {id, name} = folder;
-        path.unshift({id, name});
+        path.unshift({...folder, type: 'folder'});
     }
 
     return generatePath(folder.parent, path);
 }
 
-const path: pathPart[] = generatePath(props.folder, []);
+function getRootFolder(folder: forge.NodeFolder): forge.FolderItem {
+    if (!folder.parent) {
+        return {...folder, type: 'folder'};
+    }
+
+    return getRootFolder(folder.parent);
+}
+
+const path: forge.NodeFolder[] = generatePath(props.folder, []);
 </script>
 
 <style lang=scss>
@@ -101,13 +107,15 @@ const path: pathPart[] = generatePath(props.folder, []);
         </li>
     </ul>
     <ul>
-        <li><router-link to="/workbench">
+        <li @drop="emits('drop', getRootFolder(folder))" @dragover.prevent @dragenter.prevent><router-link to="/workbench">
             <font-awesome-icon icon="home" size="1x" />
         </router-link></li>
         <template v-if="path.length > 0">
             <li v-for="pathPart in path" :key="pathPart.id">
                 <template v-if="pathPart.id != '...'">
-                    <router-link :to="{path: `/workbench/${pathPart.id}`}">{{pathPart.name}}</router-link>
+                    <router-link :to="{path: `/workbench/${pathPart.id}`}" @drop="emits('drop', pathPart)" @dragover.prevent @dragenter.prevent>
+                        {{pathPart.name}}
+                    </router-link>
                 </template>
                 <template v-else>
                     <span>{{pathPart.name}}</span>

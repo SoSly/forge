@@ -11,11 +11,25 @@ const title = 'Your Workbench';
 
 const folder = ref($store.state.folder);
 
-function contents() {
-    const contents: forge.FolderItem[] = [];
-    folder.value.children.forEach(({id, name, createdAt, updatedAt, size}) => contents.push({id, name, createdAt, updatedAt, size, type: 'folder'}));
-    folder.value.documents.forEach(({id, name, createdAt, updatedAt, size}) => contents.push({id, name, createdAt, updatedAt, size, type: 'document'}));
-    return contents;
+let dragging: forge.FolderItem | undefined = undefined;
+function drag(item) {
+    if (dragging !== undefined) return; // todo: warning maybe?
+    dragging = item;
+}
+
+async function drop(item) {
+    if (!dragging) return;
+    if (item.type != 'folder') return;
+    switch (dragging.type) {
+        case 'document':
+            await $store.dispatch('document/move', {folderId: item.id, document: dragging});
+            dragging = undefined;
+            break;
+        case 'folder':
+            await $store.dispatch('folder/move', {parentId: item.id, folder: dragging});
+            dragging = undefined;
+            break;
+    }
 }
 </script>
 
@@ -108,7 +122,7 @@ function contents() {
 
 <template>
     <section id="workbench" v-if="folder">
-        <Header :folder="folder"></Header>
+        <Header :folder="folder" @drop="drop"></Header>
         <table>
             <thead>
                 <tr>
@@ -120,8 +134,8 @@ function contents() {
                 </tr>
             </thead>
             <tbody>
-                <template v-for="item in contents()" :key="item.id">
-                    <Contents :item="item"></Contents>
+                <template v-for="item in $store.getters['folder/contents']" :key="`${item.type}-${item.id}`">
+                    <Contents :item="item" @drag="drag" @drop="drop"></Contents>
                 </template>
             </tbody>
         </table>
