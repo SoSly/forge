@@ -17,11 +17,13 @@ import title from './mixins/title';
 // plugins
 import router from './plugins/router'
 import store from './plugins/store';
+import shortkey from 'vue3-shortkey';
 
 const app = createVueApp(App)
     .use(clickOutside)
-    .use(store)
     .use(router)
+    .use(shortkey)
+    .use(store)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mixin(title)
     .mount('#app');

@@ -1,6 +1,7 @@
 <script setup lang=ts>
 import { forge } from '../../types';
-const props = defineProps<{document: forge.Document, save: CallableFunction, dirty: boolean}>();
+const props = defineProps<{document: forge.Document, dirty: boolean}>();
+const emits = defineEmits(['change', 'save']);
 </script>
 
 <style lang=scss>
@@ -66,14 +67,14 @@ const props = defineProps<{document: forge.Document, save: CallableFunction, dir
 <template>
 <nav>
     <ul>
-        <li class="button save" :class="dirty ? 'dirty' : ''" @click="save()">
+        <li class="button save" :class="dirty ? 'dirty' : ''" @click="emits('save')">
             <font-awesome-icon icon="save" size="1x" /> Save
         </li>
-        <select v-model="document.type" @change="save()">
+        <select v-model="document.type" @change="emits('change')">
             <option value="markdown">Markdown</option>
             <option value="stylesheet">Stylesheet</option>
         </select>
     </ul>
-    <input type="text" v-model="document.name" @blur="save" @keydown.enter="$event.target.blur()" />
+    <input type="text" v-model="document.name" @blur="emits('change')" @keydown.enter="$event.target.blur()" />
 </nav>
 </template>

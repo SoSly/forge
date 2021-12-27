@@ -10,7 +10,7 @@ import pagebreakPlugin from '../../plugins/markdown/pagebreak';
 import tocPlugin from '../../plugins/markdown/toc';
 import uslug from 'uslug';
 
-const props = defineProps<{document: forge.Document, save: CallableFunction, dirty: boolean}>();
+const props = defineProps<{document: forge.Document}>();
 const emits = defineEmits(['scroll'])
 
 const md = new MarkdownIt({

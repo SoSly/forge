@@ -1,6 +1,5 @@
 function tokenizeColumnbreak(md, options) {
     return function(tokens, idx, _options, env, self) {
-        // console.log(tokens[idx]);
         return '<div class=column-break></div>';
     };
 }
