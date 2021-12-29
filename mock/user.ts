@@ -1,7 +1,7 @@
 import { MockMethod } from 'vite-plugin-mock';
 
 let loggedOut = true;
-let mockUser = {
+export const mockUser = {
     "id":"1",
     "username":"Niv",
     "type":"unlimited",
@@ -19,6 +19,11 @@ export default [
         url: '/api/profile',
         method: 'get',
         response: ({query}) => loggedOut ? {} : mockUser
+    },
+    {
+        url: '/api/settings',
+        method: 'patch',
+        response: (req) => mockUser.settings = req.body
     },
     {
         url: '/auth/login',

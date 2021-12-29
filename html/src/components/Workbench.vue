@@ -56,7 +56,7 @@ async function drop(item) {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #workbench {
     margin: 1em auto;
     max-height: calc(100vh - 64px - 2em);
@@ -70,7 +70,7 @@ async function drop(item) {
         margin-top: 1em;
         width: 100%;
 
-        th, td {
+        th {
             line-height: 1.3em;
             padding: 0 5px;
             
@@ -108,17 +108,6 @@ async function drop(item) {
             height: calc(100vh - 27px - 64px - 1.5in - 2em);
             overflow-y: scroll;
             width: 7.5in;
-
-            tr {
-                display: table;
-                width: 100%;
-                table-layout: fixed;
-                &:hover { background: #CCC; }
-                &:nth-child(odd) { 
-                    background: #DDD;
-                    &:hover { background: #CCC; }
-                }
-            }
 
             &::-webkit-scrollbar { width: 0.5em; }
             &::-webkit-scrollbar-track { box-shadow: inset 0 0 6px #AAA; }

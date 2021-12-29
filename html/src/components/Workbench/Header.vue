@@ -62,8 +62,8 @@ function getRootFolder(folder: forge.NodeFolder): forge.FolderItem {
 const path: forge.NodeFolder[] = generatePath(props.folder, []);
 </script>
 
-<style lang=scss>
-#workbench nav {
+<style scoped lang=scss>
+nav {
     padding-bottom: 0.5em;
     border-bottom: 2px solid #DDD;
     margin-top: 1em;
@@ -87,7 +87,7 @@ const path: forge.NodeFolder[] = generatePath(props.folder, []);
     }
 }
 
-.dark #workbench nav {
+.dark nav {
     border-bottom: 2px solid #666;
 }
 </style>

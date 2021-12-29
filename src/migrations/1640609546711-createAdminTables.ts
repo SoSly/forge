@@ -7,6 +7,7 @@ export class admin1640609546711 implements MigrationInterface {
         await queryRunner.query(`
             CREATE TABLE audit (
                 "id" bigint PRIMARY KEY NOT NULL DEFAULT id_generator(),
+                "createdAt" timestamp with time zone NOT NULL DEFAULT CURRENT_DATE,
                 "id_auth" bigint NOT NULL,
                 "action" audit_action NOT NULL,
                 "id_affected_user" bigint NOT NULL,

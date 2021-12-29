@@ -56,9 +56,8 @@ const contents = computed(() => {
 });
 </script>
 
-<style lang=scss>
-@import '../../styles/page.scss';
-
+<style src="../../styles/page.scss"></style>
+<style scoped lang=scss>
 #preview-pane {
     margin-left: 580px;
     overflow-y: scroll;

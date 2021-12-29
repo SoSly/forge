@@ -26,6 +26,9 @@ export default {
         async get({commit}) {
             const response = await axios.get('/api/profile');
             commit('load', response.data)
+        },
+        async updateSettings({state}) {
+            await axios.patch('/api/settings', state.settings);
         }
     },
     getters: {

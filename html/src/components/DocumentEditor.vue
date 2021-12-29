@@ -38,9 +38,6 @@ function scroll(el: HTMLElement) {
 }
 </script>
 
-<style lang=scss>
-</style>
-
 <template>
 <section id="document-editor" v-if="document">
     <Header :document="document" :dirty="dirty" @save="save" @change="change"></Header>

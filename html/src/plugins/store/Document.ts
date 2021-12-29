@@ -1,4 +1,5 @@
-import axios from 'axios';import { forge } from "types";
+import axios from 'axios';
+import { forge } from "types";
 
 export default {
     strict: process.env.NODE_ENV !== 'production',

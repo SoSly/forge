@@ -29,7 +29,7 @@ function language() {
 }
 </script>
 
-<style lang=scss>
+<style scoped lang=scss>
 #document-editor .ace_editor {
     display: block;
     float: left;

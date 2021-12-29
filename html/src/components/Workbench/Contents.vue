@@ -1,11 +1,7 @@
 <script setup lang=ts>
 import { forge } from '../../types';
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { ref } from 'vue';
-import document from '../../../../mock/document';
 
-const $router = useRouter();
 const $store = useStore();
 const props = defineProps<{item: forge.FolderItem}>();
 const emits = defineEmits(['drag', 'drop']);
@@ -44,18 +40,34 @@ function size(size) {
     return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
 }
 
-function dragStart($event, item) {
-    console.log(item.id);
-}
-
-function drop($event, item) {
-    console.log(item.id);
-}
-
 function type(type) {
     return typeMap[type].name;
 }
 </script>
+
+<style scoped lang=scss>
+td {
+    line-height: 1.3em;
+    padding: 0 5px;
+    
+    &:nth-of-type(1) { width: 48%; }
+    &:nth-of-type(2) { width: 27%; }
+    &:nth-of-type(3) { width: 15%; }
+    &:nth-of-type(4) { width: 12%; }
+    &:nth-of-type(5) { width: 8%; }
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    &:hover { background: #CCC; }
+    &:nth-child(odd) { 
+        background: #DDD;
+        &:hover { background: #CCC; }
+    }
+}
+</style>
 
 <template>
 <tr draggable="true" @dragstart="emits('drag', item)" @drop="emits('drop', item)" @dragover.prevent @dragenter.prevent>

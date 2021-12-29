@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang=ts>
 import { ref } from 'vue';
 import { useStore } from 'vuex';
 const $store = useStore();
@@ -7,7 +7,7 @@ const user = ref($store.state.user);
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #profile {
     margin: 25px auto 0;
     width: 8.5in;
