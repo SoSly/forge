@@ -1,6 +1,6 @@
 <script setup lang=ts>
 import { forge } from '../../types';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
@@ -37,11 +37,20 @@ function handleClick($event) {
     }
 }
 
-const render = ref(() => {
+const reStyleSheet = new RegExp(`<link.*?rel="?stylesheet"?.*?\/>`, 'gmi');
+const stylesheets = computed(() => {
+    const styles = props.document.current.contents.match(reStyleSheet) ?? [];
+    styles.unshift(`<link rel="stylesheet" type="text/css" href="/dist/markdown.min.css" />`);
+    return styles.join('\n');
+});
+
+const contents = computed(() => {
         const contents: string[] = [];
+        const tc = props.document.current.contents
+        tc.replace(reStyleSheet, '');
         contents.push('\${toc}');
         contents.push('<section class="page" id="p1">\n');
-        contents.push(props.document.current.contents);
+        contents.push(tc);
         contents.push('</section>');
         return md.render(contents.join('\n'));
 });
@@ -69,8 +78,8 @@ const render = ref(() => {
 <template>
 <div id="preview-pane" @click="handleClick">
     <template v-if="document.type == 'markdown'">
-        <span id="article-styles"></span>
-        <article class="document" v-html="render()"></article>
+        <span v-html="stylesheets"></span>
+        <article class="document" v-html="contents"></article>
     </template>
     <template v-if="document.type === 'stylesheet'">
         <pre>{{document.current.contents}}</pre>
