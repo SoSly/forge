@@ -42,12 +42,12 @@ class FolderRouter extends AbstractRouter {
         this.config = config;
 
         // configure routes
-        this.router = new Router({prefix: '/api'});
-        this.router.delete('/folder/:id', this.deleteFolder);
-        this.router.get('/folder', this.getFolder);
-        this.router.get('/folder/:id', this.getFolder);
-        this.router.patch('/folder/:id', this.patchFolder);
-        this.router.post('/folder', this.postFolder);
+        this.router = new Router({prefix: '/api/folder'});
+        this.router.delete('/:id', this.deleteFolder);
+        this.router.get('/', this.getFolder);
+        this.router.get('/:id', this.getFolder);
+        this.router.patch('/:id', this.patchFolder);
+        this.router.post('/', this.postFolder);
     }
 
     private async deleteFolder(ctx: Context, next: Next): Promise<void> {

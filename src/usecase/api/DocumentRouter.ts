@@ -23,11 +23,11 @@ class DocumentRouter extends AbstractRouter {
         this.config = config;
 
         // configure routes
-        this.router = new Router({prefix: '/api'});
-        this.router.get('/document/:id', this.getDocument);
-        this.router.delete('/document/:id', this.deleteDocument);
-        this.router.patch('/document/:id', this.patchDocument);
-        this.router.post('/document', this.postDocument);
+        this.router = new Router({prefix: '/api/document'});
+        this.router.get('/:id', this.getDocument);
+        this.router.delete('/:id', this.deleteDocument);
+        this.router.patch('/:id', this.patchDocument);
+        this.router.post('/', this.postDocument);
     }
 
     private async getDocument(ctx: Context, next: Next): Promise<void> {
