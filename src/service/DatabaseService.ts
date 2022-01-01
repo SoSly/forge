@@ -2,9 +2,10 @@ import { forge } from "../types";
 import {ConnectionOptions, createConnection, Connection} from 'typeorm';
 
 // Entities
-import {Auth,UserSettings,AuthRights} from '@domain/UserEntities';
-import {Folder} from '@domain/FolderEntities';
-import {Document,DocumentContent} from '@domain/DocumentEntities';
+import { AuditLog } from "@domain/AdminEntities";
+import { Auth, UserSettings, AuthRights } from '@domain/UserEntities';
+import { Folder } from '@domain/FolderEntities';
+import { Document, DocumentContent } from '@domain/DocumentEntities';
 
 export default class DatabaseService {
     private config: ConnectionOptions | undefined
@@ -18,7 +19,7 @@ export default class DatabaseService {
         switch (config.Database.driver) {
             case 'postgres':
                 const conn: ConnectionOptions = {
-                    entities: [Auth,AuthRights,Document,DocumentContent,Folder,UserSettings],
+                    entities: [AuditLog, Auth, AuthRights, Document, DocumentContent, Folder, UserSettings],
                     type: config.Database.driver,
                     url: config.Database.connection,
                     ssl: config.Database.ssl === false ? false : undefined,

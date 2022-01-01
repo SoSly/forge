@@ -12,7 +12,6 @@ function validateFolderOwner(ctx: Context, folder: Folder|undefined): void {
     if (folder!.user!.id !== ctx.state.user.id) ctx.throw(401);
 }
 
-
 function documentToDocumentResponse(document: Document): DocumentResponse {
     return <DocumentResponse>{
         id: document?.id,

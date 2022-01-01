@@ -1,8 +1,19 @@
 import { DatabaseType, Logger } from "typeorm";
 
 declare namespace forge {
+    export type AUDIT_ACTION = 'set_user_type' | 'ban_user' | 'delete_user_content';
     export type Logger = "advanced-console" | "simple-console" | "file" | "debug";
     export type EnvironmentType = 'development' | 'production' | 'test';
+
+    export interface AuditLog {
+        id: string
+        user: User
+        action: AUDIT_ACTION
+        createdAt: Date
+        affected_user: User
+        detail: string
+        note: string
+    }
 
     export interface Config {
         Database: DatabaseConfig,

@@ -7,11 +7,12 @@ import Rewrite from 'koa-rewrite';
 import bodyParser from "koa-bodyparser";
 import path from 'path';
 import serve from 'koa-static';
-import {setupAuthMiddleware} from "@usecase/api/Auth";
-import {setupDocumentMiddleware} from "@usecase/api/Document";
-import {setupFolderMiddleware} from "@usecase/api/Folder";
-import {setupProfileMiddleware} from "@usecase/api/Profile";
-import {setupViewerMiddleware} from "@usecase/api/Viewer";
+import { setupAdminMiddleware} from '@usecase/api/AdminRouter';
+import { setupAuthMiddleware } from "@usecase/api/AuthRouter";
+import { setupDocumentMiddleware } from "@usecase/api/DocumentRouter";
+import { setupFolderMiddleware } from "@usecase/api/FolderRouter";
+import { setupProfileMiddleware } from "@usecase/api/ProfileRouter";
+import { setupViewerMiddleware } from "@usecase/api/ViewerRouter";
 import { forge } from "../types";
 
 export default class WebService {
@@ -39,8 +40,11 @@ export default class WebService {
         // Setup unrestricted middlewares
         setupViewerMiddleware(this.app, config);
 
-        // Setup restricted middlewares
+        // Setup auth middlewares
         setupAuthMiddleware(this.app, config);
+
+        // Setup restricted middlewares
+        setupAdminMiddleware(this.app, config);
         setupDocumentMiddleware(this.app, config);
         setupFolderMiddleware(this.app, config);
         setupProfileMiddleware(this.app, config);
