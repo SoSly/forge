@@ -14,6 +14,19 @@ export const mockUser = {
     "usage":{"current":1140759,"max":null}
 };
 
+export const mockUser2 = {
+    "id":"2",
+    "username":"LC",
+    "type":"unlimited",
+    "avatar":"5c824a124a1c3a39128bf443c75df892",
+    "locale":"en-US",
+    "provider":"discord",
+    "providerId":"60468942044405760",
+    "settings":{"darkmode":true},
+    "usage":{"current":123456,"max":null}
+};
+
+
 export default [
     {
         url: '/api/profile',

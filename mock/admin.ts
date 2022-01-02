@@ -1,6 +1,6 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { forge } from '../html/src/types';
-import { mockUser } from './user';
+import { mockUser, mockUser2 } from './user';
 import { sample } from 'lodash';
 
 const mockAuditLog = [];
@@ -24,12 +24,13 @@ const mockAuditLog = [];
     });
 })();
 
+
+const paginationSize = 50;
 export default [
     {
         url: '/api/admin/audit',
         method: 'get',
         response: (req) => {
-            const paginationSize = 50;
             const page = req.query.page ?? 1;
             const start = paginationSize * (page - 1);
             const end = paginationSize * page;
@@ -40,5 +41,36 @@ export default [
                 pages: Math.ceil(mockAuditLog.length/paginationSize)
             }
         }
+    },
+    {
+        url: '/api/admin/users',
+        method: 'get',
+        response: (req) => {
+            const page = req.query.page ?? 1;
+            const start = paginationSize * (page - 1);
+            const end = paginationSize * page;
+            return {
+                page,
+                users: [mockUser, mockUser2],
+                pages: Math.ceil(1/50)
+            }
+        }
+    },
+    {
+        url: '/api/admin/users/:id',
+        method: 'patch',
+        response: (req) => {
+            Object.keys(req.body).forEach(field => {
+                switch (req.query.id) {
+                    case '1': mockUser[field] = req.body[field]; break;
+                    case '2': mockUser2[field] = req.body[field]; break;
+                }
+            });
+        }
+    },
+    {
+        url: '/api/admin/users/:id',
+        method: 'delete',
+        response: (req) => {}
     }
 ] as MockMethod[];

@@ -23,6 +23,10 @@ async function loadContents(to) {
             console.log('loading audit logs page', to.query.page ?? 1);
             await $store.dispatch('auditlog/get', to.query.page ?? 1);
             break;
+        case 'admin-users':
+            console.log('loading users page', to.query.page ?? 1);
+            await $store.dispatch('usersadmin/get', to.query.page ?? 1);
+            break;
         case 'document-editor': 
             console.log('loading document ', to.params.id);
             await $store.dispatch('document/get', to.params.id);
@@ -53,6 +57,7 @@ const routes = [
         path: '/admin', name: 'admin-audit', component: Admin, beforeEnter: [requireUser, requireAuthUser],
         children: [
             {path: '/admin/users', name: 'admin-users', component: Admin, beforeEnter: [requireUser, requireAuthUser]}
+            
         ]
     }
 ]

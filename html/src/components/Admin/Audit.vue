@@ -1,5 +1,5 @@
 <script setup lang=ts>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const $store = useStore();
@@ -20,9 +20,10 @@ async function goto(page) {
 <style scoped lang=scss>
 section {
     background: #EEE;
-    color: black;
+    color: #333;
     padding: 0.25in;
     margin: 0.25in auto;
+    user-select: none;
     width: 8.5in;
 }
 
@@ -95,7 +96,7 @@ table {
 
 .dark section {
     background: #333;
-    color: white;
+    color: #AAA;
     tbody tr:nth-child(odd) {  background: #444; }
     thead { border-bottom: 1px solid #999; }
 }

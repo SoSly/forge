@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { format } from 'path/posix';
 import { forge } from 'types';
 
 type AuditLogStore = {

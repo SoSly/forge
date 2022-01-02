@@ -8,7 +8,7 @@ const user = ref($store.state.user);
 </script>
 
 <style scoped lang="scss">
-#profile {
+section {
     margin: 25px auto 0;
     width: 8.5in;
 
@@ -36,7 +36,7 @@ const user = ref($store.state.user);
     }
 }
 
-.dark #profile {
+.dark section {
     background: #333; 
     color: #DDD;
     .left { border-right: 1px solid #666; }
@@ -44,10 +44,10 @@ const user = ref($store.state.user);
 </style>
 
 <template>
-    <section id="profile" v-if="$store.getters['user/loggedIn']">
-        <section class="left">
-            <img v-bind:src="$store.getters['user/avatar']" />
-            <h1>{{user.displayName || user.username}}</h1>
-        </section>
-    </section>
+<section v-if="$store.getters['user/loggedIn']">
+    <div class="left">
+        <img v-bind:src="$store.getters['user/avatar']" />
+        <h1>{{user.displayName || user.username}}</h1>
+    </div>
+</section>
 </template>

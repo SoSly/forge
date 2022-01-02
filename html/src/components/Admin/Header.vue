@@ -5,6 +5,7 @@ const $store = useStore();
 
 <style lang=scss scoped>
 nav {
+    user-select: none;
     background: #AAA;
     color: #333;
     height: 2em;

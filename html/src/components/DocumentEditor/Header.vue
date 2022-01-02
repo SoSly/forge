@@ -6,6 +6,7 @@ const emits = defineEmits(['change', 'save']);
 
 <style scoped lang=scss>
 nav {
+    user-select: none;
     background: #AAA;
     color: #333;
     height: 2em;

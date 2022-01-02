@@ -57,7 +57,8 @@ async function drop(item) {
 </script>
 
 <style scoped lang="scss">
-#workbench {
+section {
+    user-select: none;
     margin: 1em auto;
     max-height: calc(100vh - 64px - 2em);
     padding: 0.5in;
@@ -116,7 +117,7 @@ async function drop(item) {
     }
 }
 
-.dark #workbench {
+.dark section {
     background: #333;
     color: #AAA;
 
@@ -133,7 +134,7 @@ async function drop(item) {
 </style>
 
 <template>
-    <section id="workbench" v-if="folder">
+    <section v-if="folder">
         <Header :folder="folder" @drop="drop"></Header>
         <table>
             <thead>

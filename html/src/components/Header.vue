@@ -1,8 +1,9 @@
 <script setup lang=ts>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 const $store = useStore();
 
+const loggedIn = computed(() => $store.getters['user/loggedIn']);
 const user = ref($store.state.user);
 const profileMenu = ref(false);
 
@@ -22,7 +23,8 @@ function setDarkMode() {
 </script>
 
 <style scoped lang=scss>
-#pagenav {   
+header {
+    user-select: none;
     background: #333;
     box-shadow: 0 -1px 4px rgba(0,0,0,0.15), 0 -1px 10px rgba(0,0,0,0.15), 0 -3px 24px rgba(0,0,0,0.25), 0 -9px 80px rgba(0,0,0,0.35);
     left: 0;
@@ -214,7 +216,7 @@ function setDarkMode() {
         }
     }
 }
-.dark #pagenav {
+.dark header {
     background: #111;
     ul.right li.profile-menu .submenu {
         background: #333;
@@ -228,9 +230,9 @@ function setDarkMode() {
 </style>
 
 <template>
-<header id="pagenav">
+<header>
     <ul class="right">
-        <template v-if="$store.getters['user/loggedIn']">
+        <template v-if="loggedIn">
             <li class="profile-menu" @click="clickProfileMenu" v-click-outside="closeProfileMenu">
                 <img v-bind:src="$store.getters['user/avatar']" />
                 <div v-if="profileMenu" class="submenu">

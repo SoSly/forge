@@ -28,16 +28,14 @@ function lastModified(time) {
     return new Date(time).toLocaleString('en-US');
 }
 
-function size(size) {
-    if (isNaN(size)) return;
-
+function size(amount: number) {
     let i = -1;
     const byteUnits = [' KB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
     do {
-        size = size / 1024;
+        amount = amount / 1024;
         i++;
-    } while(size > 1024);
-    return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
+    } while(amount > 1024);
+    return Math.max(amount, 0.1).toFixed(1) + byteUnits[i];
 }
 
 function type(type) {

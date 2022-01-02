@@ -30,7 +30,6 @@ md.use(tocPlugin, {
     level: [1,2,3,4]
 });
 
-
 function handleClick($event) {
     if ($event.target.matches('.source-line')) {
         emits('scroll', $event.target);
@@ -45,20 +44,20 @@ const stylesheets = computed(() => {
 });
 
 const contents = computed(() => {
-        const contents: string[] = [];
-        const tc = props.document.current.contents
-        tc.replace(reStyleSheet, '');
-        contents.push('\${toc}');
-        contents.push('<section class="page" id="p1">\n');
-        contents.push(tc);
-        contents.push('</section>');
-        return md.render(contents.join('\n'));
+    const contents: string[] = [];
+    const tc = props.document.current.contents
+    tc.replace(reStyleSheet, '');
+    contents.push('\${toc}');
+    contents.push('<section class="page" id="p1">\n');
+    contents.push(tc);
+    contents.push('</section>');
+    return md.render(contents.join('\n'));
 });
 </script>
 
 <style src="../../styles/page.scss"></style>
 <style scoped lang=scss>
-#preview-pane {
+div#preview-pane {
     margin-left: 580px;
     overflow-y: scroll;
     height: calc(100vh - 65px - 2em);

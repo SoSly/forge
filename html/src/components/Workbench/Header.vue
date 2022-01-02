@@ -64,6 +64,7 @@ const path: forge.NodeFolder[] = generatePath(props.folder, []);
 
 <style scoped lang=scss>
 nav {
+    user-select: none;
     padding-bottom: 0.5em;
     border-bottom: 2px solid #DDD;
     margin-top: 1em;
