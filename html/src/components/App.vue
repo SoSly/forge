@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang=ts>
 import Header from './Header.vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
@@ -8,6 +8,7 @@ const $store = useStore();
 $store.dispatch('user/get');
 </script>
 
+<!-- This is unscoped //-->
 <style lang="scss">
 html { height: 100%; }
 a, a:visited { color: #39C; text-decoration: none; }

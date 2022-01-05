@@ -53,20 +53,12 @@ class ViewerRouter extends AbstractRouter {
         this.config = config;
 
         // configure routes
-        this.router = new Router();
-        this.router.get('/view/:id', this.getDocument);
-        this.router.get('/view/document/:id', this.getDocument);
+        this.router = new Router({prefix: '/view'});
+        this.router.get('/:id', this.getDocument);
+        this.router.get('/document/:id', this.getDocument);
     }
 
     private async getDocument(ctx: Context, next: Next): Promise<void> {
-        try {
-        // .forEach(filename => contents.push(`<link rel="stylesheet" type="text/css" href="/dist/${filename}" />`));
-        }
-        catch (err) {
-            console.error(err);
-        }
-
-
         try {
             const id = ctx.params.id;
             const document = await Document.findOne({id}, {relations: ['current', 'user']});

@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner} from "typeorm";
 
 export class createDocumentTables1592799324435 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TYPE document_type AS ENUM('markdown','stylesheet');`);
+        await queryRunner.query(`CREATE TYPE document_type AS ENUM('markdown','stylesheet')`);
         await queryRunner.query(`
             CREATE TABLE document (
                 "id" bigint PRIMARY KEY NOT NULL DEFAULT id_generator(),

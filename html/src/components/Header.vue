@@ -1,23 +1,30 @@
-<script setup>
-import { ref } from 'vue';
+<script setup lang=ts>
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 const $store = useStore();
 
+const loggedIn = computed(() => $store.getters['user/loggedIn']);
 const user = ref($store.state.user);
+const profileMenu = ref(false);
 
 function clickProfileMenu() {
-    $store.commit('setProfileMenu', true);
+    profileMenu.value = true;
 }
 
 function closeProfileMenu() {
-    if ($store.state.profileMenu) {
-        $store.commit('setProfileMenu', false);
+    if (!!profileMenu.value) {
+        profileMenu.value = false;
     }
+}
+
+function setDarkMode() {
+    $store.dispatch('user/updateSettings');
 }
 </script>
 
-<style lang=scss>
-#pagenav {   
+<style scoped lang=scss>
+header {
+    user-select: none;
     background: #333;
     box-shadow: 0 -1px 4px rgba(0,0,0,0.15), 0 -1px 10px rgba(0,0,0,0.15), 0 -3px 24px rgba(0,0,0,0.25), 0 -9px 80px rgba(0,0,0,0.35);
     left: 0;
@@ -209,7 +216,7 @@ function closeProfileMenu() {
         }
     }
 }
-.dark #pagenav {
+.dark header {
     background: #111;
     ul.right li.profile-menu .submenu {
         background: #333;
@@ -223,19 +230,19 @@ function closeProfileMenu() {
 </style>
 
 <template>
-<header id="pagenav">
+<header>
     <ul class="right">
-        <template v-if="$store.getters['user/loggedIn']">
+        <template v-if="loggedIn">
             <li class="profile-menu" @click="clickProfileMenu" v-click-outside="closeProfileMenu">
                 <img v-bind:src="$store.getters['user/avatar']" />
-                <div v-if="$store.state.profileMenu" class="submenu">
+                <div v-if="profileMenu" class="submenu">
                     <p>Signed in as <strong>{{user.username}}</strong>.</p>
                     <ul>
                         <li class="profile"><router-link to="/profile">Your profile</router-link></li>
                         <li class="darkmode">
                             <span>Dark Mode</span>
                             <label class="switch">
-                                <input type="checkbox" v-model="user.settings.darkmode" />
+                                <input type="checkbox" v-model="user.settings.darkmode" @change="setDarkMode" />
                                 <span class="slider round"></span>
                             </label>
                         </li>
@@ -251,6 +258,7 @@ function closeProfileMenu() {
     <ul class="left">
         <li class="logo"><router-link to="/"><img src="/logo.png" /></router-link></li>
         <li v-if="$store.getters['user/loggedIn']" class="workbench"><router-link to="/workbench">Your workbench</router-link></li>
+        <li v-if="$store.getters['user/isAdmin']" class="admin"><router-link to="/admin">Site Management</router-link></li>
     </ul>
 </header>
 </template>

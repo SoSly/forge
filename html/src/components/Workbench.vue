@@ -56,8 +56,9 @@ async function drop(item) {
 }
 </script>
 
-<style lang="scss">
-#workbench {
+<style scoped lang="scss">
+section {
+    user-select: none;
     margin: 1em auto;
     max-height: calc(100vh - 64px - 2em);
     padding: 0.5in;
@@ -70,7 +71,7 @@ async function drop(item) {
         margin-top: 1em;
         width: 100%;
 
-        th, td {
+        th {
             line-height: 1.3em;
             padding: 0 5px;
             
@@ -109,17 +110,6 @@ async function drop(item) {
             overflow-y: scroll;
             width: 7.5in;
 
-            tr {
-                display: table;
-                width: 100%;
-                table-layout: fixed;
-                &:hover { background: #CCC; }
-                &:nth-child(odd) { 
-                    background: #DDD;
-                    &:hover { background: #CCC; }
-                }
-            }
-
             &::-webkit-scrollbar { width: 0.5em; }
             &::-webkit-scrollbar-track { box-shadow: inset 0 0 6px #AAA; }
             &::-webkit-scrollbar-thumb { background-color: #CCC; outline: 1px solid #CCC; }
@@ -127,7 +117,7 @@ async function drop(item) {
     }
 }
 
-.dark #workbench {
+.dark section {
     background: #333;
     color: #AAA;
 
@@ -144,7 +134,7 @@ async function drop(item) {
 </style>
 
 <template>
-    <section id="workbench" v-if="folder">
+    <section v-if="folder">
         <Header :folder="folder" @drop="drop"></Header>
         <table>
             <thead>

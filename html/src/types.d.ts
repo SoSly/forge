@@ -1,8 +1,14 @@
 export module forge {
-    export interface Store {
-        profileMenu: boolean
-        folder?: Folder
-        user?: User
+    export type AUDIT_ACTION = 'set_user_type' | 'ban_user' | 'delete_user_content';
+
+    export interface AuditLog {
+        id: string
+        user: User
+        action: AUDIT_ACTION
+        createdAt: Date
+        affected_user: User
+        detail: string
+        note: string
     }
 
     export interface Document {
@@ -55,7 +61,7 @@ export module forge {
         createdAt: Date
         updatedAt: Date
         size: number
-        type: 'folder' | 'document'
+        type: 'folder' | 'document' | 'stylesheet' | 'markdown'
     }
 
     export interface User {
@@ -66,8 +72,18 @@ export module forge {
         locale: string
         provider: string
         providerId: string
+        rights?: UserRights
         settings: UserSettings
         usage: UserUsage
+    }
+
+    export interface UserRights {
+        audit: boolean
+        ban_user: boolean
+        delete_content: boolean
+        document_list: boolean
+        grant: boolean
+        user_list: boolean        
     }
 
     export interface UserSettings {

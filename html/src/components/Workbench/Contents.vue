@@ -1,19 +1,19 @@
 <script setup lang=ts>
 import { forge } from '../../types';
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { ref } from 'vue';
-import document from '../../../../mock/document';
 
-const $router = useRouter();
 const $store = useStore();
 const props = defineProps<{item: forge.FolderItem}>();
 const emits = defineEmits(['drag', 'drop']);
 
 const typeMap = {
+    // workbench types
     'folder': {name: 'File Folder'},
     'document': {name: 'Document'},
-    'image': {name: 'Image'},
+
+    // admin types
+    'markdown': {name: 'Document'},
+    'stylesheet': {name: 'Stylesheet'},
 };
 
 async function deleteDocument(document: forge.FolderItem) {
@@ -32,24 +32,14 @@ function lastModified(time) {
     return new Date(time).toLocaleString('en-US');
 }
 
-function size(size) {
-    if (isNaN(size)) return;
-
+function size(amount: number) {
     let i = -1;
     const byteUnits = [' KB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
     do {
-        size = size / 1024;
+        amount = amount / 1024;
         i++;
-    } while(size > 1024);
-    return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
-}
-
-function dragStart($event, item) {
-    console.log(item.id);
-}
-
-function drop($event, item) {
-    console.log(item.id);
+    } while(amount > 1024);
+    return Math.max(amount, 0.1).toFixed(1) + byteUnits[i];
 }
 
 function type(type) {
@@ -57,8 +47,33 @@ function type(type) {
 }
 </script>
 
+<style scoped lang=scss>
+td {
+    line-height: 1.3em;
+    padding: 0 5px;
+    
+    &:nth-of-type(1) { width: 48%; }
+    &:nth-of-type(2) { width: 27%; }
+    &:nth-of-type(3) { width: 15%; }
+    &:nth-of-type(4) { width: 12%; }
+    &:nth-of-type(5) { width: 8%; }
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    &:hover { background: #CCC; }
+    &:nth-child(odd) { 
+        background: #DDD;
+        &:hover { background: #CCC; }
+    }
+}
+</style>
+
 <template>
 <tr draggable="true" @dragstart="emits('drag', item)" @drop="emits('drop', item)" @dragover.prevent @dragenter.prevent>
+    <!-- Workbench //-->
     <td v-if="item.type === 'folder'">
         <router-link :to='{path: `/workbench/${item.id}`}' class="drop-zone">
             <span><font-awesome-icon icon="folder" size="1x" /></span> {{item.name}}
@@ -69,11 +84,19 @@ function type(type) {
             <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
         </router-link>
     </td>
+
+    <!-- Admin //-->
+    <td v-if="item.type === 'markdown'">
+        <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
+    </td>
+    <td v-if="item.type === 'stylesheet'">
+        <span><font-awesome-icon icon="file-code" size="1x" /></span> {{item.name}}
+    </td>
     <td>{{lastModified(item.updatedAt)}}</td>
     <td>{{type(item.type)}}</td>
     <td>{{size(item.size)}}</td>
     <td>
-        <template v-if="item.type == 'document'">
+        <template v-if="['document','markdown','stylesheet'].indexOf(item.type) > -1">
             <a @click="deleteDocument(item);" :title="`Delete ${item.name}`">
                 <font-awesome-icon icon="trash" size="1x" />
             </a>

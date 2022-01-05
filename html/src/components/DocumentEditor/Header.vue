@@ -4,8 +4,9 @@ const props = defineProps<{document: forge.Document, dirty: boolean}>();
 const emits = defineEmits(['change', 'save']);
 </script>
 
-<style lang=scss>
-#document-editor > nav {
+<style scoped lang=scss>
+nav {
+    user-select: none;
     background: #AAA;
     color: #333;
     height: 2em;

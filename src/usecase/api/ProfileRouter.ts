@@ -66,6 +66,11 @@ async function authToProfileResponse(auth: Auth): Promise<ProfileResponse> {
         usage: {}
     };
 
+    if (auth.rights) {
+        const {audit, ban_user, delete_content, document_list, grant, user_list} = auth.rights;
+        response.rights = {audit, ban_user, delete_content, document_list, grant, user_list};
+    }
+
     const folder = await Folder.getRootFolder(auth);
     response.usage.current = folder!.size;
     response.usage.max = Usage.getUsageMax(auth.type);
