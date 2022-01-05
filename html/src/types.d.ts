@@ -61,7 +61,7 @@ export module forge {
         createdAt: Date
         updatedAt: Date
         size: number
-        type: 'folder' | 'document'
+        type: 'folder' | 'document' | 'stylesheet' | 'markdown'
     }
 
     export interface User {

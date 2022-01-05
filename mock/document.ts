@@ -23,10 +23,14 @@ export function createMockDocument(folderId: string, name: string, type: 'markdo
     return newDocument;
 }
 
+export function getMockDocuments(): forge.Document[] {
+    return mockDocuments;
+}
+
 export function getDocumentNode(document: forge.Document): forge.DocumentNode {
-    const {id, name, createdAt, updatedAt} = document;
+    const {id, name, createdAt, updatedAt, type} = document;
     const size = document.current.contents.length;
-    return {id, name, createdAt, updatedAt, size} as forge.DocumentNode;
+    return {id, name, createdAt, updatedAt, size, type} as forge.DocumentNode;
 }
 
 export function deleteDocument(id: string) {

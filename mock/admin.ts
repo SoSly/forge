@@ -2,6 +2,7 @@ import { MockMethod } from 'vite-plugin-mock';
 import { forge } from '../html/src/types';
 import { mockUser, mockUser2 } from './user';
 import { sample } from 'lodash';
+import { getDocumentNode, getMockDocuments } from './document';
 
 const mockAuditLog = [];
 
@@ -39,6 +40,22 @@ export default [
                 page,
                 entries: mockAuditLog.slice(start, end),
                 pages: Math.ceil(mockAuditLog.length/paginationSize)
+            }
+        }
+    },
+    {
+        url: '/api/admin/content/:id',
+        method: 'get',
+        response: (req) => {
+            const page = req.query.page ?? 1;
+            const start = paginationSize * (page - 1);
+            const end = paginationSize * page;
+
+            const content = Array.from(getMockDocuments(), v => v[1]).map(doc => getDocumentNode(doc));
+            return {
+                page, 
+                contents: content.slice(start, end),
+                pages: Math.ceil(content.length/paginationSize)
             }
         }
     },

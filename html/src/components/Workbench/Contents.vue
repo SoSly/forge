@@ -7,9 +7,13 @@ const props = defineProps<{item: forge.FolderItem}>();
 const emits = defineEmits(['drag', 'drop']);
 
 const typeMap = {
+    // workbench types
     'folder': {name: 'File Folder'},
     'document': {name: 'Document'},
-    'image': {name: 'Image'},
+
+    // admin types
+    'markdown': {name: 'Document'},
+    'stylesheet': {name: 'Stylesheet'},
 };
 
 async function deleteDocument(document: forge.FolderItem) {
@@ -69,6 +73,7 @@ tr {
 
 <template>
 <tr draggable="true" @dragstart="emits('drag', item)" @drop="emits('drop', item)" @dragover.prevent @dragenter.prevent>
+    <!-- Workbench //-->
     <td v-if="item.type === 'folder'">
         <router-link :to='{path: `/workbench/${item.id}`}' class="drop-zone">
             <span><font-awesome-icon icon="folder" size="1x" /></span> {{item.name}}
@@ -79,11 +84,19 @@ tr {
             <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
         </router-link>
     </td>
+
+    <!-- Admin //-->
+    <td v-if="item.type === 'markdown'">
+        <span><font-awesome-icon icon="file-alt" size="1x" /></span> {{item.name}}
+    </td>
+    <td v-if="item.type === 'stylesheet'">
+        <span><font-awesome-icon icon="file-code" size="1x" /></span> {{item.name}}
+    </td>
     <td>{{lastModified(item.updatedAt)}}</td>
     <td>{{type(item.type)}}</td>
     <td>{{size(item.size)}}</td>
     <td>
-        <template v-if="item.type == 'document'">
+        <template v-if="['document','markdown','stylesheet'].indexOf(item.type) > -1">
             <a @click="deleteDocument(item);" :title="`Delete ${item.name}`">
                 <font-awesome-icon icon="trash" size="1x" />
             </a>

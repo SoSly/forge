@@ -1,4 +1,5 @@
 <script setup lang=ts>
+import Contents from './Contents.vue';
 import Grant from './Grant.vue';
 
 import { computed, ref, Ref } from "vue";
@@ -42,6 +43,14 @@ function getProviderProfileLink(user: forge.User) {
         case 'discord':
             return `https://discordapp.com/users/${user.providerId}`;
     }
+}
+
+const docsUser: Ref<forge.User | null> = ref(null);
+async function setDocumentsUser(user: forge.User | null) {
+    if (user != null) {
+        await $store.dispatch('contentadmin/get', {page: 1, user});
+    }
+    docsUser.value = user;
 }
 
 const rightsUser: Ref<forge.User | null> = ref(null);
@@ -156,6 +165,9 @@ table {
 
 <template>
 <section id="users">
+    <aside class="cover" v-if="docsUser !== null">
+        <Contents @close="setDocumentsUser(null);" :user="docsUser"></Contents>
+    </aside>
     <aside class="cover" v-if="rightsUser !== null">
         <Grant @change="grantUserRights" @close="setRightsUser(null);" :user="rightsUser"></Grant>
     </aside>
@@ -177,7 +189,7 @@ table {
                 <td v-if="user.usage.max !== null">{{usage(user.usage.current)}} / {{usage(user.usage.max)}}</td>
                 <td v-else>{{usage(user.usage.current)}}</td>
                 <td>
-                    <a v-show="rights.document_list" :title="`View ${user.username}'s content`">
+                    <a v-show="rights.document_list" @click="setDocumentsUser(user);" :title="`View ${user.username}'s content`">
                         <font-awesome-icon icon="book" size="1x" />
                     </a>
                     <a v-show="rights.grant" @click="setRightsUser(user);" :title="`Grant rights to ${user.username}`">

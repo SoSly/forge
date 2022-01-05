@@ -5,8 +5,8 @@ import { createSSRApp as createVueApp } from 'vue'
 
 // setup fontawesomes
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBan, faBook, faEye, faFolder, faFileAlt, faHome, faList, faPencilAlt, faSave, faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
-library.add(faBan, faBook, faEye, faFileAlt, faFolder, faHome, faList, faPencilAlt, faSave, faTimes, faTrash);
+import { faBan, faBook, faEye, faFolder, faFileAlt, faFileCode, faHome, faList, faPencilAlt, faSave, faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
+library.add(faBan, faBook, faEye, faFileAlt, faFileCode, faFolder, faHome, faList, faPencilAlt, faSave, faTimes, faTrash);
 
 // directives
 import clickOutside from 'click-outside-vue3';
