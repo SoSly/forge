@@ -108,6 +108,15 @@ class SessionConfig implements forge.SessionConfig {
         env: 'SESSION_AGE'
     })
     public maxAge: number
+
+    @Property({
+        doc: 'The secret key used for signing session cookies',
+        format: String,
+        default: null,
+        env: 'SESSION_SECRET',
+        sensitive: true
+    })
+    public secret: string
 }
 
 @Config({validationMethod: 'strict'})

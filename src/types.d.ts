@@ -37,6 +37,7 @@ declare namespace forge {
     export interface SessionConfig {
         key: string,
         maxAge: number,
+        secret: string
     }
 
     export interface Document {

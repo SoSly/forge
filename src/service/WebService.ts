@@ -24,7 +24,7 @@ export default class WebService {
         this.app.use(KoaLogger());
         this.port = config.HTTP.port;
 
-        this.app.keys = ['my secret'];
+        this.app.keys = [config.Session.secret];
         this.app.use(Session({
             key: config.Session.key,
             maxAge: config.Session.maxAge
