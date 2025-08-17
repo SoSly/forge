@@ -1,6 +1,7 @@
 <script setup lang=ts>
 import { forge } from '../../types';
 import { computed, ref } from 'vue';
+import ImageZoom from '../ImageZoom.vue';
 
 import MarkdownIt from 'markdown-it';
 import MarkdownItAnchor from 'markdown-it-anchor';
@@ -12,6 +13,19 @@ import uslug from 'uslug';
 
 const props = defineProps<{document: forge.Document}>();
 const emits = defineEmits(['scroll'])
+
+const zoomImageSrc = ref('');
+const zoomVisible = ref(false);
+
+function openImageZoom(src: string) {
+  zoomImageSrc.value = src;
+  zoomVisible.value = true;
+}
+
+function closeImageZoom() {
+  zoomVisible.value = false;
+  zoomImageSrc.value = '';
+}
 
 const md = new MarkdownIt({
     html: true,
@@ -34,6 +48,9 @@ md.use(tocPlugin, {
 function handleClick($event) {
     if ($event.target.matches('.source-line')) {
         emits('scroll', $event.target);
+    } else if ($event.target.matches('img.zoomable')) {
+        const img = $event.target as HTMLImageElement;
+        openImageZoom(img.src);
     }
 }
 
@@ -58,6 +75,7 @@ const contents = computed(() => {
 
 <style lang=scss>
 @import '../../styles/page.scss';
+@import '../../styles/image-zoom.scss';
 
 #preview-pane {
     overflow-y: scroll;
@@ -83,5 +101,10 @@ const contents = computed(() => {
     <template v-if="document.type === 'stylesheet'">
         <pre>{{document.current.contents}}</pre>
     </template>
+    <ImageZoom 
+        :image-src="zoomImageSrc" 
+        :visible="zoomVisible" 
+        @close="closeImageZoom" 
+    />
 </div>
 </template>

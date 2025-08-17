@@ -329,6 +329,17 @@ body {
 
     img {
         z-index: -1;
+        
+        &.zoomable {
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 1;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
     }
     
     li {
