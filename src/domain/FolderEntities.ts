@@ -58,9 +58,19 @@ export class Folder extends BaseEntity {
     }
 
     public static async setParentFolder(folder: Folder, id: string, validateFolderOwner: (folder: Folder|undefined) => void): Promise<void> {
+        if (folder.id === id) {
+            throw new Error('Cannot set folder as its own parent');
+        }
+        
         const tr = getTreeRepository(Folder)
         const parent = await tr.findOne({id}, {relations: ['user']});
-        validateFolderOwner(parent);        
+        validateFolderOwner(parent);
+        
+        const descendants = await tr.findDescendants(folder);
+        if (descendants.some(desc => desc.id === id)) {
+            throw new Error('Cannot move folder to its own descendant');
+        }
+        
         await tr.findAncestorsTree(parent!);
         await tr.findDescendantsTree(folder);
         folder.parent = parent!;

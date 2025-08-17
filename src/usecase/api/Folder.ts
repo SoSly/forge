@@ -108,10 +108,26 @@ class FolderRouter extends AbstractRouter {
             let parent: Folder|undefined;
             for (let field in changes) {    
                 if (field === 'parentId') {
+                    const parentId = changes[field];
+                    
+                    if (parentId === id) {
+                        ctx.status = 400;
+                        ctx.body = {error: 'Cannot move folder into itself'};
+                        return;
+                    }
+                    
+                    const treeRepo = getTreeRepository(Folder);
+                    const descendants = await treeRepo.findDescendants(folder!);
+                    if (descendants.some(desc => desc.id === parentId)) {
+                        ctx.status = 400;
+                        ctx.body = {error: 'Cannot move folder into its own descendant'};
+                        return;
+                    }
+                    
                     // TypeORM does not currently support updating the tree properly.
                     // We're going to have to do it manually.
                     // See: https://github.com/typeorm/typeorm/issues/2032
-                    await Folder.setParentFolder(folder!, changes[field], 
+                    await Folder.setParentFolder(folder!, parentId, 
                         (folder: Folder|undefined) => validateFolderOwner(ctx, folder));
                     continue;
                 }

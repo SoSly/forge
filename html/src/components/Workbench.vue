@@ -40,15 +40,48 @@ function sortTable(col) {
     }
 }
 
+function isDescendantOf(folderId, potentialAncestorId) {
+    const folderContents = $store.getters['folder/contents'];
+    const visited = new Set();
+    
+    function checkPath(currentId) {
+        if (visited.has(currentId)) return false;
+        visited.add(currentId);
+        
+        if (currentId === potentialAncestorId) return true;
+        
+        const currentFolder = folderContents.find(item => item.id === currentId && item.type === 'folder');
+        if (!currentFolder) return false;
+        
+        const childFolders = folderContents.filter(item => item.type === 'folder' && item.parentId === currentId);
+        return childFolders.some(child => checkPath(child.id));
+    }
+    
+    return checkPath(folderId);
+}
+
 async function drop(item) {
     if (!dragging) return;
     if (item.type != 'folder') return;
+    
     switch (dragging.type) {
         case 'document':
             await $store.dispatch('document/move', {folderId: item.id, document: dragging});
             dragging = undefined;
             break;
         case 'folder':
+            if (dragging.id === item.id) {
+                console.warn('Cannot drop folder into itself');
+                dragging = undefined;
+                return;
+            }
+            
+            if (isDescendantOf(item.id, dragging.id)) {
+                console.warn('Cannot drop folder into its own descendant');
+                dragging = undefined;
+                return;
+            }
+            
             await $store.dispatch('folder/move', {parentId: item.id, folder: dragging});
             dragging = undefined;
             break;
