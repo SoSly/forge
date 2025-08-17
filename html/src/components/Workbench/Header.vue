@@ -32,6 +32,7 @@ async function createFolder() {
 
 async function createDocument() {
     const newDocument = await $store.dispatch('document/create', {folderId: props.folder.id, name: 'New Document'});
+    $router.push(`/document/edit/${newDocument.id}`);
 }
 
 function generatePath(folder: forge.NodeFolder, path: forge.FolderItem[]) {

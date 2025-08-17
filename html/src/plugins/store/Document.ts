@@ -10,6 +10,7 @@ export default {
         async create({dispatch}, {folderId, name}) {
             const response = await axios.post('/api/document', {folderId, name});
             await dispatch('folder/get', folderId, {root: true});
+            return response.data;
         },
         async get({commit}, id) {
             const response = await axios.get(`/api/document/${id}`);
