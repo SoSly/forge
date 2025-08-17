@@ -62,17 +62,19 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 2147483648;
   animation: fadeIn 0.3s ease-out;
 }
 
 .image-zoom-container {
   position: relative;
-  max-width: 95vw;
-  max-height: 95vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 60px;
+  box-sizing: border-box;
 }
 
 .image-zoom-image {
@@ -85,9 +87,10 @@ onUnmounted(() => {
 }
 
 .image-zoom-close {
-  position: absolute;
-  top: -40px;
-  right: -40px;
+  position: fixed;
+  top: 2.5vh;
+  left: 50%;
+  transform: translateX(-50%);
   width: 32px;
   height: 32px;
   border: none;

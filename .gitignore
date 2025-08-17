@@ -6,6 +6,7 @@ src/migrations/*.js
 yarn-error.log
 .env
 *.local
+.claude
 
 # IDE files
 .idea/
