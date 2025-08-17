@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  postgres-dev:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: forge_dev
+      POSTGRES_USER: forge
+      POSTGRES_PASSWORD: dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    tmpfs:
+      - /var/lib/postgresql/data
+    # Use tmpfs so data is ephemeral and doesn't persist between runs
+
+volumes:
+  postgres_dev_data:
+    driver: local

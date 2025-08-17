@@ -17,12 +17,15 @@ export default class DatabaseService {
     private getConnectionConfig(config: forge.Config): ConnectionOptions | undefined {
         switch (config.Database.driver) {
             case 'postgres':
+                
                 const conn: ConnectionOptions = {
                     entities: [Auth,Document,DocumentContent,Folder,UserSettings],
                     type: config.Database.driver,
                     url: config.Database.connection,
                     ssl: config.Database.ssl === false ? false : undefined,
                     logger: config.Database.logger,
+                    migrations: process.env.NODE_ENV === 'development' ? ['src/migrations/*.ts'] : undefined,
+                    migrationsRun: process.env.NODE_ENV === 'development',
                 }
                 return conn;
         }
@@ -34,6 +37,7 @@ export default class DatabaseService {
                 console.error('invalid database configuration');
                 process.exit(1);
             }
+            
             this.connection = await createConnection(this.config);
         }
         catch (err) {
