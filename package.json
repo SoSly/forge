@@ -52,6 +52,7 @@
     "passport-discord": "^0.1.4",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
+    "splitpanes": "^4.0.4",
     "ts-convict": "^1.1.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",

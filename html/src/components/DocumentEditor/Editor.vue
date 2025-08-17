@@ -31,11 +31,9 @@ function language() {
 
 <style lang=scss>
 #document-editor .ace_editor {
-    display: block;
-    float: left;
     min-height: calc(100vh - 69px - 2em); 
-    min-width: 580px;
-    max-width: calc(100vh - 8.5in);
+    width: 100%;
+    height: 100%;
 }
 </style>
 

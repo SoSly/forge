@@ -2,6 +2,8 @@
 import Editor from './DocumentEditor/Editor.vue';
 import Header from './DocumentEditor/Header.vue';
 import Preview from './DocumentEditor/Preview.vue';
+import { Splitpanes, Pane } from 'splitpanes';
+import 'splitpanes/dist/splitpanes.css';
 
 import { debounce } from 'lodash';
 import { forge } from '../types';
@@ -39,12 +41,34 @@ function scroll(el: HTMLElement) {
 </script>
 
 <style lang=scss>
+#document-editor {
+    .splitpanes {
+        height: calc(100vh - 65px - 2em);
+        
+        .splitpanes__splitter {
+            background: #AAA;
+            border-left: 1px solid #999;
+            border-right: 1px solid #999;
+            width: 5px;
+            
+            &:hover {
+                background: #888;
+            }
+        }
+    }
+}
 </style>
 
 <template>
 <section id="document-editor" v-if="document">
     <Header :document="document" :dirty="dirty" @save="save" @change="change"></Header>
-    <Editor :document="document" @editor="editor" @save="save" @change="change"></Editor>
-    <Preview :document="document" @scroll="scroll"></Preview>
+    <splitpanes>
+        <pane min-size="25" size="45" max-size="70">
+            <Editor :document="document" @editor="editor" @save="save" @change="change"></Editor>
+        </pane>
+        <pane>
+            <Preview :document="document" @scroll="scroll"></Preview>
+        </pane>
+    </splitpanes>
 </section>
 </template>

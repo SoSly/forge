@@ -3130,6 +3130,11 @@ split2@^4.1.0:
   resolved "https://registry.npmjs.org/split2/-/split2-4.1.0.tgz"
   integrity sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==
 
+splitpanes@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.npmjs.org/splitpanes/-/splitpanes-4.0.4.tgz"
+  integrity sha512-RbysugZhjbCw5fgplvk3hOXr41stahQDtZhHVkhnnJI6H4wlGDhM2kIpbehy7v92duy9GnMa8zIhHigIV1TWtg==
+
 sqlite3@*:
   version "5.1.7"
   resolved "https://registry.npmjs.org/sqlite3/-/sqlite3-5.1.7.tgz"
@@ -3647,7 +3652,7 @@ vue-tsc@^0.30.0:
     "@volar/shared" "0.30.0"
     vscode-vue-languageservice "0.30.0"
 
-vue@*, vue@^3.0.0, vue@^3.0.2, vue@^3.2.25, vue@^3.2.26, "vue@>= 3.0.0 < 4", vue@3.2.26:
+vue@*, vue@^3.0.0, vue@^3.0.2, vue@^3.2.0, vue@^3.2.25, vue@^3.2.26, "vue@>= 3.0.0 < 4", vue@3.2.26:
   version "3.2.26"
   resolved "https://registry.npmjs.org/vue/-/vue-3.2.26.tgz"
   integrity sha512-KD4lULmskL5cCsEkfhERVRIOEDrfEL9CwAsLYpzptOGjaGFNWo3BQ9g8MAb7RaIO71rmVOziZ/uEN/rHwcUIhg==

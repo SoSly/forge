@@ -10,16 +10,15 @@
             </ul>
             <input type="text" v-model="document.name" v-on:blur="rename($event)" />
         </nav>
-        <multipane>
-            <div :style="{width: '575px', minWidth: '300px', maxWidth: '900px'}">
+        <splitpanes>
+            <pane min-size="25" size="45" max-size="70">
                 <div class="editor-pane">
                    <editor ref="contents" v-model="document.current.contents"
                         @init="editorInit" v-on:input="input" v-bind:lang="language" theme="monokai">
                     ></editor>
                 </div>
-            </div>
-            <multipane-resizer></multipane-resizer>
-            <div :style="{flexGrow: 1}">
+            </pane>
+            <pane>
                 <div class="preview-pane" @click="handleClick">
                     <template v-if="this.document.type == 'stylesheet'">
                         <pre class="page">{{document.current.contents}}</pre>
@@ -29,16 +28,18 @@
                         <article class="document" v-html="getPreview"></article>
                     </template>
                 </div>
-            </div>
-        </multipane>
+            </pane>
+        </splitpanes>
     </section>
 </template>
 
 <script>
 import {debounce, throttle} from 'lodash';
-import editor from 'vue2-ace-editor';
+import { VAceEditor as editor } from 'vue3-ace-editor';
 import {mapGetters, mapState} from 'vuex';
-import {Multipane, MultipaneResizer} from 'vue-multipane';
+import { Splitpanes, Pane } from 'splitpanes';
+import 'splitpanes/dist/splitpanes.css';
+import 'vue3-ace-editor/dist/style.css';
 
 // todo: put this somewhere the frontend and the backend can both get at it.
 import MarkdownIt from 'markdown-it';
@@ -75,8 +76,8 @@ export default {
     name: 'document-editor',
     components: {
         editor, 
-        Multipane,
-        MultipaneResizer
+        Splitpanes,
+        Pane
     },
     data() {
         return {
@@ -188,13 +189,18 @@ export default {
 
 <style lang="scss">
 #document-editor {   
-    .multipane {
-        .multipane-resizer {
+    .splitpanes {
+        height: calc(100vh - 64px - 2em);
+        
+        .splitpanes__splitter {
             background: #AAA;
-            height: auto; 
-            left: 0;
-            margin: 0;
-            width: 1px;
+            border-left: 1px solid #999;
+            border-right: 1px solid #999;
+            width: 5px;
+            
+            &:hover {
+                background: #888;
+            }
         }
     }
 

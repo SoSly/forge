@@ -60,10 +60,9 @@ const contents = computed(() => {
 @import '../../styles/page.scss';
 
 #preview-pane {
-    margin-left: 580px;
     overflow-y: scroll;
     height: calc(100vh - 65px - 2em);
-    width: calc(100vw - 580px);
+    width: 100%;
 
     pre {
         background: white;
