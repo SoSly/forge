@@ -2,6 +2,7 @@ import App from './components/App.vue'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { createSSRApp as createVueApp } from 'vue'
+import './plugins/axios'
 
 // setup fontawesomes
 import { library } from "@fortawesome/fontawesome-svg-core";

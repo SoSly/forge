@@ -3,6 +3,7 @@ import KoaLogger from 'koa-logger';
 import {Server} from 'net';
 import Session from 'koa-session';
 import Rewrite from 'koa-rewrite';
+import CSRF from 'koa-csrf';
 
 import bodyParser from "koa-bodyparser";
 import path from 'path';
@@ -30,6 +31,12 @@ export default class WebService {
             maxAge: config.Session.maxAge
         }, this.app));
         this.app.use(bodyParser());
+        
+        // Setup CSRF protection
+        this.app.use(new CSRF({
+            excludedMethods: ['GET', 'HEAD', 'OPTIONS'],
+            disableQuery: false
+        }));
 
         // Setup static file routing
         // Rewrite routes that don't match a specific file or an api or auth call to /
