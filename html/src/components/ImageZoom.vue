@@ -21,9 +21,7 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 function handleOverlayClick(event: MouseEvent) {
-  if (event.target === overlayRef.value) {
-    closeZoom();
-  }
+  closeZoom();
 }
 
 onMounted(() => {
@@ -46,7 +44,6 @@ onUnmounted(() => {
   >
     <div class="image-zoom-container">
       <img :src="imageSrc" class="image-zoom-image" alt="Zoomed image" />
-      <button class="image-zoom-close" @click="closeZoom" aria-label="Close">×</button>
     </div>
   </div>
 </template>
@@ -86,29 +83,6 @@ onUnmounted(() => {
   animation: zoomIn 0.3s ease-out;
 }
 
-.image-zoom-close {
-  position: fixed;
-  top: 2.5vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
-}
 
 @keyframes fadeIn {
   from {
