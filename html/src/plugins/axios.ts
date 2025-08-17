@@ -11,4 +11,15 @@ export function setupAxios(csrfToken?: string) {
     }
 }
 
+export async function initializeCSRF() {
+    try {
+        const response = await axios.get('/auth/csrf-token');
+        if (response.data.csrfToken) {
+            setupAxios(response.data.csrfToken);
+        }
+    } catch (error) {
+        console.warn('Failed to fetch CSRF token:', error);
+    }
+}
+
 export default axios;

@@ -22,10 +22,6 @@ class ProfileRouter extends AbstractRouter {
 
     private async getProfile(ctx: Context, next: Next): Promise<void> {
         const response = await authToProfileResponse(ctx.state.user);
-        
-        // Add CSRF token to response
-        // koa-csrf v5.0.0+ stores token in ctx.state._csrf
-        response.csrfToken = ctx.state._csrf;
 
         ctx.type = 'json';
         ctx.body = response;

@@ -31,6 +31,7 @@ class AuthRouter extends AbstractRouter {
         
         // configure routes
         this.router = new Router({prefix: '/auth'});
+        this.router.get('/csrf-token', this.handleCsrfToken);
         this.router.get('/discord', this.handleDiscord);
         this.router.get('/discord/callback', this.handleDiscord, this.handleDiscordCallback);
         this.router.get('/login', this.handleDiscord);
@@ -52,6 +53,11 @@ class AuthRouter extends AbstractRouter {
     public async ensureAuth(ctx: Context, next: Next): Promise<void> {
         if (!ctx.isAuthenticated()) return ctx.throw(401, {data: {error: 'UNAUTHORIZED', message: 'Invalid token.'}});
         await next();
+    }
+
+    private async handleCsrfToken(ctx: Context, next: Next): Promise<void> {
+        ctx.type = 'json';
+        ctx.body = { csrfToken: ctx.state._csrf };
     }
 
     private getCallbackURL(): string {

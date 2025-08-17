@@ -28,7 +28,9 @@ export default class WebService {
         this.app.keys = [config.Session.secret];
         this.app.use(Session({
             key: config.Session.key,
-            maxAge: config.Session.maxAge
+            maxAge: config.Session.maxAge,
+            httpOnly: true,
+            sameSite: 'lax'
         }, this.app));
         this.app.use(bodyParser());
         

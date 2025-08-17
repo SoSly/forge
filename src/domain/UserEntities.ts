@@ -19,7 +19,6 @@ export class ProfileResponse {
         current: number,
         max: number
     };
-    public csrfToken?: string;
 }
 
 @Entity({name: 'auth'})

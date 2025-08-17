@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {forge} from 'types';
-import { setupAxios } from '../axios';
 
 export default {
     strict: process.env.NODE_ENV !== 'production',
@@ -27,11 +26,6 @@ export default {
         async get({commit}) {
             const response = await axios.get('/api/profile');
             commit('load', response.data);
-            
-            // Set up CSRF token for all subsequent requests
-            if (response.data.csrfToken) {
-                setupAxios(response.data.csrfToken);
-            }
         }
     },
     getters: {
